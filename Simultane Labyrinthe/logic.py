@@ -84,7 +84,7 @@ class cost:
 
     def create_cost_matrix(self):
         self.cost_matrix = [[0 for _ in range(self.width)] for _ in range(self.height)]
-        self.write_cost(self.width - 1, self.height - 1, 1)
+        self.write_cost(self.width - 1, self.height - 1, 0)
         return self.cost_matrix
 
 
@@ -105,8 +105,11 @@ class solving:
         a = self.get_moving_cost(moves, self.vertical_matrix_1, self.horizontal_matrix_1, self.cost_matrix_1)
         b = self.get_moving_cost(moves, self.vertical_matrix_2, self.horizontal_matrix_2, self.cost_matrix_2)
 
-        return [a[i] + b[i] for i in range(4)]
 
+        neighbors = []
+        for i in range(4):
+            neighbors.append([a[i][0] + b[i][0], [a[i][1], b[i][1]]])
+        return neighbors
 
     def get_moving_cost(self, movements, vertical_matrix, horizontal_matrix, cost_matrix):
         at_the_moment = (0, 0)
@@ -125,8 +128,8 @@ class solving:
             nx, ny = at_the_moment[0] + dx, at_the_moment[1] + dy
             if 0 <= nx < self.width and 0 <= ny < self.height and move_funcs[i](at_the_moment[0], at_the_moment[1],
                                                                                 vertical_matrix if i < 2 else horizontal_matrix):
-                neighbors.append(cost_matrix[ny][nx])
+                neighbors.append((cost_matrix[ny][nx], (nx, ny)))
             else:
-                neighbors.append(cost_matrix[at_the_moment[1]][at_the_moment[0]])
+                neighbors.append((cost_matrix[at_the_moment[1]][at_the_moment[0]], (at_the_moment[0], at_the_moment[1])))
 
         return neighbors
