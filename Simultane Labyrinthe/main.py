@@ -25,38 +25,29 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, mat
            matrix_vertical_2):
     solving_obj = solving(cost_matrix_1, cost_matrix_2, matrix_vertical_1, matrix_horizontal_1, matrix_vertical_2,
                           matrix_horizontal_2, width, height)
-    moves = [[[], (cost_matrix_1[0][0]+cost_matrix_2[0][0]), 0, []]]  # Initialisiere die Bewegungen
+    moves = [[[], (cost_matrix_1[0][0] + cost_matrix_2[0][0]), 0, []]]  # Initialisiere die Bewegungen
     iteration_count = 0
 
-    for i in range(20):
-        # Finde das beste Element aus der Liste
-        current = min(moves, key=lambda x: (x[1]))
-        if current[1] <= 2:  # Abbruchbedingung
-            break
+    print(solving_obj.neighbours_cost([3, 3, 0, 2, 2, 0, 3, 3]))
 
-        iteration_count += 1
-        # Berechne die Kosten für Nachbarn
-        neighbours = solving_obj.neighbours_cost(current[0])
-        for i in range(4):
-            new = neighbours[i]
-            for item in moves:
-                if new[1] == item[3]:
-                    if len(current[0]) + 1 < len(item[0]):
-                        item[0] = current[0] + [i]
-                        item[1] = new[0]
-                        item[2] = new[0] - current[1]
-                    break
-            else:
-                moves.append([current[0] + [i], new[0], new[0]-current[1], new[1]])
-        print(moves)
+    neighbors = solving_obj.neighbours_cost(moves[0][0])
+    #rekursion(moves[0][0] + [3], solving_obj, neighbors[0][0])
+    for i in range(len(neighbors)):
+        if neighbors[i][0] < 16:
+            #rekursion(moves[0][0] + [i], solving_obj, neighbors[i][0])
+            pass
 
-    # Ergebnis ausgeben
-    print(current)
 
+def rekursion(moves, solving_obj, last_int):
+    neighbors = solving_obj.neighbours_cost(moves)
+    for i in range(len(neighbors)):
+        if neighbors[i][0] != 0 and neighbors[i][0] < last_int:
+            rekursion(moves + [i], solving_obj, neighbors[i][0])
+        print(moves + [i])
 
 
 def main():
-    width, height, data = read_data_from_file('labyrinthe1.txt')
+    width, height, data = read_data_from_file('labyrinthe0.txt')
 
     matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
     matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
@@ -64,7 +55,8 @@ def main():
     cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
     cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
 
-    moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2, matrix_vertical_2)
+    moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2,
+           matrix_vertical_2)
 
 
 if __name__ == "__main__":

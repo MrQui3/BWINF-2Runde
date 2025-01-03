@@ -118,7 +118,7 @@ class solving:
 
         for move in movements:
             if at_the_moment[0] == self.width - 1 and at_the_moment[1] == self.height - 1:
-                return [0, 0, 0, 0]
+                return 0
 
             if move_funcs[move](at_the_moment[0], at_the_moment[1], vertical_matrix if move < 2 else horizontal_matrix):
                 at_the_moment = (at_the_moment[0] + move_deltas[move][0], at_the_moment[1] + move_deltas[move][1])
