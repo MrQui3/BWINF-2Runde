@@ -1,0 +1,132 @@
+def test_right(x, y, vertical_matrix):
+    if x < len(vertical_matrix[0]):
+        if vertical_matrix[y][x] == 0:
+            return True
+    return False
+
+
+def test_left(x, y, vertical_matrix):
+    if x > 0:
+        if vertical_matrix[y][x - 1] == 0:
+            return True
+    return False
+
+
+def test_up(x, y, horizontal_matrix):
+    if y > 0:
+        if horizontal_matrix[y - 1][x] == 0:
+            return True
+    return False
+
+
+def test_down(x, y, horizontal_matrix):
+    if y < len(horizontal_matrix):
+        if horizontal_matrix[y][x] == 0:
+            return True
+    return False
+
+
+class cost:
+
+    def __init__(self, horizontal_matrix, vertical_matrix, gruben, width, height):
+        self.stack_solving = []
+        self.markedVisited = []
+        self.horizontal_matrix = horizontal_matrix
+        self.vertical_matrix = vertical_matrix
+        self.gruben = gruben
+        self.width = width
+        self.height = height
+        self.cost_matrix = []
+
+    def get_neighbors(self, x, y):
+        neighbors = []
+        if test_right(x, y, self.vertical_matrix) and (x + 1, y) not in self.markedVisited:
+            neighbors.append((x + 1, y))
+        if test_left(x, y, self.vertical_matrix) and (x - 1, y) not in self.markedVisited:
+            neighbors.append((x - 1, y))
+        if test_up(x, y, self.horizontal_matrix) and (x, y - 1) not in self.markedVisited:
+            neighbors.append((x, y - 1))
+        if test_down(x, y, self.horizontal_matrix) and (x, y + 1) not in self.markedVisited:
+            neighbors.append((x, y + 1))
+        return neighbors
+
+    def solve(self, at_the_moment):
+        if at_the_moment not in self.markedVisited:
+            self.markedVisited.append(at_the_moment)
+            self.stack_solving.append(at_the_moment)
+        neighbors = self.get_neighbors(at_the_moment[0], at_the_moment[1])
+        if len(neighbors) == 0:
+            self.stack_solving.pop(-1)
+            return self.stack_solving[-1]
+        return neighbors[0]
+
+    def create_moving_plan(self):
+        # 0 = right, 1 = left, 2 = up, 3 = down
+        moving_plan = []
+        for i in range(len(self.stack_solving) - 1):
+            if self.stack_solving[i][0] == self.stack_solving[i + 1][0]:
+                if self.stack_solving[i][1] < self.stack_solving[i + 1][1]:
+                    moving_plan.append(3)
+                else:
+                    moving_plan.append(2)
+            else:
+                if self.stack_solving[i][0] < self.stack_solving[i + 1][0]:
+                    moving_plan.append(0)
+                else:
+                    moving_plan.append(1)
+        return moving_plan
+
+    def write_cost(self, x, y, cost):
+        self.cost_matrix[y][x] = cost
+        for i in self.get_neighbors(x, y):
+            if self.cost_matrix[i[1]][i[0]] == 0:
+                self.write_cost(i[0], i[1], cost + 1)
+
+    def create_cost_matrix(self):
+        self.cost_matrix = [[0 for _ in range(self.width)] for _ in range(self.height)]
+        self.write_cost(self.width - 1, self.height - 1, 1)
+        return self.cost_matrix
+
+
+class solving:
+
+    def __init__(self, cost_matrix_1, cost_matrix_2, vertical_matrix_1, horizontal_matrix_1, vertical_matrix_2,
+                 horizontal_matrix_2, width, height):
+        self.cost_matrix_1 = cost_matrix_1
+        self.cost_matrix_2 = cost_matrix_2
+        self.width = width
+        self.height = height
+        self.horizontal_matrix_1 = horizontal_matrix_1
+        self.vertical_matrix_1 = vertical_matrix_1
+        self.horizontal_matrix_2 = horizontal_matrix_2
+        self.vertical_matrix_2 = vertical_matrix_2
+
+    def neighbours_cost(self, moves):
+        a = self.get_moving_cost(moves, self.vertical_matrix_1, self.horizontal_matrix_1, self.cost_matrix_1)
+        b = self.get_moving_cost(moves, self.vertical_matrix_2, self.horizontal_matrix_2, self.cost_matrix_2)
+
+        return [a[i] + b[i] for i in range(4)]
+
+
+    def get_moving_cost(self, movements, vertical_matrix, horizontal_matrix, cost_matrix):
+        at_the_moment = (0, 0)
+        move_funcs = [test_right, test_left, test_up, test_down]
+        move_deltas = [(1, 0), (-1, 0), (0, -1), (0, 1)]
+
+        for move in movements:
+            if at_the_moment[0] == self.width - 1 and at_the_moment[1] == self.height - 1:
+                return [0, 0, 0, 0]
+
+            if move_funcs[move](at_the_moment[0], at_the_moment[1], vertical_matrix if move < 2 else horizontal_matrix):
+                at_the_moment = (at_the_moment[0] + move_deltas[move][0], at_the_moment[1] + move_deltas[move][1])
+
+        neighbors = []
+        for i, (dx, dy) in enumerate(move_deltas):
+            nx, ny = at_the_moment[0] + dx, at_the_moment[1] + dy
+            if 0 <= nx < self.width and 0 <= ny < self.height and move_funcs[i](at_the_moment[0], at_the_moment[1],
+                                                                                vertical_matrix if i < 2 else horizontal_matrix):
+                neighbors.append(cost_matrix[ny][nx])
+            else:
+                neighbors.append(cost_matrix[at_the_moment[1]][at_the_moment[0]])
+
+        return neighbors
