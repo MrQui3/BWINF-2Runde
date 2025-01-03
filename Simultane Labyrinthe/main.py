@@ -23,31 +23,30 @@ def creating_cost_matrix(matrix_horizontal, matrix_vertical, gruben, width, heig
 
 def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2,
            matrix_vertical_2):
-    solving_obj = solving(cost_matrix_1, cost_matrix_2, matrix_vertical_1, matrix_horizontal_1, matrix_vertical_2,
-                          matrix_horizontal_2, width, height)
-    moves = [[[], 3, 0]]  # Initialisiere die Bewegungen
-    iteration_count = 0
-
-    while True:
-        # Finde das beste Element aus der Liste
-        current = min(moves, key=lambda x: (x[2], x[1]))
-        if current[1] <= 2:  # Abbruchbedingung
-            break
-
-        iteration_count += 1
-        moves.remove(current)
-        # Berechne die Kosten für Nachbarn
-        neighbours = solving_obj.neighbours_cost(current[0])
+    solving_obj = solving(cost_matrix_1, cost_matrix_2, matrix_vertical_1, matrix_horizontal_1, matrix_vertical_2, matrix_horizontal_2, width, height)
+    moves = [[[]]]
+    b = 0
+    a = solving_obj.neighbours_cost(moves[b][0])
+    for i in range(4):
+        moves.append([moves[b][0] + [i], a[i], 0])
+    moves.pop(0)
+    b = moves[0]
+    c = 0
+    while b[1] > 2:
+        c += 1
+        b = min(moves, key=lambda x: (x[1], x[2], len(x[0])))
+        print(moves)
+        print(b)
+        a = solving_obj.neighbours_cost(b[0])
         for i in range(4):
-            moves.append([current[0] + [i], neighbours[i], neighbours[i] - current[1]])
-
-    # Ergebnis ausgeben
-    print(current)
-    print(iteration_count)
+            if a[i] < b[1]:
+                moves.append([b[0] + [i], a[i], a[i] - b[1]])
+        moves.remove(b)
+    print(c)
 
 
 def main():
-    width, height, data = read_data_from_file('labyrinthe3.txt')
+    width, height, data = read_data_from_file('labyrinthe0.txt')
 
     matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
     matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
