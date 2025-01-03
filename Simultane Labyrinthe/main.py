@@ -27,32 +27,34 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, mat
     moves = [[[]]]
     b = 0
     a = solving_obj.neighbours_cost(moves[b][0])
-    for i in range(4):
-        moves.append([moves[b][0] + [i], a[i], 0])
+    for i in a:
+        moves.append(moves[b][0]+[i[0], i[1], -1])
     moves.pop(0)
     b = moves[0]
     c = 0
-    while b[1] > 2:
+    while b[1] > 0:
         c += 1
-        b = min(moves, key=lambda x: (x[1], x[2], len(x[0])))
-        print(moves)
-        print(b)
+    #for i in range(13):
+        b = min(moves, key=lambda x: (x[2], x[1]))
         a = solving_obj.neighbours_cost(b[0])
-        for i in range(4):
-            if a[i] < b[1]:
-                moves.append([b[0] + [i], a[i], a[i] - b[1]])
+        for i in a:
+            new = [i[0], i[1], i[1] - b[1]]
+            moves.append(new)
+
         moves.remove(b)
     print(c)
+    print(b)
 
 
 def main():
-    width, height, data = read_data_from_file('labyrinthe0.txt')
+    width, height, data = read_data_from_file('labyrinthe1.txt')
 
     matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
     matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
 
     cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
     cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
+
 
     moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2, matrix_vertical_2)
 

@@ -41,13 +41,15 @@ class cost:
     def get_neighbors(self, x, y):
         neighbors = []
         if test_right(x, y, self.vertical_matrix) and (x + 1, y) not in self.markedVisited:
-            neighbors.append((x + 1, y))
+            neighbors.append((x + 1, y, 1))
         if test_left(x, y, self.vertical_matrix) and (x - 1, y) not in self.markedVisited:
-            neighbors.append((x - 1, y))
+            neighbors.append((x - 1, y, 0))
         if test_up(x, y, self.horizontal_matrix) and (x, y - 1) not in self.markedVisited:
-            neighbors.append((x, y - 1))
+            neighbors.append((x, y - 1, 3))
         if test_down(x, y, self.horizontal_matrix) and (x, y + 1) not in self.markedVisited:
-            neighbors.append((x, y + 1))
+            neighbors.append((x, y + 1, 2))
+
+        # index 2 is the direction the neighbors has to go to reach the current node
         return neighbors
 
     def solve(self, at_the_moment):
@@ -76,15 +78,15 @@ class cost:
                     moving_plan.append(1)
         return moving_plan
 
-    def write_cost(self, x, y, cost):
-        self.cost_matrix[y][x] = cost
+    def write_cost(self, x, y, cost, direction):
+        self.cost_matrix[y][x] = (cost, direction)
         for i in self.get_neighbors(x, y):
             if self.cost_matrix[i[1]][i[0]] == 0:
-                self.write_cost(i[0], i[1], cost + 1)
+                self.write_cost(i[0], i[1], cost + 1, i[2])
 
     def create_cost_matrix(self):
         self.cost_matrix = [[0 for _ in range(self.width)] for _ in range(self.height)]
-        self.write_cost(self.width - 1, self.height - 1, 1)
+        self.write_cost(self.width - 1, self.height - 1, 0, None)
         return self.cost_matrix
 
 
@@ -102,31 +104,43 @@ class solving:
         self.vertical_matrix_2 = vertical_matrix_2
 
     def neighbours_cost(self, moves):
-        a = self.get_moving_cost(moves, self.vertical_matrix_1, self.horizontal_matrix_1, self.cost_matrix_1)
-        b = self.get_moving_cost(moves, self.vertical_matrix_2, self.horizontal_matrix_2, self.cost_matrix_2)
+        e = self.next_move(moves, self.vertical_matrix_1, self.horizontal_matrix_1, self.cost_matrix_1)
+        f = self.next_move(moves, self.vertical_matrix_2, self.horizontal_matrix_2, self.cost_matrix_2)
 
-        return [a[i] + b[i] for i in range(4)]
+        cost_a = (
+                self.get_moving_cost(moves + [e], self.vertical_matrix_1, self.horizontal_matrix_1,
+                                     self.cost_matrix_1) +
+                self.get_moving_cost(moves + [e], self.vertical_matrix_2, self.horizontal_matrix_2, self.cost_matrix_2)
+        )
+        cost_b = (
+                self.get_moving_cost(moves + [f], self.vertical_matrix_1, self.horizontal_matrix_1,
+                                     self.cost_matrix_1) +
+                self.get_moving_cost(moves + [f], self.vertical_matrix_2, self.horizontal_matrix_2, self.cost_matrix_2)
+        )
 
+        return [(moves + [e], cost_a), (moves + [f], cost_b)]
+
+    def next_move(self, movements, vertical_matrix, horizontal_matrix, cost_matrix):
+        at_the_moment = self.calculate_position(movements, self.width, self.height, vertical_matrix, horizontal_matrix)
+        if at_the_moment == (self.width - 1, self.height - 1):
+            return 0
+        return cost_matrix[at_the_moment[1]][at_the_moment[0]][1]
 
     def get_moving_cost(self, movements, vertical_matrix, horizontal_matrix, cost_matrix):
+        at_the_moment = self.calculate_position(movements, self.width, self.height, vertical_matrix, horizontal_matrix)
+        if at_the_moment == (self.width - 1, self.height - 1):
+            return 0  # Ziel erreicht
+        return cost_matrix[at_the_moment[1]][at_the_moment[0]][0]
+
+    def calculate_position(self, movements, width, height, vertical_matrix, horizontal_matrix):
         at_the_moment = (0, 0)
         move_funcs = [test_right, test_left, test_up, test_down]
         move_deltas = [(1, 0), (-1, 0), (0, -1), (0, 1)]
 
         for move in movements:
-            if at_the_moment[0] == self.width - 1 and at_the_moment[1] == self.height - 1:
-                return [0, 0, 0, 0]
-
+            if at_the_moment == (width - 1, height - 1):
+                break
             if move_funcs[move](at_the_moment[0], at_the_moment[1], vertical_matrix if move < 2 else horizontal_matrix):
                 at_the_moment = (at_the_moment[0] + move_deltas[move][0], at_the_moment[1] + move_deltas[move][1])
 
-        neighbors = []
-        for i, (dx, dy) in enumerate(move_deltas):
-            nx, ny = at_the_moment[0] + dx, at_the_moment[1] + dy
-            if 0 <= nx < self.width and 0 <= ny < self.height and move_funcs[i](at_the_moment[0], at_the_moment[1],
-                                                                                vertical_matrix if i < 2 else horizontal_matrix):
-                neighbors.append(cost_matrix[ny][nx])
-            else:
-                neighbors.append(cost_matrix[at_the_moment[1]][at_the_moment[0]])
-
-        return neighbors
+        return at_the_moment
