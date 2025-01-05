@@ -102,45 +102,56 @@ class solving:
         self.vertical_matrix_1 = vertical_matrix_1
         self.horizontal_matrix_2 = horizontal_matrix_2
         self.vertical_matrix_2 = vertical_matrix_2
+        self.visited = []
 
     def neighbours_cost(self, moves):
-        e = self.next_move(moves, self.vertical_matrix_1, self.horizontal_matrix_1, self.cost_matrix_1)
-        f = self.next_move(moves, self.vertical_matrix_2, self.horizontal_matrix_2, self.cost_matrix_2)
+        e, f = self.next_move(moves, self.vertical_matrix_1, self.horizontal_matrix_1, self.cost_matrix_1), \
+            self.next_move(moves, self.vertical_matrix_2, self.horizontal_matrix_2, self.cost_matrix_2)
 
-        cost_a = (
-                self.get_moving_cost(moves + [e], self.vertical_matrix_1, self.horizontal_matrix_1,
-                                     self.cost_matrix_1) +
-                self.get_moving_cost(moves + [e], self.vertical_matrix_2, self.horizontal_matrix_2, self.cost_matrix_2)
-        )
-        cost_b = (
-                self.get_moving_cost(moves + [f], self.vertical_matrix_1, self.horizontal_matrix_1,
-                                     self.cost_matrix_1) +
-                self.get_moving_cost(moves + [f], self.vertical_matrix_2, self.horizontal_matrix_2, self.cost_matrix_2)
-        )
+        if e == 4 or f == 4:
+            return [(moves + [e if e != 4 else f], self.get_total_cost(moves + [e if e != 4 else f]))]
 
-        return [(moves + [e], cost_a), (moves + [f], cost_b)]
+        new_moves_e, new_moves_f = moves + [e], moves + [f]
+        h, g = (new_moves_e, self.get_total_cost(new_moves_e)), (new_moves_f, self.get_total_cost(new_moves_f))
+
+        h = self.update_visited(h, new_moves_e)
+        g = self.update_visited(g, new_moves_f)
+
+        return [h, g] if e != f else [h]
 
     def next_move(self, movements, vertical_matrix, horizontal_matrix, cost_matrix):
-        at_the_moment = self.calculate_position(movements, self.width, self.height, vertical_matrix, horizontal_matrix)
-        if at_the_moment == (self.width - 1, self.height - 1):
-            return 0
-        return cost_matrix[at_the_moment[1]][at_the_moment[0]][1]
+        at_the_moment = self.calculate_position(movements, vertical_matrix, horizontal_matrix)
+        return 4 if at_the_moment == (self.width - 1, self.height - 1) else \
+        cost_matrix[at_the_moment[1]][at_the_moment[0]][1]
+
+    def get_total_cost(self, movements):
+        return self.get_moving_cost(movements, self.vertical_matrix_1, self.horizontal_matrix_1, self.cost_matrix_1) + \
+            self.get_moving_cost(movements, self.vertical_matrix_2, self.horizontal_matrix_2, self.cost_matrix_2)
 
     def get_moving_cost(self, movements, vertical_matrix, horizontal_matrix, cost_matrix):
-        at_the_moment = self.calculate_position(movements, self.width, self.height, vertical_matrix, horizontal_matrix)
+        at_the_moment = self.calculate_position(movements, vertical_matrix, horizontal_matrix)
         if at_the_moment == (self.width - 1, self.height - 1):
             return 0  # Ziel erreicht
         return cost_matrix[at_the_moment[1]][at_the_moment[0]][0]
 
-    def calculate_position(self, movements, width, height, vertical_matrix, horizontal_matrix):
+    def calculate_position(self, movements, vertical_matrix, horizontal_matrix):
         at_the_moment = (0, 0)
         move_funcs = [test_right, test_left, test_up, test_down]
         move_deltas = [(1, 0), (-1, 0), (0, -1), (0, 1)]
 
         for move in movements:
-            if at_the_moment == (width - 1, height - 1):
+            if at_the_moment == (self.width - 1, self.height - 1):
                 break
             if move_funcs[move](at_the_moment[0], at_the_moment[1], vertical_matrix if move < 2 else horizontal_matrix):
                 at_the_moment = (at_the_moment[0] + move_deltas[move][0], at_the_moment[1] + move_deltas[move][1])
 
         return at_the_moment
+
+    def update_visited(self, move_cost_tuple, new_moves):
+        pos = (self.calculate_position(new_moves, self.vertical_matrix_1, self.horizontal_matrix_1),
+               self.calculate_position(new_moves, self.vertical_matrix_2, self.horizontal_matrix_2))
+        if pos in self.visited:
+            return None
+        else:
+            self.visited.append(pos)
+        return move_cost_tuple

@@ -24,26 +24,20 @@ def creating_cost_matrix(matrix_horizontal, matrix_vertical, gruben, width, heig
 def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2,
            matrix_vertical_2):
     solving_obj = solving(cost_matrix_1, cost_matrix_2, matrix_vertical_1, matrix_horizontal_1, matrix_vertical_2, matrix_horizontal_2, width, height)
-    moves = [[[]]]
-    b = 0
-    a = solving_obj.neighbours_cost(moves[b][0])
-    for i in a:
-        moves.append(moves[b][0]+[i[0], i[1], -1])
-    moves.pop(0)
-    b = moves[0]
-    c = 0
-    while b[1] > 0:
-        c += 1
-    #for i in range(13):
-        b = min(moves, key=lambda x: (x[2], x[1]))
-        a = solving_obj.neighbours_cost(b[0])
-        for i in a:
-            new = [i[0], i[1], i[1] - b[1]]
-            moves.append(new)
-
-        moves.remove(b)
-    print(c)
-    print(b)
+    moves = [[]]
+    finished = False
+    while not finished:
+        a = solving_obj.neighbours_cost(moves[0])
+        moves.pop(0)
+        for j in a:
+            if j is None:
+                continue
+            moves.append(j[0])
+            if j[1] == 0:
+                finished = True
+                print(j[0])
+                print(len(j[0]))
+                break
 
 
 def main():
