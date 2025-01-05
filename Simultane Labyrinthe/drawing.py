@@ -1,12 +1,12 @@
 import pygame
 from main import create_matrix, read_data_from_file
 
-width, height, data = read_data_from_file('labyrinthe3.txt')
+width, height, data = read_data_from_file('labyrinthe2.txt')
 
 matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
 matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
 
-block_size = 10
+block_size = 30
 
 
 pygame.init()
@@ -25,12 +25,11 @@ def draw_maze(pos_x, pos_y, horizontal_matrix, vertical_matrix, gruben, is_grube
     for i in range(len(horizontal_matrix)):
         for j in range(len(horizontal_matrix[i])):
             if horizontal_matrix[i][j] == 1:
-                pygame.draw.line(screen, (0, 0, 0), (pos_x+block_size+(j*block_size), pos_y+(i*block_size)), (pos_x+block_size+(j*block_size), pos_y+(i*block_size)+block_size))
+                pygame.draw.line(screen, (0, 0, 0), (pos_x+(j*block_size), pos_y+(i*block_size)+block_size), (pos_x+block_size+(j*block_size), pos_y+(i*block_size)+block_size))
     for i in range(len(vertical_matrix)):
         for j in range(len(vertical_matrix[i])):
             if vertical_matrix[i][j] == 1:
-                print(i, j)
-                pygame.draw.line(screen, (0, 0, 0), (pos_x+(j*block_size), pos_y+(i*block_size)+block_size), (pos_x+(j*block_size)+block_size, pos_y+(i*block_size)+block_size))
+                pygame.draw.line(screen, (0, 0, 0), (pos_x+(block_size*j)+block_size, pos_y+(i*block_size)), (pos_x+(block_size*j)+block_size, pos_y+(i*block_size)+block_size))
 
     if is_gruben:
         for i in range(len(gruben)):
