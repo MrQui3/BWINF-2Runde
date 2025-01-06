@@ -41,7 +41,7 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, mat
 
 
 def main():
-    width, height, data = read_data_from_file('labyrinthe4.txt')
+    width, height, data = read_data_from_file('labyrinthe1.txt')
 
     matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
     matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
@@ -49,8 +49,7 @@ def main():
     cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
     cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
 
-
-    moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2, matrix_vertical_2)
+    #moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2, matrix_vertical_2)
 
 
 if __name__ == "__main__":
