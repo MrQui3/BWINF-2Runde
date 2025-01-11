@@ -29,6 +29,7 @@ def test_down(x, y, horizontal_matrix):
 class cost:
 
     def __init__(self, horizontal_matrix, vertical_matrix, gruben, width, height):
+        self.stack_solving = []
         self.markedVisited = []
         self.horizontal_matrix = horizontal_matrix
         self.vertical_matrix = vertical_matrix
@@ -51,25 +52,15 @@ class cost:
         # index 2 is the direction the neighbors has to go to reach the current node
         return neighbors
 
-    def write_cost(self, x, y):
-        has_to_visit = self.get_neighbors(x, y)
-        self.cost_matrix[y][x] = 4
-        a = 0
-        while has_to_visit:
-            if a == 1000:
-                print(len(has_to_visit))
-                a = 0
-            a += 1
-            current = has_to_visit.pop(0)
-            self.cost_matrix[current[1]][current[0]] = current[2]
-            for j in self.get_neighbors(current[0], current[1]):
-                if self.cost_matrix[j[1]][j[0]] is None:
-                    has_to_visit.append(j)
-
+    def write_cost(self, x, y, cost, direction):
+        self.cost_matrix[y][x] = (cost, direction)
+        for i in self.get_neighbors(x, y):
+            if self.cost_matrix[i[1]][i[0]] == 0:
+                self.write_cost(i[0], i[1], cost + 1, i[2])
 
     def create_cost_matrix(self):
-        self.cost_matrix = [[None for _ in range(self.width)] for _ in range(self.height)]
-        self.write_cost(self.width - 1, self.height - 1)
+        self.cost_matrix = [[0 for _ in range(self.width)] for _ in range(self.height)]
+        self.write_cost(self.width - 1, self.height - 1, 0, None)
         return self.cost_matrix
 
 
@@ -105,7 +96,7 @@ class solving:
     def next_move(self, movements, vertical_matrix, horizontal_matrix, cost_matrix):
         at_the_moment = self.calculate_position(movements, vertical_matrix, horizontal_matrix)
         return 4 if at_the_moment == (self.width - 1, self.height - 1) else \
-            cost_matrix[at_the_moment[1]][at_the_moment[0]]
+            cost_matrix[at_the_moment[1]][at_the_moment[0]][1]
 
     def get_total_cost(self, movements):
         return self.get_moving_cost(movements, self.vertical_matrix_1, self.horizontal_matrix_1, self.cost_matrix_1) + \
@@ -115,7 +106,7 @@ class solving:
         at_the_moment = self.calculate_position(movements, vertical_matrix, horizontal_matrix)
         if at_the_moment == (self.width - 1, self.height - 1):
             return 0  # Ziel erreicht
-        return cost_matrix[at_the_moment[1]][at_the_moment[0]]
+        return cost_matrix[at_the_moment[1]][at_the_moment[0]][0]
 
     def calculate_position(self, movements, vertical_matrix, horizontal_matrix):
         at_the_moment = (0, 0)

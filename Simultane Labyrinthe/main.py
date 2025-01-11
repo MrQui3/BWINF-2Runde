@@ -29,15 +29,20 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, mat
     while not finished:
         a = solving_obj.neighbours_cost(moves[0])
         moves.pop(0)
+        filtered_a = [i for i in a if i is not None]
+        if not filtered_a:
+            continue
+        b = min((i for i in a if i is not None), key=lambda x: x[1])[1]
         for j in a:
             if j is None:
                 continue
-            moves.append(j[0])
             if j[1] == 0:
                 finished = True
                 print(j[0])
                 print(len(j[0]))
                 break
+            if j[1] == b:
+                moves.append(j[0])
 
 
 def main():
@@ -49,7 +54,7 @@ def main():
     cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
     cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
 
-    #moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2, matrix_vertical_2)
+    moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2, matrix_vertical_2)
 
 
 if __name__ == "__main__":
