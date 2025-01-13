@@ -1,5 +1,7 @@
-from logic import cost, solving
+import math
 
+from logic import cost, solving
+import time
 
 def read_data_from_file(file_name):
     with open(file_name, 'r') as file:
@@ -25,23 +27,39 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, mat
            matrix_vertical_2):
     solving_obj = solving(cost_matrix_1, cost_matrix_2, matrix_vertical_1, matrix_horizontal_1, matrix_vertical_2, matrix_horizontal_2, width, height)
     moves = [[]]
+    next_moves = []
     finished = False
     while not finished:
-        a = solving_obj.neighbours_cost(moves[0])
-        moves.pop(0)
-        for j in a:
-            if j is None:
+        b = math.inf
+        while moves:
+            a = solving_obj.neighbours_cost(moves[0])
+            moves.pop(0)
+            filtered_a = [i for i in a if i is not None]
+            if not filtered_a:
                 continue
-            moves.append(j[0])
-            if j[1] == 0:
-                finished = True
-                print(j[0])
-                print(len(j[0]))
-                break
+            if min((i for i in a if i is not None), key=lambda x: x[1])[1] < b:
+                b = min((i for i in a if i is not None), key=lambda x: x[1])[1]
+            for j in a:
+                if j is None:
+                    continue
+                if j[1] == 0:
+                    finished = True
+                    print(j[0])
+                    print(len(j[0]))
+                    break
+                if j[1] == b:
+                    next_moves.append(j[0])
+        moves = next_moves.copy()
+        print(moves)
+        if len(moves) >= 100:
+            exit()
+        next_moves = []
 
 
 def main():
-    width, height, data = read_data_from_file('labyrinthe4.txt')
+    start_time = time.time()
+
+    width, height, data = read_data_from_file('labyrinthe1.txt')
 
     matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
     matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
@@ -49,8 +67,11 @@ def main():
     cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
     cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
 
-
     moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2, matrix_vertical_2)
+
+
+    end_time = time.time()
+    print(f"Laufzeit: {end_time - start_time} Sekunden")
 
 
 if __name__ == "__main__":
