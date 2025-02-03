@@ -24,7 +24,7 @@ def create_distribution(message):
 
 
 def create_bin_tree(distribution, perl_number):
-    root = Tree(perl_number, 0)
+    root = Tree(perl_number, None, 0)
     while root.get_size() < len(distribution):
         root.add_child()
     return root
@@ -34,20 +34,30 @@ def fill_tree_with_data(distribution, root):
     for char in distribution:
         root.fill_tree_data(char, distribution[char])
 
-
-def evaluate_tree(root):
+def find_smallest(distribution, perl_number):
+    root = create_bin_tree(distribution, perl_number)
+    fill_tree_with_data(distribution, root)
     print(root.evaluate_tree())
+    for i in range(10):
+        a, to_delete = root.get_highest_value(0)
+        root.delete_node(to_delete)
+        root.insert_new_node(2)
+        fill_tree_with_data(distribution, root)
+        print(root.evaluate_tree())
+
+
 
 
 def main():
     start_time = time.time()
 
+    # perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck5.txt')
+    # distribution = create_distribution(message)
 
-    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck01.txt')
-    distribution = create_distribution(message)
-    root = create_bin_tree(distribution, 2)
-    fill_tree_with_data(distribution, root)
-    evaluate_tree(root)
+    distribution = {'a': 1, 'b': 2, 'c': 3, 'd': 3, 'e': 6, 'f': 8, 'g': 10, 'h': 12}
+    perl_number = 2
+
+    find_smallest(distribution, perl_number)
 
     end_time = time.time()
     print(f"Laufzeit: {end_time - start_time} Sekunden")
