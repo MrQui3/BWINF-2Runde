@@ -1,5 +1,6 @@
 from collections import deque
 
+
 class Tree:
     def __init__(self, number_of_possible_children, parent, ebene):
         self.number_of_possible_children = number_of_possible_children
@@ -9,7 +10,6 @@ class Tree:
         self.data_structure = None
         self.queue = deque([self])
         self.parent = parent
-
 
     def add_child(self):
         """ Fügt einen neuen Knoten auf der untersten, noch nicht vollen Ebene ein. """
@@ -81,9 +81,8 @@ class Tree:
             child.delete_node(tree_object)
 
     def get_highest_value(self, last_value):
-        if self.is_leaf:
-            if self.parent.children[0] != self:
-                return self.data_structure.commonness * self.ebene, self.parent
+        if self.is_leaf and self.parent.parent is not None:
+            return self.data_structure.commonness * self.ebene, self.parent
 
         a = last_value
         to_delete = None
@@ -91,8 +90,6 @@ class Tree:
             if child.get_highest_value(last_value)[0] > a:
                 a, to_delete = child.get_highest_value(last_value)
         return a, to_delete
-
-
 
 
 class Data:
