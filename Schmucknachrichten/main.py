@@ -1,6 +1,6 @@
-import math
 import time
 from tree import Tree
+import copy
 
 
 def read_data_from_file(file_name):
@@ -23,10 +23,10 @@ def create_distribution(message):
     return characters
 
 
-def create_bin_tree(distribution, perl_number):
+def create_bin_tree(distribution_length, perl_number):
     root = Tree(perl_number, None, 0)
-    while root.get_size() < len(distribution):
-        root.add_child()
+    while root.get_size() < distribution_length:
+        root.add_child(0)
     return root
 
 
@@ -34,34 +34,38 @@ def fill_tree_with_data(distribution, root):
     for char in distribution:
         root.fill_tree_data(char, distribution[char])
 
+
 def find_smallest(distribution, perl_number):
-    root = create_bin_tree(distribution, perl_number)
+    root = create_bin_tree(len(distribution), perl_number)
     fill_tree_with_data(distribution, root)
-    c = root.evaluate_tree()
-    d = c-1
-    print(c)
-    while d < c:
-        c = d
-        a, to_delete = root.get_highest_value(0)
-        b = to_delete.get_size()
+    last_value = root.evaluate_tree()
+    while True:
+        last_root = copy.deepcopy(root)
+
+        _, to_delete = root.get_highest_value(0)
+        number_of_children = to_delete.get_size()
         root.delete_node(to_delete)
-        root.insert_new_node(b)
+        for _ in range(number_of_children):
+            root.add_child(to_delete.ebene + 1)
+
         fill_tree_with_data(distribution, root)
-        d = root.evaluate_tree()
+        root_value = root.evaluate_tree()
 
-    return c
-
+        if last_value < root_value or root.get_size() != len(distribution):
+            return last_root.evaluate_tree()
+        last_value = root_value
 
 
 def main():
     start_time = time.time()
 
-    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck4.txt')
-    distribution = create_distribution(message)
-    #distribution = {'a': 1, 'b': 2, 'c': 3, 'd': 3, 'e': 6, 'f': 8, 'g': 10, 'h': 12}
-    #perl_number = 2
+    for i in range(10):
+        perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck{i}.txt')
+        distribution = create_distribution(message)
+        #distribution = {'a': 1, 'b': 2, 'c': 3, 'd': 3, 'e': 6, 'f': 8, 'g': 10, 'h': 12}
+        #perl_number = 2
 
-    print(find_smallest(distribution, perl_number))
+        print(find_smallest(distribution, perl_number))
 
     end_time = time.time()
     print(f"Laufzeit: {end_time - start_time} Sekunden")

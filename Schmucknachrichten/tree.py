@@ -11,28 +11,26 @@ class Tree:
         self.queue = deque([self])
         self.parent = parent
 
-    def add_child(self):
-        """ Fügt einen neuen Knoten auf der untersten, noch nicht vollen Ebene ein. """
-        while self.queue:
-            parent = self.queue[0]  # Immer der erste Knoten in der Queue bekommt das neue Kind
+    def add_child(self, min_ebene):
+        """ Fügt einen neuen Knoten auf der untersten, noch nicht vollen Ebene ab `min_ebene` ein. """
+        queue = [self]  # Jedes Mal eine neue Queue für die Breitensuche
+        while queue:
+            node = queue.pop(0)  # Nächstes Element aus der Liste nehmen (FIFO-Prinzip)
 
-            # Falls Platz für ein Kind ist, füge es hier hinzu
-            if len(parent.children) < parent.number_of_possible_children:
-                new_child = Tree(parent.number_of_possible_children, parent, parent.ebene + 1)
-                parent.children.append(new_child)
-                parent.is_leaf = False  # Eltern-Knoten ist jetzt kein Blatt mehr
+            # Falls wir die gewünschte Ebene erreicht haben, prüfen, ob wir hier einfügen können
+            if node.ebene >= min_ebene and len(node.children) < node.number_of_possible_children:
+                new_child = Tree(node.number_of_possible_children, ebene=node.ebene + 1, parent=node)
+                node.children.append(new_child)
+                node.is_leaf = False  # Ist kein Blatt mehr
 
-                # Das neue Kind wird zur Queue hinzugefügt (potenzieller zukünftiger Eltern-Knoten)
-                self.queue.append(new_child)
+                # Setze is_right_sibling auf True, wenn der Knoten nicht das erste Kind ist
+                if len(node.children) > 1:
+                    new_child.is_right_sibling = True
 
-                # Falls der aktuelle Eltern-Knoten jetzt voll ist, entfernen wir ihn aus der Queue
-                if len(parent.children) == parent.number_of_possible_children:
-                    self.queue.popleft()
+                return new_child  # Erfolgreich eingefügt, also abbrechen
 
-                return new_child
-
-        # Falls alle Kinder voll sind, erweitere das erste Kind
-        return self.children[0].add_child()
+            # Falls kein Platz mehr im aktuellen Knoten ist, die Kinder für die nächste Runde speichern
+            queue.extend(node.children)
 
     def get_size(self):
         if self.is_leaf:
@@ -90,6 +88,14 @@ class Tree:
             if child.get_highest_value(last_value)[0] > a:
                 a, to_delete = child.get_highest_value(last_value)
         return a, to_delete
+
+    def check_if_root_is_valid(self):
+
+        if len(self.children) > self.number_of_possible_children:
+            print(len(self.children))
+            print(self.number_of_possible_children)
+        for child in self.children:
+            child.check_if_root_is_valid()
 
 
 class Data:
