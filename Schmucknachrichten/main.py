@@ -1,5 +1,5 @@
 import time
-from tree import Tree
+from tree import Tree, Data
 import copy
 import random
 
@@ -24,30 +24,32 @@ def create_distribution(message):
     return characters
 
 
-def create_bin_tree(distribution_length, perl_number):
-    root = Tree(perl_number, None, 0)
+def create_bin_tree(distribution_length, perl_number, children_cost):
+    root = Tree(perl_number, None, 0, children_cost, 0)
     while root.get_size() < distribution_length:
-        root.add_child(0)
+        root.add_child(-1)
     return root
 
 
 def fill_tree_with_data(distribution, root):
     for char in distribution:
-        root.fill_tree_data(char, distribution[char])
+        cost, node = root.get_highest_cost(0)
+        node.data_structure = Data(char, distribution[char])
 
 
-def find_smallest(distribution, perl_number):
-    root = create_bin_tree(len(distribution), perl_number)
+def find_smallest(distribution, perl_number, children_cost):
+    root = create_bin_tree(len(distribution), perl_number, children_cost)
     fill_tree_with_data(distribution, root)
     last_value = root.evaluate_tree()
     while True:
+        print(last_value)
         last_root = copy.deepcopy(root)
 
         _, to_delete = root.get_highest_value(0)
         number_of_children = to_delete.get_size()
         root.delete_node(to_delete)
-        for _ in range(number_of_children):
-            root.add_child(to_delete.ebene + 1)
+        for _ in range(number_of_children-1):
+            root.add_child(to_delete.cost)
 
         fill_tree_with_data(distribution, root)
         root_value = root.evaluate_tree()
@@ -60,10 +62,12 @@ def find_smallest(distribution, perl_number):
 def main():
     start_time = time.time()
 
-    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck0.txt')
+    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck5.txt')
     distribution = create_distribution(message)
-
-    print(find_smallest(distribution, perl_number))
+    #distribution = {'a': 1, 'b': 2, 'c': 3, 'd': 3, 'e': 6, 'f': 8, 'g': 10, 'h': 12}
+    #perl_number = 3
+    #perl_size = [1, 1, 2]
+    solution = find_smallest(distribution, perl_number, perl_size)
 
     end_time = time.time()
     print(f"Laufzeit: {end_time - start_time} Sekunden")
