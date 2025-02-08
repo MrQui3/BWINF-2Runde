@@ -42,7 +42,6 @@ def find_smallest(distribution, perl_number, children_cost):
     fill_tree_with_data(distribution, root)
     last_value = root.evaluate_tree()
     while True:
-        print(last_value)
         last_root = copy.deepcopy(root)
 
         _, to_delete = root.get_highest_value(0)
@@ -55,6 +54,7 @@ def find_smallest(distribution, perl_number, children_cost):
         root_value = root.evaluate_tree()
 
         if last_value < root_value or root.get_size() != len(distribution):
+            print(last_value)
             return last_root.return_graph()
         last_value = root_value
 

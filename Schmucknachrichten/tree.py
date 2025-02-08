@@ -15,31 +15,32 @@ class Tree:
         self.children_cost = children_cost
         self.cost = cost
 
-    def get_smallest_cost(self, current_min_cost, required_cost):
+    def get_smallest_cost(self, required_cost):
         # Get node with the smallest cost and open children spots
-        if required_cost < self.cost < current_min_cost and len(self.children) < self.number_of_possible_children:
-            return self.cost, self
+        result = {}
+        if len(self.children) < self.number_of_possible_children and required_cost < self.cost:
+            if len(self.children) == 0:
+                cost = self.cost + self.children_cost[0] + self.children_cost[1]
+            else:
+                cost = self.cost + self.children_cost[len(self.children)]
 
-        min_cost = current_min_cost
-        best_node = None
+            result[self] = cost
 
         for child in self.children:
-            child_cost, child_node = child.get_smallest_cost(min_cost, required_cost)
+            result.update(child.get_smallest_cost(required_cost))
 
-            if child_cost < min_cost:
-                min_cost = child_cost
-                best_node = child_node
-        return min_cost, best_node
+        return result
 
     def add_child(self, required_cost):
-        cost, node = self.get_smallest_cost(math.inf, required_cost)
+        nodes = self.get_smallest_cost(required_cost)
+        node = min(nodes, key=nodes.get)
 
         if node.is_leaf:
             node.is_leaf = False
-            node.children.append(Tree(self.number_of_possible_children, node, node.ebene+1, self.children_cost, cost+self.children_cost[0]))
-            node.children.append(Tree(self.number_of_possible_children, node, node.ebene+1, self.children_cost, cost+self.children_cost[1]))
+            node.children.append(Tree(self.number_of_possible_children, node, node.ebene+1, self.children_cost, node.cost+self.children_cost[0]))
+            node.children.append(Tree(self.number_of_possible_children, node, node.ebene+1, self.children_cost, node.cost+self.children_cost[1]))
         else:
-            node.children.append(Tree(self.number_of_possible_children, node, node.ebene+1, self.children_cost, cost+self.children_cost[len(node.children)]))
+            node.children.append(Tree(self.number_of_possible_children, node, node.ebene+1, self.children_cost, node.cost+self.children_cost[len(node.children)]))
 
     def get_size(self) -> int:
         if self.is_leaf:
