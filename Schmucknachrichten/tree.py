@@ -1,4 +1,5 @@
 from collections import deque
+from typing import List, Tuple, Any, Dict
 
 
 class Tree:
@@ -32,43 +33,26 @@ class Tree:
             # Falls kein Platz mehr im aktuellen Knoten ist, die Kinder für die nächste Runde speichern
             queue.extend(node.children)
 
-    def get_size(self):
+    def get_size(self) -> int:
         if self.is_leaf:
             return 1
         return sum(child.get_size() for child in self.children)
-
-    def pre_order(self):
-        print(self.ebene, len(self.children))
-        for child in range(len(self.children)):
-            self.children[child].pre_order()
 
     def fill_tree_data(self, value, commonness):
         for child in self.children:
             if child.fill_tree_data(value, commonness):
                 return True
         if self.data_structure is None and self.is_leaf:
-            self.data_structure = Data(value, self.ebene, commonness)
+            self.data_structure = Data(value, commonness)
             return True
 
-    def evaluate_tree(self):
+    def evaluate_tree(self) -> int:
         a = 0
         for child in self.children:
             a += child.evaluate_tree()
         if self.is_leaf:
-            try:
-                a += self.data_structure.commonness * self.ebene
-            except:
-                print("fehler")
-                print(self)
+            a += self.data_structure.commonness * self.ebene
         return a
-
-    def insert_new_node(self, number):
-        if self.is_leaf:
-            self.is_leaf = False
-            for i in range(number):
-                self.children.append(Tree(self.number_of_possible_children, self, self.ebene + 1))
-        else:
-            self.children[0].insert_new_node(number)
 
     def delete_node(self, tree_object):
         self.data_structure = None
@@ -78,7 +62,7 @@ class Tree:
         for child in self.children:
             child.delete_node(tree_object)
 
-    def get_highest_value(self, last_value):
+    def get_highest_value(self, last_value) -> Tuple[int, Any]:
         if self.is_leaf and self.parent.parent is not None:
             return self.data_structure.commonness * self.ebene, self.parent
 
@@ -89,18 +73,21 @@ class Tree:
                 a, to_delete = child.get_highest_value(last_value)
         return a, to_delete
 
-    def check_if_root_is_valid(self):
+    def create_chain(self) -> List[int]:
+        return (self.parent.create_chain() + [self.parent.children.index(self)]) if self.parent else []
 
-        if len(self.children) > self.number_of_possible_children:
-            print(len(self.children))
-            print(self.number_of_possible_children)
+    def return_graph(self) -> Dict:
+        result = {}
+        if self.is_leaf:
+            result[self.data_structure.value] = self.create_chain()
+
         for child in self.children:
-            child.check_if_root_is_valid()
+            result.update(child.return_graph())
+
+        return result
 
 
 class Data:
-
-    def __init__(self, value, ebene, commonness):
+    def __init__(self, value, commonness):
         self.value = value
-        self.ebene = ebene
         self.commonness = commonness

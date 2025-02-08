@@ -1,6 +1,7 @@
 import time
 from tree import Tree
 import copy
+import random
 
 
 def read_data_from_file(file_name):
@@ -52,20 +53,17 @@ def find_smallest(distribution, perl_number):
         root_value = root.evaluate_tree()
 
         if last_value < root_value or root.get_size() != len(distribution):
-            return last_root.evaluate_tree()
+            return last_root.return_graph()
         last_value = root_value
 
 
 def main():
     start_time = time.time()
 
-    for i in range(10):
-        perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck{i}.txt')
-        distribution = create_distribution(message)
-        #distribution = {'a': 1, 'b': 2, 'c': 3, 'd': 3, 'e': 6, 'f': 8, 'g': 10, 'h': 12}
-        #perl_number = 2
+    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck0.txt')
+    distribution = create_distribution(message)
 
-        print(find_smallest(distribution, perl_number))
+    print(find_smallest(distribution, perl_number))
 
     end_time = time.time()
     print(f"Laufzeit: {end_time - start_time} Sekunden")
