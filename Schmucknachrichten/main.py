@@ -60,10 +60,17 @@ def find_smallest(distribution, perl_number):
 def main():
     start_time = time.time()
 
-    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck0.txt')
+    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck6.txt')
     distribution = create_distribution(message)
 
-    print(find_smallest(distribution, perl_number))
+
+    a = find_smallest(distribution, perl_number)
+
+    cost = 0
+    for char in a:
+        cost += distribution[char]*len(a[char])
+
+    print(cost)
 
     end_time = time.time()
     print(f"Laufzeit: {end_time - start_time} Sekunden")
