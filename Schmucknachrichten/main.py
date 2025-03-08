@@ -58,15 +58,28 @@ def find_smallest(distribution, perl_number, children_cost):
         last_value = root_value
 
 
+def dict_to_list(dictionary):
+    return sorted(list(dictionary.values()), reverse=True)
+
+
+
 def main():
     start_time = time.time()
 
-    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck5.txt')
+    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck1.txt')
     distribution = create_distribution(message)
-    #distribution = {'a': 1, 'b': 2, 'c': 3, 'd': 3, 'e': 6, 'f': 8, 'g': 10, 'h': 12}
-    #perl_number = 3
-    #perl_size = [1, 1, 2]
+    print(dict_to_list(distribution))
+    print(len(distribution))
+    print(perl_size)
     solution = find_smallest(distribution, perl_number, perl_size)
+    a = 0
+    for node in solution:
+        print(solution[node])
+        print(distribution[node])
+        print()
+        for i in solution[node]:
+            a += perl_size[i]*distribution[node]
+    print(a)
 
     end_time = time.time()
     print(f"Laufzeit: {end_time - start_time} Sekunden")
