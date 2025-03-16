@@ -37,29 +37,31 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, mat
         moves.extend(a)
         moves.sort(key=lambda x: (heighest_cost - x[1]) / len(x[0]) if len(x[0]) > 0 else float('-inf'), reverse=True)
         if moves[0][1] == 0:
-            print(f"Die kürzeste Route ist: {moves[0][0]}, mit einer länge von {len(moves[0][0])}")
-            break
-
-
+            return moves[0][0]
 
 
 
 def main():
-    start_time = time.time()
+    for i in range(10):
+        start_time = time.time()
 
-    width, height, data = read_data_from_file('labyrinthe2.txt')
+        width, height, data = read_data_from_file(f'labyrinthe{i}.txt')
 
-    matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
-    matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
+        matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
+        matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
 
-    cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
-    cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
+        cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
+        cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
 
-    moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2, matrix_vertical_2)
+        moves = moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2, matrix_vertical_2)
 
 
-    end_time = time.time()
-    print(f"Laufzeit: {end_time - start_time} Sekunden")
+        end_time = time.time()
+        with open("log.txt", "a") as file:
+            file.write(f"Lösung für Labyrinth {i}: {moves}\n")
+            file.write(f"Länge der Lösung: {len(moves)}\n")
+            file.write(f"Labyrinth {i} wurde in {end_time - start_time} Sekunden gelöst\n")
+            file.write("\n")
 
 
 if __name__ == "__main__":
