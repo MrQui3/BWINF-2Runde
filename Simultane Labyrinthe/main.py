@@ -1,6 +1,7 @@
 import math
 
-from logic import cost, solving
+from logic import solving
+from cost import cost
 import time
 
 def read_data_from_file(file_name):
@@ -25,41 +26,28 @@ def creating_cost_matrix(matrix_horizontal, matrix_vertical, gruben, width, heig
 
 def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2,
            matrix_vertical_2):
-    solving_obj = solving(cost_matrix_1, cost_matrix_2, matrix_vertical_1, matrix_horizontal_1, matrix_vertical_2, matrix_horizontal_2, width, height)
-    moves = [[]]
-    next_moves = []
-    finished = False
-    while not finished:
-        b = math.inf
-        while moves:
-            a = solving_obj.neighbours_cost(moves[0])
-            moves.pop(0)
-            filtered_a = [i for i in a if i is not None]
-            if not filtered_a:
-                continue
-            if min((i for i in a if i is not None), key=lambda x: x[1])[1] < b:
-                b = min((i for i in a if i is not None), key=lambda x: x[1])[1]
-            for j in a:
-                if j is None:
-                    continue
-                if j[1] == 0:
-                    finished = True
-                    print(j[0])
-                    print(len(j[0]))
-                    break
-                if j[1] == b:
-                    next_moves.append(j[0])
-        moves = next_moves.copy()
-        print(moves)
-        if len(moves) >= 100:
-            exit()
-        next_moves = []
+    solving_obj = solving(cost_matrix_1, cost_matrix_2, matrix_vertical_1, matrix_horizontal_1, matrix_vertical_2,
+                          matrix_horizontal_2, width, height)
+    heighest_cost = cost_matrix_1[0][0][0] + cost_matrix_2[0][0][0]
+    moves = [([], heighest_cost)]
+
+    while True:
+        a = solving_obj.neighbours_cost(moves[0][0])
+        moves.pop(0)
+        moves.extend(a)
+        moves.sort(key=lambda x: (heighest_cost - x[1]) / len(x[0]) if len(x[0]) > 0 else float('-inf'), reverse=True)
+        if moves[0][1] == 0:
+            print(f"Die kürzeste Route ist: {moves[0][0]}, mit einer länge von {len(moves[0][0])}")
+            break
+
+
+
 
 
 def main():
     start_time = time.time()
 
-    width, height, data = read_data_from_file('labyrinthe1.txt')
+    width, height, data = read_data_from_file('labyrinthe2.txt')
 
     matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
     matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
