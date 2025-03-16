@@ -1,12 +1,12 @@
 import pygame
 from main import create_matrix, read_data_from_file
 
-width, height, data = read_data_from_file('labyrinthe8.txt')
+width, height, data = read_data_from_file('labyrinthe2.txt')
 
 matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
 matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
 
-block_size = 6
+block_size = 12
 
 
 pygame.init()

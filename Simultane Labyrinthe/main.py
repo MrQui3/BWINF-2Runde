@@ -1,7 +1,7 @@
 import math
-
-from logic import cost, solving
+from logic import *
 import time
+
 
 def read_data_from_file(file_name):
     with open(file_name, 'r') as file:
@@ -18,48 +18,33 @@ def create_matrix(data, height):
     return matrix_horizontal, matrix_vertical, gruben
 
 
-def creating_cost_matrix(matrix_horizontal, matrix_vertical, gruben, width, height):
-    solving_obj = cost(matrix_horizontal, matrix_vertical, gruben, width, height)
-    return solving_obj.create_cost_matrix()
+def solving_labyrinth(cost_matrix_1, cost_matrix_2, matrix_vertical_1, matrix_horizontal_1, matrix_vertical_2, matrix_horizontal_2, width, height):
+    way = []
+    while True:
+        sequenz_1 = create_sequenz(cost_matrix_1, calculate_position(way, matrix_vertical_1, matrix_horizontal_1, width, height))
+        sequenz_2 = create_sequenz(cost_matrix_2, calculate_position(way, matrix_vertical_2, matrix_horizontal_2, width, height))
 
+        if len(sequenz_1) == 0 and len(sequenz_2) == 0:
+            break
 
-def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2,
-           matrix_vertical_2):
-    solving_obj = solving(cost_matrix_1, cost_matrix_2, matrix_vertical_1, matrix_horizontal_1, matrix_vertical_2, matrix_horizontal_2, width, height)
-    moves = [[]]
-    next_moves = []
-    finished = False
-    while not finished:
-        b = math.inf
-        while moves:
-            a = solving_obj.neighbours_cost(moves[0])
-            moves.pop(0)
-            filtered_a = [i for i in a if i is not None]
-            if not filtered_a:
-                continue
-            if min((i for i in a if i is not None), key=lambda x: x[1])[1] < b:
-                b = min((i for i in a if i is not None), key=lambda x: x[1])[1]
-            for j in a:
-                if j is None:
-                    continue
-                if j[1] == 0:
-                    finished = True
-                    print(j[0])
-                    print(len(j[0]))
-                    break
-                if j[1] == b:
-                    next_moves.append(j[0])
-        moves = next_moves.copy()
-        print(moves)
-        if len(moves) >= 100:
-            exit()
-        next_moves = []
+        if sequenz_1[0] == sequenz_2[0]:
+            # Beide empfehlen die gleiche Richtung
+            way.append(sequenz_1[0])
+            continue
+
+        a = calculate_next_move(sequenz_1, sequenz_2)
+        if a is None:
+            break
+        way.append(a)
+
+    print(way)
+
 
 
 def main():
     start_time = time.time()
 
-    width, height, data = read_data_from_file('labyrinthe1.txt')
+    width, height, data = read_data_from_file('labyrinthe2.txt')
 
     matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
     matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
@@ -67,7 +52,7 @@ def main():
     cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
     cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
 
-    moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2, matrix_vertical_2)
+    solving_labyrinth(cost_matrix_1, cost_matrix_2, matrix_vertical_1, matrix_horizontal_1, matrix_vertical_2, matrix_horizontal_2, width, height)
 
 
     end_time = time.time()
