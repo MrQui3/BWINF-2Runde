@@ -1,4 +1,5 @@
 from cost import test_right, test_left, test_up, test_down
+import threading
 
 class solving:
     def __init__(self, cost_matrix_1, cost_matrix_2, vertical_matrix_1, horizontal_matrix_1,
@@ -12,6 +13,7 @@ class solving:
         self.vertical_matrix_2 = vertical_matrix_2
         self.horizontal_matrix_2 = horizontal_matrix_2
         self.visited = {}
+        self.visited_lock = threading.Lock()
         # Funktionen und Bewegungsdeltas nur einmal definieren
         self.move_funcs = [test_right, test_left, test_up, test_down]
         self.move_deltas = [(1, 0), (-1, 0), (0, -1), (0, 1)]
@@ -66,8 +68,9 @@ class solving:
         # Erstelle einen Schlüssel als Tupel, das beide Positionen enthält
         key = (next_position[0][0], next_position[0][1],
                next_position[1][0], next_position[1][1])
-        if key in self.visited:
-            return None
+        with self.visited_lock:
+            if key in self.visited:
+                return None
         self.visited[key] = length
         return move
 

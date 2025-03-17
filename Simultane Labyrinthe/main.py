@@ -1,8 +1,11 @@
-import math
+import matplotlib
 
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
 from logic import solving
 from cost import cost
 import time
+
 
 def read_data_from_file(file_name):
     with open(file_name, 'r') as file:
@@ -25,43 +28,66 @@ def creating_cost_matrix(matrix_horizontal, matrix_vertical, gruben, width, heig
 
 
 def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2,
-           matrix_vertical_2):
+           matrix_vertical_2, anzahl):
     solving_obj = solving(cost_matrix_1, cost_matrix_2, matrix_vertical_1, matrix_horizontal_1, matrix_vertical_2,
                           matrix_horizontal_2, width, height)
     heighest_cost = cost_matrix_1[0][0][0] + cost_matrix_2[0][0][0]
     moves = [([], heighest_cost)]
-
+    n = 0
     while True:
-        a = solving_obj.neighbours_cost(moves[0][0])
-        moves.pop(0)
-        moves.extend(a)
-        moves.sort(key=lambda x: (heighest_cost - x[1]) / len(x[0]) if len(x[0]) > 0 else float('-inf'), reverse=True)
-        if moves[0][1] == 0:
-            return moves[0][0]
+        n += 1
+        try:
+            a = solving_obj.neighbours_cost(moves[0][0])
+            moves.pop(0)
+            moves.extend(a)
+            moves.sort(key=lambda x: (heighest_cost - x[1]) / len(x[0]) if len(x[0]) > 0 else float('-inf'),
+                       reverse=True)
+            moves = moves[:anzahl]  # Nur die 1000 besten Züge speichern
+            if moves[0][1] == 0:
+                return moves[0][0], n
 
+        except:
+            print(anzahl)
+            return 'No solution', n
 
 
 def main():
+    start_time = time.time()
+
+    width, height, data = read_data_from_file(f'labyrinthe8.txt')
+
+    matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
+    matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
+
+    cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
+    cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
+
+    anzahl = 1
+    anzahl_array = []
+    moves_array = []
+    iterations_array = []
     for i in range(10):
-        start_time = time.time()
+        moves, n = moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1,
+                          matrix_horizontal_2, matrix_vertical_2, anzahl)
+        if moves == 'No solution':
+            continue
+        anzahl_array.append(anzahl)
+        moves_array.append(len(moves))
+        iterations_array.append(n)
+        anzahl += 30
 
-        width, height, data = read_data_from_file(f'labyrinthe{i}.txt')
+    print(anzahl_array)
+    print(moves_array)
+    print(iterations_array)
+    plt.plot(anzahl_array, moves_array, marker='', linestyle='-', color='b')
+    plt.grid(True)
+    plt.show()
+    plt.plot(anzahl_array, iterations_array, marker='', linestyle='-', color='b')
+    plt.grid(True)
+    plt.show()
 
-        matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
-        matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
-
-        cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
-        cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
-
-        moves = moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2, matrix_vertical_2)
-
-
-        end_time = time.time()
-        with open("log.txt", "a") as file:
-            file.write(f"Lösung für Labyrinth {i}: {moves}\n")
-            file.write(f"Länge der Lösung: {len(moves)}\n")
-            file.write(f"Labyrinth {i} wurde in {end_time - start_time} Sekunden gelöst\n")
-            file.write("\n")
+    end_time = time.time()
+    print(f"Time: {end_time - start_time}")
 
 
 if __name__ == "__main__":
