@@ -54,7 +54,7 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, mat
 def main():
     start_time = time.time()
 
-    width, height, data = read_data_from_file(f'labyrinthe8.txt')
+    width, height, data = read_data_from_file(f'labyrinthe4.txt')
 
     matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
     matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
@@ -62,19 +62,20 @@ def main():
     cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
     cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
 
-    anzahl = 1
-    anzahl_array = []
+    anzahl_array = [6, 7, 10, 15, 20, 30, 40, 50, 60, 100]
     moves_array = []
     iterations_array = []
-    for i in range(10):
+    for anzahl in anzahl_array:
         moves, n = moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1,
-                          matrix_horizontal_2, matrix_vertical_2, anzahl)
+                           matrix_horizontal_2, matrix_vertical_2, anzahl)
         if moves == 'No solution':
             continue
-        anzahl_array.append(anzahl)
+        print(anzahl)
+        print(len(moves))
+        print(n)
+        print()
         moves_array.append(len(moves))
         iterations_array.append(n)
-        anzahl += 30
 
     print(anzahl_array)
     print(moves_array)
