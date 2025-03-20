@@ -3,22 +3,28 @@ import threading
 
 class solving:
     def __init__(self, cost_matrix_1, cost_matrix_2, vertical_matrix_1, horizontal_matrix_1,
-                 vertical_matrix_2, horizontal_matrix_2, width, height):
-        self.cost_matrix_1 = cost_matrix_1
-        self.cost_matrix_2 = cost_matrix_2
+                 vertical_matrix_2, horizontal_matrix_2, gruben_1, gruben_2, width, height):
         self.width = width
         self.height = height
+
+        self.gruben_1 = gruben_1
+        self.gruben_2 = gruben_2
+
         self.vertical_matrix_1 = vertical_matrix_1
         self.horizontal_matrix_1 = horizontal_matrix_1
+
         self.vertical_matrix_2 = vertical_matrix_2
         self.horizontal_matrix_2 = horizontal_matrix_2
+
+        self.cost_matrix_1 = cost_matrix_1
+        self.cost_matrix_2 = cost_matrix_2
+
         self.visited = {}
-        self.visited_lock = threading.Lock()
         # Funktionen und Bewegungsdeltas nur einmal definieren
         self.move_funcs = [test_right, test_left, test_up, test_down]
         self.move_deltas = [(1, 0), (-1, 0), (0, -1), (0, 1)]
 
-    def calculate_position(self, movements, vertical_matrix, horizontal_matrix):
+    def calculate_position(self, movements, vertical_matrix, horizontal_matrix, gruben):
         pos = (0, 0)
         mf = self.move_funcs
         md = self.move_deltas
@@ -31,6 +37,8 @@ class solving:
             matrix = vertical_matrix if move < 2 else horizontal_matrix
             if mf[move](pos[0], pos[1], matrix):
                 pos = (pos[0] + md[move][0], pos[1] + md[move][1])
+                if pos in gruben:
+                    pos = (0, 0)
         return pos
 
     def next_postion(self, at_the_moment, next_move):
@@ -68,16 +76,15 @@ class solving:
         # Erstelle einen Schlüssel als Tupel, das beide Positionen enthält
         key = (next_position[0][0], next_position[0][1],
                next_position[1][0], next_position[1][1])
-        with self.visited_lock:
-            if key in self.visited:
-                return None
+        if key in self.visited:
+            return None
         self.visited[key] = length
         return move
 
     def neighbours_cost(self, moves):
         # Berechne beide Positionen anhand der Bewegungsfolge
-        pos1 = self.calculate_position(moves, self.vertical_matrix_1, self.horizontal_matrix_1)
-        pos2 = self.calculate_position(moves, self.vertical_matrix_2, self.horizontal_matrix_2)
+        pos1 = self.calculate_position(moves, self.vertical_matrix_1, self.horizontal_matrix_1, self.gruben_1)
+        pos2 = self.calculate_position(moves, self.vertical_matrix_2, self.horizontal_matrix_2, self.gruben_2)
         current_position = (pos1, pos2)
 
         # Ermittle den nächsten Zug für beide Positionen

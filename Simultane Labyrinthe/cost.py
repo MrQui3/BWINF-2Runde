@@ -71,7 +71,12 @@ class cost:
                 if self.cost_matrix[ny][nx] == 0:  # Nur unbesuchte Nachbarn hinzufügen
                     stack.append((nx, ny, cost + 1, ndirection))
 
+    def add_gruben(self):
+        for x, y in self.gruben:
+            self.cost_matrix[y][x] = self.cost_matrix[0][0]
+
     def create_cost_matrix(self):
         self.cost_matrix = [[0 for _ in range(self.width)] for _ in range(self.height)]
         self.write_cost(self.width - 1, self.height - 1, 0, None)
+        self.add_gruben()
         return self.cost_matrix
