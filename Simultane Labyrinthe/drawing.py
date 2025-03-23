@@ -1,16 +1,18 @@
+import time
+
 import pygame
 from main import create_matrix, read_data_from_file
 
-width, height, data = read_data_from_file('labyrinthe8.txt')
+width, height, data = read_data_from_file('labyrinthe2.txt')
 
 matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
 matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
 
-block_size = 6
+block_size = 5
 
 
 pygame.init()
-screen = pygame.display.set_mode([width*block_size*2+100, height*block_size*2+100], pygame.RESIZABLE)
+screen = pygame.display.set_mode((1000, 1000), pygame.RESIZABLE)
 pygame.event.set_allowed([pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP])
 
 
