@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
 \usepackage[a4paper,margin=2.5cm,footskip=0.5cm]{geometry}
-
+\usepackage{graphicx}
 \newcommand{\Aufgabe}{Aufgabe 1: Schmucknachrichten}
 \newcommand{\TeilnahmeId}{76626}                 
 \newcommand{\Name}{Quirin Klemm}            
@@ -72,10 +72,54 @@
 
 \vspace{0.5cm}
 
+\clearpage
 \section{Lösungsidee}
-Die grundsätzliche Idee
+Eine Nachricht besteht aus mehreren unterschiedlichen Buchstaben. 
+Für jeden Buchstaben ist ein Codewort zu finden, wobei insgesamt ein präfixfreier Code entstehen muss.
+Dabei soll die Gesamtlänge der codierten Nachricht möglichst gering sein.
+Daher wird ein präfixfreier Code gesucht, bei dem häufig vorkommende Buchstaben kurze Codewörter erhalten, während seltenere Buchstaben längere Codewörter zugewiesen bekommen. 
+Im Allgemeinen gilt, solange alle Perlen im Durchmesser gleich sind:
+
+\[
+l = \sum_{i} p_i \cdot n_i
+\]
+
+wobei:\\
+- \( l \) die Länge der codierten Nachricht ist, \\ 
+- \( p_i \) die Häufigkeit des Buchstabens \( i \) in der Nachricht darstellt,  \\
+- \( n_i \) die Länge des Codewortes für den Buchstaben \( i \) ist.  \\
+Wenn sich die Durchmesser der Perlen unterscheiden, stimmt diese Rechnung nicht mehr und muss anders berechnet werden.\\
+\\
+Um präfixfreien Code zu erzeugen, wird am besten ein Baum benutzt. Da man durch diesen sicher gehen kann, das keine Codewort der Präfix eines anderen Codewort ist. 
+Dabei ist jedes Blatt des Baumsein Codewort und jede Kante zu dem Blatt eine Code vom Codewort. Der Baum hat mindestens so viele Blätter wie es verschiedene Buchstaben gibt.
+Jeder interne Knoten hat dabei maximal so viele Kinder, wie es verschiedene Perlen gibt. Die Ebene des Blattes entspricht die Länge des Codewortes.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/simple_tree.pdf}
+  \caption{simple tree}
+  \label{fig:simple tree}
+\end{figure}
+
+\subsection{Perlen besitzen gleichen Durchmesser}
+Um möglichst kleinen präfixfreien Code zu erstellen, muss der Buchstaben der am öftesten vorkommt ganz oben eingeordnet werden und die nächsten Buchstaben dann in absteigender Reihenfolge. 
+In Abbildung \ref{fig:simple tree} hätte c die höchste Häufigkeit und dannach kommt a und b. Was von a und b die höhere Häufigkeit hat ist egal, da sie bei auf der untersten Ebene sind.\\
+Daher ergibt sich $p_1 \geq p_2 \geq p_3 ... \geq p_i$ und $n_1 \leq n_2 \leq n_3 ... \leq n_i$\\
+Zu finden ist also ein Baum, der basierden auf den Häufigkeiten der Buchstaben, seine Blätter so auf seine Ebene so verteilt, dass die Rechnung (1) möglichst gering ist. 
+Jeder interne Knoten muss dabei mindestens zwei Kinder haben, da ein interner Knoten mit nur einem Kind die Äste des Baums verlängern ohne irgendwelche anderen Vorteile dem Baum zu bringen.\\
+
+Zu Beginn des Algorithmus wird ein perfekt ausbalancierter Baum erstellt, der so viele Blätter wie Buchstaben enthält. 
+Jedes Blatt wird von links nach rechts in aufsteigender Reihenfolge mit einem Buchstaben belegt, und die Gesamtkosten des Baumes werden gemäÿ der Formel (1) berechnet. 
+Dabei ergeben sich deutlich höhere Kosten für die rechten Blätter des Baumes im Vergleich zu den linken, da alle Blätterauf derselben Ebene sind, jedoch die Häufigkeit der Buchstaben auf der rechten Seite gröÿer ist.
+Um das auszugleichen, wird das Blatt mit den höchsten Kosten eine Ebene nach oben verschoben. 
+Dies geschieht indem der Elternknoten des Blattes selber zum Blatt wird und alle Kinder verliert.
+Dadurch hat der Baum insgesammt zu wenig Blätter, weshalb er erweitert werden muss. 
+Dies geschieht, indem ab der Ebene des entfernten Blattes die Knoten von links nach rechts aufgefüllt werden, bis wieder genügend Blätter vorhanden sind.
 
 
+
+
+\clearpage
 \section{Umsetzung}
 Hier wird kurz erläutert, wie die Lösungsidee im Programm tatsächlich umgesetzt wurde. Hier können auch Implementierungsdetails erwähnt werden.
 

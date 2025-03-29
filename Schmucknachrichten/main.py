@@ -66,7 +66,7 @@ def dict_to_list(dictionary):
 def main():
     start_time = time.time()
 
-    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck1.txt')
+    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck00.txt')
     distribution = create_distribution(message)
     print(dict_to_list(distribution))
     print(len(distribution))
@@ -74,9 +74,6 @@ def main():
     solution = find_smallest(distribution, perl_number, perl_size)
     a = 0
     for node in solution:
-        print(solution[node])
-        print(distribution[node])
-        print()
         for i in solution[node]:
             a += perl_size[i]*distribution[node]
     print(a)
