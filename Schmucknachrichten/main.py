@@ -66,8 +66,12 @@ def dict_to_list(dictionary):
 def main():
     start_time = time.time()
 
-    perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck00.txt')
-    distribution = create_distribution(message)
+    #perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck00.txt')
+    #distribution = create_distribution(message)
+    #print(distribution)
+    distribution = {'a':12, 'b':7, 'c':5, 'd':5, 'e':3, 'f':2, 'g':1, 'h':1, 'i':1}
+    perl_size = [1, 1]
+    perl_number = 2
     print(dict_to_list(distribution))
     print(len(distribution))
     print(perl_size)

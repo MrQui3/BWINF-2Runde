@@ -108,16 +108,40 @@ Daher ergibt sich $p_1 \geq p_2 \geq p_3 ... \geq p_i$ und $n_1 \leq n_2 \leq n_
 Zu finden ist also ein Baum, der basierden auf den Häufigkeiten der Buchstaben, seine Blätter so auf seine Ebene so verteilt, dass die Rechnung (1) möglichst gering ist. 
 Jeder interne Knoten muss dabei mindestens zwei Kinder haben, da ein interner Knoten mit nur einem Kind die Äste des Baums verlängern ohne irgendwelche anderen Vorteile dem Baum zu bringen.\\
 
-Zu Beginn des Algorithmus wird ein perfekt ausbalancierter Baum erstellt, der so viele Blätter wie Buchstaben enthält. 
-Jedes Blatt wird von links nach rechts in aufsteigender Reihenfolge mit einem Buchstaben belegt, und die Gesamtkosten des Baumes werden gemäÿ der Formel (1) berechnet. 
-Dabei ergeben sich deutlich höhere Kosten für die rechten Blätter des Baumes im Vergleich zu den linken, da alle Blätterauf derselben Ebene sind, jedoch die Häufigkeit der Buchstaben auf der rechten Seite gröÿer ist.
+Zu Beginn des Algorithmus wird ein perfekt ausbalancierter Baum erstellt, der so viele Blätter wie Buchstaben enthält (Abbildung \ref{fig:balancierter_Baum}). 
+Jedes Blatt wird von links nach rechts in aufsteigender Reihenfolge mit einem Buchstaben belegt, und die Gesamtkosten des Baumes werden gemäß der Formel (1) berechnet. 
+Dabei ergeben sich deutlich höhere Kosten für die rechten Blätter des Baumes im Vergleich zu den linken, da alle Blätter auf derselben Ebene sind, jedoch die Häufigkeit der Buchstaben auf der rechten Seite größer ist.
 Um das auszugleichen, wird das Blatt mit den höchsten Kosten eine Ebene nach oben verschoben. 
 Dies geschieht indem der Elternknoten des Blattes selber zum Blatt wird und alle Kinder verliert.
 Dadurch hat der Baum insgesammt zu wenig Blätter, weshalb er erweitert werden muss. 
-Dies geschieht, indem ab der Ebene des entfernten Blattes die Knoten von links nach rechts aufgefüllt werden, bis wieder genügend Blätter vorhanden sind.
+Dies geschieht, indem ab der Ebene des entfernten Blattes die Knoten von links nach rechts aufgefüllt werden, bis wieder genügend Blätter vorhanden sind.\\
+Das nach oben Verschieben und unten Neueinfügen der Blätter wird solange gemacht bis die Kosten den Baumes nicht geringer werden.
 
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Schmucknachrichten/pdf_src/trans_1.pdf}
+    \caption{Balancierter Baum}
+    \label{fig:balancierter_Baum}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Schmucknachrichten/pdf_src/trans_2.pdf}
+    \caption{Transformation 1}
+    \label{fig:trans_1}
+  \end{minipage}
+\end{figure}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/trans_3.pdf}
+  \caption{Transformation 2}
+  \label{fig:trans_2}
+\end{figure}
 
+\subsection{Perlen mit unterschiedlichen Durchmesser}
 
 \clearpage
 \section{Umsetzung}

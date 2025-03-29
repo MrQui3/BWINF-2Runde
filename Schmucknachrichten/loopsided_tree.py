@@ -90,8 +90,8 @@ def improve_tree(root):
     return create_tree(root)
 
 
-distribution = [24, 18, 16, 10, 9, 8, 8, 7, 6, 4, 4, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-perl_costs = [1, 1, 1]
+distribution = [12, 10, 8, 6, 3, 3, 2, 1]
+perl_costs = [1, 1]
 
 root = TreeNode(0, None)
 root = create_tree(root)
