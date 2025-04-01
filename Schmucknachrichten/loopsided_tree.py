@@ -7,14 +7,8 @@ class TreeNode:
         self.children = []
         self.parent = parent
         self.is_leaf = True
-        self.possible_children_cost = self.get_possible_children()
         self.is_protected = False  # Wenn True, dann kann er keine kinder mehr bekommen, weil ihm bei einer imporving genommen wurde
 
-    def get_possible_children(self):
-        children = []
-        for i in range(len(perl_costs)):
-            children.append(self.cost + perl_costs[i])
-        return children
 
     def insert_new_node(self, obj):
         if obj is self:
@@ -65,7 +59,7 @@ def read_data_from_file(file_name):
     return perl_number, perl_sizes, message[:-1]
 
 
-def create_distribution(message):
+def create_distribution(message: str):
     characters = {}
     for char in message:
         if char in characters.keys():
@@ -132,5 +126,4 @@ def main():
 if __name__ == "__main__":
     perl_number, perl_costs, message = read_data_from_file(f'schmucknachrichten/schmuck1.txt')
     characters, distribution = create_distribution(message)
-    print(distribution)
     main()
