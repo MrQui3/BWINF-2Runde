@@ -66,21 +66,17 @@ def dict_to_list(dictionary):
 def main():
     start_time = time.time()
 
-    #perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck00.txt')
-    #distribution = create_distribution(message)
-    #print(distribution)
-    distribution = {'a':12, 'b':7, 'c':5, 'd':5, 'e':3, 'f':2, 'g':1, 'h':1, 'i':1}
-    perl_size = [1, 1]
-    perl_number = 2
-    print(dict_to_list(distribution))
-    print(len(distribution))
-    print(perl_size)
-    solution = find_smallest(distribution, perl_number, perl_size)
-    a = 0
-    for node in solution:
-        for i in solution[node]:
-            a += perl_size[i]*distribution[node]
-    print(a)
+    for i in range(10):
+        perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck{i}.txt')
+        distribution = create_distribution(message)
+        perl_number = 2
+        solution = find_smallest(distribution, perl_number, perl_size)
+        a = 0
+        for node in solution:
+            for i in solution[node]:
+                a += perl_size[i]*distribution[node]
+        print(a)
+
 
     end_time = time.time()
     print(f"Laufzeit: {end_time - start_time} Sekunden")
