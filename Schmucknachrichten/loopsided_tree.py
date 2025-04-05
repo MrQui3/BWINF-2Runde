@@ -70,7 +70,7 @@ def create_distribution(message: str):
     return [key for key in characters.keys()], list(characters.values())
 
 
-def create_tree(root):
+def create_tree(root: TreeNode) -> TreeNode:
     while root.get_size() < len(distribution):
         possible_children = root.get_all_possible_costs()
         smallest_value = min(possible_children.items(), key=lambda item: item[1])
