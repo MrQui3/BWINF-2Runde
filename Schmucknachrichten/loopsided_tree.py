@@ -1,4 +1,5 @@
 import copy
+from typing import Tuple
 
 class TreeNode:
 
@@ -88,7 +89,7 @@ def calculate_tree(root):
     return total_count
 
 
-def improve_tree(root):
+def improve_tree(root:TreeNode) -> TreeNode:
     all_leaves = root.get_leaves()
     all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
     a = 0
@@ -106,12 +107,12 @@ def improve_tree(root):
     return create_tree(root)
 
 
-def find_best_tree(root, last_calc):
+def find_best_tree(root: TreeNode, last_cost: int) -> Tuple[TreeNode, int]:
     new_root = copy.deepcopy(root)
     new_root = improve_tree(new_root)
     new_calc = calculate_tree(new_root)
-    if  new_calc > last_calc:
-        return root, last_calc
+    if  new_calc > last_cost:
+        return root, last_cost
     return find_best_tree(new_root, new_calc)
 
 

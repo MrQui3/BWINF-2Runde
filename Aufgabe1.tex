@@ -220,7 +220,7 @@ Die möglichen neuen Blätter erhält man über den Aufruf
 \begin{lstlisting}[caption={Methode \texttt{get\_all\_possible\_costs}}, label={lst:get_all_pssible_costs}]
   def get_all_possible_costs(self) -> dict:
 \end{lstlisting}
-Die Methode prüft, ob das TreeNode-Objekt noch weitere Kinder aufnehmen kann. Falls ja, fügt es sich selbst sowie die Kosten des potenziellen neuen Kindes einem Dictionary hinzu.
+Die Methode prüft, ob das TreeNode-Objekt noch weitere Kinder aufnehmen kann und nicht protected ist. Falls ja, fügt es sich selbst sowie die Kosten des potenziellen neuen Kindes einem Dictionary hinzu.
 Anschließend wird die Methode rekursiv für alle bestehenden Kinder aufgerufen, sodass auch deren mögliche Erweiterungen im Dictionary erfasst werden.\\
 \\
 Neu Blätter werden über den Aufruf  
@@ -245,7 +245,54 @@ wird die Anzahl der Blätter ermittelt
 \end{lstlisting}
 Die Methode gibt 1 zurück falls das Objekt ein Blatt ist. Ansonsten wird die Methode rekursiv bei den Kinder aufgerufen und die Summe zurückgegeben
 
-\subsection{Verbessern des Baumes}
+\subsection{Verbesserung des Baums}
+Sobald ein balancierter Baum erstellt wurde, muss dieser noch optimiert werden. Dies geschieht über die Methode
+\begin{lstlisting}[caption={Methode \texttt{find\_best\_tree}}, label={lst:find_best_tree}]
+  def find_best_tree(root: TreeNode, last_cost: int) -> Tuple[TreeNode, int]:
+\end{lstlisting}
+
+Die Methode ist rekursiv aufgebaut und erhält bei jedem Aufruf ein root-Objekt und die gesamt Kosten aus der vorherigen Interation. 
+Zuerst versucht sie den Baum zu optimieren, indem sie das Blatt mit dem höchsten Kosten eine Ebene nachoben verschiebt und dafür Blätter mit geringen Kosten nach unten verschiebt.
+Dann berechnet sie die neuen gesamt Kosten des Baums. Sind dieses höher als zuvor, übergibt sie ihre Ursprungs-werte. 
+Ansonsten ruft sie sich selbst mit den aktualisierten Werten erneut auf.\\
+\\
+Das Verbessern des Baums geschieht über die Methode
+\begin{lstlisting}[caption={Methode \texttt{imporve\_tree}}, label={lst:imporve_tree}]
+  def improve_tree(root: TreeNode) -> TreeNode:
+\end{lstlisting}
+Die Methode holt sich erstmal alle Blätter im Baum über den Aufruf
+\begin{lstlisting}
+  root.get_leaves()
+\end{lstlisting}
+Diese Liste wird dann aufsteigend sortiert und dann durch
+\begin{equation}
+  \label{umsetzung_kostenberechnung}
+  c_i \cdot p_i
+\end{equation} 
+wobei:\\
+ - $c$ die Kosten\\
+ - $p$ die Häufigkeit \\
+ - $i$ der Index des Elements\\
+die Kosten jedes Element berechnet wird.
+Der Elternknoten des Blatts mit den höchsten Kosten wird daraufhin selbst zu einem Blatt. Dafür werden die Attribute vom Elternknoten
+\begin{lstlisting}
+  is_leaf = True
+  is_protected = True
+  children = []
+\end{lstlisting}
+gesetzt. Um die fehlenden Blätter wieder hinzuzufügen wird noch die Listing \ref{lst:create_tree} aufgerufen.\\
+\\
+Die gesamt Kosten des Baums wird durch die Methode 
+\begin{lstlisting}[caption={Methode \texttt{calculate\_tree}}, label={lst:calculate_tree}]
+  def calculate_tree(root: TreeNode) -> TreeNode:
+\end{lstlisting}
+berechnet. Die Methode holt sich erstmal alle Blätter im Baum über den Aufruf
+\begin{lstlisting}
+  root.get_leaves()
+\end{lstlisting}
+Die Liste wird dann aufsteigend sortiert und jedes Element wie in der Gleichung \ref{umsetzung_kostenberechnung} berechnet und zusammenaddiert.
+
+
 
 
 
