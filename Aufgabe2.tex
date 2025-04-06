@@ -72,8 +72,34 @@
 
 \vspace{0.5cm}
 
+\clearpage
 \section{Lösungsidee}
-Die grundsätzliche Idee
+Gesucht ist mäglichst kurze Abfolge von Schritten, die beide Labyrinthe löst. Dafür wird zunächst für jedes Labyrinth eine Matrix erstellt,
+in der für jeden Punkt eine Richtung und ein Kostenwort gespeichert wird. Die Richtung zeigt den nächsten Schritt in Richtung Ziel an und ist dargestellt als:
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|l|}
+      \hline
+      \textbf{Code} & \textbf{Richtung} \\
+      \hline
+      0 & Rechts \\
+      1 & Links \\
+      2 & Oben \\
+      3 & Unten \\
+      \hline
+  \end{tabular}
+  \caption{Codierung der Richtungen im Labyrinth}
+  \label{tab:richtungscodierung}
+\end{table}
+Der Kostenwert gibt an, wie viele Schritte bis zum Ziel benötigt werden.\\
+\\
+Um einen möglichst kurzen Weg zu finden wird nun beginnend am Startpunkt in beiden Matrixen nachgeschaut, welchen Schritt beide ausführen wollen. 
+Diese beiden Abfolgen werden in einer Liste gespeichert. Dannach wird die Liste sortiert nach 
+\begin{equation}
+  \label{Sortierung_liste}
+  (c_begin -c_aktuell)/n
+\end{equation} 
+
 
 
 \section{Umsetzung}
