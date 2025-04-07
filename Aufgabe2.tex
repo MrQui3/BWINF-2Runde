@@ -75,7 +75,7 @@
 \clearpage
 \section{Lösungsidee}
 Gesucht ist mäglichst kurze Abfolge von Schritten, die beide Labyrinthe löst. Dafür wird zunächst für jedes Labyrinth eine Matrix erstellt,
-in der für jeden Punkt eine Richtung und ein Kostenwort gespeichert wird. Die Richtung zeigt den nächsten Schritt in Richtung Ziel an und ist dargestellt als:
+in der für jede Position ein Kostenwert und eine Richtung gespeichert wird. Die Richtung zeigt den nächsten Schritt in Richtung Ziel an und ist dargestellt als:
 \begin{table}[h]
   \centering
   \begin{tabular}{|c|l|}
@@ -91,17 +91,41 @@ in der für jeden Punkt eine Richtung und ein Kostenwort gespeichert wird. Die R
   \caption{Codierung der Richtungen im Labyrinth}
   \label{tab:richtungscodierung}
 \end{table}
-Der Kostenwert gibt an, wie viele Schritte bis zum Ziel benötigt werden.\\
 \\
-Um einen möglichst kurzen Weg zu finden wird nun beginnend am Startpunkt in beiden Matrixen nachgeschaut, welchen Schritt beide ausführen wollen. 
-Diese beiden Abfolgen werden in einer Liste gespeichert. Dannach wird die Liste sortiert nach 
-\begin{equation}
-  \label{Sortierung_liste}
-  (c_begin -c_aktuell)/n
-\end{equation} 
+Der Kostenwert gibt an, wie viele Schritte bis zum Ziel benötigt werden.\\
+Ein Labyrinth mit dazugehöriger Matrix könnte so aussehen:
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.4\textwidth]{Simultane Labyrinthe/pdf_src/cost_matrix.pdf}
+  \caption{Labyrinth und Matrix}
+  \label{fig:lybnmatrix}
+\end{figure}
+\\
+Um einen möglichst kurzen Weg zu finden, wird vom Startpunkt aus in beiden Matrizen geprüft, welchen Schritt jeweils beide ausführen möchten.
+Diese beiden Schrittfolgen werden in einer Liste gespeichert. Dannach wird die Liste sortiert nach dem Kriterium
+\[
+\frac{c_b -c_a}{n}
+\]
+wobei gilt:\\
+-$c_b$ sind die summierten Kosten von beiden Startpositionen\\
+-$c_a$ sind die summierten Kosten von beider aktuellen Positionen\\
+-$n$ ist die Anzahl der benötigten Schritte\\
+Der Bruch beschreibt also die durchschnittliche Einsparung pro Schritt – dabei ist 2 der maximal erreichbare Wert.
+\\
+Aus der Schrittfolge mit der höchsten Einsparung wird erneut geprüft, welchen Schritt beide Matrizen jeweils als Nächstes ausführen möchten.
+Die daraus entstehenden zwei neuen Schrittfolgen werden der Liste hinzugefügt, während die ursprüngliche Schrittfolge aus der Liste entfernt wird.
+Das wiederholt sich dann so oft bis beide im Ziel angekommen sind.
+Dabei beschreibt $l$, die maximale Anzahl an Schrittfolgen in der Liste, was maßgebilch die Genauigkeit und Laufzeit des Algorithmus bestimmt.
+Nach jeder Interation werden die beiden aktuellen Positionen zusammen in der Form $((x_1; y_1),(x_2; y_2))$ in einem Dictionary gespeichert, 
+damit er nicht Positionen testet auf denen er schon einmal war.
 
 
 
+
+
+
+
+\clearpage
 \section{Umsetzung}
 Hier wird kurz erläutert, wie die Lösungsidee im Programm tatsächlich umgesetzt wurde. Hier können auch Implementierungsdetails erwähnt werden.
 
