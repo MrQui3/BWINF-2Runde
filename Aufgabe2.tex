@@ -101,23 +101,26 @@ Ein Labyrinth mit dazugehöriger Matrix könnte so aussehen:
   \label{fig:lybnmatrix}
 \end{figure}
 \\
-Um einen möglichst kurzen Weg zu finden, wird vom Startpunkt aus in beiden Matrizen geprüft, welchen Schritt jeweils beide ausführen möchten.
-Diese beiden Schrittfolgen werden in einer Liste gespeichert. Dannach wird die Liste sortiert nach dem Kriterium
+Der Algorithmus funktioniert so, dass er jeweils den aktuell besten bekannten Weg auswählt diesen um einen weiteren Schritt erweitert.
+Den nächsten Schritt ermittelt er, indem er in der Matrix prüft, welchen Schritt die beiden Labyrinthe für ihre jeweilige Position vorschlagen.
+Dieser Schritt wird am Ende der bisherigen Schrittfolge angehängt.
+Dabei entstehen in der Regel zwei unterschiedliche Wege. Beide werden zur Liste der bisherigen Wege hinzugefügt.
+Um den besten Weg zu auszuählen, wird diese Rechung angewandt:
 \[
 \frac{c_b -c_a}{n}
 \]
 wobei gilt:\\
 -$c_b$ sind die summierten Kosten von beiden Startpositionen\\
--$c_a$ sind die summierten Kosten von beider aktuellen Positionen\\
+-$c_a$ sind die summierten Kosten von beiden aktuellen Positionen\\
 -$n$ ist die Anzahl der benötigten Schritte\\
 Der Bruch beschreibt also die durchschnittliche Einsparung pro Schritt – dabei ist 2 der maximal erreichbare Wert.
 \\
-Aus der Schrittfolge mit der höchsten Einsparung wird erneut geprüft, welchen Schritt beide Matrizen jeweils als Nächstes ausführen möchten.
-Die daraus entstehenden zwei neuen Schrittfolgen werden der Liste hinzugefügt, während die ursprüngliche Schrittfolge aus der Liste entfernt wird.
-Das wiederholt sich dann so oft bis beide im Ziel angekommen sind.
-Dabei beschreibt $l$, die maximale Anzahl an Schrittfolgen in der Liste, was maßgebilch die Genauigkeit und Laufzeit des Algorithmus bestimmt.
-Nach jeder Interation werden die beiden aktuellen Positionen zusammen in der Form $((x_1; y_1),(x_2; y_2))$ in einem Dictionary gespeichert, 
-damit er nicht Positionen testet auf denen er schon einmal war.
+Der Weg mit der höchsten Einsparung gilt dabei als momentan bester Weg.
+Nach jeder Interation wird das aktuelle Positionspaar $((x_1, y_1),(x_2, y_2))$ in einem Dictionary gespeichert,
+um zu verhinder, dass der Algorithmus die exakt selben Positionen besucht.
+Zusätzlich gibt es auch die Begrenzung $l$ ,die festlegt, wie viele unterschiedliche Weg in der Liste gespeichert werden dürfen.
+Diese Begrenung beeinflusst maßgeblich  die Laufzeit und Genauigkeit des Algorithmus.
+Der gesamte Ablauf wiederholt sich solange, bis beide im Ziel sind.
 
 
 
@@ -128,6 +131,11 @@ damit er nicht Positionen testet auf denen er schon einmal war.
 \clearpage
 \section{Umsetzung}
 Hier wird kurz erläutert, wie die Lösungsidee im Programm tatsächlich umgesetzt wurde. Hier können auch Implementierungsdetails erwähnt werden.
+
+
+
+\section{Laufzeit und Diskussion}
+Genügend Beispiele einbinden! Die Beispiele von der BwInf-Webseite sollten hier diskutiert werden, aber auch eigene Beispiele sind sehr gut – besonders wenn sie Spezialfälle abdecken. Aber bitte nicht 30 Seiten Programmausgabe hier einfügen!
 
 \section{Beispiele}
 Genügend Beispiele einbinden! Die Beispiele von der BwInf-Webseite sollten hier diskutiert werden, aber auch eigene Beispiele sind sehr gut – besonders wenn sie Spezialfälle abdecken. Aber bitte nicht 30 Seiten Programmausgabe hier einfügen!
