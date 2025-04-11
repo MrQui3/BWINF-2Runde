@@ -47,15 +47,14 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, mat
 def main():
     start_time = time.time()
 
-    width, height, data = read_data_from_file('labyrinthe10.txt')
+    width, height, data = read_data_from_file('Simultane Labyrinthe/labyrinthe6.txt')
 
     matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
     matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
 
     cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
     cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
-    print(cost_matrix_1)
-
+    print("finsid costmatrix")
 
     anzahl = 1000
     move, n = moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1,
