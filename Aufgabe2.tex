@@ -177,7 +177,37 @@ Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbors$ ermit
 Dabei werden die Kosten um eins erhöht und die jeweilige Richtung gespeichert.
 Das wiederholt sich solange bis der Stack leer ist.
 
+\clearpage
 \subsection{Lösen der Labyrinthe}
+
+Zum lösen der Labyrinthe wird die Klasse $Solving$ benutzt.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/solving_diagramm.pdf}
+  \caption{Solving Klasse}
+  \label{fig:solving_diagramm}
+\end{figure}
+
+Die Wege werden mit der Klasse $Move$ dargestellt.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/moving_diagramm.pdf}
+  \caption{Moving Klasse}
+  \label{fig:moving_diagramm}
+\end{figure}
+\\
+Das Attribut $cost$ beschreibt die aufsummierten Kosten der beiden aktuellen Positionen basierend auf den Werten aus den Kostmatrizen.
+das Attribut $weight$ wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
+Zu Beginn wird ein $Solving$-Objekt initalisiert und eine leere Liste $moves$ angelegt, in der alle aktuelle Wege gespeichert werden.
+Anschließend wird ein erstes $Move$-Objekt erzeugt, dessen Startposition ((0, 0), (0, 0)) ist und seine moves leer sind.
+In jedem Schritt wird das erste Element aus der $moves$ Liste entnommen.
+Dann wird mit folgegen Aufruf
+\begin{lstlisting}
+  new_moves = solving_obj.neighbors_cost(move)
+\end{lstlisting}
+eine Liste von möglichen Folgewege erzeugt
+Diese neuen Wege werden der Liste hinzugefügt, sortiert und auf die $l$ besten Wege beschränkt.
+
 
 
 
