@@ -107,7 +107,7 @@ Ausgehend vom Zielpunkt durchläuft der Algorithmus rekursiv alle erreichbaren N
 Für jeden Nachbarn wird in der Matrix ein Kostenwert eingetragen, der um eins höher ist als der des aktuellen Punktes, sowie die Richtung, aus der der Nachbar erreicht wurde.
 
 
-\subsection{Lösen des Labyrinths}
+\subsection{Lösen der Labyrinthe}
 Der Algorithmus funktioniert so, dass er jeweils den aktuell besten bekannten Weg auswählt diesen um einen weiteren Schritt erweitert.
 Den nächsten Schritt ermittelt er, indem er in der Matrix prüft, welchen Schritt die beiden Labyrinthe für ihre jeweilige Position vorschlagen.
 Dieser Schritt wird am Ende der bisherigen Schrittfolge angehängt.
@@ -145,10 +145,43 @@ Dadurch steigen die Kosten des Wegs so weit an, dass dieser in der Regel aus der
 
 \clearpage
 \section{Umsetzung}
-Hier wird kurz erläutert, wie die Lösungsidee im Programm tatsächlich umgesetzt wurde. Hier können auch Implementierungsdetails erwähnt werden.
+Die Lösung wurde in Python3 geschrieben. Die Eingabetexte werden eingelesen. 
+Für beide Labyrinthe werden die horizontalen und vertikalen Wände jeweils in separenten Liste gespeichert.
+Auch die Positionen der Gruben werden für jedes Labyrinth in einer eigenen Liste erfasst.
+
+\subsection{Erstellung der Matrix}
+Zur Erstellung der Matrix wird die Klasse $cost$ benutzt.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/cost_diagramm.pdf}
+  \caption{Cost Klasse}
+  \label{fig:cost_diagramm}
+\end{figure}
+\\
+Für jedes Labyrinth wird ein Cost-Objekt erstellt und dei Methode
+\begin{lstlisting}
+  cost_obj.create_cost_matrix()
+\end{lstlisting}
+aufgerufen. Das Cost Objekt bekommt als Übergabewerte die horizontalen und vertikalten Wände, die  Gruben sowie die Größe des Labyrinths.
+Die $create\_cost\_matrix$ Methode erstellt zunächst eine leere Liste mit der Dimension [height][width], die als Kostenmatrix dient.
+Dann ruft sie die Methode $write\_cost$ auf um die Kostenmatrix zufüllen.
+\\
+\begin{lstlisting}[caption={Methode \texttt{write\_cost}}, label={lst:write_cost}]
+  def write_cost(self, start_x: int, start_y: int):
+\end{lstlisting}
+Zu Beginn wird die Liste $stack$ initalisiert. Sie speichert alle Felder, die noch besucht werden müssen. Die Startposition wird als erstes Element hinzugefügt.
+Jeder Eintrag in der Liste besitzt vier Werte: der x-Position, der y-Position, den aktuell Kosten sowie der entgegengesetzen Richtung, aus der das Feld betreten wurde. 
+Anschließend wird das erste Element der Liste entnommen und in die Kostenmatrix übertragen.
+Falls es schon in der Kostenmatrix ist, wird es übersprungen.
+Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbors$ ermittelt und dem Stack hinzugefügt.
+Dabei werden die Kosten um eins erhöht und die jeweilige Richtung gespeichert.
+Das wiederholt sich solange bis der Stack leer ist.
+
+\subsection{Lösen der Labyrinthe}
 
 
 
+\clearpage
 \section{Laufzeit und Diskussion}
 Genügend Beispiele einbinden! Die Beispiele von der BwInf-Webseite sollten hier diskutiert werden, aber auch eigene Beispiele sind sehr gut – besonders wenn sie Spezialfälle abdecken. Aber bitte nicht 30 Seiten Programmausgabe hier einfügen!
 

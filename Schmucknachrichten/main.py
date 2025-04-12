@@ -69,13 +69,13 @@ def main():
     for i in range(10):
         perl_number, perl_size, message = read_data_from_file(f'schmucknachrichten/schmuck{i}.txt')
         distribution = create_distribution(message)
+        print(len(distribution))
         perl_number = 2
         solution = find_smallest(distribution, perl_number, perl_size)
         a = 0
         for node in solution:
             for i in solution[node]:
                 a += perl_size[i]*distribution[node]
-        print(a)
 
 
     end_time = time.time()

@@ -1,5 +1,5 @@
 from logic import solving, Move
-from cost import cost
+from cost import Cost
 import time
 
 
@@ -18,9 +18,9 @@ def create_matrix(data, height):
     return matrix_horizontal, matrix_vertical, gruben
 
 
-def creating_cost_matrix(matrix_horizontal, matrix_vertical, gruben, width, height):
-    solving_obj = cost(matrix_horizontal, matrix_vertical, gruben, width, height)
-    return solving_obj.create_cost_matrix()
+def create_matrix_for_laby(matrix_horizontal, matrix_vertical, gruben, width, height):
+    cost_obj = Cost(matrix_horizontal, matrix_vertical, gruben, width, height)
+    return cost_obj.create_cost_matrix()
 
 
 def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1, matrix_horizontal_2,
@@ -47,18 +47,21 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, mat
 def main():
     start_time = time.time()
 
-    width, height, data = read_data_from_file('Simultane Labyrinthe/labyrinthe6.txt')
+    width, height, data = read_data_from_file('Simultane Labyrinthe/labyrinthe2.txt')
 
     matrix_horizontal_1, matrix_vertical_1, gruben_1 = create_matrix(data, height)
     matrix_horizontal_2, matrix_vertical_2, gruben_2 = create_matrix(data, height)
 
-    cost_matrix_1 = creating_cost_matrix(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
-    cost_matrix_2 = creating_cost_matrix(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
-    print("finsid costmatrix")
+    cost_matrix_1 = create_matrix_for_laby(matrix_horizontal_1, matrix_vertical_1, gruben_1, width, height)
+    cost_matrix_2 = create_matrix_for_laby(matrix_horizontal_2, matrix_vertical_2, gruben_2, width, height)
 
-    anzahl = 1000
-    move, n = moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1,
-                          matrix_horizontal_2, matrix_vertical_2, gruben_1, gruben_2, anzahl)
+    anzahl = 100
+    try:
+        move, n = moving(cost_matrix_1, cost_matrix_2, width, height, matrix_horizontal_1, matrix_vertical_1,
+                            matrix_horizontal_2, matrix_vertical_2, gruben_1, gruben_2, anzahl)
+    except:
+        print("No solution found")
+        exit()
 
     print(move.moves)
     print(n)
