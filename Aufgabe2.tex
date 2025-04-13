@@ -211,25 +211,26 @@ Die Liste wird mit den neun Wege erweitert, sortiert und auf die $l$ besten Wege
 \begin{lstlisting}[caption={Methode \texttt{neighbours\_cost}}, label={lst:neighbours_cout}]
   def neighbours_cost(self, move: Move) -> list:
 \end{lstlisting}
-Zu Beginn werden aus den $positions$ Attribut vom $move$-Objekt die beiden Positionen entnommen
-und mit dem Aufrufen
+Zu Beginn werden die beiden Positionen  aus dem Attribut $positions$ der übergebenen $move$-Objekt genommen.
+Anschließend werden mit den folgenden Aufrufen:
 \begin{lstlisting}
   move_1 = self.next_move(pos1, self.cost_matrix_1)
   move_2 = self.next_move(pos2, self.cost_matrix_2)
 \end{lstlisting}
-die beiden nächsten möglichen Richtungen aus der Kostenmatrix geholt.
-Dannach werden für beide Züge die neun Positionen berechnet.
+die jeweils nächsten möglichen Richtungen aus der Kostenmatrix bestimmt.
+Für beide Züge werden daraufhin die neuen Positionen berechnet:
 \begin{lstlisting}
   next_position_1 = self.next_postion(move.positions, move_1)
   next_position_2 = self.next_postion(move.positions, move_2)
 \end{lstlisting}
-$next\_position$ ist ein Positionspaar $((x_1, y_1),(x_2, y_2))$ und wird mit dem Aufruf
+Dabei ist $next\_position$ ein Positionspaar der Form $((x_1, y_1),(x_2, y_2))$
+Mit dem folgenden Aufruf wird Anschließend überprüft, ob die neuen Positionen bereits beuscht wurden:
 \begin{lstlisting}
   move_1 = self.check_visited(next_position_1, len(move.moves) + 1, move_1)
   move_2 = self.check_visited(next_position_2, len(move.moves) + 1, move_2)
 \end{lstlisting}
-getestet ob er schon einmal da war.
-Zum Schluss wird noch ein Move-Objekt aus beiden erstellt und übergeben.
+Zum Schluss wird ein neues $Move$-Objekt aus beiden möglichen Zügen erstellt und übergeben.
+Falls eine der neuen Positionen bereits besucht wurde oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben.
 
 
 
