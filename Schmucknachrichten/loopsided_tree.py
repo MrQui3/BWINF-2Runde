@@ -125,6 +125,7 @@ def main():
 
 
 if __name__ == "__main__":
-    perl_number, perl_costs, message = read_data_from_file(f'schmucknachrichten/schmuck1.txt')
+    perl_number, perl_costs, message = read_data_from_file(f'schmucknachrichten/schmuck3.txt')
     characters, distribution = create_distribution(message)
+    print(distribution)
     main()

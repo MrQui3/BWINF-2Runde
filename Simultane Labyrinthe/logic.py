@@ -86,19 +86,19 @@ class Solving:
         pos2 = move.positions[1]
 
         # Ermittle den nächsten Zug für beide Positionen
-        move_e = self.next_move(pos1, self.cost_matrix_1)
-        move_f = self.next_move(pos2, self.cost_matrix_2)
+        move_1 = self.next_move(pos1, self.cost_matrix_1)
+        move_2 = self.next_move(pos2, self.cost_matrix_2)
 
-        next_position_e = self.next_postion(move.positions, move_e) if move_e is not None else None
-        next_position_f = self.next_postion(move.positions, move_f) if move_f is not None else None
+        next_position_1 = self.next_postion(move.positions, move_1) if move_1 is not None else None
+        next_position_2 = self.next_postion(move.positions, move_2) if move_2 is not None else None
 
         
-        move_e = self.check_visited(next_position_e, len(move.moves) + 1, move_e) if move_e is not None else None
-        move_f = self.check_visited(next_position_f, len(move.moves) + 1, move_f) if move_f is not None else None
+        move_1 = self.check_visited(next_position_1, len(move.moves) + 1, move_1) if move_1 is not None else None
+        move_2 = self.check_visited(next_position_2, len(move.moves) + 1, move_2) if move_2 is not None else None
 
         results = []
-        if move_e is not None:
-            results.append(Move(move.moves + [move_e], next_position_e, self.get_total_cost(next_position_e), self.cost_at_beginning))
-        if move_f is not None:
-            results.append(Move(move.moves + [move_f], next_position_f, self.get_total_cost(next_position_f), self.cost_at_beginning))
+        if move_1 is not None:
+            results.append(Move(move.moves + [move_1], next_position_1, self.get_total_cost(next_position_1), self.cost_at_beginning))
+        if move_2 is not None:
+            results.append(Move(move.moves + [move_2], next_position_2, self.get_total_cost(next_position_2), self.cost_at_beginning))
         return results

@@ -173,7 +173,7 @@ Zu Beginn wird die Liste $stack$ initalisiert. Sie speichert alle Felder, die no
 Jeder Eintrag in der Liste besitzt vier Werte: der x-Position, der y-Position, den aktuell Kosten sowie der entgegengesetzen Richtung, aus der das Feld betreten wurde. 
 Anschließend wird das erste Element der Liste entnommen und in die Kostenmatrix übertragen.
 Falls es schon in der Kostenmatrix ist, wird es übersprungen.
-Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbors$ ermittelt und dem Stack hinzugefügt.
+Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbours$ ermittelt und dem Stack hinzugefügt.
 Dabei werden die Kosten um eins erhöht und die jeweilige Richtung gespeichert.
 Das wiederholt sich solange bis der Stack leer ist.
 
@@ -203,11 +203,33 @@ Anschließend wird ein erstes $Move$-Objekt erzeugt, dessen Startposition ((0, 0
 In jedem Schritt wird das erste Element aus der $moves$ Liste entnommen.
 Dann wird mit folgegen Aufruf
 \begin{lstlisting}
-  new_moves = solving_obj.neighbors_cost(move)
+  new_moves = solving_obj.neighbours_cost(move)
 \end{lstlisting}
 eine Liste von möglichen Folgewege erzeugt
-Diese neuen Wege werden der Liste hinzugefügt, sortiert und auf die $l$ besten Wege beschränkt.
-
+Die Liste wird mit den neun Wege erweitert, sortiert und auf die $l$ besten Wege beschränkt.
+\\
+\begin{lstlisting}[caption={Methode \texttt{neighbours\_cost}}, label={lst:neighbours_cout}]
+  def neighbours_cost(self, move: Move) -> list:
+\end{lstlisting}
+Zu Beginn werden aus den $positions$ Attribut vom $move$-Objekt die beiden Positionen entnommen
+und mit dem Aufrufen
+\begin{lstlisting}
+  move_1 = self.next_move(pos1, self.cost_matrix_1)
+  move_2 = self.next_move(pos2, self.cost_matrix_2)
+\end{lstlisting}
+die beiden nächsten möglichen Richtungen aus der Kostenmatrix geholt.
+Dannach werden für beide Züge die neun Positionen berechnet.
+\begin{lstlisting}
+  next_position_1 = self.next_postion(move.positions, move_1)
+  next_position_2 = self.next_postion(move.positions, move_2)
+\end{lstlisting}
+$next\_position$ ist ein Positionspaar $((x_1, y_1),(x_2, y_2))$ und wird mit dem Aufruf
+\begin{lstlisting}
+  move_1 = self.check_visited(next_position_1, len(move.moves) + 1, move_1)
+  move_2 = self.check_visited(next_position_2, len(move.moves) + 1, move_2)
+\end{lstlisting}
+getestet ob er schon einmal da war.
+Zum Schluss wird noch ein Move-Objekt aus beiden erstellt und übergeben.
 
 
 
