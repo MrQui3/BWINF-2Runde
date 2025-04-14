@@ -233,11 +233,30 @@ Zum Schluss wird ein neues $Move$-Objekt aus beiden möglichen Zügen erstellt u
 Falls eine der neuen Positionen bereits besucht wurde oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben.
 
 
-
 \clearpage
 \section{Laufzeit und Diskussion}
-Genügend Beispiele einbinden! Die Beispiele von der BwInf-Webseite sollten hier diskutiert werden, aber auch eigene Beispiele sind sehr gut – besonders wenn sie Spezialfälle abdecken. Aber bitte nicht 30 Seiten Programmausgabe hier einfügen!
+\subsection{Laufzeit}
+Wie schon oben erwähnt beeinflussst $l$, also wie viele unterschiedliche Wege gespeichert werden, die Laufzeit und genauigkeit des Algorithmus stark.
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.52\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/plotting_schritte_1.pdf}
+    \caption{Länge des besten Weges}
+    \label{fig:schritte_1}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.47\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf}
+    \caption{Anzahl der Iterationen}
+    \label{fig:laufzeit_1}
+  \end{minipage}
+\end{figure}
 
+
+
+\clearpage
 \section{Beispiele}
 Genügend Beispiele einbinden! Die Beispiele von der BwInf-Webseite sollten hier diskutiert werden, aber auch eigene Beispiele sind sehr gut – besonders wenn sie Spezialfälle abdecken. Aber bitte nicht 30 Seiten Programmausgabe hier einfügen!
 
