@@ -103,16 +103,16 @@ Ein Labyrinth mit dazugehöriger Matrix könnte so aussehen:
 
 \subsection{Erstellung der Matrix}
 Zu Beginn wird eine Matrix erstellt, deren Werte für alle Positionen zunächst leer sind.
-Ausgehend vom Zielpunkt durchläuft der Algorithmus rekursiv alle erreichbaren Nachbarpositionen
-Für jeden Nachbarn wird in der Matrix ein Kostenwert eingetragen, der um eins höher ist als der des aktuellen Punktes, sowie die Richtung, aus der der Nachbar erreicht wurde.
+Ausgehend vom Zielpunkt durchläuft der Algorithmus rekursiv alle erreichbaren Nachbarpositionen.
+Für jeden Nachbarn wird in der Matrix ein Kostenwert eingetragen, der um eins höher ist als der Kostenwert des aktuellen Punkts, sowie die Richtung, aus der der Nachbar erreicht wurde.
 
 
 \subsection{Lösen der Labyrinthe}
-Der Algorithmus funktioniert so, dass er jeweils den aktuell besten bekannten Weg auswählt diesen um einen weiteren Schritt erweitert.
+Der Algorithmus funktioniert so, dass er jeweils den momentan besten Weg der Liste der bisherigen Wege entnimmt und diesen um einen weiteren Schritt erweitert.
 Den nächsten Schritt ermittelt er, indem er in der Matrix prüft, welchen Schritt die beiden Labyrinthe für ihre jeweilige Position vorschlagen.
 Dieser Schritt wird am Ende der bisherigen Schrittfolge angehängt.
 Dabei entstehen in der Regel zwei unterschiedliche Wege. Beide werden zur Liste der bisherigen Wege hinzugefügt.
-Um den besten Weg auszuwählen, wird diese Rechung angewandt:
+Zur Auswertung der bisherigen Wege, wird diese Rechung angewandt:
 \begin{equation}
   \frac{c_b -c_a}{n}
   \label{weg_kosten}
@@ -130,13 +130,12 @@ um zu verhinder, dass der Algorithmus die exakt selben Positionen besucht.
 Zusätzlich gibt es auch die Begrenzung $l$ ,die festlegt, wie viele unterschiedliche Weg, sortiert nach ihren Kosten, in der Liste gespeichert werden dürfen.
 Diese Begrenung beeinflusst maßgeblich  die Laufzeit und Genauigkeit des Algorithmus.
 In der Liste dürfen die Wege unterschiedliche Werte für $n$ haben; wichtig ist lediglich, dass ihre Kosten (Gleichung \eqref{weg_kosten}) gering sind.
-Sobald ein Weg besucht wurde, wird er aus der Liste entfernt.
 Der gesamte Ablauf wiederholt sich solange, bis beide im Ziel sind.
 
 \subsection{Gruben}
 Gruben werden sowohl in der Kostenmatrix als auch beim Lösen wie normale Felder gesehen. 
 Berührt jedoch einer der beiden eine Grube, wird seine Position auf die jeweilige Startposition zurückgesetzt.
-Dadurch steigen die Kosten des Wegs so weit an, dass dieser in der Regel aus der Liste der potenziellen Wege entfernt wird.
+Dadurch steigen die gesamt Kosten des Wegs so weit an, dass dieser wegen der Begrenzung $l$ in der Regel aus der Liste der potenziellen Wege entfernt wird.
 
 
 
@@ -158,14 +157,15 @@ Zur Erstellung der Matrix wird die Klasse $cost$ benutzt.
   \label{fig:cost_diagramm}
 \end{figure}
 \\
-Für jedes Labyrinth wird ein Cost-Objekt erstellt und dei Methode
+Für jedes Labyrinth wird ein Cost-Objekt erstellt und die Methode
 \begin{lstlisting}
   cost_obj.create_cost_matrix()
 \end{lstlisting}
+\vspace{-2em}
 aufgerufen. Das Cost Objekt bekommt als Übergabewerte die horizontalen und vertikalten Wände, die  Gruben sowie die Größe des Labyrinths.
 Die $create\_cost\_matrix$ Methode erstellt zunächst eine leere Liste mit der Dimension [height][width], die als Kostenmatrix dient.
 Dann ruft sie die Methode $write\_cost$ auf um die Kostenmatrix zufüllen.
-\\
+\vspace{2em}
 \begin{lstlisting}[caption={Methode \texttt{write\_cost}}, label={lst:write_cost}]
   def write_cost(self, start_x: int, start_y: int):
 \end{lstlisting}
@@ -197,7 +197,7 @@ Die Wege werden mit der Klasse $Move$ dargestellt.
 \end{figure}
 \\
 Das Attribut $cost$ beschreibt die aufsummierten Kosten der beiden aktuellen Positionen basierend auf den Werten aus den Kostmatrizen.
-das Attribut $weight$ wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
+Das Attribut $weight$ wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
 Zu Beginn wird ein $Solving$-Objekt initalisiert und eine leere Liste $moves$ angelegt, in der alle aktuelle Wege gespeichert werden.
 Anschließend wird ein erstes $Move$-Objekt erzeugt, dessen Startposition ((0, 0), (0, 0)) ist und seine moves leer sind.
 In jedem Schritt wird das erste Element aus der $moves$ Liste entnommen.
@@ -205,6 +205,7 @@ Dann wird mit folgegen Aufruf
 \begin{lstlisting}
   new_moves = solving_obj.neighbours_cost(move)
 \end{lstlisting}
+\vspace{-2em}
 eine Liste von möglichen Folgewege erzeugt
 Die Liste wird mit den neun Wege erweitert, sortiert und auf die $l$ besten Wege beschränkt.
 \\
@@ -217,21 +218,32 @@ Anschließend werden mit den folgenden Aufrufen:
   move_1 = self.next_move(pos1, self.cost_matrix_1)
   move_2 = self.next_move(pos2, self.cost_matrix_2)
 \end{lstlisting}
-die jeweils nächsten möglichen Richtungen aus der Kostenmatrix bestimmt.
-Für beide Züge werden daraufhin die neuen Positionen berechnet:
+\vspace{-2em}
+die jeweils nächsten möglichen Richtungen aus der Kostenmatrix bestimmt, falls er noch nicht im Ziel ist.
+Daraufhin werden die neuen Positionen berechnet, wenn man in beide Richtungen gehen würde.
 \begin{lstlisting}
   next_position_1 = self.next_postion(move.positions, move_1)
   next_position_2 = self.next_postion(move.positions, move_2)
 \end{lstlisting}
+\vspace{-2em}
 Dabei ist $next\_position$ ein Positionspaar der Form $((x_1, y_1),(x_2, y_2))$
-Mit dem folgenden Aufruf wird Anschließend überprüft, ob die neuen Positionen bereits beuscht wurden:
+Mit dem folgenden Aufruf wird anschließend überprüft, ob die neuen Positionen bereits besucht wurden:
 \begin{lstlisting}
   move_1 = self.check_visited(next_position_1, len(move.moves) + 1, move_1)
   move_2 = self.check_visited(next_position_2, len(move.moves) + 1, move_2)
 \end{lstlisting}
-Zum Schluss wird ein neues $Move$-Objekt aus beiden möglichen Zügen erstellt und übergeben.
+\vspace{-2em}
+Zum Schluss wird für jeden möglichen Zug ein $Move$-Objekt erstellt und als Liste übergeben.
 Falls eine der neuen Positionen bereits besucht wurde oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben.
-
+\\
+\\
+$neighbours\_cost$ als Flussdiagramm:
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf}
+  \caption{$neighbours\_cost$ Flussdiagramm}
+  \label{fig:neighbours_cost}
+\end{figure}
 
 \clearpage
 \section{Laufzeit und Diskussion}
