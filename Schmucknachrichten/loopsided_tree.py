@@ -1,5 +1,10 @@
 import copy
 from typing import Tuple
+import matplotlib
+
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
+
 
 class TreeNode:
 
@@ -9,7 +14,6 @@ class TreeNode:
         self.parent = parent
         self.is_leaf = True
         self.is_protected = False  # Wenn True, dann kann er keine kinder mehr bekommen, weil ihm bei einer imporving genommen wurde
-
 
     def insert_new_node(self, obj):
         if obj is self:
@@ -42,7 +46,7 @@ class TreeNode:
         a = {}
         if len(self.children) < len(perl_costs) and self.is_protected is False:
             if self.is_leaf:
-                a[self] = self.cost + perl_costs[0] + perl_costs[1]
+                a[self] = self.cost + perl_costs[0] + self.cost + perl_costs[1]
             else:
                 a[self] = self.cost + perl_costs[len(self.children)]
 
@@ -89,7 +93,7 @@ def calculate_tree(root):
     return total_count
 
 
-def improve_tree(root:TreeNode) -> TreeNode:
+def improve_tree(root: TreeNode) -> TreeNode:
     all_leaves = root.get_leaves()
     all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
     a = 0
@@ -107,25 +111,27 @@ def improve_tree(root:TreeNode) -> TreeNode:
     return create_tree(root)
 
 
-def find_best_tree(root: TreeNode, last_cost: int) -> Tuple[TreeNode, int]:
-    new_root = copy.deepcopy(root)
-    new_root = improve_tree(new_root)
-    new_calc = calculate_tree(new_root)
-    if  new_calc > last_cost:
-        return root, last_cost
-    return find_best_tree(new_root, new_calc)
+def find_best_tree(root, n, r):
+    a = []
+    for i in range(int(n / r)):
+        root = improve_tree(root)
+        new_calc = calculate_tree(root)
+        a.append(new_calc)
+    return a
 
 
-
-def main():
+def main(n, r):
     root = TreeNode(0, None)
     root = create_tree(root)
-    root, best_root_calc = find_best_tree(root, calculate_tree(root))
-    print(best_root_calc)
+    return find_best_tree(root, n, r)
 
 
 if __name__ == "__main__":
-    perl_number, perl_costs, message = read_data_from_file(f'schmucknachrichten/schmuck3.txt')
-    characters, distribution = create_distribution(message)
-    print(distribution)
-    main()
+    for i in range(10):
+        perl_number, perl_costs, message = read_data_from_file(f'schmucknachrichten/schmuck{i}.txt')
+        characters, distribution = create_distribution(message)
+        a = main(len(characters), perl_number)
+        print(f"Schmuck {i}: smallest cost: {min(a)} unterschiedliche Buchstaben: {len(characters)}")
+        plt.plot(range(len(a)), a, marker='', linestyle='-', color='b')  # x-Werte sind die Indizes von a
+        plt.grid(True)
+        plt.show()

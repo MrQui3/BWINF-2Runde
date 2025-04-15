@@ -120,10 +120,24 @@ Dabei ergeben sich deutlich höhere Kosten für die rechten Blätter des Baums i
 Um das auszugleichen, wird das Blatt mit den höchsten Kosten eine Ebene nach oben verschoben. 
 Dies geschieht indem der Elternknoten des Blattes selber zum Blatt wird und alle Kinder verliert.
 Dadurch hat der Baum insgesammt zu wenig Blätter, weshalb er erweitert werden muss.
-Dies geschieht, indem ab der Ebene des entfernten Blattes die Knoten von links nach rechts aufgefüllt werden, bis wieder genügend Blätter vorhanden sind. (Abbildung \ref{fig:trans_1})\\
+Dies geschieht indem, alle möglichen neuen Blätter angeschaut werden und das mit den geringsten Kosten hinzugefügt wird. (Abbildung \ref{fig:trans_1})\\
+Das nach oben verschobenene Blatt erhält den Zusatz $protected$. Die verhindert, dass es sselbst weitere Kinder bekommen kann.
+Dadurch wird ein Zyklus vermieden, bei dem ein Blatt zunächst nach oben verschoben und anschließend wieder nach unten erweitert würde.
 Das nach oben Verschieben und unten Neueinfügen der Blätter gilt als ein Optimierungsschritt,
 welcher im Optimierungsprozess wiederholt wird. (Abbildung \ref{fig:trans_2})
-Das geschieht solange bis die gesamt Kosten des Baums steigen, anstatt zu sinken.-
+Die Anzahl der notwendigen Iterationen wird so berechnet:
+\begin{equation}
+  \label{equation:iterationen}
+  \frac {i}{r}
+\end{equation}
+wobei:\\
+- $i$ die Anzahl der Buschstaben sind\\
+- $r$ die Anzahl der Perlen sind  \\
+Es wird sich dann für die Iterationen mit den geringsten Kosten entschieden.
+Die Begründung für diese Abbrechbedinung liegt darin, dass 
+
+
+\vspace{3em}
 
 
 \begin{figure}[h]
@@ -210,8 +224,10 @@ Zu Beginn wird der Wurzelknoten, root, mit einem balancierten Baum.
   def create_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
 
-Dabei werden jeweils alle möglichen neuen Blätter im Baum betrachtet und das Blatt mit den geringsten Kosten wird hinzugefügt. Das passiert solange, bis der der Baum genau soviele
-Blätter wie hat, wie es Buchstaben gibt.
+Dabei werden jeweils alle potenziellen neuen Blätter im Baum betrachtet und das Blatt mit den geringsten Kosten wird dem Baum hinzugefügt.
+Falls der Elternknoten ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
+Das liegt daran, dass jeder interne Knoten mindesten zwei Kinder haben muss – daher stellen diese Kosten die effektiv neu entstehenden Kosten für den Baum dar.
+Das passiert solange, bis der der Baum genau soviele Blätter hat, wie es Buchstaben gibt.
 Die möglichen neuen Blätter erhält man über den Aufruf
 \begin{lstlisting}
   root.get_all_possible_costs()
@@ -220,29 +236,36 @@ Die möglichen neuen Blätter erhält man über den Aufruf
 \begin{lstlisting}[caption={Methode \texttt{get\_all\_possible\_costs}}, label={lst:get_all_pssible_costs}]
   def get_all_possible_costs(self) -> dict:
 \end{lstlisting}
-Die Methode prüft, ob das TreeNode-Objekt noch weitere Kinder aufnehmen kann und nicht protected ist. Falls ja, fügt es sich selbst sowie die Kosten des potenziellen neuen Kindes einem Dictionary hinzu.
+Die Methode prüft, ob das TreeNode-Objekt noch weitere Kinder aufnehmen kann und nicht protected ist.
+Falls ja, fügt es sich selbst sowie die Kosten des potenziellen neuen Kindes einem Dictionary hinzu.
 Anschließend wird die Methode rekursiv für alle bestehenden Kinder aufgerufen, sodass auch deren mögliche Erweiterungen im Dictionary erfasst werden.\\
 \\
 Neu Blätter werden über den Aufruf  
 \begin{lstlisting}
   root.insert_new_node(obj)
-\end{lstlisting} hinzugefügt
-
+\end{lstlisting} 
+\vspace{-1.5em}
+hinzugefügt
+\vspace{2em} 
 \begin{lstlisting}[caption={Methode \texttt{insert\_new\_node}}, label={lst:insert_new_node}]
   def insert_new_node(self, obj: TreeNode):
 \end{lstlisting}
-Die Methode prüft, ob man selbst das TreeNode Objekt ist. Falls ja, fügt es einen neues Kind hinzu. Wenn man vorher noch keine Kinder hatte, werden zwei Kinder hinzugefügt.
-Ansonsten wird die Methode rekursiv für alle Kinder aufgerufen.\\
+Die Methode prüft, ob das aktuelle Objekt selbst das gesuchte TreeNode Objekt ist. Falls ja, fügt es einen neues Kind hinzu. 
+Wenn vorher noch keine Kinder vorhanden sind, werden zwei Kinder hinzugefügt.
+Ansonsten wird die Methode rekursiv auf alle bestehenden Kinder angewandt.\\
 \\
 Über den Aufruf 
 \begin{lstlisting}
   root.get_size()
 \end{lstlisting} 
+\vspace{-1.5em}
 wird die Anzahl der Blätter ermittelt
 
+\vspace{2em} 
 \begin{lstlisting}[caption={Methode \texttt{get\_size}}, label={lst:get_size}]
   def get_size(self) -> int:
 \end{lstlisting}
+\vspace{0.5em}
 Die Methode gibt 1 zurück falls das Objekt ein Blatt ist. Ansonsten wird die Methode rekursiv bei den Kinder aufgerufen und die Summe zurückgegeben
 
 \subsection{Verbesserung des Baums}
@@ -264,6 +287,7 @@ Die Methode holt sich erstmal alle Blätter im Baum über den Aufruf
 \begin{lstlisting}
   root.get_leaves()
 \end{lstlisting}
+\vspace{-1.5em}
 Diese Liste wird dann aufsteigend sortiert und die Kosten für jedes Element können mit der Gleichung \eqref{Neue Kosten eines Buchstaben} berechnet werden.
 Der Elternknoten des Blatts mit den höchsten Kosten wird daraufhin selbst zu einem Blatt. Dafür werden die Attribute vom Elternknoten
 \begin{lstlisting}
@@ -271,6 +295,7 @@ Der Elternknoten des Blatts mit den höchsten Kosten wird daraufhin selbst zu ei
   is_protected = True
   children = []
 \end{lstlisting}
+\vspace{-1.5em}
 gesetzt. Um die fehlenden Blätter wieder hinzuzufügen wird noch die Methde \ref{lst:create_tree} aufgerufen.\\
 \\
 Die gesamt Kosten des Baums wird durch die Methode 
