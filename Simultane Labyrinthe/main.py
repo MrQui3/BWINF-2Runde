@@ -47,13 +47,14 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vert
 def main():
     start_time = time.time()
 
-    width, height, data = read_data_from_file('Simultane Labyrinthe/labyrinthe2.txt')
+    width, height, data = read_data_from_file('Simultane Labyrinthe/labyrinthe8.txt')
 
     horizontal_walls_1, vertical_walls_1, gruben_1 = create_matrix(data, height)
     horizontal_walls_2, vertical_walls_2, gruben_2 = create_matrix(data, height)
 
     cost_matrix_1 = create_matrix_for_laby(horizontal_walls_1, vertical_walls_1, gruben_1, width, height)
     cost_matrix_2 = create_matrix_for_laby(horizontal_walls_2, vertical_walls_2, gruben_2, width, height)
+    print(cost_matrix_1[0][0]+cost_matrix_2[0][0])
 
     anzahl = 100
     try:
