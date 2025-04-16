@@ -7,7 +7,7 @@ class Move:
         self.moves = moves
         self.positions = positions
         self.cost = cost
-        self.weight = weight if weight is not None else (heights_cost - cost) / len(moves)  # moves are sorted based on this value
+        self.weight = weight if weight is not None else (heights_cost - cost) / (len(moves)**1)  # moves are sorted based on this value
 
 
 class Solving:
@@ -34,7 +34,7 @@ class Solving:
         self.move_funcs = [test_right, test_left, test_up, test_down]
         self.move_deltas = [(1, 0), (-1, 0), (0, -1), (0, 1)]
 
-    def next_postion(self, position, next_move):
+    def next_position(self, position, next_move):
         mf = self.move_funcs
         md = self.move_deltas
         pos1 = position[0]
@@ -89,8 +89,8 @@ class Solving:
         move_1 = self.next_move(pos1, self.cost_matrix_1)
         move_2 = self.next_move(pos2, self.cost_matrix_2)
 
-        next_position_1 = self.next_postion(move.positions, move_1) if move_1 is not None else None
-        next_position_2 = self.next_postion(move.positions, move_2) if move_2 is not None else None
+        next_position_1 = self.next_position(move.positions, move_1) if move_1 is not None else None
+        next_position_2 = self.next_position(move.positions, move_2) if move_2 is not None else None
 
         
         move_1 = self.check_visited(next_position_1, len(move.moves) + 1, move_1) if move_1 is not None else None

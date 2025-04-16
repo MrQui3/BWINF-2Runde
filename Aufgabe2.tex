@@ -75,7 +75,7 @@
 \clearpage
 \section{Lösungsidee}
 Gesucht ist möglichst kurze Abfolge von Schritten, die beide Labyrinthe löst. Dafür wird zunächst für jedes Labyrinth eine Matrix erstellt (Abbildung \ref{fig:lybnmatrix}),
-in der für jede Position ein Kostenwert und eine Richtung gespeichert wird. Die Richtung zeigt den nächsten Schritt in Richtung Ziel an und ist dargestellt als:
+in der für jede Position ein Kostenwert und eine Richtung gespeichert wird. Die gespeicherte Richtung zeigt den optimalen Folgeschritt zum Ziel und ist dargestellt als
 \begin{table}[h]
   \centering
   \begin{tabular}{|c|l|}
@@ -110,7 +110,7 @@ Für jeden Nachbarn wird in der Matrix ein Kostenwert eingetragen, der um eins h
 \subsection{Lösen der Labyrinthe}
 Der Algorithmus funktioniert so, dass er jeweils den momentan besten Weg der Liste der bisherigen Wege entnimmt und diesen um einen weiteren Schritt erweitert.
 Den nächsten Schritt ermittelt er, indem er in der Matrix prüft, welchen Schritt die beiden Labyrinthe für ihre jeweilige Position vorschlagen.
-Dieser Schritt wird am Ende der bisherigen Schrittfolge angehängt.
+Dieser Schritt wird an die bisherige Schrittfolge angehängt.
 Dabei entstehen in der Regel zwei unterschiedliche Wege. Beide werden zur Liste der bisherigen Wege hinzugefügt.
 Zur Auswertung der bisherigen Wege, wird diese Rechung angewandt:
 \begin{equation}
@@ -122,7 +122,8 @@ wobei gilt:\\
 -$c_b$ sind die summierten Kosten von beiden Startpositionen\\
 -$c_a$ sind die summierten Kosten von beiden aktuellen Positionen\\
 -$n$ ist die Anzahl der benötigten Schritte\\
-Der Bruch beschreibt also die durchschnittliche Einsparung pro Schritt – dabei ist 2 der maximal erreichbare Wert.
+Der Bruch beschreibt also die durchschnittliche Einsparung an Kosten pro Schritt
+– je höher dier Wert, desto effizienter ist der bisherige Pfad. Dabei ist 2 der maximal erreichbare Wert.
 \\
 Der Weg mit der höchsten Einsparung gilt dabei als momentan bester Weg.
 Nach jeder Interation wird das aktuelle Positionspaar $((x_1, y_1),(x_2, y_2))$ in einem Dictionary gespeichert,
@@ -201,7 +202,7 @@ Das Attribut $weight$ wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
 Zu Beginn wird ein $Solving$-Objekt initalisiert und eine leere Liste $moves$ angelegt, in der alle aktuelle Wege gespeichert werden.
 Anschließend wird ein erstes $Move$-Objekt erzeugt, dessen Startposition ((0, 0), (0, 0)) ist und seine moves leer sind.
 In jedem Schritt wird das erste Element aus der $moves$ Liste entnommen.
-Dann wird mit folgegen Aufruf
+Dann wird mit folgeden Aufruf
 \begin{lstlisting}
   new_moves = solving_obj.neighbours_cost(move)
 \end{lstlisting}
@@ -212,7 +213,7 @@ Die Liste wird mit den neun Wege erweitert, sortiert und auf die $l$ besten Wege
 \begin{lstlisting}[caption={Methode \texttt{neighbours\_cost}}, label={lst:neighbours_cout}]
   def neighbours_cost(self, move: Move) -> list:
 \end{lstlisting}
-Zu Beginn werden die beiden Positionen  aus dem Attribut $positions$ der übergebenen $move$-Objekt genommen.
+Zu Beginn werden die beiden Positionen aus dem Attribut $positions$ des übergebenen $move$-Objekt genommen.
 Anschließend werden mit den folgenden Aufrufen:
 \begin{lstlisting}
   move_1 = self.next_move(pos1, self.cost_matrix_1)
@@ -222,8 +223,8 @@ Anschließend werden mit den folgenden Aufrufen:
 die jeweils nächsten möglichen Richtungen aus der Kostenmatrix bestimmt, falls er noch nicht im Ziel ist.
 Daraufhin werden die neuen Positionen berechnet, wenn man in beide Richtungen gehen würde.
 \begin{lstlisting}
-  next_position_1 = self.next_postion(move.positions, move_1)
-  next_position_2 = self.next_postion(move.positions, move_2)
+  next_position_1 = self.next_position(move.positions, move_1)
+  next_position_2 = self.next_position(move.positions, move_2)
 \end{lstlisting}
 \vspace{-2em}
 Dabei ist $next\_position$ ein Positionspaar der Form $((x_1, y_1),(x_2, y_2))$
@@ -247,6 +248,16 @@ $neighbours\_cost$ als Flussdiagramm:
 
 \clearpage
 \section{Laufzeit und Diskussion}
+\subsection{Komplexität der Lösung}
+Von jeder Position aus existieren zwei mögliche Schritte. Entweder in Richtung ded Ziel von Labyrinth 1 oder in Richtung des Ziel von Labyrinth 2.
+Das führt zu insgesammt $2^{\text{maximale Anzahl an Schritten}}$ verschiedenen Möglichkeiten.
+Aufgrund dieser großen Anzahl an Möglichkeiten untersucht der Algorithmus nicht alle Pfade vollständig, sondern verwendet Heuristik zur Abschätzung.
+Der hier vorgestellte Ansatz garantiert daher nicht unbedingt den optimalen Lösungsweg, liefter jedoch in akzeptabler Laufzeit eine gute Annäherung.
+Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, während andere nur kurz betrauchtet werden.
+
+
+
+
 \subsection{Laufzeit}
 Wie schon oben erwähnt beeinflussst die Begrenzung $l$, die Laufzeit und Genauigkeit des Algorithmus stark.
 \begin{figure}[h]
@@ -270,10 +281,10 @@ Abbildung \ref{fig:schritte_1} zeigt, aus wie vielen Schritten der gefundene Lö
 Abbildung \ref{fig:laufzeit_1} stellt die Anzahl an Iterationen dar, die zur Bestimmung des Lösungsweg benötigt wurden - in Abhängigkeit von $l$
 \\
 
-Auffällig ist, dass der Graph in Abbildung \ref{fig:schritte_1} stark exponentiell fällt und sich dabei zunehmend dem optimalen Weg annähert.
-Der Graph in Abbildung \ref{fig:laufzeit_1} hingegen entspricht einer langsam ansteigenden Logarithmusfunktion.
+Auffällig ist, dass der Graph in Abbildung \ref{fig:schritte_1} gegen den optimalen Weg abfallend konvergiert.
+Der Graph in Abbildung \ref{fig:laufzeit_1} hingegen stark steigt.
 \\
-Die maximale Anzahl an Iterationen kann wie folgt berechnet werden:
+Die maximale Anzahl an Iterationen kann wie folgt berechnet werden.
 \begin{equation}
   l\cdot(2c_1+c_2)
   \label{max_iterationen}
@@ -285,14 +296,10 @@ Der Faktor $2c_1+c_2$ beschreibt die maximale Anzahl an Schritte, aus denen ein 
 Zunächst erreicht Agent1 das Ziel mit $c_1$ Schritten.
 Anschließend läuft Agent2 denselben Weg zurück in ebenfalls $c_1$ Schritten und geht dann selber ins Ziel mit $c_2$ Schritten.
 Im schlechtesten Fall geht er für jeden Eintrag in der Liste, also $l$ mal, die maximale Anzahl an Schritten.
-Daher ergibt sich die Gleichung \eqref{max_iterationen}, was eine liniare Laufzeit von 
-\begin{equation}
-  o(l)
-  \label{laufzeit}
-\end{equation}
-ergibt.
+Daher ergibt sich die Gleichung \eqref{max_iterationen}, was eine liniare Laufzeit von $o(l)$ ergibt.
+
 \clearpage
-Praktisch gesehen entspricht die Laufzeit einer Logarithmusfunktion und ist sehr viel kleiner als die maximale Laufzeit.
+Praktisch gesehen entspricht ist die Laufzeit, aber sehr viel kleiner als die maximale Laufzeit.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/plotting_max_1.pdf}
@@ -301,8 +308,17 @@ Praktisch gesehen entspricht die Laufzeit einer Logarithmusfunktion und ist sehr
 \end{figure}
 \\
 Der grüne Graph zeigt die maximale Anzahl an Iterationen und der blaue die tatsächliche Anzahl an Iterationen.
-
-
+\\
+Auffällig ist auch der kleine Hügel in Abbildung \ref{fig:schritte_1}. 
+Hier wird efür ein größeren Wert von $l$ ein schlechterer Pfad gefunden.
+Dies liegt daran, dass durch den höheren Wert von $l$ neue Wege betrachtet werden.
+Diese erscheinen kurzfristig vorteilhafter als die bisherigen Wege und verdrängen dadurch die eigentlich besseren aus der Liste.
+Das führt insgesammt zu ein schlechterer Weg.
+Bei größeren $l$ Werten tritt dieser Effekt jedoch kaum noch auf, da die Liste groß genug ist, um alle relevanten Pfade zu behalten.
+Der Einfluss dieser Hügel wird daher mit wachsendem $l$ vernachlässigbar.
+\\
+\\
+Anhand des Parameters $l$ lässt sich die Genauigkeit jedoch nicht allgemein bestimmen, da sie stark vom jeweiligen Labyrinthe abhängt. 
 
 
 
