@@ -249,9 +249,9 @@ $neighbours\_cost$ als Flussdiagramm:
 \clearpage
 \section{Laufzeit und Diskussion}
 \subsection{Komplexität der Lösung}
-Von jeder Position aus existieren zwei mögliche Schritte. Entweder in Richtung ded Ziel von Labyrinth 1 oder in Richtung des Ziel von Labyrinth 2.
+Von jeder Position aus existieren zwei mögliche Schritte. Entweder in Richtung des Ziels von Labyrinth 1 oder in Richtung des Ziels von Labyrinth 2.
 Das führt zu insgesammt $2^{\text{maximale Anzahl an Schritten}}$ verschiedenen Möglichkeiten.
-Aufgrund dieser großen Anzahl an Möglichkeiten untersucht der Algorithmus nicht alle Pfade vollständig, sondern verwendet Heuristik zur Abschätzung.
+Aufgrund dieser großen Anzahl an Möglichkeiten untersucht der Algorithmus nicht alle Pfade vollständig, sondern macht nur eine Abschätzung.
 Der hier vorgestellte Ansatz garantiert daher nicht unbedingt den optimalen Lösungsweg, liefter jedoch in akzeptabler Laufzeit eine gute Annäherung.
 Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, während andere nur kurz betrauchtet werden.
 
@@ -262,29 +262,36 @@ Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, wäh
 Wie schon oben erwähnt beeinflussst die Begrenzung $l$, die Laufzeit und Genauigkeit des Algorithmus stark.
 \begin{figure}[h]
   \centering
-  \begin{minipage}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/plotting_schritte_1.pdf}
-    \caption{Länge des besten Weges}
-    \label{fig:schritte_1}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf}
-    \caption{Anzahl der Iterationen}
-    \label{fig:laufzeit_1}
-  \end{minipage}
+  \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/plotting_schritte_1.pdf}
+  \caption{Anzahl der Schritte}
+  \label{fig:schritte_1}
 \end{figure}
-
-Abbildung \ref{fig:schritte_1} zeigt, aus wie vielen Schritten der gefundene Lösungsweg besteht - in Abhängigkeit von $l$.
-Abbildung \ref{fig:laufzeit_1} stellt die Anzahl an Iterationen dar, die zur Bestimmung des Lösungsweg benötigt wurden - in Abhängigkeit von $l$
 \\
-
-Auffällig ist, dass der Graph in Abbildung \ref{fig:schritte_1} gegen den optimalen Weg abfallend konvergiert.
-Der Graph in Abbildung \ref{fig:laufzeit_1} hingegen stark steigt.
+Abbildung \ref{fig:schritte_1} zeigt die Anzahl der Schritte des gefundenen Lösungswegs in Abhängigkeit vom Parameter $l$.
 \\
-Die maximale Anzahl an Iterationen kann wie folgt berechnet werden.
+\\
+Affällig ist, dass der Graph mit zunehmendem $l$ gegen die Anzahl der Schritte des optimalen Weges konvergiert.
+Ebenso erkennbar ist ein kleiner Hügel. 
+Hier wird für ein größeren Wert von $l$ ein schlechterer Pfad gefunden.
+Dies liegt daran, dass durch den höheren Wert von $l$ neue Wege betrachtet werden.
+Diese erscheinen kurzfristig vorteilhafter als die bisherigen Wege und verdrängen dadurch die eigentlich besseren aus der Liste.
+Das führt insgesammt zu ein schlechterer Weg.
+Bei größeren $l$ Werten tritt dieser Effekt jedoch kaum noch auf, da die Liste groß genug ist, um alle relevanten Pfade zu behalten.
+Der Einfluss dieser Hügel wird daher mit wachsendem $l$ vernachlässigbar.
+
+\clearpage
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf}
+  \caption{maximale Iterationen gegenüber tatsächliche Iterationen}
+  \label{fig:laufzeit_1}
+\end{figure}
+Abbildung \ref{fig:laufzeit_1} stellt die Anzahl an Iterationen dar, die zur Bestimmung des Lösungsweg benötigt werden in Abhängigkeit vonm Parameter $l$.
+\\
+\\
+Der Graph steigt mit wachsendem $l$ stark an.
+\\
+Allgemein kann die maximale Anzahl an Iterationen in Abhängigkeit von $l$ kann wie folgt berechnet werden.
 \begin{equation}
   l\cdot(2c_1+c_2)
   \label{max_iterationen}
@@ -296,10 +303,9 @@ Der Faktor $2c_1+c_2$ beschreibt die maximale Anzahl an Schritte, aus denen ein 
 Zunächst erreicht Agent1 das Ziel mit $c_1$ Schritten.
 Anschließend läuft Agent2 denselben Weg zurück in ebenfalls $c_1$ Schritten und geht dann selber ins Ziel mit $c_2$ Schritten.
 Im schlechtesten Fall geht er für jeden Eintrag in der Liste, also $l$ mal, die maximale Anzahl an Schritten.
-Daher ergibt sich die Gleichung \eqref{max_iterationen}, was eine liniare Laufzeit von $o(l)$ ergibt.
+Daher ergibt sich die Gleichung \eqref{max_iterationen}, was eine Laufzeit von $o(l)$ ergibt.
 
-\clearpage
-Praktisch gesehen entspricht ist die Laufzeit, aber sehr viel kleiner als die maximale Laufzeit.
+Praktisch gesehen ist die Laufzeit, aber sehr viel kleiner als die maximale Laufzeit.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/plotting_max_1.pdf}
@@ -309,16 +315,12 @@ Praktisch gesehen entspricht ist die Laufzeit, aber sehr viel kleiner als die ma
 \\
 Der grüne Graph zeigt die maximale Anzahl an Iterationen und der blaue die tatsächliche Anzahl an Iterationen.
 \\
-Auffällig ist auch der kleine Hügel in Abbildung \ref{fig:schritte_1}. 
-Hier wird efür ein größeren Wert von $l$ ein schlechterer Pfad gefunden.
-Dies liegt daran, dass durch den höheren Wert von $l$ neue Wege betrachtet werden.
-Diese erscheinen kurzfristig vorteilhafter als die bisherigen Wege und verdrängen dadurch die eigentlich besseren aus der Liste.
-Das führt insgesammt zu ein schlechterer Weg.
-Bei größeren $l$ Werten tritt dieser Effekt jedoch kaum noch auf, da die Liste groß genug ist, um alle relevanten Pfade zu behalten.
-Der Einfluss dieser Hügel wird daher mit wachsendem $l$ vernachlässigbar.
-\\
-\\
-Anhand des Parameters $l$ lässt sich die Genauigkeit jedoch nicht allgemein bestimmen, da sie stark vom jeweiligen Labyrinthe abhängt. 
+\subsection{Fazit}
+Die Werte von $l$ stehen in einem linearen Zusammenhang mit der Anzahl der Iterationen,
+während die Anzahl der Schritte bei größreren $l$-Werten gegen das optimale Ergebnis konvergieren.
+Je größer der Wert von $l$, desto mehr Interation werden durchgeführt - und desto besser wird das Ergebnis.
+
+Die Genauigkeit lässt sich anhand der Parameters $l$ jedoch nicht allgemein bestimmen, da sie stark von der Strucktur jeweiligen Labyrinthe abhängt.
 
 
 
@@ -327,7 +329,21 @@ Anhand des Parameters $l$ lässt sich die Genauigkeit jedoch nicht allgemein bes
 
 \clearpage
 \section{Beispiele}
-Genügend Beispiele einbinden! Die Beispiele von der BwInf-Webseite sollten hier diskutiert werden, aber auch eigene Beispiele sind sehr gut – besonders wenn sie Spezialfälle abdecken. Aber bitte nicht 30 Seiten Programmausgabe hier einfügen!
+Zu jedem Beispiel werden der sowohl der optimale Lösungsweg sowie die Anzahl der Iterationen in Abhängigkeit vom Parameter~$l$ dargestellt.
+Zusätzlich wird der jeweils beste gefundene Pfad sowie dessen Länge angegeben. 
+Alle Schritt des Wegs werden wie in der Tabelle \ref{tab:richtungscodierung} codediert.
+
+\subsection{labyrinthe0.txt}
+\subsection{labyrinthe1.txt}
+\subsection{labyrinthe2.txt}
+\subsection{labyrinthe3.txt}
+\subsection{labyrinthe4.txt}
+\subsection{labyrinthe5.txt}
+\subsection{labyrinthe6.txt}
+\subsection{labyrinthe7.txt}
+\subsection{labyrinthe8.txt}
+\subsection{labyrinthe9.txt}
+
 
 \section{Quellcode}
 Unwichtige Teile des Programms sollen hier nicht abgedruckt werden. Dieser Teil sollte nicht mehr als 2–3 Seiten umfassen, maximal 10.
