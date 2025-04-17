@@ -20,6 +20,9 @@
 \usepackage{titling}
 \setlength{\droptitle}{-1.0cm}
 
+\usepackage{float}
+
+
 % Für mathematische Befehle und Symbole
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -94,7 +97,7 @@ in der für jede Position ein Kostenwert und eine Richtung gespeichert wird. Die
 \\
 Der Kostenwert gibt an, wie viele Schritte bis zum Ziel benötigt werden.\\
 Ein Labyrinth mit dazugehöriger Matrix könnte so aussehen:
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.4\textwidth]{Simultane Labyrinthe/pdf_src/cost_matrix.pdf}
   \caption{Labyrinth und Matrix}
@@ -182,7 +185,7 @@ Das wiederholt sich solange bis der Stack leer ist.
 \subsection{Lösen der Labyrinthe}
 
 Zum lösen der Labyrinthe wird die Klasse $Solving$ benutzt.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/solving_diagramm.pdf}
   \caption{Solving Klasse}
@@ -239,7 +242,7 @@ Falls eine der neuen Positionen bereits besucht wurde oder bereits im Ziel ist, 
 \\
 \\
 $neighbours\_cost$ als Flussdiagramm:       
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf}
   \caption{$neighbours\_cost$ Flussdiagramm}
@@ -280,7 +283,7 @@ Bei größeren $l$ Werten tritt dieser Effekt jedoch kaum noch auf, da die Liste
 Der Einfluss dieser Hügel wird daher mit wachsendem $l$ vernachlässigbar.
 
 \clearpage
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf}
   \caption{maximale Iterationen gegenüber tatsächliche Iterationen}
@@ -334,16 +337,142 @@ Zusätzlich wird der jeweils beste gefundene Pfad sowie dessen Länge angegeben.
 Alle Schritt des Wegs werden wie in der Tabelle \ref{tab:richtungscodierung} codediert.
 
 \subsection{labyrinthe0.txt}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_genau_1.pdf}
+    \caption{Genauigkeit labyrinthe0.txt}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_int_1.pdf}
+    \caption{Iterationen labyrinthe0.txt}
+  \end{minipage}
+\end{figure}
 \subsection{labyrinthe1.txt}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_genau_2.pdf}
+    \caption{Genauigkeit labyrinthe1.txt}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_int_2.pdf}
+    \caption{Iterationen labyrinthe1.txt}
+  \end{minipage}
+\end{figure}
 \subsection{labyrinthe2.txt}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_genau_3.pdf}
+    \caption{Genauigkeit labyrinthe2.txt}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_int_3.pdf}
+    \caption{Iterationen labyrinthe2.txt}
+  \end{minipage}
+\end{figure}
 \subsection{labyrinthe3.txt}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_genau_4.pdf}
+    \caption{Genauigkeit labyrinthe3.txt}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_int_4.pdf}
+    \caption{Iterationen labyrinthe3.txt}
+  \end{minipage}
+\end{figure}
 \subsection{labyrinthe4.txt}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_genau_5.pdf}
+    \caption{Genauigkeit labyrinthe4.txt}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_int_5.pdf}
+    \caption{Iterationen labyrinthe4.txt}
+  \end{minipage}
+\end{figure}
 \subsection{labyrinthe5.txt}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_genau_6.pdf}
+    \caption{Genauigkeit labyrinthe5.txt}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_int_6.pdf}
+    \caption{Iterationen labyrinthe5.txt}
+  \end{minipage}
+\end{figure}
 \subsection{labyrinthe6.txt}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_genau_7.pdf}
+    \caption{Genauigkeit labyrinthe6.txt}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_int_7.pdf}
+    \caption{Iterationen labyrinthe6.txt}
+  \end{minipage}
+\end{figure}
 \subsection{labyrinthe7.txt}
+Keine Lösung gefunden
 \subsection{labyrinthe8.txt}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_genau_8.pdf}
+    \caption{Genauigkeit labyrinthe8.txt}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_int_8.pdf}
+    \caption{Iterationen labyrinthe8.txt}
+  \end{minipage}
+\end{figure}
 \subsection{labyrinthe9.txt}
-
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_genau_9.pdf}
+    \caption{Genauigkeit labyrinthe9.txt}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Simultane Labyrinthe/pdf_src/beispiel_int_9.pdf}
+    \caption{Iterationen labyrinthe9.txt}
+  \end{minipage}
+\end{figure}
 
 \section{Quellcode}
 Unwichtige Teile des Programms sollen hier nicht abgedruckt werden. Dieser Teil sollte nicht mehr als 2–3 Seiten umfassen, maximal 10.
