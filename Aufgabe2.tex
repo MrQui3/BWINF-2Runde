@@ -126,7 +126,7 @@ wobei gilt:\\
 -$c_a$ sind die summierten Kosten von beiden aktuellen Positionen\\
 -$n$ ist die Anzahl der benötigten Schritte\\
 Der Bruch beschreibt also die durchschnittliche Einsparung an Kosten pro Schritt
-– je höher dier Wert, desto effizienter ist der bisherige Pfad. Dabei ist 2 der maximal erreichbare Wert.
+– je höher der Wert ist desto effizienter ist der bisherige Pfad. Dabei ist 2 der maximal erreichbare Wert.
 \\
 Der Weg mit der höchsten Einsparung gilt dabei als momentan bester Weg.
 Nach jeder Interation wird das aktuelle Positionspaar $((x_1, y_1),(x_2, y_2))$ in einem Dictionary gespeichert,
@@ -174,7 +174,7 @@ Dann ruft sie die Methode $write\_cost$ auf um die Kostenmatrix zufüllen.
   def write_cost(self, start_x: int, start_y: int):
 \end{lstlisting}
 Zu Beginn wird die Liste $stack$ initalisiert. Sie speichert alle Felder, die noch besucht werden müssen. Die Startposition wird als erstes Element hinzugefügt.
-Jeder Eintrag in der Liste besitzt vier Werte: der x-Position, der y-Position, den aktuell Kosten sowie der entgegengesetzen Richtung, aus der das Feld betreten wurde. 
+Jeder Eintrag in der Liste besitzt vier Werte: der x-Position, der y-Position, den aktuell Kosten sowie der entgegengesetzen Richtung, aus welcher das Feld betreten wurde. 
 Anschließend wird das erste Element der Liste entnommen und in die Kostenmatrix übertragen.
 Falls es schon in der Kostenmatrix ist, wird es übersprungen.
 Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbours$ ermittelt und dem Stack hinzugefügt.
@@ -205,7 +205,7 @@ Das Attribut $weight$ wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
 Zu Beginn wird ein $Solving$-Objekt initalisiert und eine leere Liste $moves$ angelegt, in der alle aktuelle Wege gespeichert werden.
 Anschließend wird ein erstes $Move$-Objekt erzeugt, dessen Startposition ((0, 0), (0, 0)) ist und seine moves leer sind.
 In jedem Schritt wird das erste Element aus der $moves$ Liste entnommen.
-Dann wird mit folgeden Aufruf
+Dann wird mit folgendem Aufruf
 \begin{lstlisting}
   new_moves = solving_obj.neighbours_cost(move)
 \end{lstlisting}
@@ -241,7 +241,7 @@ Zum Schluss wird für jeden möglichen Zug ein $Move$-Objekt erstellt und als Li
 Falls eine der neuen Positionen bereits besucht wurde oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben.
 \\
 \\
-$neighbours\_cost$ als Flussdiagramm:       
+Im folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.       
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf}
@@ -252,7 +252,7 @@ $neighbours\_cost$ als Flussdiagramm:
 \clearpage
 \section{Laufzeit und Diskussion}
 \subsection{Komplexität der Lösung}
-Von jeder Position aus existieren zwei mögliche Schritte. Entweder in Richtung des Ziels von Labyrinth 1 oder in Richtung des Ziels von Labyrinth 2.
+Von jeder Position aus existieren im schlimmsten Fall zwei mögliche Schritte. Entweder in Richtung des Ziels von Labyrinth 1 oder in Richtung des Ziels von Labyrinth 2.
 Das führt zu insgesammt $2^{\text{maximale Anzahl an Schritten}}$ verschiedenen Möglichkeiten.
 Aufgrund dieser großen Anzahl an Möglichkeiten untersucht der Algorithmus nicht alle Pfade vollständig, sondern macht nur eine Abschätzung.
 Der hier vorgestellte Ansatz garantiert daher nicht unbedingt den optimalen Lösungsweg, liefter jedoch in akzeptabler Laufzeit eine gute Annäherung.
@@ -273,14 +273,14 @@ Wie schon oben erwähnt beeinflussst die Begrenzung $l$, die Laufzeit und Genaui
 Abbildung \ref{fig:schritte_1} zeigt die Anzahl der Schritte des gefundenen Lösungswegs in Abhängigkeit vom Parameter $l$.
 \\
 \\
-Affällig ist, dass der Graph mit zunehmendem $l$ gegen die Anzahl der Schritte des optimalen Weges konvergiert.
-Ebenso erkennbar ist ein kleiner Hügel. 
-Hier wird für ein größeren Wert von $l$ ein schlechterer Pfad gefunden.
+Auffällig ist, dass der Graph mit zunehmendem $l$ gegen die Anzahl der Schritte des optimalen Weges konvergiert.
+Ebenso erkennbar ist das es nicht streng monoton fallend ist. 
+In einem Fall, bei dem die Steigung positiv ist, wird für ein größeren Wert von $l$ ein schlechterer Pfad gefunden.
 Dies liegt daran, dass durch den höheren Wert von $l$ neue Wege betrachtet werden.
 Diese erscheinen kurzfristig vorteilhafter als die bisherigen Wege und verdrängen dadurch die eigentlich besseren aus der Liste.
 Das führt insgesammt zu ein schlechterer Weg.
 Bei größeren $l$ Werten tritt dieser Effekt jedoch kaum noch auf, da die Liste groß genug ist, um alle relevanten Pfade zu behalten.
-Der Einfluss dieser Hügel wird daher mit wachsendem $l$ vernachlässigbar.
+Der Einfluss dieser Monotonieveränderungen wird daher mit wachsendem $l$ vernachlässigbar.
 
 \clearpage
 \begin{figure}[H]
@@ -291,10 +291,9 @@ Der Einfluss dieser Hügel wird daher mit wachsendem $l$ vernachlässigbar.
 \end{figure}
 Abbildung \ref{fig:laufzeit_1} stellt die Anzahl an Iterationen dar, die zur Bestimmung des Lösungsweg benötigt werden in Abhängigkeit vonm Parameter $l$.
 \\
-\\
 Der Graph steigt mit wachsendem $l$ stark an.
 \\
-Allgemein kann die maximale Anzahl an Iterationen in Abhängigkeit von $l$ kann wie folgt berechnet werden.
+Allgemein kann die maximale Anzahl an Iterationen in Abhängigkeit von $l$ wie folgt berechnet werden.
 \begin{equation}
   l\cdot(2c_1+c_2)
   \label{max_iterationen}
@@ -302,7 +301,7 @@ Allgemein kann die maximale Anzahl an Iterationen in Abhängigkeit von $l$ kann 
 wobei:\\
 - $c_1$ die Kosten vom Startpunkt aus der Kostenmatrix 1 sind\\
 - $c_2$ die Kosten vom Startpunkt aus der Kostenmatrix 2 sind\\
-Der Faktor $2c_1+c_2$ beschreibt die maximale Anzahl an Schritte, aus denen ein möglicher Lösungsweg bestehen kann:
+Der Faktor $2c_1+c_2$ beschreibt die maximale Anzahl an Schritte, aus denen ein möglicher Lösungsweg bestehen kann.
 Zunächst erreicht Agent1 das Ziel mit $c_1$ Schritten.
 Anschließend läuft Agent2 denselben Weg zurück in ebenfalls $c_1$ Schritten und geht dann selber ins Ziel mit $c_2$ Schritten.
 Im schlechtesten Fall geht er für jeden Eintrag in der Liste, also $l$ mal, die maximale Anzahl an Schritten.
@@ -351,6 +350,8 @@ Alle Schritt des Wegs werden wie in der Tabelle \ref{tab:richtungscodierung} cod
     \caption{Iterationen labyrinthe0.txt}
   \end{minipage}
 \end{figure}
+Länge des Wegs: 8\\
+Weg: [3, 3, 0, 2, 2, 0, 3, 3]
 \subsection{labyrinthe1.txt}
 \begin{figure}[H]
   \centering
@@ -366,6 +367,9 @@ Alle Schritt des Wegs werden wie in der Tabelle \ref{tab:richtungscodierung} cod
     \caption{Iterationen labyrinthe1.txt}
   \end{minipage}
 \end{figure}
+Länge des Wegs: 31\\
+Weg: [3, 3, 3, 0, 2, 0, 3, 0, 2, 2, 1, 1, 2, 0, 0, 0, 3, 3, 1, 2, 1, 3, 1, 2, 1, 3, 3, 0, 0, 0, 0]
+
 \subsection{labyrinthe2.txt}
 \begin{figure}[H]
   \centering
@@ -381,6 +385,9 @@ Alle Schritt des Wegs werden wie in der Tabelle \ref{tab:richtungscodierung} cod
     \caption{Iterationen labyrinthe2.txt}
   \end{minipage}
 \end{figure}
+Länge des Wegs: 66\\
+Weg: [0, 0, 3, 3, 3, 0, 0, 3, 3, 0, 2, 2, 0, 0, 0, 3, 1, 3, 0, 3, 3, 1, 3, 1, 2, 1, 1, 1, 1, 2, 1, 1, 3, 3, 1, 3, 0, 3, 0, 0, 0, 0, 3, 3, 0, 0, 2, 2, 2, 0, 2, 2, 0, 0, 0, 0, 0, 3, 1, 3, 1, 3, 3, 0, 0, 3]
+
 \subsection{labyrinthe3.txt}
 \begin{figure}[H]
   \centering
@@ -396,6 +403,9 @@ Alle Schritt des Wegs werden wie in der Tabelle \ref{tab:richtungscodierung} cod
     \caption{Iterationen labyrinthe3.txt}
   \end{minipage}
 \end{figure}
+Länge des Wegs: 166\\
+Weg: [3, 3, 3, 3, 0, 3, 3, 0, 2, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 3, 1, 3, 1, 1, 1, 3, 3, 1, 3, 3, 3, 1, 1, 1, 3, 1, 3, 0, 3, 3, 3, 0, 2, 0, 0, 3, 1, 3, 3, 3, 3, 1, 1, 3, 2, 1, 3, 0, 3, 1, 1, 3, 1, 2, 1, 3, 3, 0, 0, 0, 0, 3, 1, 3, 3, 0, 0, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 0, 3, 3, 1, 1, 3, 3, 1, 3, 1, 3, 3, 0, 2, 0, 3, 3, 3, 1, 1, 3, 1, 2, 1, 2, 1, 2, 1, 3, 1, 3, 0, 0, 3, 3, 3, 0, 0, 2, 0, 0, 2, 0, 2, 0, 3, 3, 3, 1, 3, 1, 1, 1, 2, 2, 1, 3, 3, 0, 3, 3, 1, 3, 3, 3, 0, 2, 0, 3, 0, 3, 0, 3, 0, 0, 0, 0, 0]
+
 \subsection{labyrinthe4.txt}
 \begin{figure}[H]
   \centering
@@ -411,6 +421,9 @@ Alle Schritt des Wegs werden wie in der Tabelle \ref{tab:richtungscodierung} cod
     \caption{Iterationen labyrinthe4.txt}
   \end{minipage}
 \end{figure}
+Länge des Wegs: 14497\\
+Weg: [0, 0, 3, 0, 2, 0, 0, 0, 3, 1, .... 2, 2, 1, 3, 3, 1, 1, 3, 0, 0, 0, 0, 0]
+
 \subsection{labyrinthe5.txt}
 \begin{figure}[H]
   \centering
@@ -426,6 +439,9 @@ Alle Schritt des Wegs werden wie in der Tabelle \ref{tab:richtungscodierung} cod
     \caption{Iterationen labyrinthe5.txt}
   \end{minipage}
 \end{figure}
+Länge des Wegs: 1345\\
+Weg: [0, 0, 3, 3, 0, 0, 2, 0, 2, 0, 0, 3, 1, 1, 3, 3, 1, 1, 3, 0, 3, 0, 3, 0, 0, 1, 3, 0, 3, 1, 1, 1, 3, 0, 3, 1, 3, 0, 3, 3, 1, 3, 3, 0, 0, 3, 3, 0, 3, 3, 0, 0, 2, 0, 3, 0, 3, 3, 1, 3, 0, 0, 0, 0, 3, 0, 3, 1, 3, 3, 3, 1, 1, 3, 3, 3, 3, 0, 0, 0, 2, 2, 0, 2, 2, 2, 0, 0, 2, 0, 0, 0, 2, 0, 0, 2, 0, 3, 0, 2, 0, 0, 0, 3, 3, 3, 3, 0, 3, 1, 3, 1, 1, 3, 3, 3, 3, 0, 0, 3, 0, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 3, 1, 3, 0, 3, 1, 1, 3, 3, 0, 0, 2, 2, 0, 2, 0, 2, 2, 0, 3, 3, 3, 0, 2, 2, 2, 0, 0, 3, 0, 0, 3, 0, 2, 0, 3, 3, 3, 3, 3, 1, 3, 1, 1, 3, 3, 0, 3, 0, 3, 3, 0, 0, 3, 0, 3, 0, 0, 3, 0, 2, 2, 0, 0, 0, 0, 3, 0, 0, 0, 2, 2, 1, 1, 2, 0, 0, 2, 0, 3, 0, 0, 0, 2, 1, 1, 1, 2, 2, 2, 2, 2, 1, 2, 2, 0, 3, 0, 0, 0, 2, 2, 1, 1, 1, 1, 2, 2, 0, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2, 2, 0, 3, 3, 0, 0, 2, 0, 2, 2, 0, 3, 0, 2, 0, 3, 3, 0, 0, 0, 3, 0, 3, 3, 1, 3, 3, 1, 1, 3, 1, 3, 3, 0, 3, 3, 1, 1, 3, 0, 3, 0, 3, 0, 2, 0, 3, 0, 0, 3, 3, 1, 3, 3, 1, 1, 3, 0, 0, 3, 1, 3, 0, 3, 3, 0, 2, 2, 0, 2, 2, 0, 3, 0, 0, 0, 2, 0, 2, 2, 1, 2, 2, 0, 0, 2, 0, 0, 2, 0, 3, 0, 3, 1, 3, 3, 3, 0, 0, 2, 0, 2, 2, 2, 2, 0, 0, 3, 3, 0, 3, 0, 0, 0, 3, 3, 2, 0, 0, 0, 3, 3, 0, 2, 2, 2, 1, 2, 1, 1, 2, 2, 0, 2, 0, 3, 3, 3, 0, 0, 0, 0, 3, 0, 2, 0, 2, 2, 2, 2, 0, 0, 3, 0, 3, 0, 3, 3, 3, 3, 3, 3, 3, 2, 2, 0, 0, 0, 0, 0, 3, 3, 3, 0, 3, 1, 1, 1, 1, 3, 1, 1, 3, 1, 2, 1, 2, 1, 1, 3, 1, 1, 3, 0, 3, 3, 1, 1, 3, 1, 3, 0, 3, 1, 1, 3, 3, 3, 3, 3, 3, 1, 1, 3, 0, 3, 3, 3, 1, 3, 1, 1, 1, 3, 1, 1, 2, 1, 3, 1, 1, 1, 1, 1, 2, 1, 3, 0, 3, 1, 3, 1, 1, 1, 3, 1, 1, 3, 3, 3, 3, 3, 0, 3, 1, 3, 3, 1, 3, 3, 0, 0, 3, 0, 3, 3, 1, 1, 3, 1, 3, 0, 2, 2, 0, 3, 0, 3, 3, 3, 3, 3, 1, 1, 1, 1, 3, 1, 2, 1, 3, 1, 2, 1, 3, 1, 3, 3, 3, 3, 0, 2, 0, 0, 0, 0, 0, 3, 0, 0, 0, 2, 0, 3, 0, 0, 3, 1, 1, 3, 0, 0, 2, 0, 3, 3, 3, 0, 0, 0, 3, 0, 3, 0, 3, 3, 0, 0, 2, 0, 0, 0, 2, 2, 1, 2, 2, 1, 2, 0, 0, 0, 0, 0, 0, 2, 1, 2, 0, 2, 2, 0, 0, 0, 2, 0, 0, 2, 0, 0, 3, 0, 3, 3, 0, 2, 0, 3, 0, 3, 0, 2, 0, 2, 1, 2, 2, 0, 3, 1, 3, 0, 0, 2, 0, 0, 3, 3, 3, 3, 0, 3, 1, 3, 0, 0, 0, 3, 3, 1, 2, 3, 1, 2, 0, 2, 0, 0, 1, 3, 0, 3, 3, 3, 3, 1, 3, 0, 0, 0, 3, 3, 0, 3, 3, 0, 3, 0, 3, 3, 1, 2, 1, 1, 3, 1, 1, 3, 1, 2, 1, 2, 2, 1, 1, 1, 1, 3, 3, 3, 0, 2, 0, 3, 0, 3, 1, 3, 1, 1, 3, 1, 1, 1, 1, 3, 0, 2, 0, 3, 1, 1, 3, 1, 1, 3, 0, 3, 3, 3, 0, 2, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 2, 2, 0, 2, 2, 2, 0, 0, 0, 3, 0, 3, 0, 2, 2, 1, 2, 2, 1, 1, 2, 0, 2, 0, 0, 0, 2, 0, 3, 0, 2, 0, 2, 0, 3, 3, 0, 0, 2, 0, 2, 2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 3, 0, 3, 0, 3, 3, 3, 0, 2, 0, 2, 2, 1, 2, 0, 2, 0, 0, 2, 2, 1, 1, 2, 2, 1, 1, 2, 1, 1, 2, 2, 0, 0, 0, 3, 0, 2, 0, 2, 2, 0, 3, 3, 0, 0, 0, 0, 0, 2, 1, 2, 0, 0, 3, 3, 3, 0, 3, 3, 1, 1, 2, 1, 3, 0, 3, 1, 3, 0, 3, 0, 3, 1, 3, 3, 1, 3, 0, 3, 0, 3, 0, 0, 3, 3, 0, 3, 0, 2, 0, 0, 3, 1, 3, 3, 3, 3, 0, 3, 1, 1, 3, 1, 3, 1, 3, 1, 2, 2, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 2, 0, 2, 0, 0, 2, 2, 1, 2, 0, 0, 3, 0, 0, 2, 0, 0, 1, 2, 1, 2, 1, 1, 1, 3, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 2, 2, 0, 3, 0, 2, 0, 0, 0, 3, 0, 0, 2, 0, 0, 2, 1, 1, 1, 1, 2, 1, 2, 1, 2, 0, 0, 3, 3, 1, 3, 3, 1, 3, 1, 3, 0, 0, 0, 3, 3, 3, 3, 3, 0, 2, 0, 3, 0, 3, 3, 1, 1, 3, 1, 3, 1, 3, 1, 1, 1, 2, 1, 1, 3, 0, 2, 0, 3, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 3, 0, 0, 3, 3, 3, 1, 1, 3, 3, 0, 3, 0, 0, 3, 0, 3, 3, 0, 0, 0, 3, 1, 1, 3, 1, 3, 1, 3, 1, 3, 1, 1, 3, 0, 3, 0, 3, 3, 1, 1, 3, 0, 0, 3, 0, 3, 3, 3, 1, 1, 1, 3, 1, 1, 3, 0, 3, 1, 1, 1, 3, 3, 0, 3, 1, 2, 1, 3, 3, 3, 1, 1, 2, 2, 1, 1, 3, 3, 0, 3, 3, 0, 3, 0, 3, 3, 3, 1, 3, 3, 0, 0, 2, 0, 3, 3, 0, 3, 3, 0, 2, 0, 2, 2, 0, 0, 3, 0, 2, 0, 0, 3, 0, 0, 3, 3, 1, 3, 1, 3, 0, 0, 0, 0, 2, 0, 0, 3, 0, 3, 0, 2, 0, 0, 0, 0, 0, 2, 2, 2, 1, 2, 2, 1, 1, 1, 2, 0, 2, 2, 0, 0, 2, 2, 2, 0, 2, 1, 2, 0, 0, 2, 0, 2, 0, 3, 0, 0, 3, 3, 0, 2, 2, 0, 2, 1, 2, 2, 0, 2, 2, 1, 2, 2, 0, 3, 0, 0, 0, 2, 0, 2, 0, 3, 0, 2, 0, 2, 2, 2, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 3, 0, 3, 0, 0, 3, 3, 0, 0, 3, 3, 0, 3, 0, 3, 0, 0, 3, 3, 0, 3, 1, 2, 1, 1, 1, 1, 1, 3, 3, 3, 3, 1, 1, 2, 1, 3, 3, 1, 3, 3, 0, 3, 1, 3, 3, 3, 3, 1, 3, 0, 2, 2, 0, 3, 0, 0, 0, 0, 3, 0, 0, 3, 3, 0, 3, 1, 1, 3, 0, 3, 0, 0, 0, 0, 3, 3, 1, 3, 0, 3, 3, 0, 0, 0, 0, 3, 3, 0, 3, 3, 0, 0, 3]
+
 \subsection{labyrinthe6.txt}
 \begin{figure}[H]
   \centering
@@ -441,8 +457,12 @@ Alle Schritt des Wegs werden wie in der Tabelle \ref{tab:richtungscodierung} cod
     \caption{Iterationen labyrinthe6.txt}
   \end{minipage}
 \end{figure}
+Länge des Wegs: 1844\\
+Weg: [0, 0, 0, 3, 3, 3, 3, 3, ..., 0, 0, 3, 0, 0, 2, 2, 0, 0, 0, 3, 3]
+
 \subsection{labyrinthe7.txt}
 Keine Lösung gefunden
+
 \subsection{labyrinthe8.txt}
 \begin{figure}[H]
   \centering
@@ -458,6 +478,9 @@ Keine Lösung gefunden
     \caption{Iterationen labyrinthe8.txt}
   \end{minipage}
 \end{figure}
+Länge des Wegs: 1433\\
+Weg:[3, 0, 0, 3, 3, 3, 3, 0, 3, 3, ..., 0, 3, 3, 3, 0, 2, 0, 3, 3, 0]
+
 \subsection{labyrinthe9.txt}
 \begin{figure}[H]
   \centering
@@ -473,6 +496,9 @@ Keine Lösung gefunden
     \caption{Iterationen labyrinthe9.txt}
   \end{minipage}
 \end{figure}
+Länge des Wegs: 1036\\
+Weg:[3, 0, 3, 0, 0, 3, 0, 0, 2, 0, 0, 3, 3, 3, 0, 2, 0, 2, 0, 0, 3, 3, 3, 3, 0, 0, 2, 2, 0, 0, 3, 0, 3, 0, 3, 3, 0, 3, 1, 3, 1, 3, 1, 1, 3, 3, 0, 3, 3, 0, 3, 0, 0, 0, 2, 0, 3, 3, 3, 3, 3, 3, 1, 3, 1, 3, 0, 3, 3, 0, 3, 0, 2, 0, 0, 2, 0, 0, 2, 2, 0, 2, 0, 2, 2, 0, 3, 3, 0, 3, 3, 3, 0, 0, 0, 0, 3, 3, 0, 0, 2, 0, 0, 3, 3, 3, 3, 0, 0, 3, 1, 3, 1, 1, 1, 3, 0, 0, 3, 0, 3, 1, 3, 1, 3, 1, 3, 0, 0, 3, 3, 0, 3, 1, 3, 1, 1, 3, 0, 3, 1, 3, 3, 1, 1, 2, 2, 1, 1, 3, 3, 1, 3, 3, 3, 3, 0, 3, 3, 0, 0, 3, 3, 0, 2, 0, 0, 0, 0, 0, 0, 3, 1, 3, 0, 0, 0, 0, 3, 3, 1, 3, 0, 0, 2, 0, 0, 3, 3, 0, 3, 0, 3, 3, 1, 1, 3, 1, 3, 1, 3, 3, 1, 1, 2, 1, 3, 3, 1, 1, 2, 1, 1, 3, 3, 1, 3, 3, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 2, 0, 3, 1, 1, 3, 1, 3, 0, 3, 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 0, 2, 0, 3, 3, 3, 0, 0, 3, 0, 0, 0, 2, 0, 2, 0, 0, 2, 0, 2, 1, 2, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 3, 1, 3, 0, 3, 1, 1, 3, 0, 0, 0, 3, 0, 3, 0, 0, 3, 3, 0, 3, 3, 0, 3, 1, 1, 1, 3, 1, 3, 1, 3, 3, 3, 3, 0, 2, 2, 0, 2, 2, 0, 2, 0, 0, 2, 0, 0, 0, 3, 3, 1, 1, 2, 1, 1, 3, 0, 0, 3, 0, 3, 3, 3, 3, 3, 3, 1, 3, 3, 1, 1, 3, 1, 3, 0, 0, 3, 0, 3, 0, 3, 1, 3, 0, 2, 2, 2, 0, 0, 0, 3, 3, 1, 3, 1, 1, 3, 1, 3, 0, 3, 1, 3, 1, 1, 1, 3, 0, 3, 3, 3, 0, 0, 2, 0, 2, 0, 0, 3, 3, 3, 3, 0, 3, 0, 3, 3, 3, 0, 0, 0, 0, 3, 0, 2, 1, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 2, 0, 3, 3, 0, 3, 0, 0, 2, 1, 2, 0, 2, 0, 0, 2, 0, 0, 2, 1, 2, 1, 1, 2, 0, 0, 2, 2, 0, 3, 0, 3, 3, 0, 0, 2, 2, 0, 3, 3, 0, 3, 3, 0, 0, 3, 3, 0, 0, 0, 0, 3, 3, 3, 3, 3, 1, 1, 3, 1, 2, 2, 2, 1, 1, 3, 0, 3, 0, 0, 3, 0, 2, 0, 3, 0, 3, 3, 1, 1, 1, 1, 3, 0, 0, 3, 0, 3, 1, 3, 3, 0, 3, 1, 3, 1, 2, 2, 1, 3, 3, 0, 3, 1, 1, 3, 1, 3, 1, 3, 0, 3, 3, 0, 0, 3, 0, 2, 0, 3, 0, 3, 3, 0, 0, 0, 2, 2, 2, 0, 0, 3, 0, 0, 0, 2, 2, 1, 2, 1, 2, 0, 0, 0, 3, 0, 3, 0, 0, 3, 3, 3, 0, 2, 2, 2, 0, 0, 2, 2, 2, 1, 2, 2, 2, 1, 2, 0, 3, 0, 3, 0, 2, 0, 0, 0, 2, 0, 3, 3, 3, 0, 3, 0, 3, 1, 1, 3, 3, 0, 3, 0, 2, 0, 3, 0, 2, 0, 2, 2, 2, 2, 2, 1, 2, 1, 2, 0, 2, 0, 0, 2, 0, 3, 0, 0, 3, 3, 3, 3, 1, 3, 0, 3, 1, 3, 0, 0, 0, 3, 1, 3, 3, 3, 1, 3, 3, 3, 3, 1, 3, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 3, 1, 3, 3, 1, 1, 3, 0, 3, 0, 3, 0, 0, 0, 3, 1, 3, 3, 0, 3, 0, 2, 0, 0, 3, 0, 3, 3, 3, 3, 3, 3, 3, 1, 3, 1, 3, 1, 3, 1, 3, 0, 3, 0, 0, 0, 2, 0, 3, 0, 2, 0, 3, 0, 3, 3, 0, 2, 0, 2, 2, 0, 2, 0, 0, 3, 0, 2, 0, 3, 3, 1, 1, 3, 3, 0, 3, 0, 2, 0, 3, 0, 0, 3, 0, 3, 3, 3, 3, 0, 2, 0, 3, 3, 3, 3, 1, 3, 0, 3, 1, 3, 0, 0, 2, 0, 2, 2, 1, 1, 2, 1, 2, 2, 0, 0, 3, 0, 3, 3, 3, 2, 0, 3, 0, 3, 0, 3, 0, 0, 0, 3, 3, 1, 1, 3, 3, 1, 3, 0, 3, 0, 3, 1, 3, 0, 3, 1, 3, 3, 3, 1, 1, 3, 3, 1, 2, 1, 2, 2, 1, 2, 2, 2, 1, 3, 1, 1, 1, 3, 3, 3, 0, 3, 3, 3, 1, 3, 3, 3, 0, 0, 3, 1, 3, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 3, 3, 3, 3, 0, 3, 0, 3, 3, 0, 3, 0, 0, 3, 3, 0, 3, 1, 3, 3, 0, 0, 0, 0, 0, 3, 3, 0, 2, 0, 2, 2, 0, 3, 0, 0, 2, 1, 2, 0, 3, 0, 3, 0, 2, 0, 0, 0, 0, 2, 2, 2, 1, 2, 2, 0, 2, 0, 3, 0, 3, 0, 3, 0, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 3, 0, 0, 0, 0, 0, 2, 2, 0, 2, 0, 3, 3, 0, 3, 3, 3, 3, 0, 3, 0, 2, 0, 3, 0, 0, 3, 0, 2, 0, 0, 0, 3, 0, 0, 0, 3, 1, 3, 1, 1, 3, 3, 3, 0, 3, 0, 3, 3, 0, 3, 1, 3, 0, 0, 3, 0, 2, 2, 0, 0, 3, 0, 3, 0, 3, 0, 0, 2, 2, 2, 0, 3, 3, 0, 0, 3, 3, 3, 3]
+
 
 \section{Quellcode}
 Unwichtige Teile des Programms sollen hier nicht abgedruckt werden. Dieser Teil sollte nicht mehr als 2–3 Seiten umfassen, maximal 10.

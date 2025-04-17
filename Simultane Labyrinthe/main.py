@@ -39,7 +39,7 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vert
         moves.extend(a)
 
         moves = sorted(moves, key=lambda obj: (-obj.weight, len(obj.moves)))
-        moves = moves[:l]  # Nur die Anzahl besten Züge speichern
+        moves = moves[:1000]  # Nur die Anzahl besten Züge speichern
 
         if moves[0].cost == 0:
             return moves[0], n
@@ -48,7 +48,7 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vert
 def main():
     start_time = time.time()
 
-    width, height, data = read_data_from_file('labyrinthe8.txt')
+    width, height, data = read_data_from_file('labyrinthe4.txt')
 
     horizontal_walls_1, vertical_walls_1, gruben_1 = create_matrix(data, height)
     horizontal_walls_2, vertical_walls_2, gruben_2 = create_matrix(data, height)
@@ -56,22 +56,15 @@ def main():
     cost_matrix_1 = create_matrix_for_laby(horizontal_walls_1, vertical_walls_1, gruben_1, width, height)
     cost_matrix_2 = create_matrix_for_laby(horizontal_walls_2, vertical_walls_2, gruben_2, width, height)
 
-    print("calculating cost matrix")
-    a = [1, 4, 5, 6, 7, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300]
-    b = []
-    c = []
-    for i in a:
-        try:
-            move, n = moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1,
-                                horizontal_walls_2, vertical_walls_2, gruben_1, gruben_2, i)
-            print(i)
-            b.append(len(move.moves))
-            c.append(n)
-        except:
-            print("No solution found")
-    print(f"anzahl_array = {a}")
-    print(f"moves_array = {b}")
-    print(f"iterations_array = {c}")
+    try:
+        move, n = moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1,
+                            horizontal_walls_2, vertical_walls_2, gruben_1, gruben_2, 0)
+        print(len(move.moves))
+        print(move.moves)
+
+    except:
+        print("No solution found")
+
 
 
 
