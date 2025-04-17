@@ -7,7 +7,7 @@ class Move:
         self.moves = moves
         self.positions = positions
         self.cost = cost
-        self.weight = weight if weight is not None else (heights_cost - cost) / (len(moves)**1)  # moves are sorted based on this value
+        self.weight = weight if weight is not None else (heights_cost - cost) / len(moves)  # moves are sorted based on this value
 
 
 class Solving:

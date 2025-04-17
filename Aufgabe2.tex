@@ -501,8 +501,154 @@ Weg:[3, 0, 3, 0, 0, 3, 0, 0, 2, 0, 0, 3, 3, 3, 0, 2, 0, 2, 0, 0, 3, 3, 3, 3, 0, 
 
 
 \section{Quellcode}
-Unwichtige Teile des Programms sollen hier nicht abgedruckt werden. Dieser Teil sollte nicht mehr als 2–3 Seiten umfassen, maximal 10.
+\subsection{Move Klasse}
+\begin{lstlisting}[language=Python]
+  class Move:
+
+      def __init__(self, moves, positions, cost, heights_cost, weight=None):
+          self.moves = moves
+          self.positions = positions
+          self.cost = cost
+          self.weight = weight if weight is not None else (heights_cost - cost) / len(moves)  # moves are sorted based on this value
+          
+\end{lstlisting}
+\subsection{Solving Klasse}
+\begin{lstlisting}[language=Python]
+class Solving:
+    def next_position(self, position, next_move):
+        mf = self.move_funcs
+        md = self.move_deltas
+        pos1 = position[0]
+        pos2 = position[1]
+
+        
+        if pos1 != (self.width - 1, self.height - 1):
+            matrix1 = self.vertical_walls_1 if next_move < 2 else self.horizontal_walls_1
+            if mf[next_move](pos1[0], pos1[1], matrix1):
+                pos1 = (pos1[0] + md[next_move][0], pos1[1] + md[next_move][1])
+                if pos1 in self.gruben_1:
+                    pos1 = (0, 0)
+
+        
+        if pos2 != (self.width - 1, self.height - 1):
+            matrix2 = self.vertical_walls_2 if next_move < 2 else self.horizontal_walls_2
+            if mf[next_move](pos2[0], pos2[1], matrix2):
+                pos2 = (pos2[0] + md[next_move][0], pos2[1] + md[next_move][1])
+                if pos2 in self.gruben_2:
+                    pos2 = (0, 0)
+        return pos1, pos2
+
+    def next_move(self, pos, cost_matrix):
+        w = self.width
+        h = self.height
+        return None if pos == (w - 1, h - 1) else cost_matrix[pos[1]][pos[0]][1]
+    
+    def check_visited(self, next_position, length, move):
+        key = (next_position[0][0], next_position[0][1],
+               next_position[1][0], next_position[1][1])
+        if key in self.visited and self.visited[key] <= length:
+            return None
+        self.visited[key] = length
+        return move
+
+    def neighbours_cost(self, move: Move):
+        # Berechne beide Positionen anhand der Bewegungsfolge
+        pos1 = move.positions[0]
+        pos2 = move.positions[1]
+
+       
+        move_1 = self.next_move(pos1, self.cost_matrix_1)
+        move_2 = self.next_move(pos2, self.cost_matrix_2)
+
+        next_position_1 = self.next_position(move.positions, move_1) if move_1 is not None else None
+        next_position_2 = self.next_position(move.positions, move_2) if move_2 is not None else None
+
+        
+        move_1 = self.check_visited(next_position_1, len(move.moves) + 1, move_1) if move_1 is not None else None
+        move_2 = self.check_visited(next_position_2, len(move.moves) + 1, move_2) if move_2 is not None else None
+
+        results = []
+        if move_1 is not None:
+            results.append(Move(move.moves + [move_1], next_position_1, self.get_total_cost(next_position_1), self.cost_at_beginning))
+        if move_2 is not None:
+            results.append(Move(move.moves + [move_2], next_position_2, self.get_total_cost(next_position_2), self.cost_at_beginning))
+        return results
+      \end{lstlisting}
 
 
+\subsection{Cost Klasse}
+\begin{lstlisting}[language=Python]
+class Cost:
 
+   def write_cost(self, start_x, start_y):
+        stack = [(start_x, start_y, 0, None)]
+
+        while stack:
+            x, y, cost, direction = stack.pop()
+            if self.matrix[y][x] != 0:
+                continue
+
+            self.matrix[y][x] = (cost, direction)
+
+
+            a = self.get_neighbors(x, y)
+            for neighbor in a:
+                nx, ny, ndirection = neighbor
+                if self.matrix[ny][nx] == 0:
+                    stack.append((nx, ny, cost + 1, ndirection))
+
+
+    def create_cost_matrix(self):
+        self.matrix = [[0 for _ in range(self.width)] for _ in range(self.height)]
+        self.write_cost(self.width - 1, self.height - 1)
+        return self.matrix
+      \end{lstlisting}
+
+\subsection{main.py}
+\begin{lstlisting}[language=Python]
+  def moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1, horizontal_walls_2,
+           vertical_walls_2, gruben_1, gruben_2, l):
+    solving_obj = Solving(cost_matrix_1, cost_matrix_2, vertical_walls_1, horizontal_walls_1, vertical_walls_2,
+                          horizontal_walls_2, gruben_1, gruben_2, width, height)
+
+    moves = [Move([], ((0, 0), (0, 0)), 0, heights_cost=0, weight=0)]
+    n = 0
+    while True:
+        n += 1
+        move = moves[0]
+        moves.pop(0)
+
+        a = solving_obj.neighbours_cost(move)
+        moves.extend(a)
+
+        moves = sorted(moves, key=lambda obj: (-obj.weight, len(obj.moves)))
+        moves = moves[:l]
+
+        if moves[0].cost == 0:
+            return moves[0], n
+
+
+def main():
+   width, height, data = read_data_from_file('labyrinthe_.txt')
+
+    horizontal_walls_1, vertical_walls_1, gruben_1 = create_matrix(data, height)
+    horizontal_walls_2, vertical_walls_2, gruben_2 = create_matrix(data, height)
+
+    cost_matrix_1 = create_matrix_for_laby(horizontal_walls_1, vertical_walls_1, gruben_1, width, height)
+    cost_matrix_2 = create_matrix_for_laby(horizontal_walls_2, vertical_walls_2, gruben_2, width, height)
+
+    l = 100
+
+    try:
+        move, n = moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1,
+                            horizontal_walls_2, vertical_walls_2, gruben_1, gruben_2, l)
+        print(len(move.moves))
+        print(move.moves)
+
+    except:
+        print("No solution found")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
 \end{document}
