@@ -54,6 +54,11 @@ class TreeNode:
             a.update(child.get_all_possible_costs())
         return a
 
+    def get_interal_nodes(self):
+        if self.is_leaf:
+            return 0
+        return sum(child.get_interal_nodes() for child in self.children) + 1
+
 
 def read_data_from_file(file_name):
     with open(file_name, 'r', encoding='utf-8') as file:
@@ -111,27 +116,33 @@ def improve_tree(root: TreeNode) -> TreeNode:
     return create_tree(root)
 
 
-def find_best_tree(root, n, r):
-    a = []
-    for i in range(int(n / r)):
-        root = improve_tree(root)
-        new_calc = calculate_tree(root)
-        a.append(new_calc)
-    return a
+def find_best_tree(root):
+    best_value = 0
+    best_root = root.copy()
+    while True:
+        try:
+            root = improve_tree(root)
+            new_calc = calculate_tree(root)
+            if new_calc < best_value:
+                best_value = new_calc
+                best_root = root.copy()
+        except Exception as e:
+            return best_root
 
 
-def main(n, r):
+def main():
     root = TreeNode(0, None)
     root = create_tree(root)
-    return find_best_tree(root, n, r)
+    return find_best_tree(root)
 
 
 if __name__ == "__main__":
     for i in range(10):
         perl_number, perl_costs, message = read_data_from_file(f'schmucknachrichten/schmuck{i}.txt')
         characters, distribution = create_distribution(message)
-        a = main(len(characters), perl_number)
-        print(f"Schmuck {i}: smallest cost: {min(a)} unterschiedliche Buchstaben: {len(characters)}")
-        plt.plot(range(len(a)), a, marker='', linestyle='-', color='b')  # x-Werte sind die Indizes von a
-        plt.grid(True)
-        plt.show()
+        print(len(characters))
+    
+    a = main()
+    print(f"n: {len(characters)} r: {2} maximale Interationen: {len(a)}")
+    plt.plot(range(len(a)), a, marker='', linestyle='-', color='b')  # x-Werte sind die Indizes von a
+    plt.grid(True)
