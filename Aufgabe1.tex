@@ -338,16 +338,24 @@ Daraus folgt, dass es maximal
 Iteratioen benötigt werden, bis zum maximal ausgearteten Baum.
 Falsche Knoten sind dabei innere Knoten, die beim ausbalancierten Baum noch nicht auf der richtigen Stelle sind, also alle bis auf die linkesten Knoten. (Abbildung \ref{fig:makiert_baum})
 
-Generell gilt um die maximale Anzahl an innere Knoten zu kriegen, muss jeder Knoten eine möglichst geringe Anzahl an Kindern haben.
-Wie oben festgelegt, hat jedere innere Knoten mindestens zwei Kinder. 
-Daraus folgt, dass die Anzahl an innere Knoten bei einem Binbaum am größten ist und wird daher durch 
+Generell gilt, um die maximale Anzahl an innere Knoten zu erhalten, sollte jeder Knoten eine möglichst wenig Kindern besitzen.
+Wie zuvor festgelegt, hat jedere innere Knoten mindestens zwei Kinder. 
+Daraus folgt, dass die maximale Anzahl an innere Knoten erreicht wird, wenn der Baum ein Binärbaum ist und kann durch
 \begin{equation}
-  I = w - 1
+  \text{innere Knoten} = w - 1
 \end{equation}
-wobei w die Anzahl an Blättern/Codewörter ist
-berechnet
-
-Daher ergibt sich allgemein eine Laufzeit von $O(n^{l+1}-l) = O(n^{\log_n{w}+1}-\log_n{w})$.
+berchnet werden.
+Dabei ist $w$ die Anzahl an Blättern/Codewörter.
+Auf jeder Ebene existiert ein richtiger innere Knoten, derren Anzahl minimal mit 
+\begin{equation}
+  \text{richtige innere Knoten} = \log_{r-1}{w}
+\end{equation}
+abgeschäzt werden kann.\\
+Daher ergibt sich
+\begin{equation}
+  I < (n-1)\cdot(w-1-\log_{r-1}{w})
+\end{equation}
+Dies bedeuted eine Laufzeit von $O(n\cdot w)$
 
 \subsection{Stand der Forschung}
 Die vorliegende Fragestellung ist seit den 60iger Jahren in der theorietischen Informatik bekannt. 
