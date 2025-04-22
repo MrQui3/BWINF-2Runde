@@ -98,7 +98,7 @@ Wenn sich die Durchmesser der Perlen unterscheiden, stimmt diese Gleichung nicht
 \\
 Um präfixfreien Code zu erzeugen, wird am besten ein Baum benutzt. Da man durch diesen sicher gehen kann, das keine Codewort der Präfix eines anderen Codewort ist. 
 Dabei ist jedes Blatt des Baums ein Codewort und jede Kante zu dem Blatt eine Code vom Codewort. Der Baum hat mindestens so viele Blätter wie es verschiedene Buchstaben gibt.
-Jeder interne Knoten hat dabei maximal so viele Kinder, wie es verschiedene Perlen gibt. Die Ebene des Blattes entspricht die Länge des Codewortes.
+Jeder innerne Knoten hat dabei maximal so viele Kinder, wie es verschiedene Perlen gibt. Die Ebene des Blattes entspricht die Länge des Codewortes.
 
 \begin{figure}[h]
   \centering
@@ -112,7 +112,7 @@ Um möglichst kleinen präfixfreien Code zu erstellen, muss der Buchstaben der a
 In Abbildung \ref{fig:simple tree} hätte c die höchste Häufigkeit und dannach kommt a und b. Was von a und b die höhere Häufigkeit hat, ist egal, da sie beide auf der untersten Ebene sind.\\
 Daher ergibt sich $p_1 \geq p_2 \geq p_3 ... \geq p_i$ und $n_1 \leq n_2 \leq n_3 ... \leq n_i$\\
 Zu finden ist also ein Baum, der basierden auf den Häufigkeiten der Buchstaben, seine Blätter so auf seine Ebene so verteilt, dass die Gleichung \eqref{equation:simple_kostenberechnung} möglichst gering ist. 
-Jeder interne Knoten muss dabei mindestens zwei Kinder haben, da ein interner Knoten mit nur einem Kind die Äste des Baums verlängert ohne irgendwelche anderen Vorteile dem Baum zu bringen.\\
+Jeder innerne Knoten muss dabei mindestens zwei Kinder haben, da ein innerner Knoten mit nur einem Kind die Äste des Baums verlängert ohne irgendwelche anderen Vorteile dem Baum zu bringen.\\
 
 Zu Beginn des Algorithmus wird ein perfekt ausbalancierter Baum erstellt, der so viele Blätter wie Buchstaben hat (Abbildung \ref{fig:balancierter_Baum}). 
 Jedes Blatt wird von links nach rechts in aufsteigender Reihenfolge mit einem Buchstaben belegt, und die Gesamtkosten des Baums werden gemäß der Formel (1) berechnet. 
@@ -125,7 +125,7 @@ Das nach oben verschobenene Blatt erhält den Zusatz $protected$. Das verhindert
 Dadurch wird ein Zyklus vermieden, bei dem ein Blatt zunächst nach oben verschoben und anschließend wieder nach unten erweitert würde.
 Das nach oben Verschieben und unten Neueinfügen der Blätter gilt als ein Optimierungsschritt,
 welcher im Optimierungsprozess wiederholt wird. (Abbildung \ref{fig:trans_2})
-Dieser Vorgang wird so lange fortgesetzt, bis alle Blätter den Zusatzt $protected$ haben - also keine weitern Optimierungen mehr möglich sind.
+Dieser Vorgang wird so lange fortgesetzt, bis keine Blätter mehr verschoben werden können (Abbildung \ref{fig:baum_fertig}) - also keine weitern Optimierungen mehr möglich sind.
 Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
 
 
@@ -151,9 +151,19 @@ Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/trans_3.pdf}
-  \caption{Transformation 2}
-  \label{fig:trans_2}
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Schmucknachrichten/pdf_src/trans_3.pdf}
+    \caption{Transformation 2}
+    \label{fig:trans_2}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Schmucknachrichten/pdf_src/trans_4.pdf}
+    \caption{Ausgearteter Baum}
+    \label{fig:baum_fertig}
+  \end{minipage}
 \end{figure}
 
 \clearpage
@@ -169,7 +179,7 @@ Daher stimmt die Gleichung \eqref{Kosten eines Buchstaben} nicht mehr, und muss 
 wobei:\\
  - $cp_n$ die Kosten/Durchmesser der Perle $n$ ist.\\
 
- Stellt man nun Bäume nicht nach ihrer Ebene, sondern nach ihren Kosten dar, erhält man einen \textit{lopsided tree}.
+ Stellt man nun Bäume nicht nach ihrer Ebene, sondern nach ihren Kosten dar, erhält man einen \textit{lopsided tree} [1].
 
  \begin{figure}[h]
   \centering
@@ -177,7 +187,7 @@ wobei:\\
   \caption{lopsided tree: Perlendurchmesser: (1; 1; 2) }
   \label{fig:lopsided tree}
 \end{figure}
-Auch hier gilt: Jeder interne Knoten muss mindestens zwei Kinder haben. Bei dieser Art von Bäumen hat jedoch nicht der rechteste Knoten die geringsten Kosten, sondern der oberste.
+Auch hier gilt: Jeder innerne Knoten muss mindestens zwei Kinder haben. Bei dieser Art von Bäumen hat jedoch nicht der rechteste Knoten die geringsten Kosten, sondern der oberste.
 Die Kosten eines Knoten sind:
 \begin{equation}
   K = K_E + K_S
@@ -218,7 +228,7 @@ Zu Beginn wird der Wurzelknoten, root, mit einem balancierten Baum.
 
 Dabei werden jeweils alle potenziellen neuen Blätter im Baum betrachtet und das Blatt mit den geringsten Kosten wird dem Baum hinzugefügt.
 Falls der Elternknoten ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
-Das liegt daran, dass jeder interne Knoten mindesten zwei Kinder haben muss – daher stellen diese Kosten die effektiv neu entstehenden Kosten für den Baum dar.
+Das liegt daran, dass jeder innerne Knoten mindesten zwei Kinder haben muss – daher stellen diese Kosten die effektiv neu entstehenden Kosten für den Baum dar.
 Das passiert solange, bis der der Baum genau soviele Blätter hat, wie es Buchstaben gibt.
 Die möglichen neuen Blätter erhält man über den Aufruf
 \begin{lstlisting}
@@ -308,63 +318,61 @@ Die Liste wird dann aufsteigend sortiert und jedes Element wie in der Gleichung 
 
 \clearpage
 \section{Laufzeit und Diskussion}
-%TODO: Abbildung einfügen
-
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/trans_makiert.pdf}
+  \caption{Balancierter Baum, richtige Knoten makiert}
+  \label{fig:makiert_baum}
+\end{figure}
 
 
 
 \subsection{Analyse des Algorithmus}
 Der Algorithmus endet, wenn keine Knoten mehr verschoben werden können.
-Dies ist gegeben, wenn der Baum maximal links ausgeartet ist (aBILDIUNG).
-Zu Beginn der Analyse nehmen wir an jede Perle hat denselben Durchmesser.\\ 
-Allgemein kann jeder Knoten maximal $n-i$ Mal verschoben werden, bis er komplett auf der linken Seite ist. Dabei ist $n$ die Anzahl an verschieden Perlen.
+Dies ist gegeben, wenn der Baum maximal links ausgeartet ist (Abbildung \ref{fig:baum_fertig}).
+Allgemein kann jeder Knoten maximal $n-1$ Mal verschoben werden, bis er komplett auf der linken Seite ist. Dabei ist $n$ die Anzahl an verschieden Perlen.
 Daraus folgt, dass es maximal 
 \begin{equation}
   I < (n-1)\cdot\text{Anzahl falscher Knoten}
 \end{equation}
 Iteratioen benötigt werden, bis zum maximal ausgearteten Baum.
-Falsche Knoten sind dabei innere Knoten, die beim ausbalancierten Baum noch nicht auf der richtigen Stelle sind, also alle bis auf die linkesten Knoten. (ABBILDUNG)
-Falsche Knoten werden mit der Formel
-\begin{equation}
-  \text{Anzahl falscher Knoten} < \sum_{i = 0}^l n^i - l
-  \label{anzahl_falscher_knoten}
-\end{equation}
-berechnet.
-Dabei ist\\
-- $l$ die maximale Anzahl der Ebenen\\
-- $w$ die Anzahl der unterschiedliche Buchstaben\\
+Falsche Knoten sind dabei innere Knoten, die beim ausbalancierten Baum noch nicht auf der richtigen Stelle sind, also alle bis auf die linkesten Knoten. (Abbildung \ref{fig:makiert_baum})
 
-Der erste Teil der Formel beschreibt die maximale Anzahl an inneren Knoten im ausbalancierten Baum.
-Dabei wird über jede Ebene iteriert und die Anzahl der inneren Knoten pro Ebene $n^i$ addiert.
-Hierbei gilt $l$ als Oberste Schranke für die maximale Anzahl an Ebenen, welche wie folgt
-$ log_n{w} $ 
-berechnet werden kann. 
-\\
-\\
-Der zweite Teil der Formel \eqref{anzahl_falscher_knoten} beschreibt, die schon richtig vorhanden Knoten.
-In jeder Ebene gibt es sicher einen ganz linken Knoten, der schon an der richtigen Stelle ist, daher müssen diese abgezogen werden.
-\\
-\\
-Bei unterschiedlichen Durchmesser .....
-\\
-\\
+Generell gilt um die maximale Anzahl an innere Knoten zu kriegen, muss jeder Knoten eine möglichst geringe Anzahl an Kindern haben.
+Wie oben festgelegt, hat jedere innere Knoten mindestens zwei Kinder. 
+Daraus folgt, dass die Anzahl an innere Knoten bei einem Binbaum am größten ist und wird daher durch 
+\begin{equation}
+  I = w - 1
+\end{equation}
+wobei w die Anzahl an Blättern/Codewörter ist
+berechnet
+
 Daher ergibt sich allgemein eine Laufzeit von $O(n^{l+1}-l) = O(n^{\log_n{w}+1}-\log_n{w})$.
 
 \subsection{Stand der Forschung}
 Die vorliegende Fragestellung ist seit den 60iger Jahren in der theorietischen Informatik bekannt. 
-Dabei lieferte Huffman eine Lösung für den spezial Fall, von zwei Quellsymbolen. \\
+Dabei lieferte Huffman eine Lösung für den spezial Fall, von zwei Quellsymbolen.
+\\
+\\
 Für unseren Fall von mehr als zwei Quellsymbolen mit unterschiedlichen Kosten, 
-entwickelten Mordecai J. Golin und Günter Rote im Jahr 1998 das schnellste Verfahren, um auf eine exatke Lösung zu kommen.\\
+entwickelten Mordecai J. Golin und Günter Rote im Jahr 1998 das bis jetzt schnellste Verfahren, um auf eine exatke Lösung zu kommen.\\
 "The minimum-cost prefix-free code for n words can be computed in $O(n^{C+2})$ time and $O(n^{C+1})$ space, if the costs of the letters are integers between 1 and C."\\
 Für die Beispielaufgabe $schmuck5.txt$ hat der Algorithmus eine Laufzeit $34^8$(n=34; C=6) Iterationen. 
-Dieser Art von Algorithmus kann wegen seiner Laufzeit nicht für die vorgegebenen Beispielaufgabe verwendet werden. 
+Dieser Art von Algorithmus kann wegen seiner Laufzeit nicht für die vorgegebenen Beispielaufgabe verwendet werden. [1]
 \\
-Um eine polynominelle Laufzeit zu erreichen, wandeten Mordecai J. Golin, Claire Mathieu und Neal E. Young ein polynominelles approximations Verfahen an.\\
-"The algotithm computes a $(1+\epsilon)$ approximate solution in time $O(n+f{\epsilon}\log^3{n})$, where $n$ is the input size."\\
+\\
+Um eine polynominelle Laufzeit zu erreichen, entwickelten Mordecai J. Golin, Claire Mathieu und Neal E. Young 2012 ein approximations Verfahen.\\
+Dieser Algorithmus passiert auf dem PTAS-Verfahren, wobei zuerst ein präfixfreier Code bis zur einer bestimmten Tiefe $\tau$ erstellt wird und dann die restlichen Codewörter durch ein Rundungsverfahren ergänzt werden.
+Dabei ist es zentral, dass die Wahrscheinlichkeitsverteilung der zu kodierenden Codewörter möglichst in große Gruppen mit gleich großer Wahrscheinlichkeit ein geordnet werden können.
+In den Beispielen, vorallem in Beispiel 9 ist dies nicht gegeben, weshalb das Bestimmen des Vorbaums über $9^{24}$ Schritte benötigt.
+Somit ist dieses Verfahren für die gewählten Beispiele ebenfalls nicht verwendbar. [2]
 
 \subsection{Fazit}
-
-
+Der vorgestellte Algorithmus stellt keine exakte Lösung für das gegebene Problem dar, liefert jedoch in polynomieller Laufzeit eine gute Approximation.
+Aus diesem Grund erfolgt durch das vorgestellte Verfahren keine Beantwortung, ob das Problem NP-hart ist.
+Im Gegensatz zum oben vorgestellten Verfahren kann der Algorithmus auch Fälle verarbeiten, in denen die Wahrscheinlichkeiten der Zeichen nicht gleichmäßig verteilt oder in klaren Gruppen strukturiert sind.\\
+In praktischen Tests zeigte sich, dass die berechneten Lösungen im Durchschnitt nur etwa 10\,\% von der optimalen Lösung abweichen.  
+Ein formaler Beweis dieser Beobachtung steht allerdings noch aus.
 
 
 \section{Beispiele}
@@ -374,6 +382,12 @@ Genügend Beispiele einbinden! Die Beispiele von der BwInf-Webseite sollten hier
 Unwichtige Teile des Programms sollen hier nicht abgedruckt werden. Dieser Teil sollte nicht mehr als 2–3 Seiten umfassen, maximal 10.
 
 \section{Quellen}
+
+[1]  Mordecai J. Golin and Günther Rote,  \textit{A Dynamic Programming Algorithm for Constructing Optimal Prefix-Free Codes with Unequal Letter Costs}, IEEE Transactions on Information Theory 44, no. 5, (September 1998)
+
+[2] Mordecai J. Golin, Claire Mathieu und Neal E. Young, \textit{HUFFMAN CODING WITH LETTER COSTS: A LINEAR-TIME APPROXIMATION SCHEME}, 2012 Society for Industrial and Applied Mathematics
+Vol. 41, No. 3, pp. 684–713
+
 
 
 \end{document}
