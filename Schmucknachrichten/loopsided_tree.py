@@ -1,14 +1,12 @@
 import copy
 from typing import Tuple
-import matplotlib
 
-matplotlib.use('TkAgg')
-import matplotlib.pyplot as plt
 
 
 class TreeNode:
 
-    def __init__(self, cost, parent):
+    def __init__(self, cost, parent, perln):
+        self.perln = perln
         self.cost = cost
         self.children = []
         self.parent = parent
@@ -19,9 +17,9 @@ class TreeNode:
         if obj is self:
             if self.is_leaf:  # Damit jede parent immer mehr mindestens zwei kinder hat
                 self.is_leaf = False
-                self.children.append(TreeNode(self.cost + perl_costs[0], self))
+                self.children.append(TreeNode(self.cost + perl_costs[0], self, self.perln+[len(self.children)]))
 
-            self.children.append(TreeNode(self.cost + perl_costs[len(self.children)], self))
+            self.children.append(TreeNode(self.cost + perl_costs[len(self.children)], self, self.perln+[len(self.children)]))
             return
 
         for child in self.children:
@@ -117,32 +115,32 @@ def improve_tree(root: TreeNode) -> TreeNode:
 
 
 def find_best_tree(root):
-    best_value = 0
-    best_root = root.copy()
+    best_value = calculate_tree(root)
+    best_root = copy.deepcopy(root)
     while True:
         try:
             root = improve_tree(root)
             new_calc = calculate_tree(root)
             if new_calc < best_value:
                 best_value = new_calc
-                best_root = root.copy()
+                best_root = copy.deepcopy(root)
         except Exception as e:
             return best_root
 
 
 def main():
-    root = TreeNode(0, None)
+    root = TreeNode(0, None, [])
     root = create_tree(root)
-    return find_best_tree(root)
+    root = find_best_tree(root)
+    print(f"Gesamtkosten: {calculate_tree(root)}\\")
+    all_leaves = root.get_leaves()
+    all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
+    for i in range(len(all_leaves)):
+        print(f"{characters[i]}: {all_leaves[i].perln}")
 
 
 if __name__ == "__main__":
-    for i in range(10):
-        perl_number, perl_costs, message = read_data_from_file(f'schmucknachrichten/schmuck{i}.txt')
-        characters, distribution = create_distribution(message)
-        print(len(characters))
+    perl_number, perl_costs, message = read_data_from_file(f'Schmucknachrichten/schmuck9.txt')
+    characters, distribution = create_distribution(message)
+    main()
     
-    a = main()
-    print(f"n: {len(characters)} r: {2} maximale Interationen: {len(a)}")
-    plt.plot(range(len(a)), a, marker='', linestyle='-', color='b')  # x-Werte sind die Indizes von a
-    plt.grid(True)
