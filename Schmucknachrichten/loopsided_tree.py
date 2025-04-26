@@ -117,14 +117,17 @@ def improve_tree(root: TreeNode) -> TreeNode:
 def find_best_tree(root):
     best_value = calculate_tree(root)
     best_root = copy.deepcopy(root)
+    a = []
     while True:
         try:
             root = improve_tree(root)
             new_calc = calculate_tree(root)
+            a.append(new_calc)
             if new_calc < best_value:
                 best_value = new_calc
                 best_root = copy.deepcopy(root)
         except Exception as e:
+            print(a)
             return best_root
 
 
@@ -132,15 +135,15 @@ def main():
     root = TreeNode(0, None, [])
     root = create_tree(root)
     root = find_best_tree(root)
-    print(f"Gesamtkosten: {calculate_tree(root)}\\")
+    '''print(f"Gesamtkosten: {calculate_tree(root)}\\")
     all_leaves = root.get_leaves()
     all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
     for i in range(len(all_leaves)):
-        print(f"{characters[i]}: {all_leaves[i].perln}")
+        print(f"{characters[i]}: {all_leaves[i].perln}")'''
 
 
 if __name__ == "__main__":
-    perl_number, perl_costs, message = read_data_from_file(f'Schmucknachrichten/schmuck0.txt')
+    perl_number, perl_costs, message = read_data_from_file(f'Schmucknachrichten/schmuck9.txt')
     characters, distribution = create_distribution(message)
     main()
     

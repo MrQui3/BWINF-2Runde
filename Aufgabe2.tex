@@ -29,6 +29,7 @@
 
 % Für Bilder
 \usepackage{graphicx}
+\usepackage{fontspec}
 
 % Für Algorithmen
 \usepackage{algpseudocode}
@@ -77,8 +78,8 @@
 
 \clearpage
 \section{Lösungsidee}
-Gesucht ist möglichst kurze Abfolge von Schritten, die beide Labyrinthe löst. Dafür wird zunächst für jedes Labyrinth eine Matrix erstellt (Abbildung \ref{fig:lybnmatrix}),
-in der für jede Position ein Kostenwert und eine Richtung gespeichert wird. Die gespeicherte Richtung zeigt den optimalen Folgeschritt zum Ziel und ist dargestellt als
+Gesucht ist eine möglichst kurze Abfolge von Schritten, die beide Labyrinthe mit den selben Befehlen löst. Dafür wird zunächst für jedes Labyrinth eine Matrix erstellt (Abbildung \ref{fig:lybnmatrix}),
+in der für jede Position ein Tuple aus einem Kostenwert und einer Richtung gespeichert wird. Die gespeicherte Richtung zeigt den optimalen Folgeschritt zum Ziel und ist dargestellt als
 \begin{table}[h]
   \centering
   \begin{tabular}{|c|l|}
@@ -115,7 +116,7 @@ Der Algorithmus funktioniert so, dass er jeweils den momentan besten Weg der Lis
 Den nächsten Schritt ermittelt er, indem er in der Matrix prüft, welchen Schritt die beiden Labyrinthe für ihre jeweilige Position vorschlagen.
 Dieser Schritt wird an die bisherige Schrittfolge angehängt.
 Dabei entstehen in der Regel zwei unterschiedliche Wege. Beide werden zur Liste der bisherigen Wege hinzugefügt.
-Zur Auswertung der bisherigen Wege, wird diese Rechung angewandt:
+Zur Auswertung der bisherigen Wege wird diese Rechung angewandt:
 \begin{equation}
   \frac{c_b -c_a}{n}
   \label{weg_kosten}
@@ -125,21 +126,21 @@ wobei gilt:\\
 -$c_b$ sind die summierten Kosten von beiden Startpositionen\\
 -$c_a$ sind die summierten Kosten von beiden aktuellen Positionen\\
 -$n$ ist die Anzahl der benötigten Schritte\\
-Der Bruch beschreibt also die durchschnittliche Einsparung an Kosten pro Schritt
-– je höher der Wert ist desto effizienter ist der bisherige Pfad. Dabei ist 2 der maximal erreichbare Wert.
+Der Bruch beschreibt also die durchschnittliche Einsparung von Kosten pro Schritt.
+Je höher der Wert ist, desto effizienter ist der bisherige Pfad. Dabei ist 2 der maximal erreichbare Wert.
 \\
 Der Weg mit der höchsten Einsparung gilt dabei als momentan bester Weg.
-Nach jeder Interation wird das aktuelle Positionspaar $((x_1, y_1),(x_2, y_2))$ in einem Dictionary gespeichert,
-um zu verhinder, dass der Algorithmus die exakt selben Positionen besucht.
-Zusätzlich gibt es auch die Begrenzung $l$ ,die festlegt, wie viele unterschiedliche Weg, sortiert nach ihren Kosten, in der Liste gespeichert werden dürfen.
-Diese Begrenung beeinflusst maßgeblich  die Laufzeit und Genauigkeit des Algorithmus.
+Nach jeder Iteration wird das aktuelle Positionspaar $((x_1, y_1),(x_2, y_2))$ in einem Dictionary gespeichert,
+um zu verhindern, dass der Algorithmus das exakt selbe Positionspaar noch einmal besucht.
+Zusätzlich gibt es auch die Begrenzung $l$, die festlegt, wie viele unterschiedliche Wege, sortiert nach ihren Kosten, in der Liste gespeichert werden dürfen.
+Diese Begrenzung beeinflusst maßgeblich  die Laufzeit und Genauigkeit des Algorithmus.
 In der Liste dürfen die Wege unterschiedliche Werte für $n$ haben; wichtig ist lediglich, dass ihre Kosten (Gleichung \eqref{weg_kosten}) gering sind.
 Der gesamte Ablauf wiederholt sich solange, bis beide im Ziel sind.
 
 \subsection{Gruben}
 Gruben werden sowohl in der Kostenmatrix als auch beim Lösen wie normale Felder gesehen. 
 Berührt jedoch einer der beiden eine Grube, wird seine Position auf die jeweilige Startposition zurückgesetzt.
-Dadurch steigen die gesamt Kosten des Wegs so weit an, dass dieser wegen der Begrenzung $l$ in der Regel aus der Liste der potenziellen Wege entfernt wird.
+Dadurch steigen die Gesamtkosten des Wegs so weit an, dass dieser wegen der Begrenzung $l$ in der Regel aus der Liste der potenziellen Wege entfernt wird.
 
 
 
@@ -149,7 +150,7 @@ Dadurch steigen die gesamt Kosten des Wegs so weit an, dass dieser wegen der Beg
 \clearpage
 \section{Umsetzung}
 Die Lösung wurde in Python3 geschrieben. Die Eingabetexte werden eingelesen. 
-Für beide Labyrinthe werden die horizontalen und vertikalen Wände jeweils in separenten Liste gespeichert.
+Für beide Labyrinthe werden die horizontalen und vertikalen Wände jeweils in separante Listen gespeichert.
 Auch die Positionen der Gruben werden für jedes Labyrinth in einer eigenen Liste erfasst.
 
 \subsection{Erstellung der Matrix}
@@ -161,47 +162,47 @@ Zur Erstellung der Matrix wird die Klasse $cost$ benutzt.
   \label{fig:cost_diagramm}
 \end{figure}
 \\
-Für jedes Labyrinth wird ein Cost-Objekt erstellt und die Methode
-\begin{lstlisting}
-  cost_obj.create_cost_matrix()
+Für jedes Labyrinth wird ein Cost-Objekt erstellt und die Methode $cost_obj.create_cost_matrix()$ aufgerufen. 
+Das Cost-Objekt bekommt als Übergabewerte die horizontalen und vertikalten Wände, die  Gruben sowie die Größe des Labyrinths.\\
+\begin{lstlisting}[caption={Methode \texttt{create\_cost\_matrix}}, label={lst:create_cost_matrix}]
+  def create_cost_matrix(self) -> list:
 \end{lstlisting}
-\vspace{-2em}
-aufgerufen. Das Cost Objekt bekommt als Übergabewerte die horizontalen und vertikalten Wände, die  Gruben sowie die Größe des Labyrinths.
 Die $create\_cost\_matrix$ Methode erstellt zunächst eine leere Liste mit der Dimension [height][width], die als Kostenmatrix dient.
 Dann ruft sie die Methode $write\_cost$ auf um die Kostenmatrix zufüllen.
 \vspace{2em}
 \begin{lstlisting}[caption={Methode \texttt{write\_cost}}, label={lst:write_cost}]
   def write_cost(self, start_x: int, start_y: int):
 \end{lstlisting}
-Zu Beginn wird die Liste $stack$ initalisiert. Sie speichert alle Felder, die noch besucht werden müssen. Die Startposition wird als erstes Element hinzugefügt.
-Jeder Eintrag in der Liste besitzt vier Werte: der x-Position, der y-Position, den aktuell Kosten sowie der entgegengesetzen Richtung, aus welcher das Feld betreten wurde. 
+Zu Beginn der Methode $write\_cost()$ wird die Liste $stack$ initalisiert. Sie speichert alle Felder, die noch besucht werden müssen.
+Jeder Eintrag in der Liste besitzt vier Werte: die x-Position, die y-Position, die aktuellen Kosten sowie die entgegengesetzte Richtung, aus welcher das Feld betreten wurde. 
+Die Startposition wird als erstes Element hinzugefügt.
 Anschließend wird das erste Element der Liste entnommen und in die Kostenmatrix übertragen.
 Falls es schon in der Kostenmatrix ist, wird es übersprungen.
-Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbours$ ermittelt und dem Stack hinzugefügt.
+Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbours$ ermittelt und dem $stack$ hinzugefügt.
 Dabei werden die Kosten um eins erhöht und die jeweilige Richtung gespeichert.
-Das wiederholt sich solange bis der Stack leer ist.
+Das wiederholt sich solange bis der $stack$ leer ist.
 
 \clearpage
 \subsection{Lösen der Labyrinthe}
 
-Zum lösen der Labyrinthe wird die Klasse $Solving$ benutzt.
+Zum Lösen der Labyrinthe wird die Klasse $Solving$ benutzt.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/solving_diagramm.pdf}
   \caption{Solving Klasse}
   \label{fig:solving_diagramm}
 \end{figure}
-
 Die Wege werden mit der Klasse $Move$ dargestellt.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/moving_diagramm.pdf}
-  \caption{Moving Klasse}
+  \caption{Move Klasse}
   \label{fig:moving_diagramm}
 \end{figure}
 \\
 Das Attribut $cost$ beschreibt die aufsummierten Kosten der beiden aktuellen Positionen basierend auf den Werten aus den Kostmatrizen.
 Das Attribut $weight$ wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
+\\
 Zu Beginn wird ein $Solving$-Objekt initalisiert und eine leere Liste $moves$ angelegt, in der alle aktuelle Wege gespeichert werden.
 Anschließend wird ein erstes $Move$-Objekt erzeugt, dessen Startposition ((0, 0), (0, 0)) ist und seine moves leer sind.
 In jedem Schritt wird das erste Element aus der $moves$ Liste entnommen.
@@ -210,35 +211,34 @@ Dann wird mit folgendem Aufruf
   new_moves = solving_obj.neighbours_cost(move)
 \end{lstlisting}
 \vspace{-2em}
-eine Liste von möglichen Folgewege erzeugt
-Die Liste wird mit den neun Wege erweitert, sortiert und auf die $l$ besten Wege beschränkt.
+eine Liste von möglichen Folgewege erzeugt.
+Die Liste wird mit den neuen Wegen erweitert, sortiert und auf die $l$ besten Wege beschränkt.
 \\
 \begin{lstlisting}[caption={Methode \texttt{neighbours\_cost}}, label={lst:neighbours_cout}]
   def neighbours_cost(self, move: Move) -> list:
 \end{lstlisting}
-Zu Beginn werden die beiden Positionen aus dem Attribut $positions$ des übergebenen $move$-Objekt genommen.
-Anschließend werden mit den folgenden Aufrufen:
+Zu Beginn der Methode $neighbours\_cost()$ werden die beiden Positionen aus dem Attribut $positions$ des übergebenen $move$-Objekt genommen.
+Anschließend werden mit den folgenden Aufrufen
 \begin{lstlisting}
   move_1 = self.next_move(pos1, self.cost_matrix_1)
   move_2 = self.next_move(pos2, self.cost_matrix_2)
 \end{lstlisting}
 \vspace{-2em}
-die jeweils nächsten möglichen Richtungen aus der Kostenmatrix bestimmt, falls er noch nicht im Ziel ist.
-Daraufhin werden die neuen Positionen berechnet, wenn man in beide Richtungen gehen würde.
+die jeweils nächsten möglichen Richtungen aus der Kostenmatrix bestimmt, falls das Ziel noch nicht erreicht wurde.
+Daraufhin werden die neuen zwei Positionspaare berechnet, wenn jeweils in die Richtungen gegangen werden würde.
 \begin{lstlisting}
   next_position_1 = self.next_position(move.positions, move_1)
   next_position_2 = self.next_position(move.positions, move_2)
 \end{lstlisting}
 \vspace{-2em}
-Dabei ist $next\_position$ ein Positionspaar der Form $((x_1, y_1),(x_2, y_2))$
-Mit dem folgenden Aufruf wird anschließend überprüft, ob die neuen Positionen bereits besucht wurden:
+Mit dem folgenden Aufruf wird anschließend überprüft, ob die beiden Positionspaare bereits besucht wurden:
 \begin{lstlisting}
   move_1 = self.check_visited(next_position_1, len(move.moves) + 1, move_1)
   move_2 = self.check_visited(next_position_2, len(move.moves) + 1, move_2)
 \end{lstlisting}
 \vspace{-2em}
-Zum Schluss wird für jeden möglichen Zug ein $Move$-Objekt erstellt und als Liste übergeben.
-Falls eine der neuen Positionen bereits besucht wurde oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben.
+Zum Schluss wird für jeden möglichen Zug ein $Move$-Objekt erstellt und zusammen in einer Liste übergeben.
+Falls einer der neuen Positionspaare bereits besucht wurden oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben.
 \\
 \\
 Im folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.       
@@ -252,11 +252,11 @@ Im folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.
 \clearpage
 \section{Laufzeit und Diskussion}
 \subsection{Komplexität der Lösung}
-Von jeder Position aus existieren im schlimmsten Fall zwei mögliche Schritte. Entweder in Richtung des Ziels von Labyrinth 1 oder in Richtung des Ziels von Labyrinth 2.
+Von jeder Position aus existieren im schlimmsten Fall zwei mögliche Schritte, entweder in Richtung des Ziels von Labyrinth 1 oder in Richtung des Ziels von Labyrinth 2.
 Das führt zu insgesammt $2^{\text{maximale Anzahl an Schritten}}$ verschiedenen Möglichkeiten.
 Aufgrund dieser großen Anzahl an Möglichkeiten untersucht der Algorithmus nicht alle Pfade vollständig, sondern macht nur eine Abschätzung.
-Der hier vorgestellte Ansatz garantiert daher nicht unbedingt den optimalen Lösungsweg, liefter jedoch in akzeptabler Laufzeit eine gute Annäherung.
-Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, während andere nur kurz betrauchtet werden.
+Der hier vorgestellte Ansatz garantiert daher nicht unbedingt den optimalen Lösungsweg, liefert jedoch in akzeptabler Laufzeit eine gute Annäherung.
+Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, während andere nur kurz betrachtet werden.
 
 
 
@@ -274,22 +274,22 @@ Abbildung \ref{fig:schritte_1} zeigt die Anzahl der Schritte des gefundenen Lös
 \\
 \\
 Auffällig ist, dass der Graph mit zunehmendem $l$ gegen die Anzahl der Schritte des optimalen Weges konvergiert.
-Ebenso erkennbar ist das es nicht streng monoton fallend ist. 
+Ebenso erkennbar ist, dass er nicht streng monoton fallend ist. 
 In einem Fall, bei dem die Steigung positiv ist, wird für ein größeren Wert von $l$ ein schlechterer Pfad gefunden.
 Dies liegt daran, dass durch den höheren Wert von $l$ neue Wege betrachtet werden.
 Diese erscheinen kurzfristig vorteilhafter als die bisherigen Wege und verdrängen dadurch die eigentlich besseren aus der Liste.
 Das führt insgesammt zu ein schlechterer Weg.
-Bei größeren $l$ Werten tritt dieser Effekt jedoch kaum noch auf, da die Liste groß genug ist, um alle relevanten Pfade zu behalten.
+Bei größeren $l$-Werten tritt dieser Effekt jedoch kaum noch auf, da die Liste groß genug ist, um alle relevanten Pfade zu behalten.
 Der Einfluss dieser Monotonieveränderungen wird daher mit wachsendem $l$ vernachlässigbar.
 
 \clearpage
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf}
-  \caption{maximale Iterationen gegenüber tatsächliche Iterationen}
+  \caption{maximale Iterationen gegenüber tatsächlichen Iterationen}
   \label{fig:laufzeit_1}
 \end{figure}
-Abbildung \ref{fig:laufzeit_1} stellt die Anzahl an Iterationen dar, die zur Bestimmung des Lösungsweg benötigt werden in Abhängigkeit vonm Parameter $l$.
+Abbildung \ref{fig:laufzeit_1} stellt die Anzahl an Iterationen dar, die zur Bestimmung des Lösungswegs benötigt werden in Abhängigkeit vom Parameter $l$.
 \\
 Der Graph steigt mit wachsendem $l$ stark an.
 \\
@@ -301,7 +301,7 @@ Allgemein kann die maximale Anzahl an Iterationen in Abhängigkeit von $l$ wie f
 wobei:\\
 - $c_1$ die Kosten vom Startpunkt aus der Kostenmatrix 1 sind\\
 - $c_2$ die Kosten vom Startpunkt aus der Kostenmatrix 2 sind\\
-Der Faktor $2c_1+c_2$ beschreibt die maximale Anzahl an Schritte, aus denen ein möglicher Lösungsweg bestehen kann.
+Der Faktor $2c_1+c_2$ beschreibt die maximale Anzahl an Schritten, aus denen ein möglicher Lösungsweg bestehen kann.
 Zunächst erreicht Agent1 das Ziel mit $c_1$ Schritten.
 Anschließend läuft Agent2 denselben Weg zurück in ebenfalls $c_1$ Schritten und geht dann selber ins Ziel mit $c_2$ Schritten.
 Im schlechtesten Fall geht er für jeden Eintrag in der Liste, also $l$ mal, die maximale Anzahl an Schritten.
@@ -319,10 +319,9 @@ Der grüne Graph zeigt die maximale Anzahl an Iterationen und der blaue die tats
 \\
 \subsection{Fazit}
 Die Werte von $l$ stehen in einem linearen Zusammenhang mit der Anzahl der Iterationen,
-während die Anzahl der Schritte bei größreren $l$-Werten gegen das optimale Ergebnis konvergieren.
-Je größer der Wert von $l$, desto mehr Interation werden durchgeführt - und desto besser wird das Ergebnis.
-
-Die Genauigkeit lässt sich anhand der Parameters $l$ jedoch nicht allgemein bestimmen, da sie stark von der Strucktur jeweiligen Labyrinthe abhängt.
+während die Anzahl der Schritte bei größeren $l$-Werten gegen das optimale Ergebnis konvergieren.
+Je größer der Wert von $l$, desto mehr Iteration werden durchgeführt - und desto besser wird das Ergebnis.
+Die Genauigkeit lässt sich anhand des Parameters $l$ jedoch nicht allgemein bestimmen, da sie stark von der Struktur jeweiligen Labyrinths abhängt.
 
 
 

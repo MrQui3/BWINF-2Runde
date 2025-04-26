@@ -8,6 +8,7 @@
 \newcommand{\Aufgabe}{Aufgabe 1: Schmucknachrichten}
 \newcommand{\TeilnahmeId}{76626}                 
 \newcommand{\Name}{Quirin Klemm}            
+\usepackage{float}
 
 
 % Kopf- und Fußzeilen
@@ -142,8 +143,7 @@ Der Algorithmus geht also von einem Maximum (maximal ausbalanciert) zum anderen 
 Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
 
 
-\vspace{3em}
-
+\clearpage
 
 \begin{figure}[h]
   \centering
@@ -164,7 +164,7 @@ Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
 
 \begin{figure}[h]
   \centering
-  \begin{minipage}{0.49\textwidth}
+  \begin{minipage}{0.5\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Schmucknachrichten/pdf_src/trans_3.pdf}
     \caption{Transformation 2}
@@ -349,6 +349,16 @@ Daher ergibt sich
   I < (r-1)\cdot(w-1-\log_{r-1}{w})
 \end{equation}
 Dies bedeuted eine Laufzeit von $O(r\cdot w)$
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/genauigkeit_iterationen.pdf}
+  \caption{Länge der codierten Nachricht über mehrere Iterationen}
+  \label{fig:iteration_tree}
+\end{figure}
+
+Abbildung \ref{fig:iteration_tree} zeigt wie die Länge der codierten Nachricht von Beispielaufgabe $schmuck9$ sich über die Iterationen verhält. 
 
 \subsection{Stand der Forschung}
 Die vorliegende Fragestellung ist seit den 60iger-Jahren in der theorietischen Informatik bekannt. 
