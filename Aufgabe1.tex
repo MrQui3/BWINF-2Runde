@@ -92,13 +92,17 @@ Im Allgemeinen gilt, solange alle Perlen im Durchmesser gleich sind:
 wobei:\\
 - $c_i$ die Kosten des Buchstaben $i$ ist,\\
 - \( p_i \) die Häufigkeit des Buchstabens \( i \) in der Nachricht darstellt,  \\
-- \( n_i \) die Länge des Codewortes für den Buchstaben \( i \) ist,  \\
+- \( n_i \) die Länge des Codewortes für den Buchstaben \( i \) ist (Anzahl der Perlen),  \\
 - \( l \) die Länge der codierten Nachricht ist. \\ 
-Unter der Annnahme der Durchmesser der Perlen ist gleich.\\
 \\
-Um einen präfixfreien Code zu erzeugen, wird am besten ein Baum benutzt. Da durch diesen sicher gestellt ist, dass kein Codewort des Präfix eines anderen Codewort ist. 
-Dabei ist jedes Blatt des Baums ein Codewort und jede Kante des Blatts ein Code des Codeworts. Der Baum hat mindestens so viele Blätter wie es verschiedene Buchstaben gibt.
-Jeder innere Knoten hat dabei maximal so viele Kinder, wie es verschiedene Perlen gibt. Die Ebene des Blattes entspricht der Länge des Codewortes.
+Die gesamt Länge der Nachricht entspricht also den Kosten jedes einzelnen Buchstaben.\\  
+Um einen präfixfreien Code zu erzeugen, hab ich mich entschieden einen Baum zu benutzen.
+Da durch diesen sicher gestellt werden kann, dass kein Codewort der Anfang eines anderen Codeworts ist.
+\\
+Nach meiner Definition ist jedes Blatt des Baums ein Codewort und jede Kante zum Blatt ein Teil des Codeworts. 
+Der Baum hat mindestens so viele Blätter wie es verschiedene Buchstaben gibt.
+Jeder innere Knoten hat dabei maximal so viele Kinder, wie es verschiedene Perlen gibt. 
+Die Ebene des Blatts entspricht der Länge des Codeworts, also $n$.
 
 \begin{figure}[h]
   \centering
@@ -107,25 +111,33 @@ Jeder innere Knoten hat dabei maximal so viele Kinder, wie es verschiedene Perle
   \label{fig:simple tree}
 \end{figure}
 
-\subsection{Perlen mit gleichem Durchmessern}
-Um einen möglichst kleinen präfixfreien Code zu erstellen, muss der Buchstaben der am häufigsten vorkommt ganz oben eingeordnet werden und die nächsten Buchstaben dann in absteigender Reihenfolge. 
-In Abbildung \ref{fig:simple tree} hätte c die höchste Häufigkeit und dannach kommt a und b. Was von a und b die höhere Häufigkeit besitzt, ist nicht relevant, da sie beide auf der untersten Ebene sind.\\
+\subsection{Perlen mit gleichen Durchmessern}
+Um einen möglichst kleinen präfixfreien Code zu erstellen, muss der Buchstabe, der am häufigsten vorkommt, ganz oben eingeordnet werden und die nächsten Buchstaben dann in absteigender Reihenfolge. 
+In Abbildung \ref{fig:simple tree} hätte c die höchste Häufigkeit und danach kommt a und b. Ob das Codewort a oder b die höhere Häufigkeit besitzt, ist nicht relevant, da beide auf der untersten Ebene sind.\\
+\\
 Daher ergibt sich $p_1 \geq p_2 \geq p_3 ... \geq p_i$ und $n_1 \leq n_2 \leq n_3 ... \leq n_i$\\
-Zu finden ist also ein Baum, der basierend auf den Häufigkeiten der Buchstaben, seine Blätter so auf seine Ebene so verteilt, dass die Gleichung \eqref{equation:simple_kostenberechnung} möglichst gering ist. 
-Jeder innere Knoten muss dabei mindestens zwei Kinder haben, da ein innerer Knoten mit nur einem Kind die Äste des Baums verlängert ohne dem Baum einen Vorteile zu bringen.\\
+\\
+Zu finden ist also ein Baum, der basierend auf den Häufigkeiten der Buchstaben, seine Blätter so auf seine Ebenen verteilt, dass die Länge der codierten Nachricht (Gleichung \eqref{equation:simple_kostenberechnung}) möglichst gering ist. 
+Jeder innere Knoten muss dabei mindestens zwei Kinder haben, da ein innerer Knoten mit nur einem Kind die Äste des Baums verlängert (höheres $n$) ohne einen Vorteile zu bringen.\\
 
-Zu Beginn des Algorithmuses wird ein perfekt ausbalancierter Baum erstellt, der so viele Blätter wie Buchstaben hat (Abbildung \ref{fig:balancierter_Baum}). 
-Jedes Blatt wird von links nach rechts in aufsteigender Reihenfolge mit einem Buchstaben belegt, und die Gesamtkosten des Baums werden gemäß der Formel (1) berechnet. 
-Dabei ergeben sich deutlich höhere Kosten für die rechten Blätter des Baums im Vergleich zu den linken, da alle Blätter auf derselben Ebene sind, jedoch die Häufigkeit der Buchstaben auf der rechten Seite größer ist.
-Um dies auszugleichen, wird das Blatt mit den höchsten Kosten eine Ebene nach oben verschoben,
+Zu Beginn des Algorithmus wird ein balancierter Baum erstellt, der so viele Blätter wie Buchstaben hat (Abbildung \ref{fig:balancierter_Baum}). 
+Jedes Blatt wird von links nach rechts in aufsteigender Reihenfolge der Häufigkeit, mit einem Buchstaben belegt, und die Gesamtkosten des Baums werden gemäß der Formel \eqref{equation:simple_kostenberechnung} berechnet. 
+Dabei ergeben sich deutlich höhere Kosten für die rechten Buchstaben im Baums im Vergleich zu den linken, da alle Blätter auf derselben Ebene sind, jedoch die Häufigkeit der Buchstaben auf der rechten Seite größer ist.
+Um dies auszugleichen, wird der Buchstabe mit den höchsten Kosten eine Ebene nach oben verschoben,
 indem der Elternknoten des Blattes selber zum Blatt wird und alle Kinder verliert.
-Dadurch hat der Baum insgesamt zu wenig Blätter, weshalb er erweitert werden muss.
-Daher werden alle möglichen neuen Blätter nach ihren Kosten überprüft und das mit den geringsten Kosten hinzugefügt. (Abbildung \ref{fig:trans_1})\\
-Das nach oben verschobenene Blatt erhält den Zusatz $protected$. Das verhindert, dass es selbst weitere Kinder bekommen kann.
-Dadurch wird ein Zyklus vermieden, bei dem ein Blatt zunächst nach oben verschoben und anschließend wieder nach unten erweitert würde.
+Dadurch verliert der Baum aber zu viele Kinder, weshalb er erweitert werden muss.
+Für die Erweiterung untersucht der Algorithmus, an welche Knoten neue Blätter angehängt werden können. Er überprüft die Blätter nach ihrer Ebene, d.h. nach ihrem Wert für $n$,
+und fügt das mit dem kleinst Wert hinzu.
+Das nach oben verschobenene Blatt erhält den Zusatz $protected$. 
+Das verhindert, dass es selbst weitere Kinder bekommen kann.
+Nach jeder Iteration werden den Blättern wie zu Beginn von links nach rechts Buchstaben aufsteigend hinzugefügt.
+Das stellt sicher, dass immer die äußerst linken Blätter (d.h. die mit dem höchsten $n$-Wert), die Buchstaben mit den geringsten Häufigkeiten kriegen und rechts die höchsten.
+Dadurch wird ein Zyklus vermieden, bei dem ein Blatt zunächst nach oben verschoben und anschließend wieder nach unten erweitert würde.\\
 Das Verschieben der Blätter nach oben, sowie unten das Neueinfügen der Blätter, gilt als ein Optimierungsschritt,
 welcher im Optimierungsprozess wiederholt wird. (Abbildung \ref{fig:trans_2})
 Dieser Vorgang wird so lange fortgesetzt, bis keine Blätter mehr verschoben werden können (Abbildung \ref{fig:baum_fertig}) - also keine weitern Optimierungen mehr möglich sind.
+Das ist der Fall bei einem maximal ausgearteten Baum.
+Der Algorithmus geht also von einem Maximum (maximal ausbalanciert) zum anderen Maximum (maximal ausgeartet).
 Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
 
 
@@ -168,8 +180,10 @@ Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
 
 \clearpage
 \subsection{Perlen mit unterschiedlichen Durchmessern}
-Das Problem bei unterschiedlichen Durchmessern besteht darin, dass Blätter auf derselben Ebene unterschiedliche Kosten haben können.
-Daher stimmt die Gleichung \eqref{Kosten eines Buchstaben} nicht mehr, und muss statt dessen berechnet 
+Das Problem bei unterschiedlichen Durchmessern besteht darin, dass Blätter auf derselben Ebene unterschiedliche Kosten für die gesamt Länge der Nachricht haben können.
+Daher sind die Kosten nicht mehr der Wert der Ebene und die Anzahl an Perlen.
+Das hat zu Folge, dass die Gleichung \eqref{Kosten eines Buchstaben} nicht mehr stimmt.
+Stattdessen muss der Durchmesser jeder Perle im Codewort einzeln angeschaut werden. Daher ergibt sich
 
  \begin{equation}
   \label{Neue Kosten eines Buchstaben}
@@ -187,16 +201,9 @@ wobei:\\
   \caption{lopsided tree: Perlendurchmesser: (1; 1; 2) }
   \label{fig:lopsided tree}
 \end{figure}
-Auch hier gilt: Jeder innere Knoten muss mindestens zwei Kinder haben. Bei dieser Art von Bäumen hat jedoch nicht der äußerst rechte Knoten die geringsten Kosten, sondern der oberste.
-Die Kosten eines Knoten sind:
-\begin{equation}
-  K = K_E + K_S
-\end{equation} 
-wobei:\\
- - $K_E$ die Kosten des Elternknoten sind\\
- - $K_S$ die Kosten seines eigenen Knoten sind \\
-
- Der Algorithmus bleibt unverändert: Zunächst wird ein Baum erstellt, in dem alle Blätter ungefähr die gleichen Kosten haben. 
+Auch hier gilt: Jeder innere Knoten muss mindestens zwei Kinder haben. 
+Bei dieser Art von Bäumen hat jedoch nicht der äußerst rechte Knoten die geringsten Kosten, sondern der oberste.
+Der Algorithmus bleibt unverändert: Zunächst wird ein Baum erstellt, in dem alle Blätter ungefähr die gleichen Kosten haben. 
 Anschließend wird der Buchstabe mit den höchsten Kosten nach oben verschoben, während der Baum unten erweitert wird.
 Dies geschieht solange, bis kein Blatt mehr verschoben werden kann und der beste Baum wird ausgegeben.
 \\
@@ -210,7 +217,10 @@ daher kann der zweite Algorithmus sowohl für gleiche als auch unterschiedliche 
 \clearpage
 \section{Umsetzung}
 Die Lösung wurde in Python3 geschrieben. Die Eingabetexte werden eingelesen. Die Durchmesser der Perlen werden in einer Liste gespeichert und der Text in einem string.
-Aus dem Text werden anschließend zwei Listen erstellt: Die erste enthält die Häufigkeit der Buchstaben in absteigender Reihenfolge, die zweite ordnet die Buchstaben entsprechend dieser Sortierung auf.
+Aus dem Text werden anschließend zwei Listen erstellt:
+Die erste enthält die Häufigkeit der Buchstaben in absteigender Reihenfolge.
+Die zweite enthält die Buchstaben entsprechend dieser Reihenfolge.
+Um später die Buchstaben der Häufigkeit wieder richtig zuzuordnen.
 
 \begin{figure}[h]
   \centering
@@ -220,20 +230,19 @@ Aus dem Text werden anschließend zwei Listen erstellt: Die erste enthält die H
 \end{figure}
 
 \subsection{Erstellung des Baums}
-Zu Beginn wird zu dem Wurzelknoten, root, ein blancierter Baum erstellt.
+Zu Beginn wird ein blancierter Baum über die Mehtode $create\_tree()$ erstellt.
+\vspace{2em}
 
 \begin{lstlisting}[caption={Methode \texttt{create\_tree}}, label={lst:create_tree}]
   def create_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
-
-Dabei werden jeweils alle potenziellen neuen Blätter im Baum betrachtet und das Blatt mit den geringsten Kosten wird dem Baum hinzugefügt.
-Falls der Elternknoten ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
+Die Methode betrachtet alle potenzielle neuen Blätter im Baum über den Aufruf $get\_all\_possible\_costs()$ 
+und das Blatt mit den geringsten Kosten wird dem Baum über den Aufruf $insert\_new\_node(obj)$ hinzugefügt.
+Falls der Elternknoten des neun Blatts selber noch ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
 Das liegt daran, dass jeder innere Knoten mindesten zwei Kinder haben muss – daher stellen diese Kosten die effektiv neu entstehenden Kosten für den Baum dar.
-Das passiert solange, bis der der Baum genau soviele Blätter hat, wie es Buchstaben gibt.
-Die möglichen neuen Blätter erhält man über den Aufruf
-\begin{lstlisting}
-  root.get_all_possible_costs()
-\end{lstlisting}
+Das geschieht solange, bis der der Baum genau soviele Blätter hat, wie es Buchstaben gibt. Seine Anzahl an Blättern erhält er über die Methode $get\_size()$.
+
+\vspace{2em}
 
 \begin{lstlisting}[caption={Methode \texttt{get\_all\_possible\_costs}}, label={lst:get_all_pssible_costs}]
   def get_all_possible_costs(self) -> dict:
@@ -242,12 +251,6 @@ Die Methode prüft, ob das TreeNode-Objekt noch weitere Kinder aufnehmen kann un
 Falls ja, fügt es sich selbst sowie die Kosten des potenziellen neuen Kindes einem Dictionary hinzu.
 Anschließend wird die Methode rekursiv für alle bestehenden Kinder aufgerufen, so dass auch deren mögliche Erweiterungen im Dictionary erfasst werden.\\
 \\
-Neue Blätter werden über den Aufruf  
-\begin{lstlisting}
-  root.insert_new_node(obj)
-\end{lstlisting} 
-\vspace{-1.5em}
-hinzugefügt
 \vspace{2em} 
 \begin{lstlisting}[caption={Methode \texttt{insert\_new\_node}}, label={lst:insert_new_node}]
   def insert_new_node(self, obj: TreeNode):
@@ -256,12 +259,6 @@ Die Methode prüft, ob das aktuelle Objekt selbst das gesuchte TreeNode Objekt i
 Wenn vorher noch keine Kinder vorhanden sind, werden zwei Kinder hinzugefügt.
 Ansonsten wird die Methode rekursiv auf alle bestehenden Kinder angewandt.\\
 \\
-Über den Aufruf 
-\begin{lstlisting}
-  root.get_size()
-\end{lstlisting} 
-\vspace{-1.5em}
-wird die Anzahl der Blätter ermittelt
 
 \vspace{2em} 
 \begin{lstlisting}[caption={Methode \texttt{get\_size}}, label={lst:get_size}]
@@ -271,26 +268,23 @@ wird die Anzahl der Blätter ermittelt
 Die Methode gibt 1 zurück falls das Objekt ein Blatt ist. Ansonsten wird die Methode rekursiv bei den Kinder aufgerufen und die Summe zurückgegeben
 
 \subsection{Verbesserung des Baums}
-Sobald ein balancierter Baum erstellt wurde, muss dieser optimiert werden. Dies geschieht über die Methode
+Sobald ein balancierter Baum erstellt wurde, muss dieser optimiert werden. Dies geschieht über die Methode $find\_best\_tree$.
+\vspace{2em}
 \begin{lstlisting}[caption={Methode \texttt{find\_best\_tree}}, label={lst:find_best_tree}]
   def find_best_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
 
 
 Die Methode versucht, den übergebenen Baum so lang zu optimieren, bis alle Blätter als $protected$ markiert sind.
-Dazu wird der Optimierungsschritt wiederholt und jeweils die neuen Kosten des Baums berechnet.
+Dazu wird der Optimierungsschritt über den Aufruf $improve\_tree(root)$ wiederholt und jeweils mit der Methode $calculate\_tree()root$ die neuen Kosten des Baums berechnet.
 Sind die neuen Kosten ein neues Minimum wird der aktuelle Baum als bester Zwischenstand gespeichert.
-Kann der Baum nicht weiter verbessern werden und es tritt ein Fehler auf, wird der bis dahin beste gefundene Baum zurückgegeben.\\
+Können keine neuen Blätter dem Baum hinzugefügt werden und es tritt ein Fehler auf, wird der bis dahin beste gefundene Baum zurückgegeben.\\
 \\
-Der Optimierungsschritt des Baums geschieht über die Methode
+\vspace{2em}
 \begin{lstlisting}[caption={Methode \texttt{imporve\_tree}}, label={lst:imporve_tree}]
   def improve_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
-Die Methode holt sich erstmal alle Blätter im Baum über den Aufruf
-\begin{lstlisting}
-  root.get_leaves()
-\end{lstlisting}
-\vspace{-1.5em}
+Zu Beginn holt sich die Methode alle Blätter im Baum über den Aufruf $get\_leaves()$.
 Diese Liste wird dann aufsteigend sortiert und die Kosten für jedes Element können mit der Gleichung \eqref{Neue Kosten eines Buchstaben} berechnet werden.
 Der Elternknoten des Blatts mit den höchsten Kosten wird daraufhin selbst zu einem Blatt. Dafür werden die Attribute des Elternknoten
 \begin{lstlisting}
@@ -299,18 +293,13 @@ Der Elternknoten des Blatts mit den höchsten Kosten wird daraufhin selbst zu ei
   children = []
 \end{lstlisting}
 \vspace{-1.5em}
-gesetzt. Um die fehlenden Blätter wieder hinzuzufügen wird noch die Methde \ref{lst:create_tree} aufgerufen.\\
+gesetzt. Um die fehlenden Blätter wieder hinzuzufügen wird noch die Methde \ref{lst:create_tree}  ($create\_tree$) aufgerufen.\\
 \\\\
-Die gesamt Kosten des Baums wird durch die Methode 
 \begin{lstlisting}[caption={Methode \texttt{calculate\_tree}}, label={lst:calculate_tree}]
   def calculate_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
-berechnet. Die Methode holt sich erstmal alle Blätter im Baum über den Aufruf
-\begin{lstlisting}
-  root.get_leaves()
-\end{lstlisting}
-\vspace{-1.5em}
-Die Liste wird dann aufsteigend sortiert und jedes Element wie in der Gleichung \eqref{Neue Kosten eines Buchstaben} berechnet und zusammenaddiert.
+Die Methode berechnet die gesamt Kosten des Baums. Dafür holt sie sich  Methode holt sich auch über den Aufruf $get\_leaves()$ alle Blätter im Baum.
+Die Liste an Blättern wird dann aufsteigend sortiert und jedes Element wird wie in der Gleichung \eqref{Neue Kosten eines Buchstaben} berechnet und zusammenaddiert.
 
 
 
@@ -327,15 +316,15 @@ Die Liste wird dann aufsteigend sortiert und jedes Element wie in der Gleichung 
 
 
 
-\subsection{Analyse des Algorithmuses}
+\subsection{Analyse des Algorithmus}
 Der Algorithmus endet, wenn keine Knoten mehr verschoben werden können.
 Dies ist gegeben, wenn der Baum maximal links ausgeartet ist (Abbildung \ref{fig:baum_fertig}).
-Allgemein kann jeder Knoten maximal $n-1$ Mal verschoben werden, bis er komplett auf der linken Seite ist. Dabei ist $n$ die Anzahl an verschieden Perlen.
-Daraus folgt, dass es maximal 
+Allgemein kann jeder Knoten maximal $r-1$ Mal verschoben werden, bis er komplett auf der linken Seite ist. Dabei ist $r$ die Anzahl an verschieden Perlen.
+Daraus folgt, dass die maximale Anzahl an Iterationen  
 \begin{equation}
-  I < (n-1)\cdot\text{Anzahl falscher Knoten}
+  I < (r-1)\cdot\text{Anzahl falscher Knoten}
 \end{equation}
-Iteratioen benötigt werden, bis zum maximal ausgearteten Baum.
+ist, bis zum maximal ausgearteten Baum.
 Falsche Knoten sind dabei innere Knoten, die beim ausbalancierten Baum noch nicht auf der richtigen Stelle sind, also alle bis auf die äußerst linken Knoten. (Abbildung \ref{fig:makiert_baum})
 
 Generell gilt, um die maximale Anzahl an inneren Knoten zu erhalten, sollte jeder Knoten möglichst wenig Kinder besitzen.
@@ -353,9 +342,9 @@ Auf jeder Ebene existiert ein richtiger innere Knoten, derren Anzahl minimal mit
 abgeschäzt werden kann.\\
 Daher ergibt sich
 \begin{equation}
-  I < (n-1)\cdot(w-1-\log_{r-1}{w})
+  I < (r-1)\cdot(w-1-\log_{r-1}{w})
 \end{equation}
-Dies bedeuted eine Laufzeit von $O(n\cdot w)$
+Dies bedeuted eine Laufzeit von $O(r\cdot w)$
 
 \subsection{Stand der Forschung}
 Die vorliegende Fragestellung ist seit den 60iger-Jahren in der theorietischen Informatik bekannt. 
@@ -363,20 +352,21 @@ Dabei lieferte Huffman eine Lösung für den Spezialfall, von zwei Quellsymbolen
 \\
 \\
 Für unseren Fall von mehr als zwei Quellsymbolen mit unterschiedlichen Kosten, 
-entwickelten Mordecai J. Golin und Günter Rote im Jahr 1998 das bis jetzt schnellste Verfahren, um auf eine exatke Lösung zu kommen.\\
+entwickelten Mordecai J. Golin und Günter Rote im Jahr 1998 das bis jetzt schnellste Verfahren, um auf eine exakte Lösung zu kommen.\\
 "The minimum-cost prefix-free code for n words can be computed in $O(n^{C+2})$ time and $O(n^{C+1})$ space, if the costs of the letters are integers between 1 and C."\\
 Für die Beispielaufgabe $schmuck5.txt$ hat der Algorithmus eine Laufzeit $34^8$(n=34; C=6) Iterationen. 
 Dieser Art von Algorithmus kann wegen seiner Laufzeit nicht für die vorgegebenen Beispielaufgabe verwendet werden. [1]
 \\
 \\
-Um eine polynominelle Laufzeit zu erreichen, entwickelten Mordecai J. Golin, Claire Mathieu und Neal E. Young 2012 ein approximations Verfahen.\\
+Um eine polynominelle Laufzeit zu erreichen, entwickelten Mordecai J. Golin, Claire Mathieu und Neal E. Young 2012 ein Approximationsverfahen.\\
 Dieser Algorithmus basiert auf dem PTAS-Verfahren, wobei zuerst ein präfixfreier Code bis zur einer bestimmten Tiefe $\tau$ erstellt wird und dann die restlichen Codewörter durch ein Rundungsverfahren ergänzt werden.
 Dabei ist es zentral, dass die Wahrscheinlichkeitsverteilung der zu kodierenden Codewörter möglichst in großen Gruppen mit gleich großer Wahrscheinlichkeit eingeordnet werden können.
 In den Beispielen, vor allem in Beispiel 9 ist dies nicht gegeben, weshalb das Bestimmen des Vorbaums über $9^{24}$ Schritte benötigt.
 Somit ist dieses Verfahren für die gewählten Beispiele ebenfalls nicht verwendbar. [2]
 
 \section{Fazit}
-Der vorgestellte Algorithmus stellt keine exakte Lösung für das gegebene Problem dar, liefert jedoch in polynomieller Laufzeit eine gute Approximation.
+mein vorgestellte Algorithmus findet nicht die beste Lösung für das gegebene Problem dar, liefert jedoch in polynomieller Laufzeit eine gute Approximation
+und ist daher eine gute Abwägung zwischen Laufzeit und Genauigkeit.
 Aus diesem Grund erfolgt durch das vorgestellte Verfahren keine Beantwortung, ob das Problem NP-hart ist.
 Im Gegensatz zum oben vorgestellten Verfahren kann der Algorithmus auch Fälle verarbeiten, in denen die Wahrscheinlichkeiten der Zeichen nicht gleichmäßig verteilt oder in klaren Gruppen strukturiert sind.\\
 In praktischen Tests zeigte sich, dass die berechneten Lösungen im Durchschnitt nur etwa 10\,\% von der optimalen Lösung abweichen.  
