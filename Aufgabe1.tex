@@ -358,10 +358,7 @@ Dies bedeuted eine Laufzeit von $O(r\cdot w)$
   \label{fig:iteration_tree}
 \end{figure}
 Abbildung \ref{fig:iteration_tree} zeigt wie die Länge der codierten Nachricht der Beispielaufgabe $schmuck9$ über die Iterationen hinweg verändert.
-Das Minimum wird bereits in der ersten Hälfte der Iterationen erreicht. Dieses lässt auch bei den anderen Beispielaufgabe sehen.
-Daher ist es unproblematisch, dass der Algorithmus nicht bis zum maximal ausgearteten Baum iteriert.
-(Ein formaler Beweis dafür steht aber noch aus.)
-
+Das Minimum wird bereits in der ersten Hälfte der Iterationen erreicht.
 \subsection{Stand der Forschung}
 Die vorliegende Fragestellung ist seit den 60iger-Jahren in der theorietischen Informatik bekannt. 
 Dabei lieferte Huffman eine Lösung für den Spezialfall, von zwei Quellsymbolen. [3]
@@ -381,15 +378,17 @@ In den Beispielen, vor allem in Beispiel 9 ist dies nicht gegeben, weshalb das B
 Somit ist dieses Verfahren für die gewählten Beispiele ebenfalls nicht verwendbar. [2]
 
 \subsection{Fazit}
+Für die gegeben Fragestellung gibt es bislang weder ein Beweis, dass sie NP-schwer ist, als auch keinen Gegenbeweis, dass sie es nicht ist.
+Aktuell bekannte Verfahren besitzen eine exponnetielle Laufzeit. [1]
 Mein vorgestellter Algorithmus findet nicht die beste Lösung für das gegebene Problem. Er liefert jedoch in polynomieller Laufzeit eine gute Approximation
 und ist daher eine gute Abwägung zwischen Laufzeit und Genauigkeit.
-Aus diesem Grund erfolgt durch das vorgestellte Verfahren keine Beantwortung, ob das Problem NP-hart ist.
-Im Gegensatz zum oben vorgestellten Verfahren kann der Algorithmus auch Fälle verarbeiten, in denen die Wahrscheinlichkeiten der Zeichen nicht gleichmäßig verteilt oder in klaren Gruppen strukturiert sind.\\
-In praktischen Tests zeigte sich, dass die berechneten Lösungen im Durchschnitt nur etwa 10\,\% von der optimalen Lösung abweichen.  
-Ein formaler Beweis dieser Beobachtung steht allerdings noch aus.
-
+Somit wird nicht beantwortet, ob die Fragestellung NP-schwer ist.
 
 \section{Beispiele}
+Zu jedem Beispiel werden die Gesamtkosten, also die Länge der resultierenden Perlenkette, angegeben.  
+Anschließend wird für jedes Zeichen die zugehörige Codierung dargestellt.  
+Die Zahlen in den Codierungen geben dabei an, welche Perle verwendet wird, wobei 0 der ersten Perle aus den Eingabetexten entspricht.
+
 
 \subsection{schmuck0.txt}
 Gesamtkosten: 114\\
@@ -1846,6 +1845,6 @@ def main():
 [2] Mordecai J. Golin, Claire Mathieu und Neal E. Young, \textit{HUFFMAN CODING WITH LETTER COSTS: A LINEAR-TIME APPROXIMATION SCHEME}, 2012 Society for Industrial and Applied Mathematics
 Vol. 41, No. 3, pp. 684–713
 
-[3] Prof. Justus Piater, \textit{Algorithmen und Datenstrukturen}, 29.05.2024 Universität Innsbruck Seite 4-13
+[3] Prof. Justus Piater, \textit{Algorithmen und Datenstrukturen}, 29.05.2024 Universität Innsbruck, Seite 4-13
 
 \end{document}
