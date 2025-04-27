@@ -137,8 +137,8 @@ Das stellt sicher, dass immer die äußerst linken Blätter (d.h. die mit dem h�
 Dadurch wird ein Zyklus vermieden, bei dem ein Blatt zunächst nach oben verschoben und anschließend wieder nach unten erweitert würde.\\
 Das Verschieben der Blätter nach oben, sowie das Neueinfügen der Blätter unten, gilt als ein Optimierungsschritt,
 welcher im Optimierungsprozess wiederholt wird. (Abbildung \ref{fig:trans_2})
-Dieser Vorgang wird so lange fortgesetzt, bis keine Blätter mehr verschoben werden können (Abbildung \ref{fig:baum_fertig}) - also keine weitern Optimierungen mehr möglich sind.
-Das ist der Fall bei einem maximal ausgearteten Baum.
+Dieser Vorgang wird so lange fortgesetzt, bis keine neuen Blätter mehr eingefügt werden können, da alle Blätter als $protected$ gelten (Abbildung \ref{fig:baum_fertig}) - also keine weitern Optimierungen mehr möglich sind.
+Das ist der Fall kurz vor einem maximal ausgearteten Baum.
 Der Algorithmus geht also von einem Maximum (maximal ausbalanciert) zum anderen Maximum (maximal ausgeartet).
 Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
 
@@ -206,7 +206,7 @@ Auch hier gilt: Jeder innere Knoten muss mindestens zwei Kinder haben.
 Bei dieser Art von Bäumen hat jedoch nicht der äußerst rechte Knoten die geringsten Kosten, sondern der oberste.
 Der Algorithmus bleibt unverändert: Zunächst wird ein Baum erstellt, in dem alle Blätter ungefähr die gleichen Kosten haben. 
 Anschließend wird der Buchstabe mit den höchsten Kosten nach oben verschoben, während der Baum unten erweitert wird.
-Dies geschieht solange, bis kein Blatt mehr verschoben werden kann und der beste Baum wird ausgegeben.
+Dies geschieht solange, bis kein Blatt mehr eingefügt werden kann und der beste Baum wird ausgegeben.
 \\
 Wenn die Druchmesser alle gleich groß sind, gilt: 
 \begin{equation}
@@ -279,8 +279,8 @@ Sobald ein balancierter Baum erstellt wurde, muss dieser optimiert werden. Dies 
 \end{lstlisting}
 
 
-Die Methode $find\_best\_tree$ versucht, den übergebenen Baum so lang zu optimieren, bis alle Blätter als $protected$ markiert sind.
-Dazu wird der Optimierungsschritt über den Aufruf $improve\_tree(root)$ wiederholt und jeweils mit der Methode $calculate\_tree()root$ die neuen Kosten des Baums berechnet.
+Die Methode $find\_best\_tree$ versucht, den übergebenen Baum so lang zu optimieren, bis alle Blätter als $protected$ markiert sind und keine Blätter mehr hinzugefügt werden können.
+Dazu wird der Optimierungsschritt über den Aufruf $improve\_tree(root)$ wiederholt und jeweils mit der Methode $calculate\_tree(root)$ die neuen Kosten des Baums berechnet.
 Sind die neuen Kosten ein neues Minimum wird der aktuelle Baum als bester Zwischenstand gespeichert.
 Können keine neuen Blätter dem Baum hinzugefügt werden und es tritt ein Fehler auf, wird der bis dahin beste gefundene Baum zurückgegeben.\\
 \\
@@ -321,8 +321,8 @@ Die Liste an Blättern wird dann nach den Kosten aufsteigend sortiert und jedes 
 
 
 \subsection{Analyse des Algorithmus}
-Der Algorithmus endet, wenn keine Knoten mehr verschoben werden können.
-Dies ist gegeben, wenn der Baum maximal links ausgeartet ist (Abbildung \ref{fig:baum_fertig}).
+Der Algorithmus endet, wenn keine Knoten mehr eingefügt werden können.
+Dies ist spätestens gegeben, wenn der Baum maximal ausgeartet ist (Abbildung \ref{fig:baum_fertig}).
 Allgemein kann jeder Knoten maximal $r-1$ Mal verschoben werden, bis er komplett auf der linken Seite ist. Dabei ist $r$ die Anzahl an verschiedenen Perlen.
 Daraus folgt, dass die maximale Anzahl an Iterationen  
 \begin{equation}
@@ -357,8 +357,10 @@ Dies bedeuted eine Laufzeit von $O(r\cdot w)$
   \caption{Länge der codierten Nachricht über mehrere Iterationen}
   \label{fig:iteration_tree}
 \end{figure}
-
-Abbildung \ref{fig:iteration_tree} zeigt wie die Länge der codierten Nachricht von Beispielaufgabe $schmuck9$ sich über die Iterationen verhält. 
+Abbildung \ref{fig:iteration_tree} zeigt wie die Länge der codierten Nachricht der Beispielaufgabe $schmuck9$ über die Iterationen hinweg verändert.
+Das Minimum wird bereits in der ersten Hälfte der Iterationen erreicht. Dieses lässt auch bei den anderen Beispielaufgabe sehen.
+Daher ist es unproblematisch, dass der Algorithmus nicht bis zum maximal ausgearteten Baum iteriert.
+(Ein formaler Beweis dafür steht aber noch aus.)
 
 \subsection{Stand der Forschung}
 Die vorliegende Fragestellung ist seit den 60iger-Jahren in der theorietischen Informatik bekannt. 
