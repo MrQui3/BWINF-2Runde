@@ -1715,21 +1715,21 @@ Gesamtkosten: 38635\\
 \begin{lstlisting}[language=Python]
   class TreeNode:
 
-    def __init__(self, cost, parent, perln):
-        self.perln = perln
+    def __init__(self, cost, parent, perl_code):
+        self.perl_code = perl_code  # Speichert die Codierung für den Knoten
         self.cost = cost
         self.children = []
         self.parent = parent
         self.is_leaf = True
-        self.is_protected = False  # Wenn True, dann kann er keine kinder mehr bekommen, weil ihm bei einer imporving genommen wurde
+        self.is_protected = False  # Wenn True, dann kann er keine kinder mehr bekommen
 
     def insert_new_node(self, obj):
         if obj is self:
             if self.is_leaf:  # Damit jede parent immer mehr mindestens zwei kinder hat
                 self.is_leaf = False
-                self.children.append(TreeNode(self.cost + perl_costs[0], self, self.perln+[len(self.children)]))
+                self.children.append(TreeNode(self.cost + perl_costs[0], self, self.perl_code+[len(self.children)]))
 
-            self.children.append(TreeNode(self.cost + perl_costs[len(self.children)], self, self.perln+[len(self.children)]))
+            self.children.append(TreeNode(self.cost + perl_costs[len(self.children)], self, self.perl_code+[len(self.children)]))
             return
 
         for child in self.children:
@@ -1744,25 +1744,25 @@ Gesamtkosten: 38635\\
         if self.is_leaf:
             return [self]
 
-        a = []
+        children_leaves = []
         for child in self.children:
             for i in child.get_leaves():
-                a.append(i)
-        return a
+                children_leaves.append(i)
+        return children_leaves
 
     def get_all_possible_costs(self) -> dict:
-        a = {}
+        children_cost = {}
         if len(self.children) < len(perl_costs) and self.is_protected is False:
             if self.is_leaf:
-                a[self] = self.cost + perl_costs[0] + self.cost + perl_costs[1]
+                children_cost[self] = self.cost + perl_costs[0] + self.cost + perl_costs[1]
             else:
-                a[self] = self.cost + perl_costs[len(self.children)]
+                children_cost[self] = self.cost + perl_costs[len(self.children)]
 
         for child in self.children:
-            a.update(child.get_all_possible_costs())
-        return a
+           children_cost.update(child.get_all_possible_costs())
+        return children_cost
 
-    def get_interal_nodes(self):
+    def get_internal_nodes(self):
         if self.is_leaf:
             return 0
         return sum(child.get_interal_nodes() for child in self.children) + 1
@@ -1770,71 +1770,77 @@ Gesamtkosten: 38635\\
 
 \subsection{main.py}
 \begin{lstlisting}[language=Python]
-def create_distribution(message: str):
-    characters = {}
-    for char in message:
-        if char in characters.keys():
-            characters[char] += 1
-        else:
-            characters[char] = 1
-    characters = dict(sorted(characters.items(), key=lambda item: item[1], reverse=True))
-    return [key for key in characters.keys()], list(characters.values())
+  def create_tree(root: TreeNode) -> TreeNode:
+  while root.get_size() < len(distribution):
+      possible_children = root.get_all_possible_costs()
+      smallest_value = min(possible_children.items(), key=lambda item: item[1])
 
-
-def create_tree(root: TreeNode) -> TreeNode:
-    while root.get_size() < len(distribution):
-        possible_children = root.get_all_possible_costs()
-        smallest_value = min(possible_children.items(), key=lambda item: item[1])
-
-        root.insert_new_node(smallest_value[0])
-    return root
+      root.insert_new_node(smallest_value[0])
+  return root
 
 
 def calculate_tree(root):
-    all_leaves = root.get_leaves()
-    all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
-    total_count = 0
-    for i in range(len(all_leaves)):
-        total_count += all_leaves[i].cost * distribution[i]
-    return total_count
+  all_leaves = root.get_leaves()
+  all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
+  total_count = 0
+  for i in range(len(all_leaves)):
+      total_count += all_leaves[i].cost * distribution[i]
+  return total_count
 
 
 def improve_tree(root: TreeNode) -> TreeNode:
-    all_leaves = root.get_leaves()
-    all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
-    a = 0
-    b = None
-    for i in range(len(all_leaves)):
-        if all_leaves[i].parent.parent is not None:
-            if all_leaves[i].cost * distribution[i] > a:
-                a = all_leaves[i].cost * distribution[i]
-                b = all_leaves[i].parent
+  all_leaves = root.get_leaves()
+  all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
+  highest_cost = 0
+  parent_node = None
+  for i in range(len(all_leaves)):
+      if all_leaves[i].parent.parent is not None:
+          if all_leaves[i].cost * distribution[i] > highest_cost:
+              highest_cost = all_leaves[i].cost * distribution[i]
+              parent_node = all_leaves[i].parent
 
-    b.is_leaf = True
-    b.children = []
-    b.is_protected = True
+  parent_node.is_leaf = True
+  parent_node.children = []
+  parent_node.is_protected = True
 
-    return create_tree(root)
+  return create_tree(root)
 
 
 def find_best_tree(root):
-    best_value = calculate_tree(root)
-    best_root = copy.deepcopy(root)
-    while True:
-        try:
-            root = improve_tree(root)
-            new_calc = calculate_tree(root)
-            if new_calc < best_value:
-                best_value = new_calc
-                best_root = copy.deepcopy(root)
-        except Exception as e:
-            return best_root
+  best_value = calculate_tree(root)
+  best_root = copy.deepcopy(root)
+  while True:
+      try:
+          root = improve_tree(root)
+          new_calc = calculate_tree(root)
+
+          if new_calc < best_value:
+              best_value = new_calc
+              best_root = copy.deepcopy(root)
+      except Exception as e:
+          # Gibt keine Verbesserung mehr
+          return best_root
+
+
+def output(root):
+  print(f"Gesamtkosten: {calculate_tree(root)}")
+  all_leaves = root.get_leaves()
+  all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
+  for i in range(len(all_leaves)):
+      print(f"{characters[i]}: {all_leaves[i].perl_code}")
 
 
 def main():
-    root = TreeNode(0, None, [])
-    root = create_tree(root)
-    root = find_best_tree(root)
+  # Initiiere Wurzel objekt
+  root = TreeNode(0, None, [])
+
+  # Erstellen des balancierten Baums
+  root = create_tree(root)
+
+  # Verbessern des Baums
+  root = find_best_tree(root)
+  output(root)
+
 \end{lstlisting}
 
 
