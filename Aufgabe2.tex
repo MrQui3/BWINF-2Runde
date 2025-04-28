@@ -112,7 +112,7 @@ Für jeden Nachbarn wird in der Matrix ein Kostenwert eingetragen, der um eins h
 
 
 \subsection{Lösen der Labyrinthe}
-Der Algorithmus funktioniert so, dass er jeweils den momentan besten Weg der Liste der bisherigen Wege entnimmt und diesen um einen weiteren Schritt erweitert.
+Der Algorithmus funktioniert so, dass er jeweils den momentan besten Weg aus der Liste der bisherigen Wege entnimmt und diesen um einen weiteren Schritt erweitert.
 Den nächsten Schritt ermittelt er, indem er in der Matrix prüft, welchen Schritt die beiden Labyrinthe für ihre jeweilige Position vorschlagen.
 Dieser Schritt wird an die bisherige Schrittfolge angehängt.
 Dabei entstehen in der Regel zwei unterschiedliche Wege. Beide werden zur Liste der bisherigen Wege hinzugefügt.
@@ -168,7 +168,7 @@ Das Cost-Objekt bekommt als Übergabewerte die horizontalen und vertikalten Wän
   def create_cost_matrix(self) -> list:
 \end{lstlisting}
 Die $create\_cost\_matrix$ Methode erstellt zunächst eine leere Liste mit der Dimension [height][width], die als Kostenmatrix dient.
-Dann ruft sie die Methode $write\_cost$ auf um die Kostenmatrix zufüllen.
+Dann ruft sie die Methode $write\_cost$ auf, um die Kostenmatrix zu füllen.
 \vspace{2em}
 \begin{lstlisting}[caption={Methode \texttt{write\_cost}}, label={lst:write_cost}]
   def write_cost(self, start_x: int, start_y: int):
@@ -203,7 +203,7 @@ Die Wege werden mit der Klasse $Move$ dargestellt.
 Das Attribut $cost$ beschreibt die aufsummierten Kosten der beiden aktuellen Positionen basierend auf den Werten aus den Kostmatrizen.
 Das Attribut $weight$ wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
 \\
-Zu Beginn wird ein $Solving$-Objekt initalisiert und eine leere Liste $moves$ angelegt, in der alle aktuelle Wege gespeichert werden.
+Zu Beginn wird ein $Solving$-Objekt initalisiert und eine leere Liste $moves$ angelegt, in der alle aktuellen Wege gespeichert werden.
 Anschließend wird ein erstes $Move$-Objekt erzeugt, dessen Startposition ((0, 0), (0, 0)) ist und seine moves leer sind.
 In jedem Schritt wird das erste Element aus der $moves$ Liste entnommen.
 Dann wird mit folgendem Aufruf
@@ -238,7 +238,7 @@ Mit dem folgenden Aufruf wird anschließend überprüft, ob die beiden Positions
 \end{lstlisting}
 \vspace{-2em}
 Zum Schluss wird für jeden möglichen Zug ein $Move$-Objekt erstellt und zusammen in einer Liste übergeben.
-Falls einer der neuen Positionspaare bereits besucht wurden oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben.
+Falls einer der neuen Positionspaare bereits besucht wurde oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben.
 \\
 \\
 Im folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.       
@@ -278,7 +278,7 @@ Ebenso erkennbar ist, dass er nicht streng monoton fallend ist.
 In einem Fall, bei dem die Steigung positiv ist, wird für ein größeren Wert von $l$ ein schlechterer Pfad gefunden.
 Dies liegt daran, dass durch den höheren Wert von $l$ neue Wege betrachtet werden.
 Diese erscheinen kurzfristig vorteilhafter als die bisherigen Wege und verdrängen dadurch die eigentlich besseren aus der Liste.
-Das führt insgesammt zu ein schlechterer Weg.
+Das führt insgesamt zu einem schlechteren Weg.
 Bei größeren $l$-Werten tritt dieser Effekt jedoch kaum noch auf, da die Liste groß genug ist, um alle relevanten Pfade zu behalten.
 Der Einfluss dieser Monotonieveränderungen wird daher mit wachsendem $l$ vernachlässigbar.
 
@@ -305,9 +305,8 @@ Der Faktor $2c_1+c_2$ beschreibt die maximale Anzahl an Schritten, aus denen ein
 Zunächst erreicht Agent1 das Ziel mit $c_1$ Schritten.
 Anschließend läuft Agent2 denselben Weg zurück in ebenfalls $c_1$ Schritten und geht dann selber ins Ziel mit $c_2$ Schritten.
 Im schlechtesten Fall geht er für jeden Eintrag in der Liste, also $l$ mal, die maximale Anzahl an Schritten.
-Daher ergibt sich die Gleichung \eqref{max_iterationen}, was eine Laufzeit von $o(l)$ ergibt.
-
-Praktisch gesehen ist die Laufzeit, aber sehr viel kleiner als die maximale Laufzeit.
+Daher ergibt sich die Gleichung \eqref{max_iterationen}, dies bedeutet, es ergibt sich eine Laufzeit von $o(l)$ ergibt.
+Praktisch gesehen ist die Laufzeit aber sehr viel kleiner als die maximale Laufzeit.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/plotting_max_1.pdf}
@@ -321,7 +320,7 @@ Der grüne Graph zeigt die maximale Anzahl an Iterationen und der blaue die tats
 Die Werte von $l$ stehen in einem linearen Zusammenhang mit der Anzahl der Iterationen,
 während die Anzahl der Schritte bei größeren $l$-Werten gegen das optimale Ergebnis konvergieren.
 Je größer der Wert von $l$, desto mehr Iteration werden durchgeführt - und desto besser wird das Ergebnis.
-Die Genauigkeit lässt sich anhand des Parameters $l$ jedoch nicht allgemein bestimmen, da sie stark von der Struktur jeweiligen Labyrinths abhängt.
+Die Genauigkeit lässt sich anhand des Parameters $l$ jedoch nicht allgemein bestimmen, da sie stark von der Struktur des jeweiligen Labyrinths abhängt.
 
 
 
@@ -330,10 +329,10 @@ Die Genauigkeit lässt sich anhand des Parameters $l$ jedoch nicht allgemein bes
 
 \clearpage
 \section{Beispiele}
-Zu jedem Beispiel werden der sowohl der optimale Lösungsweg sowie die Anzahl der Iterationen in Abhängigkeit vom Parameter~$l$ dargestellt.
+Zu jedem Beispiel werden der optimale Lösungsweg sowie die Anzahl der Iterationen in Abhängigkeit vom Parameter~$l$ dargestellt.
 Zusätzlich wird der jeweils beste gefundene Pfad sowie dessen Länge angegeben. 
 Alle Schritt des Pfads werden wie in der Tabelle \ref{tab:richtungscodierung} codediert.
-Pfade über 1400 Schritte sind gekürzt und nur der Anfang und Ende dargestellt.
+Pfade über 1400 Schritte sind gekürzt und nur der Anfang und des Ende dargestellt.
 
 \subsection{labyrinthe0.txt}
 \begin{figure}[H]
@@ -461,7 +460,8 @@ Länge des Wegs: 1844\\
 Weg: [0, 0, 0, 3, 3, 3, 3, 3, ..., 0, 0, 3, 0, 0, 2, 2, 0, 0, 0, 3, 3] (gekürzt)
 
 \subsection{labyrinthe7.txt}
-Keine Lösung gefunden
+Zweites Labyrinth lässt sich nicht lösen, da eine Grube sich auf der Position (18, 6) befindet.
+Daher gibt es keinen Weg von Startposition zum Ziel und es wurde kein Lösungsweg gefunden. 
 
 \subsection{labyrinthe8.txt}
 \begin{figure}[H]

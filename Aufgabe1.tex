@@ -75,7 +75,7 @@
 
 \clearpage
 \section{Lösungsidee}
-Laut Aufgabenstellung besteht eine Nachricht besteht aus mehreren unterschiedlichen Buchstaben. 
+Laut Aufgabenstellung besteht eine Nachricht aus mehreren unterschiedlichen Buchstaben. 
 Für jeden Buchstaben ist ein Codewort zu finden, wobei insgesamt ein präfixfreier Code entstehen muss.
 Dabei soll die Gesamtlänge der codierten Nachricht möglichst gering sein.
 Daher wird ein präfixfreier Code gesucht, bei dem häufig vorkommende Buchstaben kurze Codewörter erhalten, während seltenere Buchstaben längere Codewörter zugewiesen bekommen. 
@@ -90,14 +90,13 @@ Im Allgemeinen gilt, solange alle Perlen im Durchmesser gleich sind:
   \label{equation:simple_kostenberechnung}
   l = \sum_i c_i
 \end{equation}
-
 - $c_i$ die Kosten des Buchstaben $i$ \\
 - \( p_i \) die Häufigkeit des Buchstabens \( i \) in der Nachricht   \\
 - \( n_i \) die Länge des Codewortes für den Buchstaben \( i \) (Anzahl der Perlen)  \\
-- \( l \) die Länge der codierten Nachricht ist \\ 
+- \( l \) die Länge der codierten Nachricht \\ 
 \\
 Die Gesamtlänge der Nachricht entspricht der Summe aller Kosten jedes einzelnen Buchstaben.\\
-Die Kosten beschreiben dabei, um wie viel die codierte Nachricht wegen dem Buchstaben länger wird.
+Die Kosten beschreiben dabei, um wie viel die codierte Nachricht wegen des Buchstabens länger wird.
 Um einen präfixfreien Code zu erzeugen, habe ich mich entschieden einen Baum zu benutzen.
 Da durch diesen sicher gestellt werden kann, dass kein Codewort der Anfang eines anderen Codeworts ist.
 \\
@@ -129,7 +128,7 @@ Um dies auszugleichen, wird der Buchstabe mit den höchsten Kosten eine Ebene na
 indem der Elternknoten des Blattes selber zum Blatt wird und alle Kinder verliert.
 Dadurch verliert der Baum aber zu viele Kinder, weshalb er erweitert werden muss.
 Für die Erweiterung untersucht der Algorithmus, an welche Knoten neue Blätter angehängt werden können. Er überprüft die Blätter nach ihrer Ebene, d.h. nach ihrem Wert für $n$,
-und fügt das mit dem kleinst Wert hinzu.
+und fügt das mit dem kleinsten Wert hinzu.
 Das nach oben verschobenene Blatt erhält den Zusatz $protected$. 
 Das verhindert, dass es selbst weitere Kinder bekommen kann.
 Nach jeder Iteration werden den Blättern wie zu Beginn von links nach rechts Buchstaben aufsteigend hinzugefügt.
@@ -137,7 +136,7 @@ Das stellt sicher, dass immer die äußerst linken Blätter (d.h. die mit dem h�
 Dadurch wird ein Zyklus vermieden, bei dem ein Blatt zunächst nach oben verschoben und anschließend wieder nach unten erweitert würde.\\
 Das Verschieben der Blätter nach oben, sowie das Neueinfügen der Blätter unten, gilt als ein Optimierungsschritt,
 welcher im Optimierungsprozess wiederholt wird. (Abbildung \ref{fig:trans_2})
-Dieser Vorgang wird so lange fortgesetzt, bis keine neuen Blätter mehr eingefügt werden können, da alle Blätter als $protected$ gelten (Abbildung \ref{fig:baum_fertig}) - also keine weitern Optimierungen mehr möglich sind.
+Dieser Vorgang wird so lange fortgesetzt, bis keine neuen Blätter mehr eingefügt werden können, da alle Blätter als $protected$ gelten (Abbildung \ref{fig:baum_fertig}) - also keine weiteren Optimierungen mehr möglich sind.
 Das ist der Fall kurz vor einem maximal ausgearteten Baum.
 Der Algorithmus geht also von einem Maximum (maximal ausbalanciert) zum anderen Maximum (maximal ausgeartet).
 Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
@@ -208,7 +207,7 @@ Der Algorithmus bleibt unverändert: Zunächst wird ein Baum erstellt, in dem al
 Anschließend wird der Buchstabe mit den höchsten Kosten nach oben verschoben, während der Baum unten erweitert wird.
 Dies geschieht solange, bis kein Blatt mehr eingefügt werden kann und der beste Baum wird ausgegeben.
 \\
-Wenn die Druchmesser alle gleich groß sind, gilt: 
+Wenn die Durchmesser alle gleich groß sind, gilt: 
 \begin{equation}
  p_i \cdot n_i = p_i \cdot \sum_n cp_n
 \end{equation} 
@@ -234,7 +233,7 @@ Um später den Buchstaben die Häufigkeit wieder richtig zuzuordnen.
 \end{figure}
 
 \subsection{Erstellung des Baums}
-Zu Beginn wird ein blancierter Baum über die Mehtode $create\_tree()$ erstellt.
+Zu Beginn wird ein blancierter Baum über die Methode $create\_tree()$ erstellt.
 \vspace{2em}
 
 \begin{lstlisting}[caption={Methode \texttt{create\_tree}}, label={lst:create_tree}]
@@ -242,9 +241,9 @@ Zu Beginn wird ein blancierter Baum über die Mehtode $create\_tree()$ erstellt.
 \end{lstlisting}
 Die Methode $create\_tree$ bekommt jedes potenziell neue Blatt im Baum über den Aufruf $get\_all\_possible\_costs()$ 
 und das Blatt mit den geringsten Kosten wird dem Baum über den Aufruf $insert\_new\_node(obj)$ hinzugefügt.
-Falls der Elternknoten des neuen Blatts selber noch ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
+Falls der Elternknoten des neuen Blatts selbest noch ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
 Das liegt daran, dass jeder innere Knoten mindesten zwei Kinder haben muss – daher stellen diese Kosten die effektiv neu entstehenden Kosten für den Baum dar.
-Das geschieht solange, bis der Baum genau soviele Blätter hat, wie es Buchstaben gibt. Seine Anzahl an Blättern erhält er über die Methode $get\_size()$.
+Das geschieht solange, bis der Baum genau so viele Blätter hat, wie es Buchstaben gibt. Seine Anzahl an Blättern erhält er über die Methode $get\_size()$.
 
 \vspace{2em}
 
@@ -269,7 +268,7 @@ Ansonsten wird die Methode rekursiv auf alle bestehenden Kinder angewandt.\\
   def get_size(self) -> int:
 \end{lstlisting}
 \vspace{0.5em}
-Die Methode $get\_size$ gibt den Wert 1 zurück falls das Objekt ein Blatt ist. Ansonsten wird die Methode rekursiv bei den Kinder aufgerufen und die Summe zurückgegeben
+Die Methode $get\_size$ gibt den Wert 1 zurück, falls das Objekt ein Blatt ist. Ansonsten wird die Methode rekursiv bei den Kinder aufgerufen und die Summe zurückgegeben.
 
 \subsection{Verbesserung des Baums}
 Sobald ein balancierter Baum erstellt wurde, muss dieser optimiert werden. Dies geschieht über die Methode $find\_best\_tree$.
@@ -277,8 +276,6 @@ Sobald ein balancierter Baum erstellt wurde, muss dieser optimiert werden. Dies 
 \begin{lstlisting}[caption={Methode \texttt{find\_best\_tree}}, label={lst:find_best_tree}]
   def find_best_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
-
-
 Die Methode $find\_best\_tree$ versucht, den übergebenen Baum so lang zu optimieren, bis alle Blätter als $protected$ markiert sind und keine Blätter mehr hinzugefügt werden können.
 Dazu wird der Optimierungsschritt über den Aufruf $improve\_tree(root)$ wiederholt und jeweils mit der Methode $calculate\_tree(root)$ die neuen Kosten des Baums berechnet.
 Sind die neuen Kosten ein neues Minimum wird der aktuelle Baum als bester Zwischenstand gespeichert.
@@ -314,7 +311,7 @@ Die Liste an Blättern wird dann nach den Kosten aufsteigend sortiert und jedes 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/trans_makiert.pdf}
-  \caption{Balancierter Baum, Makierung der richtigen Knoten}
+  \caption{Balancierter Baum, Markierung der richtigen Knoten}
   \label{fig:makiert_baum}
 \end{figure}
 
@@ -348,7 +345,7 @@ Daher ergibt sich
 \begin{equation}
   I < (r-1)\cdot(w-1-\log_{r-1}{w})
 \end{equation}
-Dies bedeuted eine Laufzeit von $O(r\cdot w)$
+Dies bedeuted eine Laufzeit von $O(r\cdot w)$.
 
 
 \begin{figure}[H]
@@ -357,7 +354,7 @@ Dies bedeuted eine Laufzeit von $O(r\cdot w)$
   \caption{Länge der codierten Nachricht über mehrere Iterationen}
   \label{fig:iteration_tree}
 \end{figure}
-Abbildung \ref{fig:iteration_tree} zeigt wie die Länge der codierten Nachricht der Beispielaufgabe $schmuck9$ über die Iterationen hinweg verändert.
+Abbildung \ref{fig:iteration_tree} zeigt wie die Länge der codierten Nachricht der Beispielaufgabe $schmuck9$ sich über die Iterationen hinweg verändert.
 Das Minimum wird bereits in der ersten Hälfte der Iterationen erreicht.
 \subsection{Stand der Forschung}
 Die vorliegende Fragestellung ist seit den 60iger-Jahren in der theorietischen Informatik bekannt. 
@@ -379,7 +376,7 @@ Somit ist dieses Verfahren für die gewählten Beispiele ebenfalls nicht verwend
 
 \subsection{Fazit}
 Für die gegeben Fragestellung gibt es bislang weder ein Beweis, dass sie NP-schwer ist, als auch keinen Gegenbeweis, dass sie es nicht ist.
-Aktuell bekannte Verfahren besitzen eine exponnetielle Laufzeit. [1]
+Aktuell bekannte Verfahren besitzen eine exponnentielle Laufzeit. [1]
 Mein vorgestellter Algorithmus findet nicht die beste Lösung für das gegebene Problem. Er liefert jedoch in polynomieller Laufzeit eine gute Approximation
 und ist daher eine gute Abwägung zwischen Laufzeit und Genauigkeit.
 Somit wird nicht beantwortet, ob die Fragestellung NP-schwer ist.
