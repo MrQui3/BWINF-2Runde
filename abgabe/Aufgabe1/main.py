@@ -1,6 +1,6 @@
 import copy
 from treenode import TreeNode
-from load_input import distribution, characters
+from load_input import distribution, characters, message
 
 
 def create_tree(root: TreeNode) -> TreeNode:
@@ -59,8 +59,16 @@ def output(root):
     print(f"Gesamtkosten: {calculate_tree(root)}")
     all_leaves = root.get_leaves()
     all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
+    b = {}
     for i in range(len(all_leaves)):
+        b[characters[i]] = all_leaves[i].perl_code
         print(f"{characters[i]}: {all_leaves[i].perl_code}")
+
+    return b
+
+def encode_message(message, b):
+    for char in message:
+        print(b[char], end="")
 
 
 def main():
@@ -72,7 +80,8 @@ def main():
 
     # Verbessern des Baums
     root = find_best_tree(root)
-    output(root)
+    b = output(root)
+    encode_message(message, b)
 
 
 
