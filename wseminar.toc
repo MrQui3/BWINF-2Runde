@@ -7,9 +7,9 @@
 \contentsline {subsubsection}{\numberline {2.2.2}Perlen mit unterschiedlichen Durchmessern}{4}{subsubsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.3}Umsetzung}{5}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Erstellung des Baums}{5}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Verbesserung des Baums}{6}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.2}Verbesserung des Baums}{7}{subsubsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.4}Laufzeit und Diskussion}{7}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{7}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{8}{subsubsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.2}Stand der Forschung}{8}{subsubsection.2.4.2}%
 \contentsline {subsubsection}{\numberline {2.4.3}Fazit}{9}{subsubsection.2.4.3}%
 \contentsline {subsection}{\numberline {2.5}Vergleich zur Lösung}{9}{subsection.2.5}%
@@ -19,7 +19,7 @@
 \contentsline {subsubsection}{\numberline {3.2.1}Erstellung der Matrix}{10}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Lösen der Labyrinthe}{10}{subsubsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.3}Gruben}{10}{subsubsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.3}Umsetzung}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Umsetzung}{11}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Erstellung der Matrix}{11}{subsubsection.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Lösen der Labyrinthe}{11}{subsubsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.4}Laufzeit und Diskussion}{14}{subsection.3.4}%

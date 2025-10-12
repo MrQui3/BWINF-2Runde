@@ -74,15 +74,18 @@
 
 \section{Einleitung}
 Die vorliegende Arbeit ist meine Einreichung für die zweiten Runde des 43. Bundeswettbewerb Informatik (BwInf).
-Ich habe mich dazu entschieden, sie anstelle einer W-Seminararbeit im Leitfach Pyhsik zum Thema Klima abzugeben.\\
-In der zweiten Runde des Wettbewerb wurden drei Aufgaben gestellt, von denen zwei zu bearbeiten und schriftlich auszuarbeiten werden mussten.
+Der Wettbewerb wird von der BWINF gGmbH ausgerichtet und von dem Bundesministerium sowie den Kultusministerien unterstützt.
+Er gliedert sich in drei Runden, die aufeinander aufbauen. In der erste Runde, die in Gruppenarbeit durchgeführt wird, stehen fünf kleine Aufgaben zur Auswahl, von denen drei bearbeitet werden müssen. 
+Die zweiten Runde erfolgt in Einzelarbeit; hierbei sind von drei angebotenen Aufgaben zwei zu lösen. 
+Zur Endrunde werden die besten 30 Teilnehmer eingeladen, die an einem Wochenende ihr Wissen in einem Gespräch beweisen. [7]\\
+In der ersten Runde gingen insgesamt 1790 Einsendungen ein, von denen 950 Teilnehmende zur zweiten Runde zugelassen wurden. [8]
+In der zweiten Runde wurden nur noch 250 Lösungen eingereicht, aus denen die 30 besten Teilnehmer für die Endrunde ausgewählt wurden. [9]
 Jede Aufgabe beschreibt ein Problem, für welches anschließend ein Algorithmus entwickelt werden soll, mit dem sich dieses lösen lässt.
-Oft wird die Aufgabe selber noch in Teilaufgaben unterteilt, welche den Schwierigkeitsgrad schrittweise erhöhen.
-Zusätzlich werden Testfälle gegeben, anhand derer der Algorithmus überprüft werden kann. 
+Zusätzlich werden Testfälle gegeben, anhand derer der Algorithmus überprüft werden kann.
 Die erwarteten Ergebnisse der Testfälle werden jedoch nicht angegeben. 
 Sie dienen auschließlich dazu, dass die Korrektoren die Richtigkeit und Genauigkeit des Algorithmuses beurteilen können.
 Die ausgearbeitet Lösungen werden anschließend nach einem festgelegten Schema korrigiert und benotet. Pro Aufgabe können bis zu 20 Punkte erreicht werden, 
-wobei gute Ausarbeitungen Zusatzpunkte geben können und unvollständige Bearbeitungen Punktabzüge nach sich ziehen.\\
+wobei gute Ausarbeitungen Zusatzpunkte geben können und unvollständige Bearbeitungen Punktabzüge nach sich ziehen. [5]\\
 Ich erreichte insgesammt 38 Punkte, erhielt damit den 2. Preis und (gehörte damit zu den besten 60 Teilnehmer).\\
 Meine Arbeit ist in zwei Teile aufgeteilt, beginnend mit Aufgabe 1, Schmucknachrichten, und dann Aufgabe 2, simultane Labyrinthe.
 Beide Teile sind gleich aufgebaut und entsprechen in ihrer Struktur den Vorlagen des BwInf-Teams,
@@ -96,16 +99,17 @@ In dieser Aufgabe möchten Sybille und Pedram kurze Nachrichten, die aus verschi
 Für jeden Buchstaben ist ein Codewort aus Perlen zu finden, wobei insgesamt ein präfixfreier Code entstehen muss.
 Dabei soll die Gesamtlänge der codierten Nachricht möglichst gering sein.
 Daher wird ein präfixfreier Code gesucht, bei dem häufig vorkommende Buchstaben kurze Codewörter erhalten, während seltenere Buchstaben längere Codewörter zugewiesen bekommen. 
-Ein präfixfreie Code ist ein Code bei dem kein Codewort der  Anfang eines Codewortes ist.
+"Ein Code C heißt Prafix-Code (irreduzibler Code), wenn kein Codewort aus C Prafix eines anderen Codeworts von C ist." [10]
 Dadurch lässt sich jede Nachricht eindeutig codieren und wieder decodieren.
-Ein Beispiel für eine solchen Code wäre das Morsealphabet.
+Ein Code mit den Codewörtern {a, ba, bb} ist präfixfrei, da kein Codewort der Anfang eines anderen ist.
+Im Gegensatz dazu ist der Code {a, ab, bb} nicht präfixfrei ist, weil "a" der Präfix von "ab" ist.
 Zusätzlich wird in dieser Aufgabe zwischen zwei Varrianten unterschieden:
 In der ersten Teilaufgabe haben alle Perlen denselben Durchmesser, 
 während in der zweiten Teilaufgabe die Perlen unterschiedliche Durchmesser besitzen.\\
 Ich bearbeite zuerst die Aufgabe, mit den gleichen Durchmessern, und anschließen mit unterschiedlichen Durchmessern. (vgl.)[5]
 \subsection{Lösungsidee}
 \subsubsection{Perlen mit gleichen Durchmessern}
-Im Allgemeinen gilt, solange alle Perlen im Durchmesser gleich sind:
+In meiner Arbeit gilt die Annahme, solange alle Perlen im Durchmesser gleich sind:
 \begin{equation}
   \label{Kosten eines Buchstaben}
   c_i = p_i \cdot n_i
@@ -120,12 +124,15 @@ Im Allgemeinen gilt, solange alle Perlen im Durchmesser gleich sind:
 - \( n_i \) die Länge des Codewortes für den Buchstaben \( i \) (Anzahl der Perlen)  \\
 - \( l \) die Länge der codierten Nachricht \\ 
 \\
-Die Gesamtlänge der Nachricht entspricht der Summe aller Kosten jedes einzelnen Buchstaben.\\
-Die Kosten beschreiben dabei, um wie viel die codierte Nachricht wegen des Buchstabens länger wird.
-Um einen präfixfreien Code zu erzeugen, habe ich mich entschieden einen Baum zu benutzen.
+Die Gesamtlänge der Nachricht entspricht der Summe aller Kosten jedes einzelnen Buchstabens.\\
+Um einen präfixfreien Code zu erzeugen, wird meist ein Baum benutzt. 
+Jeder präfixfreie Code kann in einem Baum dargestellt werden und jeder Baum kann einen präfixfreien Code darstellen. [10]
+Durch diesen sicher gestellt werden, dass kein Codewort der Anfang eines anderen Codeworts ist
+Den gleichen Ansatz 
+(genauer erklären warum bäume. hab ich mich selber überlegt. und literatur hab es auch dannach wieder gefunden).
 Da durch diesen sicher gestellt werden kann, dass kein Codewort der Anfang eines anderen Codeworts ist.
 \\
-Nach meiner Definition ist jedes Blatt des Baums ein Codewort und jede Kante zum Blatt ein Teil des Codeworts. 
+In dieser Arbeit ist ein Baum definiert als Blatt des Baums ein Codewort und jede Kante zum Blatt ein Teil des Codeworts. (todo: rewrite)
 Der Baum hat mindestens so viele Blätter wie es verschiedene Buchstaben gibt.
 Jeder innere Knoten hat dabei maximal so viele Kinder, wie es verschiedene Perlen gibt. 
 Die Ebene des Blatts entspricht der Länge des Codeworts, also $n$.
@@ -201,9 +208,9 @@ Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
 \end{figure}
 
 \subsubsection{Perlen mit unterschiedlichen Durchmessern}
-Das Problem bei unterschiedlichen Durchmessern besteht darin, dass Blätter auf derselben Ebene unterschiedliche Kosten für die Gesamtlänge der Nachricht haben können.
+Das Problem bei unterschiedlichen Perlendurchmessern besteht darin, dass Blätter auf derselben Ebene unterschiedliche Kosten für die Gesamtlänge der Nachricht haben können.
 Daher sind die Kosten nicht mehr der Wert der Ebene und damit die Anzahl an Perlen.
-Das hat zu Folge, dass die Gleichung \eqref{Kosten eines Buchstaben} nicht mehr stimmt.
+Das hat zur Folge, dass die Gleichung \eqref{Kosten eines Buchstaben} nicht mehr stimmt.
 Stattdessen muss der Durchmesser jeder Perle im Codewort einzeln angeschaut werden. Daher ergibt sich
 
  \begin{equation}
@@ -236,10 +243,10 @@ daher kann der zweite Algorithmus sowohl für gleiche als auch unterschiedliche 
 
 
 \subsection{Umsetzung}
-Die Lösung wurde in Python3 geschrieben. Die Eingabetexte werden eingelesen. Die Durchmesser der Perlen werden in einer Liste gespeichert und der Text in einem string.
+(Die Lösung wurde in Python3 geschrieben. Die Eingabetexte werden eingelesen, anhang) Die Durchmesser der Perlen werden in einer Liste gespeichert und der Text in einem string.
 Aus dem Text werden anschließend zwei Listen erstellt:
 Die erste enthält die Häufigkeiten der Buchstaben in absteigender Reihenfolge.
-Die zweite enthält die Buchstaben entsprechend dieser Reihenfolge.
+Die zweite enthält die Buchstaben entsprechend dieser Reihenfolge. (todo: rewrite)
 Sie sehen für Beispielaufgabe $schmuck0$ so aus:\\
 1. [6, 3, 3, 2, 2, 1]\\
 2. ['d', 'a', 's', 'f', 'g', 'h']\\
@@ -259,7 +266,7 @@ Zu Beginn wird ein blancierter Baum über die Methode $create\_tree()$ erstellt.
 \begin{lstlisting}[caption={Methode \texttt{create\_tree}}, label={lst:create_tree}]
   def create_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
-Die Methode $create\_tree$ bekommt jedes potenziell neue Blatt im Baum über den Aufruf $get\_all\_possible\_costs()$ 
+Die Methode $create\_tree$ bekommt jedes potenziell neue Blatt im Baum über den Aufruf $get\_all\_possible\_costs()$ (todo: rewrite)
 und das Blatt mit den geringsten Kosten wird dem Baum über den Aufruf $insert\_new\_node(obj)$ hinzugefügt.
 Falls der Elternknoten des neuen Blatts selbest noch ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
 Das liegt daran, dass jeder innere Knoten mindesten zwei Kinder haben muss – daher stellen diese Kosten die effektiv neu entstehenden Kosten für den Baum dar.
@@ -699,5 +706,13 @@ Vol. 41, No. 3, pp. 684–713
 [5] \url{https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/2_runde/Aufgaben432.pdf}, aufgerufen am 11.10.2025
 
 [6] \url{https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/2_runde/Loesungshinweise432.pdf}, aufgerufen am 11.10.2025
+
+[7] \url{https://bwinf.de/bundeswettbewerb/43/}, aufgerufen am 12.10.2025
+
+[8] \url{https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/1_runde/431_Statistik.pdf}, aufgerufen am 12.10.2025
+
+[9] \url{https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/1_runde/431_Statistik.pdf}, aufgerufen am 12.10.2025
+
+[10] Ralph-Hardo Schulz: \textit{ Codierungstheorie. Eine Einführung. 2. Auflage}, ISBN: 978-3-322-80328-3
 
 \end{document}
