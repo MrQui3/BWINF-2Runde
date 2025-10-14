@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt,ngerman]{scrartcl}
+\documentclass[a4paper,12pt,ngerman]{scrartcl}
 \usepackage{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
@@ -21,7 +21,7 @@
 
 \usepackage{float}
 
-
+\usepackage{csquotes}
 % Für mathematische Befehle und Symbole
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -62,7 +62,15 @@
 	    \LARGE \Name\\\\}
 \date{\LARGE\today}
 
+\usepackage{setspace}
+
 \begin{document}
+
+\setkomafont{section}{\fontsize{14pt}{16pt}\selectfont\bfseries}
+\setkomafont{subsection}{\fontsize{13pt}{15pt}\selectfont\bfseries}
+\setkomafont{subsubsection}{\fontsize{12pt}{14pt}\selectfont\bfseries}
+
+\onehalfspacing
 
 \maketitle
 \tableofcontents
@@ -99,14 +107,14 @@ In dieser Aufgabe möchten Sybille und Pedram kurze Nachrichten, die aus verschi
 Für jeden Buchstaben ist ein Codewort aus Perlen zu finden, wobei insgesamt ein präfixfreier Code entstehen muss.
 Dabei soll die Gesamtlänge der codierten Nachricht möglichst gering sein.
 Daher wird ein präfixfreier Code gesucht, bei dem häufig vorkommende Buchstaben kurze Codewörter erhalten, während seltenere Buchstaben längere Codewörter zugewiesen bekommen. 
-"Ein Code C heißt Prafix-Code (irreduzibler Code), wenn kein Codewort aus C Prafix eines anderen Codeworts von C ist." [10]
+\enquote{Ein Code C heißt Prafix-Code (irreduzibler Code), wenn kein Codewort aus C Prafix eines anderen Codeworts von C ist.} [10]
 Dadurch lässt sich jede Nachricht eindeutig codieren und wieder decodieren.
-Ein Code mit den Codewörtern {a, ba, bb} ist präfixfrei, da kein Codewort der Anfang eines anderen ist.
-Im Gegensatz dazu ist der Code {a, ab, bb} nicht präfixfrei ist, weil "a" der Präfix von "ab" ist.
+Ein Code mit den Codewörtern \{a, ba, bb\} ist präfixfrei, da kein Codewort der Anfang eines anderen ist.
+Im Gegensatz dazu ist der Code \{a, ab, bb\} nicht präfixfrei ist, weil "'a"' der Präfix von "'ab"' ist.
 Zusätzlich wird in dieser Aufgabe zwischen zwei Varrianten unterschieden:
 In der ersten Teilaufgabe haben alle Perlen denselben Durchmesser, 
-während in der zweiten Teilaufgabe die Perlen unterschiedliche Durchmesser besitzen.\\
-Ich bearbeite zuerst die Aufgabe, mit den gleichen Durchmessern, und anschließen mit unterschiedlichen Durchmessern. (vgl.)[5]
+während in der zweiten Teilaufgabe die Perlen unterschiedliche Durchmesser besitzen. [vgl. 5]\\
+Ich bearbeite zuerst die Aufgabe, mit den gleichen Durchmessern, und anschließen mit unterschiedlichen Durchmessern. 
 \subsection{Lösungsidee}
 \subsubsection{Perlen mit gleichen Durchmessern}
 In meiner Arbeit gilt die Annahme, solange alle Perlen im Durchmesser gleich sind:
@@ -125,16 +133,14 @@ In meiner Arbeit gilt die Annahme, solange alle Perlen im Durchmesser gleich sin
 - \( l \) die Länge der codierten Nachricht \\ 
 \\
 Die Gesamtlänge der Nachricht entspricht der Summe aller Kosten jedes einzelnen Buchstabens.\\
-Um einen präfixfreien Code zu erzeugen, wird meist ein Baum benutzt. 
+Um einen präfixfreien Code zu erzeugen, wird überlicherweise ein Baum verwendet. 
+In einem solchen Baum entspricht jedes Blatt einem Codewort. 
+Die Kanten auf dem Weg von der Wurzel zu einem Blatt repräsentieren dabei die Symbole des jeweilige Codewortes.
+Diese präfixfreie Eigenschaft ergibt sich automatisch aus der Baumstruktur: 
+Sobald ein Blatt erreicht wird, endet das Codewort, und keine weiteren Knoten bzw. Symbole können daran angeschlossen werden.
 Jeder präfixfreie Code kann in einem Baum dargestellt werden und jeder Baum kann einen präfixfreien Code darstellen. [10]
-Durch diesen sicher gestellt werden, dass kein Codewort der Anfang eines anderen Codeworts ist
-Den gleichen Ansatz 
-(genauer erklären warum bäume. hab ich mich selber überlegt. und literatur hab es auch dannach wieder gefunden).
-Da durch diesen sicher gestellt werden kann, dass kein Codewort der Anfang eines anderen Codeworts ist.
-\\
-In dieser Arbeit ist ein Baum definiert als Blatt des Baums ein Codewort und jede Kante zum Blatt ein Teil des Codeworts. (todo: rewrite)
-Der Baum hat mindestens so viele Blätter wie es verschiedene Buchstaben gibt.
-Jeder innere Knoten hat dabei maximal so viele Kinder, wie es verschiedene Perlen gibt. 
+Der Baum hat mindestens so viele Blätter wie es verschiedene Buchstaben gibt, da jeder Buchstabe sein eigenes Codewort braucht.
+Jeder innere Knoten kann dabei maximal so viele Kinder haben, wie es verschiedene Perlen gibt. 
 Die Ebene des Blatts entspricht der Länge des Codeworts, also $n$.
 
 \begin{figure}[h]
@@ -190,7 +196,7 @@ Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
   \end{minipage}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \begin{minipage}{0.5\textwidth}
     \centering
@@ -243,15 +249,14 @@ daher kann der zweite Algorithmus sowohl für gleiche als auch unterschiedliche 
 
 
 \subsection{Umsetzung}
-(Die Lösung wurde in Python3 geschrieben. Die Eingabetexte werden eingelesen, anhang) Die Durchmesser der Perlen werden in einer Liste gespeichert und der Text in einem string.
-Aus dem Text werden anschließend zwei Listen erstellt:
-Die erste enthält die Häufigkeiten der Buchstaben in absteigender Reihenfolge.
-Die zweite enthält die Buchstaben entsprechend dieser Reihenfolge. (todo: rewrite)
-Sie sehen für Beispielaufgabe $schmuck0$ so aus:\\
-1. [6, 3, 3, 2, 2, 1]\\
-2. ['d', 'a', 's', 'f', 'g', 'h']\\
-Um später den Buchstaben die Häufigkeit wieder richtig zuzuordnen.
-
+%(Die Lösung wurde in Python3 geschrieben. Die Eingabetexte werden eingelesen, anhang) Die Durchmesser der Perlen werden in einer Liste gespeichert und der Text in einem string.
+%Aus dem Text werden anschließend zwei Listen erstellt:
+%Die erste enthält die Häufigkeiten der Buchstaben in absteigender Reihenfolge.
+%Die zweite enthält die Buchstaben entsprechend dieser Reihenfolge. (todo: rewrite)
+%Sie sehen für Beispielaufgabe $schmuck0$ so aus:\\
+%1. [6, 3, 3, 2, 2, 1]\\
+%2. ['d', 'a', 's', 'f', 'g', 'h']\\
+%Um später den Buchstaben die Häufigkeit wieder richtig zuzuordnen.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/klassen_diagramm.pdf}
@@ -266,8 +271,8 @@ Zu Beginn wird ein blancierter Baum über die Methode $create\_tree()$ erstellt.
 \begin{lstlisting}[caption={Methode \texttt{create\_tree}}, label={lst:create_tree}]
   def create_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
-Die Methode $create\_tree$ bekommt jedes potenziell neue Blatt im Baum über den Aufruf $get\_all\_possible\_costs()$ (todo: rewrite)
-und das Blatt mit den geringsten Kosten wird dem Baum über den Aufruf $insert\_new\_node(obj)$ hinzugefügt.
+Die Methode $create\_tree$ bekommt über den Aufruf $get\_all\_possible\_costs()$ eine Liste an allen möglichen neuen Blätter, die der Baum als nächstes hinzufügen kann.
+Das Blatt mit den geringsten Kosten wird dem Baum über den Aufruf $insert\_new\_node(obj)$ hinzugefügt.
 Falls der Elternknoten des neuen Blatts selbest noch ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
 Das liegt daran, dass jeder innere Knoten mindesten zwei Kinder haben muss – daher stellen diese Kosten die effektiv neu entstehenden Kosten für den Baum dar.
 Das geschieht solange, bis der Baum genau so viele Blätter hat, wie es Buchstaben gibt. Seine Anzahl an Blättern erhält er über die Methode $get\_size()$.
@@ -290,13 +295,6 @@ Wenn vorher noch keine Kinder vorhanden sind, werden zwei Kinder hinzugefügt.
 Ansonsten wird die Methode rekursiv auf alle bestehenden Kinder angewandt.\\
 \\
 
-\vspace{2em} 
-\begin{lstlisting}[caption={Methode \texttt{get\_size}}, label={lst:get_size}]
-  def get_size(self) -> int:
-\end{lstlisting}
-\vspace{0.5em}
-Die Methode $get\_size$ gibt den Wert 1 zurück, falls das Objekt ein Blatt ist. Ansonsten wird die Methode rekursiv bei den Kinder aufgerufen und die Summe zurückgegeben.
-
 \subsubsection{Verbesserung des Baums}
 Sobald ein balancierter Baum erstellt wurde, muss dieser optimiert werden. Dies geschieht über die Methode $find\_best\_tree$.
 \vspace{2em}
@@ -313,18 +311,12 @@ Können keine neuen Blätter dem Baum hinzugefügt werden und es tritt ein Fehle
   def improve_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
 Zu Beginn holt sich die Methode $improve\_tree$ alle Blätter im Baum über den Aufruf $get\_leaves()$.
-Diese Liste wird dann aufsteigend sortiert und die Kosten für jedes Element können mit der Gleichung \eqref{Neue Kosten eines Buchstaben} berechnet werden.
-Der Elternknoten des Blatts mit den höchsten Kosten wird daraufhin selbst zu einem Blatt. Dafür werden die Attribute des Elternknoten
-\begin{lstlisting}
-  is_leaf = True
-  is_protected = True
-  children = []
-\end{lstlisting}
-\vspace{-1.5em}
-gesetzt. Um die fehlenden Blätter wieder hinzuzufügen wird noch die Methde \ref{lst:create_tree}  ($create\_tree$) aufgerufen.\\
+Diese Liste wird dann aufsteigend nach den Kosten jedes Blatts sortiert. 
+Der Elternknoten des Blatts mit den höchsten Kosten wird daraufhin selbst zu einem Blatt und verliert alle Kinder. 
+Um die fehlenden Blätter wieder hinzuzufügen, wird noch die Methde \ref{lst:create_tree}  ($create\_tree$) aufgerufen.\\
 \\\\
 \begin{lstlisting}[caption={Methode \texttt{calculate\_tree}}, label={lst:calculate_tree}]
-  def calculate_tree(root: TreeNode) -> TreeNode:
+  def calculate_tree(root: TreeNode) -> int:
 \end{lstlisting}
 Die Methode $calculate\_tree$ berechnet die gesamt Kosten des Baums. Dafür holt sie sich auch über den Aufruf $get\_leaves()$ alle Blätter im Baum.
 Die Liste an Blättern wird dann nach den Kosten aufsteigend sortiert und jedes Element wird wie in der Gleichung \eqref{Neue Kosten eines Buchstaben} berechnet und zusammenaddiert.

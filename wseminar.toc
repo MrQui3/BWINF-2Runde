@@ -1,35 +1,35 @@
 \babel@toc {ngerman}{}\relax 
-\contentsline {section}{\numberline {1}Einleitung}{2}{section.1}%
-\contentsline {section}{\numberline {2}Aufgabe 1: Schmucknachrichten}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Einleitung}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Lösungsidee}{2}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Perlen mit gleichen Durchmessern}{2}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Perlen mit unterschiedlichen Durchmessern}{4}{subsubsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.3}Umsetzung}{5}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}Erstellung des Baums}{5}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Verbesserung des Baums}{7}{subsubsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.4}Laufzeit und Diskussion}{7}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{8}{subsubsection.2.4.1}%
-\contentsline {subsubsection}{\numberline {2.4.2}Stand der Forschung}{8}{subsubsection.2.4.2}%
-\contentsline {subsubsection}{\numberline {2.4.3}Fazit}{9}{subsubsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.5}Vergleich zur Lösung}{9}{subsection.2.5}%
-\contentsline {section}{\numberline {3}Aufgabe 2: Simultane Labyrinthe}{9}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Einleitung}{9}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Lösungsidee}{9}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Erstellung der Matrix}{10}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Lösen der Labyrinthe}{10}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}Gruben}{10}{subsubsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.3}Umsetzung}{11}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Erstellung der Matrix}{11}{subsubsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.2}Lösen der Labyrinthe}{11}{subsubsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.4}Laufzeit und Diskussion}{14}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Komplexität der Lösung}{14}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Laufzeit}{14}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Fazit}{15}{subsubsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.5}Vergleich zur Lösung}{16}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Fazit}{16}{section.4}%
-\contentsline {section}{\numberline {5}Anhang}{16}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Beispiele}{16}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Quellcode}{16}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Quellen}{16}{subsection.5.3}%
+\contentsline {section}{\numberline {1}Einleitung}{3}{section.1}%
+\contentsline {section}{\numberline {2}Aufgabe 1: Schmucknachrichten}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Einleitung}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Lösungsidee}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Perlen mit gleichen Durchmessern}{4}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Perlen mit unterschiedlichen Durchmessern}{7}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Umsetzung}{8}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Erstellung des Baums}{8}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Verbesserung des Baums}{9}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Laufzeit und Diskussion}{10}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{10}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Stand der Forschung}{12}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Fazit}{13}{subsubsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.5}Vergleich zur Lösung}{13}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Aufgabe 2: Simultane Labyrinthe}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Einleitung}{13}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Lösungsidee}{14}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Erstellung der Matrix}{14}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Lösen der Labyrinthe}{15}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Gruben}{15}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}Umsetzung}{15}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Erstellung der Matrix}{16}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Lösen der Labyrinthe}{17}{subsubsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.4}Laufzeit und Diskussion}{19}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Komplexität der Lösung}{19}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Laufzeit}{20}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Fazit}{21}{subsubsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.5}Vergleich zur Lösung}{22}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Fazit}{22}{section.4}%
+\contentsline {section}{\numberline {5}Anhang}{23}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Beispiele}{23}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Quellcode}{23}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Quellen}{23}{subsection.5.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
