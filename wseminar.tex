@@ -161,8 +161,8 @@ und fügt das mit dem kleinsten Wert hinzu.
 Das nach oben verschobenene Blatt erhält den Zusatz $protected$. 
 Das verhindert, dass es selbst weitere Kinder bekommen kann.
 Dadurch wird ein Zyklus vermieden, bei dem ein Blatt zunächst nach oben verschoben und anschließend wieder nach unten erweitert würde.
-Nach jeder Iteration werden den Blättern wie zu Beginn von links nach rechts Buchstaben aufsteigend hinzugefügt.
-Das stellt sicher, dass immer die äußerst linken Blätter (d.h. die mit dem höchsten $n$-Wert), die Buchstaben mit den geringsten Häufigkeiten kriegen und rechts die höchsten.\\(Todo: Rewrite)
+Nach jeder Iteration werden wie schon zu Beginn den Blättern Buchstaben aufsteigend zugewiesen.
+Durch die Neuzuweisung ist sicher gestellt, dass immer die äußerst linken Blätter, die Buchstaben mit den geringsten Häufigkeiten kriegen und rechts die höchsten.\\
 Der Vorgang, ein Blatt nach oben zu schieben und unten neue Blätter hinzufügen, wird so lange fortgesetzt, bis keine neuen Blätter mehr eingefügt werden können, da alle Blätter als $protected$ gelten.
 Das ist der Fall kurz vor einem maximal ausgearteten Baum (Abbildung \ref{fig:baum_fertig}).
 Der Algorithmus geht also von einem Maximum (maximal ausbalanciert) zum anderen Maximum (maximal ausgeartet).
@@ -210,11 +210,11 @@ stattdessen muss der Durchmesser jeder Perle im Codewort einzeln angeschaut werd
 
  \begin{equation}
   \label{Neue Kosten eines Buchstaben}
-  c_i = p_i \cdot \sum_n cp_n
+  c_i = p_i \cdot \sum_j cp_j
  \end{equation}
 
 
- - $cp_n$ die Kosten/Durchmesser der Perle $n$\\
+ - $cp_j$ die Kosten/Durchmesser der Perle $j$\\
 \\
  Stellt man nun Bäume nicht nach ihrer Ebene, sondern nach ihren Kosten dar, erhält man einen \textit{lopsided tree}[1] (Abbildung \ref{fig:lopsided tree}).\\
  \begin{figure}[h]
@@ -443,7 +443,6 @@ Zu Beginn wird eine Matrix für jedes Labyrinth erstellt, deren Werte für alle 
 Ausgehend vom Zielpunkt durchläuft der Algorithmus rekursiv alle erreichbaren Nachbarpositionen.
 Für jeden Nachbarn wird in der Matrix ein Kostenwert eingetragen, der um eins höher ist als der Kostenwert des aktuellen Punkts, sowie die Richtung, aus der der Nachbar erreicht wurde.
 
-
 \subsubsection{Lösen der Labyrinthe}
 Der Algorithmus entnimmt den momentan besten Weg aus der Liste der bisherigen Wege und erweitert diesen um einen weiteren Schritt.
 Den nächsten Schritt ermittelt er, indem er in den Matrizen prüft, welchen Schritt die beiden Labyrinthe für ihre jeweilige Position vorschlagen.
@@ -482,9 +481,6 @@ Die Kosten der Grubenfelder entsprechen den Startkosten.
 
 
 \subsection{Umsetzung}
-Für beide Labyrinthe werden die horizontalen und vertikalen Wände jeweils in separate Listen gespeichert.
-Auch die Positionen der Gruben werden für jedes Labyrinth in einer eigenen Liste erfasst.
-
 \subsubsection{Erstellung der Matrix}
 Zur Erstellung der Matrix wird die Klasse $cost$ benutzt.
 \begin{figure}[h]
@@ -494,7 +490,7 @@ Zur Erstellung der Matrix wird die Klasse $cost$ benutzt.
   \label{fig:cost_diagramm}
 \end{figure}
 \\
-Für jedes Labyrinth wird ein Cost-Objekt erstellt und die Methode $cost_obj.create_cost_matrix()$ aufgerufen. 
+Für jedes Labyrinth wird ein Cost-Objekt erstellt und die Methode $cost\_obj.create\_cost\_matrix()$ aufgerufen. 
 Das Cost-Objekt bekommt als Übergabewerte die horizontalen und vertikalten Wände, die  Gruben sowie die Größe des Labyrinths.\\
 \begin{lstlisting}[caption={Methode \texttt{create\_cost\_matrix}}, label={lst:create_cost_matrix}]
   def create_cost_matrix(self) -> list:
@@ -507,7 +503,7 @@ Dann ruft sie die Methode $write\_cost$ auf, um die Kostenmatrix zu füllen.
 \end{lstlisting}
 Zu Beginn der Methode $write\_cost()$ wird die Liste $stack$ initalisiert. Sie speichert alle Felder, die noch besucht werden müssen.
 Jeder Eintrag in der Liste besitzt vier Werte: die x-Position, die y-Position, die aktuellen Kosten sowie die entgegengesetzte Richtung, aus welcher das Feld betreten wurde. 
-Die Startposition wird als erstes Element hinzugefügt.
+Die Endposition wird als erstes Element hinzugefügt.
 Anschließend wird das erste Element der Liste entnommen und in die Kostenmatrix übertragen.
 Falls es schon in der Kostenmatrix ist, wird es übersprungen.
 Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbours$ ermittelt und dem $stack$ hinzugefügt.
@@ -555,21 +551,10 @@ Anschließend werden mit den folgenden Aufrufen
   move_2 = self.next_move(pos2, self.cost_matrix_2)
 \end{lstlisting}
 \vspace{-2em}
-die jeweils nächsten möglichen Richtungen aus der Kostenmatrix bestimmt, falls das Ziel noch nicht erreicht wurde.
-Daraufhin werden die neuen zwei Positionspaare berechnet, wenn jeweils in die Richtungen gegangen werden würde.
-\begin{lstlisting}
-  next_position_1 = self.next_position(move.positions, move_1)
-  next_position_2 = self.next_position(move.positions, move_2)
-\end{lstlisting}
-\vspace{-2em}
-Mit dem folgenden Aufruf wird anschließend überprüft, ob die beiden Positionspaare bereits besucht wurden:
-\begin{lstlisting}
-  move_1 = self.check_visited(next_position_1, len(move.moves) + 1, move_1)
-  move_2 = self.check_visited(next_position_2, len(move.moves) + 1, move_2)
-\end{lstlisting}
-\vspace{-2em}
+die jeweils nächsten möglichen Richtungen aus der Kostenmatrix bestimmt.
+Daraufhin werden die neuen zwei Positionspaare berechnet und überprüft, ob die beiden Positionspaare bereits besucht wurden.\\
 Zum Schluss wird für jeden möglichen Zug ein $Move$-Objekt erstellt und zusammen in einer Liste übergeben.
-Falls einer der neuen Positionspaare bereits besucht wurde oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben.
+Falls einer der neuen Positionspaare bereits besucht wurde oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben (siehe Abbildung \ref{fig:neighbours_cost}).
 \\
 \\
 
@@ -636,7 +621,7 @@ Praktisch gesehen ist die Laufzeit aber sehr viel kleiner als die maximale Laufz
   \label{fig:maximal Laufzeit}
 \end{figure}
 \\
-Der grüne Graph zeigt die maximale Anzahl an Iterationen und der blaue die tatsächliche Anzahl an Iterationen.
+Der grüne Graph zeigt die maximale Anzahl an Iterationen und der blaue die tatsächliche Anzahl an Iterationen. (Todo: neuer Graph machen mit der Erklärung im graphen)
 \\
 \subsubsection{Fazit der Laufzeitanlyse}
 Die Werte von $l$ stehen in einem linearen Zusammenhang mit der Anzahl der Iterationen,
@@ -657,10 +642,11 @@ Außerdem war meine Überlegung zur Laufzeit des Verfahren nicht ausreichend det
 Insgesamt erhielt ich für die Aufgabe 17 von 20 Punkten.
 
 \section{Fazit}
--was nehme ich am ende mit\\
--wie gut war ich im Vergleich\\
-- was hab ich gelernt\\
-- wie gut war das alles jetzt\\
+
+Eine offene Aufgabe dieser Arbeit besteht noch im Beweis der NP-Härte für Aufgabe 2 sowie einer genaueren Laufzeitanlyse.\\
+Insgesamt konnte ich mit 38 von 40 Punkten den zweiten Platz erreichen und gehörte damit zu den 60 besten Teilnehmenden.
+Aufgrund dieser Leistung wurde ich für die Internationale Informatik-Olympiade vorgeschlagen und nehme derzeit an derren Training teil.
+Durch diese Arbeit lernt ich,Laufzeitanlysen selbstständig durchzuführen und mit wissenschaftlichen Texten zu arbeiten.
 
 \section{Anhang}
 Im folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.       

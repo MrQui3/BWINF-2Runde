@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  25 OCT 2025 11:56
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  26 OCT 2025 11:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -859,12 +859,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 217--233
 
  []
 
-
-
-[6]
 File: Schmucknachrichten/pdf_src/klassen_diagramm.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/klassen_diagramm.pdf>
 
+
+[6]
 Underfull \hbox (badness 10000) in paragraph at lines 266--270
 
  []
@@ -925,55 +924,59 @@ Underfull \hbox (badness 10000) in paragraph at lines 364--380
 File: Simultane Labyrinthe/pdf_src/cost_matrix.pdf Graphic file (type pdf)
 <use Simultane Labyrinthe/pdf_src/cost_matrix.pdf>
 
-
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 448--454
+Underfull \hbox (badness 10000) in paragraph at lines 447--453
 
  []
+
+
+
+[12]
+File: Simultane Labyrinthe/pdf_src/cost_diagramm.pdf Graphic file (type pdf)
+<use Simultane Labyrinthe/pdf_src/cost_diagramm.pdf>
+
+Overfull \hbox (45.48892pt too wide) in paragraph at lines 485--495
+\TU/lmr/m/n/12 Für jedes Labyrinth wird ein Cost-Objekt erstellt und die Method
+e $\OML/cmm/m/it/12 cost[]obj:create[]cost[]matrix\OT1/cmr/m/n/12 ()$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 485--495
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
 [13]
-File: Simultane Labyrinthe/pdf_src/cost_diagramm.pdf Graphic file (type pdf)
-<use Simultane Labyrinthe/pdf_src/cost_diagramm.pdf>
-
-Overfull \hbox (14.89041pt too wide) in paragraph at lines 489--499
-\TU/lmr/m/n/12 Für jedes Labyrinth wird ein Cost-Objekt erstellt und die Method
-e $\OML/cmm/m/it/12 cost[]bj:create[]ost[]atrix\OT1/cmr/m/n/12 ()$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 489--499
-
- []
-
-
-
-[14]
 File: Simultane Labyrinthe/pdf_src/solving_diagramm.pdf Graphic file (type pdf)
 
 <use Simultane Labyrinthe/pdf_src/solving_diagramm.pdf>
+
+
+[14]
 File: Simultane Labyrinthe/pdf_src/moving_diagramm.pdf Graphic file (type pdf)
 <use Simultane Labyrinthe/pdf_src/moving_diagramm.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--541
+Underfull \hbox (badness 10000) in paragraph at lines 522--537
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--544
 
  []
 
 
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 545--548
+Underfull \hbox (badness 10000) in paragraph at lines 554--560
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 571--575
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 571--575
+Underfull \hbox (badness 10000) in paragraph at lines 554--560
 
  []
 
@@ -984,29 +987,28 @@ File: Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf Graphic file (type p
 df)
 <use Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--613
+Underfull \hbox (badness 10000) in paragraph at lines 574--598
 
  []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
 [16]
-
-[17]
 File: Simultane Labyrinthe/pdf_src/plotting_max_1.pdf Graphic file (type pdf)
 <use Simultane Labyrinthe/pdf_src/plotting_max_1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 622--641
+Underfull \hbox (badness 10000) in paragraph at lines 607--626
 
  []
 
 
+
+[17]
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 660--664
-
- []
-
 File: Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf Graphic file (type pdf)
 <use Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf>
 
@@ -1014,28 +1016,28 @@ File: Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf Graphic file (type pdf)
 [19]
 
 [20]
-Overfull \hbox (59.99132pt too wide) in paragraph at lines 685--686
+Overfull \hbox (59.99132pt too wide) in paragraph at lines 671--672
 []\TU/lmr/m/n/12 [5] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
 ][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
 [] [] [][][][][] [] [][][][][][][][][][][] []
  []
 
 
-Overfull \hbox (109.43126pt too wide) in paragraph at lines 687--688
+Overfull \hbox (109.43126pt too wide) in paragraph at lines 673--674
 []\TU/lmr/m/n/12 [6] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
 ][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
 [] [] [][][][][] [] [][][][][][][][][][][][][][][][][][][] []
  []
 
 
-Overfull \hbox (10.55138pt too wide) in paragraph at lines 691--692
+Overfull \hbox (10.55138pt too wide) in paragraph at lines 677--678
 []\TU/lmr/m/n/12 [8] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
 ][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
 [] [] [][][][][] [] [][][] []
  []
 
 
-Overfull \hbox (10.55138pt too wide) in paragraph at lines 693--694
+Overfull \hbox (10.55138pt too wide) in paragraph at lines 679--680
 []\TU/lmr/m/n/12 [9] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
 ][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
 [] [] [][][][][] [] [][][] []
@@ -1058,7 +1060,7 @@ Package rerunfilecheck Info: File `wseminar.out' has not changed.
 Here is how much of TeX's memory you used:
  22502 strings out of 408640
  467885 string characters out of 5749145
- 1142834 words of memory out of 5000000
+ 1129834 words of memory out of 5000000
  45296 multiletter control sequences out of 15000+600000
  569576 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
