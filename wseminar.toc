@@ -1,35 +1,34 @@
 \babel@toc {ngerman}{}\relax 
-\contentsline {section}{\numberline {1}Einleitung}{2}{section.1}%
-\contentsline {section}{\numberline {2}Aufgabe 1: Schmucknachrichten}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Einleitung}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Lösungsidee}{3}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Perlen mit gleichen Durchmessern}{3}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Perlen mit unterschiedlichen Durchmessern}{5}{subsubsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.3}Umsetzung}{7}{subsection.2.3}%
+\contentsline {section}{\numberline {1}Einleitung}{1}{section.1}%
+\contentsline {section}{\numberline {2}Aufgabe 1: Schmucknachrichten}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Einleitung}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}theorietische Erklärung des Algorithmus}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Betrachtung von Symbolen mit gleichen Kosten}{3}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Erweiterung auf Symbolen mit unterschiedlichen Kosten}{5}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Implementierung des Algorithmus}{6}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Erstellung des Baums}{7}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Verbesserung des Baums}{8}{subsubsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.4}Laufzeit und Diskussion}{9}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{9}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Permutation des Baums}{8}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Laufzeitanalyse und Einordnung des Algorithmus}{8}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{8}{subsubsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.2}Stand der Forschung}{10}{subsubsection.2.4.2}%
 \contentsline {subsubsection}{\numberline {2.4.3}Fazit}{11}{subsubsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.5}Vergleich zur Lösung}{11}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.5}Vergleich zur Musterlösung}{11}{subsection.2.5}%
 \contentsline {section}{\numberline {3}Aufgabe 2: Simultane Labyrinthe}{11}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Einleitung}{11}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Lösungsidee}{12}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}theorietische Erklärung des Algorithmus}{11}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Erstellung der Matrix}{12}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Lösen der Labyrinthe}{13}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}Gruben}{13}{subsubsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.3}Umsetzung}{13}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.2.2}Lösen der Labyrinthe}{12}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}Implementierung des Algorithmus}{13}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Erstellung der Matrix}{13}{subsubsection.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Lösen der Labyrinthe}{14}{subsubsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.4}Laufzeit und Diskussion}{16}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.4}Laufzeitanalyse}{16}{subsection.3.4}%
 \contentsline {subsubsection}{\numberline {3.4.1}Komplexität der Lösung}{16}{subsubsection.3.4.1}%
 \contentsline {subsubsection}{\numberline {3.4.2}Laufzeit}{16}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Fazit der Laufzeitanlyse}{18}{subsubsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.5}Vergleich zur Lösung}{18}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Fazit}{19}{section.4}%
+\contentsline {subsubsection}{\numberline {3.4.3}Fazit der Laufzeitanlyse}{17}{subsubsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.5}Vergleich zur Musterlösung}{18}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Fazit}{18}{section.4}%
 \contentsline {section}{\numberline {5}Anhang}{19}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Beispiele}{20}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Quellcode}{20}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Quellen}{20}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.1}Beispiele}{19}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Quellcode}{19}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Quellen}{19}{subsection.5.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
