@@ -547,17 +547,13 @@ Falls einer der neuen Positionspaare bereits besucht wurde oder bereits im Ziel 
 
 
 \subsection{Laufzeitanalyse}
-\subsubsection{Komplexität der Lösung}
 Von jedem Positionspaar aus existieren im schlimmsten Fall zwei mögliche Schritte, entweder in Richtung des Ziels von Labyrinth 1 oder in Richtung des Ziels von Labyrinth 2.
 Das führt zu insgesammt $2^{(nm)^2}$ verschiedenen Möglichkeiten.
 Aufgrund dieser großen Anzahl an Möglichkeiten untersucht der Algorithmus nicht alle Pfade vollständig, sondern macht nur eine Abschätzung.
 Der hier vorgestellte Ansatz garantiert daher nicht unbedingt den optimalen Lösungsweg, liefert jedoch in akzeptabler Laufzeit eine gute Annäherung.
 Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, während andere nur kurz betrachtet werden.
-
-
-
-
-\subsubsection{Laufzeit}
+\\
+\\
 Wie schon oben erwähnt beeinflussst die Begrenzung $l$, die Laufzeit und die Genauigkeit des Algorithmus stark.
 \begin{figure}[h]
   \centering
@@ -610,7 +606,7 @@ Praktisch gesehen ist die Laufzeit aber sehr viel kleiner als die maximale Laufz
 \\
 Der grüne Graph zeigt die maximale Anzahl an Iterationen und der blaue die tatsächliche Anzahl an Iterationen. (Todo: neuer Graph machen mit der Erklärung im graphen)
 \\
-\subsubsection{Fazit der Laufzeitanlyse}
+\\
 Die Werte von $l$ stehen in einem linearen Zusammenhang mit der Anzahl der Iterationen,
 während die Anzahl der Schritte bei größeren $l$-Werten gegen das optimale Ergebnis konvergieren.
 Je größer der Wert von $l$, desto mehr Iteration werden durchgeführt - und desto besser wird das Ergebnis.
@@ -647,13 +643,377 @@ Im folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.
   \caption{$neighbours\_cost$ Flussdiagramm}
   \label{fig:neighbours_cost}
 \end{figure}
-\subsection{Beispiele}
+\subsection{Lösungen der Testfälle}
+Das sind meine Ergebnisse der Testfälle. 
+Die vorgegebenen Testfälle können in Quelle 7 nachgeschaut werden und die zu erwarteten Ergebnisse in Quelle 6.
+\subsubsection{Aufgabe 1: Schmucknachrichten}
+schmuck0.txt: Gesamtkosten 114\\
+schmuck00.txt: Gesamtkosten 382\\
+schmuck01.txt: Gesamtkosten 1165\\
+schmuck1.txt: Gesamtkosten 194\\
+schmuck2.txt: Gesamtkosten 135\\
+schmuck3.txt: Gesamtkosten 279\\
+schmuck4.txt: Gesamtkosten 137\\
+schmuck5.txt: Gesamtkosten 3189\\
+schmuck6.txt: Gesamtkosten 234\\
+schmuck7.txt: Gesamtkosten 135409\\
+schmuck8.txt: Gesamtkosten 3358\\
+schmuck9.txt: Gesamtkosten 38635\\
+\subsubsection{Aufgabe 2: Simultane Labyrinthe}
+labyrinthe0.txt: Weglänge 8\\
+labyrinthe1.txt: Weglänge 31\\
+labyrinthe2.txt: Weglänge 66\\
+labyrinthe3.txt: Weglänge 166\\
+labyrinthe4.txt: Weglänge 14497\\
+labyrinthe5.txt: Weglänge 1345\\
+labyrinthe6.txt: Weglänge 1844\\
+labyrinthe7.txt: Keine Lösung\\
+labyrinthe8.txt: Weglänge 1433\\
+labyrinthe9.txt: Weglänge 1036\\
 \subsection{Quellcode}
-\subsection{Quellen}
-[1]  Mordecai J. Golin and Günther Rote,  \textit{A Dynamic Programming Algorithm for Constructing Optimal Prefix-Free Codes with Unequal Letter Costs}, IEEE Transactions on Information Theory 44, no. 5, September 1998
 
-[2] Mordecai J. Golin, Claire Mathieu und Neal E. Young, \textit{HUFFMAN CODING WITH LETTER COSTS: A LINEAR-TIME APPROXIMATION SCHEME}, 2012 Society for Industrial and Applied Mathematics
-Vol. 41, No. 3, pp. 684–713
+\subsubsection{Aufgabe 1: Schmucknachrichten}
+\begin{lstlisting}[language=Python]
+  class TreeNode:
+
+    def __init__(self, cost, parent, perl_code):
+        self.perl_code = perl_code  # Speichert die Codierung für den Knoten
+        self.cost = cost
+        self.children = []
+        self.parent = parent
+        self.is_leaf = True
+        self.is_protected = False  # Wenn True, dann kann er keine kinder mehr bekommen
+
+    def insert_new_node(self, obj):
+        if obj is self:
+            if self.is_leaf:  # Damit jede parent immer mehr mindestens zwei kinder hat
+                self.is_leaf = False
+                self.children.append(TreeNode(self.cost + perl_costs[0], self, self.perl_code+[len(self.children)]))
+
+            self.children.append(TreeNode(self.cost + perl_costs[len(self.children)], self, self.perl_code+[len(self.children)]))
+            return
+
+        for child in self.children:
+            child.insert_new_node(obj)
+
+    def get_size(self) -> int:
+        if self.is_leaf:
+            return 1
+        return sum(child.get_size() for child in self.children)
+
+    def get_leaves(self) -> list:
+        if self.is_leaf:
+            return [self]
+
+        children_leaves = []
+        for child in self.children:
+            for i in child.get_leaves():
+                children_leaves.append(i)
+        return children_leaves
+
+    def get_all_possible_costs(self) -> dict:
+        children_cost = {}
+        if len(self.children) < len(perl_costs) and self.is_protected is False:
+            if self.is_leaf:
+                children_cost[self] = self.cost + perl_costs[0] + self.cost + perl_costs[1]
+            else:
+                children_cost[self] = self.cost + perl_costs[len(self.children)]
+
+        for child in self.children:
+           children_cost.update(child.get_all_possible_costs())
+        return children_cost
+
+    def get_internal_nodes(self):
+        if self.is_leaf:
+            return 0
+        return sum(child.get_interal_nodes() for child in self.children) + 1
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python]
+  def create_tree(root: TreeNode) -> TreeNode:
+  while root.get_size() < len(distribution):
+      possible_children = root.get_all_possible_costs()
+      smallest_value = min(possible_children.items(), key=lambda item: item[1])
+
+      root.insert_new_node(smallest_value[0])
+  return root
+
+
+def calculate_tree(root):
+  all_leaves = root.get_leaves()
+  all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
+  total_count = 0
+  for i in range(len(all_leaves)):
+      total_count += all_leaves[i].cost * distribution[i]
+  return total_count
+
+
+def improve_tree(root: TreeNode) -> TreeNode:
+  all_leaves = root.get_leaves()
+  all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
+  highest_cost = 0
+  parent_node = None
+  for i in range(len(all_leaves)):
+      if all_leaves[i].parent.parent is not None:
+          if all_leaves[i].cost * distribution[i] > highest_cost:
+              highest_cost = all_leaves[i].cost * distribution[i]
+              parent_node = all_leaves[i].parent
+
+  parent_node.is_leaf = True
+  parent_node.children = []
+  parent_node.is_protected = True
+
+  return create_tree(root)
+
+
+def find_best_tree(root):
+  best_value = calculate_tree(root)
+  best_root = copy.deepcopy(root)
+  while True:
+      try:
+          root = improve_tree(root)
+          new_calc = calculate_tree(root)
+
+          if new_calc < best_value:
+              best_value = new_calc
+              best_root = copy.deepcopy(root)
+      except Exception as e:
+          # Gibt keine Verbesserung mehr
+          return best_root
+
+
+def output(root):
+  print(f"Gesamtkosten: {calculate_tree(root)}")
+  all_leaves = root.get_leaves()
+  all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
+  for i in range(len(all_leaves)):
+      print(f"{characters[i]}: {all_leaves[i].perl_code}")
+
+
+def main():
+  # Initiiere Wurzel objekt
+  root = TreeNode(0, None, [])
+
+  # Erstellen des balancierten Baums
+  root = create_tree(root)
+
+  # Verbessern des Baums
+  root = find_best_tree(root)
+  output(root)
+
+\end{lstlisting}
+\subsubsection{Aufgabe 2: Simultane Labyrinthe}
+\begin{lstlisting}[language=Python]
+  class Move:
+
+      def __init__(self, moves, positions, cost, heights_cost, weight=None):
+          self.moves = moves
+          self.positions = positions
+          self.cost = cost
+          self.weight = weight if weight is not None else (heights_cost - cost) / len(moves)  # moves are sorted based on this value
+          
+\end{lstlisting}
+\begin{lstlisting}[language=Python]
+  class Solving:
+  def __init__(self, cost_matrix_1, cost_matrix_2, vertical_walls_1, horizontal_walls_1,
+               vertical_walls_2, horizontal_walls_2, gruben_1, gruben_2, width, height):
+      self.width = width
+      self.height = height
+      self.cost_at_beginning = cost_matrix_1[0][0][0] + cost_matrix_2[0][0][0]
+
+      self.gruben_1 = gruben_1
+      self.gruben_2 = gruben_2
+
+      self.vertical_walls_1 = vertical_walls_1
+      self.horizontal_walls_1 = horizontal_walls_1
+
+      self.vertical_walls_2 = vertical_walls_2
+      self.horizontal_walls_2 = horizontal_walls_2
+
+      self.cost_matrix_1 = cost_matrix_1
+      self.cost_matrix_2 = cost_matrix_2
+
+      self.visited = {}
+      # Funktionen und Bewegungsdeltas nur einmal definieren
+      self.move_funcs = [test_right, test_left, test_up, test_down]
+      self.move_deltas = [(1, 0), (-1, 0), (0, -1), (0, 1)]
+
+  def next_position(self, position, next_move):
+      mf = self.move_funcs
+      md = self.move_deltas
+      pos1 = position[0]
+      pos2 = position[1]
+
+      # Für die erste Position
+      if pos1 != (self.width - 1, self.height - 1):
+          matrix1 = self.vertical_walls_1 if next_move < 2 else self.horizontal_walls_1
+          if mf[next_move](pos1[0], pos1[1], matrix1):
+              pos1 = (pos1[0] + md[next_move][0], pos1[1] + md[next_move][1])
+              if pos1 in self.gruben_1:
+                  pos1 = (0, 0)
+
+      # Für die zweite Position
+      if pos2 != (self.width - 1, self.height - 1):
+          matrix2 = self.vertical_walls_2 if next_move < 2 else self.horizontal_walls_2
+          if mf[next_move](pos2[0], pos2[1], matrix2):
+              pos2 = (pos2[0] + md[next_move][0], pos2[1] + md[next_move][1])
+              if pos2 in self.gruben_2:
+                  pos2 = (0, 0)
+      return pos1, pos2
+
+  def next_move(self, pos, cost_matrix):
+      w = self.width
+      h = self.height
+      return None if pos == (w - 1, h - 1) else cost_matrix[pos[1]][pos[0]][1]
+
+  def get_moving_cost(self, pos, cost_matrix):
+      w = self.width
+      h = self.height
+      return 0 if pos == (w - 1, h - 1) else cost_matrix[pos[1]][pos[0]][0]
+
+  def get_total_cost(self, positions):
+      pos1, pos2 = positions
+      return self.get_moving_cost(pos1, self.cost_matrix_1) + self.get_moving_cost(pos2, self.cost_matrix_2)
+
+  def check_visited(self, next_position, length, move):
+      # Erstelle einen Schlüssel als Tupel, das beide Positionen enthält
+      key = (next_position[0][0], next_position[0][1],
+             next_position[1][0], next_position[1][1])
+      if key in self.visited and self.visited[key] <= length:
+          return None
+      self.visited[key] = length
+      return move
+
+  def neighbours_cost(self, move: Move):
+      # Berechne beide Positionen anhand der Bewegungsfolge
+      pos1 = move.positions[0]
+      pos2 = move.positions[1]
+
+      # Ermittle den nächsten Zug für beide Positionen
+      move_1 = self.next_move(pos1, self.cost_matrix_1)
+      move_2 = self.next_move(pos2, self.cost_matrix_2)
+
+      # Nächsten Positionspaare berechnen
+      next_position_1 = self.next_position(move.positions, move_1) if move_1 is not None else None
+      next_position_2 = self.next_position(move.positions, move_2) if move_2 is not None else None
+
+      # Testen ob die Positionspaare schon einmal da waren
+      move_1 = self.check_visited(next_position_1, len(move.moves) + 1, move_1) if move_1 is not None else None
+      move_2 = self.check_visited(next_position_2, len(move.moves) + 1, move_2) if move_2 is not None else None
+
+      results = []
+      if move_1 is not None:
+          results.append(Move(move.moves + [move_1], next_position_1, self.get_total_cost(next_position_1),
+                              self.cost_at_beginning))
+      if move_2 is not None:
+          results.append(Move(move.moves + [move_2], next_position_2, self.get_total_cost(next_position_2),
+                              self.cost_at_beginning))
+      return results
+      \end{lstlisting}
+
+\begin{lstlisting}[language=Python]
+class Cost:
+
+   def write_cost(self, start_x, start_y):
+        stack = [(start_x, start_y, 0, None)]
+
+        while stack:
+            x, y, cost, direction = stack.pop()
+            if self.matrix[y][x] != 0:
+                continue
+
+            self.matrix[y][x] = (cost, direction)
+
+
+            a = self.get_neighbors(x, y)
+            for neighbor in a:
+                nx, ny, ndirection = neighbor
+                if self.matrix[ny][nx] == 0:
+                    stack.append((nx, ny, cost + 1, ndirection))
+
+
+    def create_cost_matrix(self):
+        self.matrix = [[0 for _ in range(self.width)] for _ in range(self.height)]
+        self.write_cost(self.width - 1, self.height - 1)
+        return self.matrix
+      \end{lstlisting}
+\begin{lstlisting}[language=Python]
+def create_matrix(data, height):
+  vertical_walls = [data.pop(0) for _ in range(height)]
+  horizontal_walls = [data.pop(0) for _ in range(height - 1)]
+  gruben_anzahl = int(data.pop(0)[0])
+  gruben = [tuple(data.pop(0)) for _ in range(gruben_anzahl)]
+  return horizontal_walls, vertical_walls, gruben
+
+
+def create_matrix_for_laby(horizontal_walls, vertical_walls, gruben, width, height):
+  cost_obj = Cost(horizontal_walls, vertical_walls, gruben, width, height)
+  return cost_obj.create_cost_matrix()
+
+
+def moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1, horizontal_walls_2,
+         vertical_walls_2, gruben_1, gruben_2, l):
+  
+  
+  solving_obj = Solving(cost_matrix_1, cost_matrix_2, vertical_walls_1, horizontal_walls_1, vertical_walls_2,
+                        horizontal_walls_2, gruben_1, gruben_2, width, height)
+
+  moves = [Move([], ((0, 0), (0, 0)), 0, heights_cost=0, weight=0)]
+  while True:
+
+      # Erstes Element aus der Liste nehmen
+      move = moves[0]
+      moves.pop(0)
+
+      # Liste mit den neuen Wegen erweitern
+      new_moves = solving_obj.neighbours_cost(move)
+      moves.extend(new_moves)
+
+      moves = sorted(moves, key=lambda obj: (-obj.weight, len(obj.moves)))
+      moves = moves[:l]  # Nur die l besten Züge speichern
+
+      if moves[0].cost == 0:
+          return moves[0]
+
+
+def output(move):
+  print(len(move.moves))
+  print(move.moves)
+
+
+def main():
+  # Datei Einlesen
+  width, height, data = read_data_from_file('input/labyrinthe8.txt')
+
+  # Listen erstellen
+  horizontal_walls_1, vertical_walls_1, gruben_1 = create_matrix(data, height)
+  horizontal_walls_2, vertical_walls_2, gruben_2 = create_matrix(data, height)
+
+  # Matrix für beide Labyrinthe erstellen
+  cost_matrix_1 = create_matrix_for_laby(horizontal_walls_1, vertical_walls_1, gruben_1, width, height)
+  cost_matrix_2 = create_matrix_for_laby(horizontal_walls_2, vertical_walls_2, gruben_2, width, height)
+
+  # Weg finden
+
+  # TODO: Wert für l anpassen
+  l = 100
+  try:
+      move = moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1,
+                          horizontal_walls_2, vertical_walls_2, gruben_1, gruben_2, l)
+      output(move)
+
+  except:
+      print("No solution found")
+
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection{Quellen}
+[1] Mordecai J. Golin and Günther Rote,  \textit{A Dynamic Programming Algorithm for Constructing Optimal Prefix-Free Codes with Unequal Letter Costs}, IEEE Transactions on Information Theory 44, no. 5, September 1998
+
+[2] Mordecai J. Golin, Claire Mathieu und Neal E. Young, \textit{HUFFMAN CODING WITH LETTER COSTS: A LINEAR-TIME APPROXIMATION SCHEME}, 2012 Society for Industrial and Applied Mathematics Vol. 41, No. 3, pp. 684–713 \\
 
 [3] Prof. Justus Piater, \textit{Algorithmen und Datenstrukturen}, 29.05.2024 Universität Innsbruck, Seite 4-13
 

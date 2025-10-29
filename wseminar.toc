@@ -1,5 +1,5 @@
 \babel@toc {ngerman}{}\relax 
-\contentsline {section}{\numberline {1}Einleitung}{1}{section.1}%
+\contentsline {section}{\numberline {1}Einleitung}{2}{section.1}%
 \contentsline {section}{\numberline {2}Aufgabe 1: Schmucknachrichten}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Einleitung}{2}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}theorietische Erklärung des Algorithmus}{3}{subsection.2.2}%
@@ -21,14 +21,15 @@
 \contentsline {subsection}{\numberline {3.3}Implementierung des Algorithmus}{13}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Erstellung der Matrix}{13}{subsubsection.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Lösen der Labyrinthe}{14}{subsubsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.4}Laufzeitanalyse}{16}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Komplexität der Lösung}{16}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Laufzeit}{16}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Fazit der Laufzeitanlyse}{17}{subsubsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.5}Vergleich zur Musterlösung}{18}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.4}Laufzeitanalyse}{15}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Vergleich zur Musterlösung}{17}{subsection.3.5}%
 \contentsline {section}{\numberline {4}Fazit}{18}{section.4}%
 \contentsline {section}{\numberline {5}Anhang}{19}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Beispiele}{19}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Quellcode}{19}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Quellen}{19}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.1}Lösungen der Testfälle}{19}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Aufgabe 1: Schmucknachrichten}{19}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Aufgabe 2: Simultane Labyrinthe}{20}{subsubsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.2}Quellcode}{20}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Aufgabe 1: Schmucknachrichten}{20}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Aufgabe 2: Simultane Labyrinthe}{23}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Quellen}{27}{subsection.5.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
