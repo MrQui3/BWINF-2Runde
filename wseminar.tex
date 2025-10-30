@@ -98,7 +98,7 @@ Im Gegensatz dazu ist der Code \{0, 01, 11\} nicht präfixfrei ist, weil "'0"' d
 Zusätzlich wird in dieser Aufgabe zwischen zwei Varianten unterschieden:
 In der ersten Teilaufgabe haben alle Perlen denselben Durchmesser, 
 während in der zweiten Teilaufgabe die Perlen unterschiedliche Durchmesser besitzen.[5]
-\subsection{theorietische Erklärung des Algorithmus}
+\subsection{Theoretische Erklärung des Algorithmus}
 \subsubsection{Betrachtung von Symbolen mit gleichen Kosten}
 In meiner Arbeit gilt die Annahme, solange alle Perlen im Durchmesser gleich sind:
 \begin{equation}
@@ -109,6 +109,7 @@ In meiner Arbeit gilt die Annahme, solange alle Perlen im Durchmesser gleich sin
   \label{equation:simple_kostenberechnung}
   l = \sum_i c_i
 \end{equation}
+wobei gilt: \\
 - $c_i$ die Kosten des Buchstaben $i$ \\
 - \( p_i \) die Häufigkeit des Buchstabens \( i \) in der Nachricht   \\
 - \( n_i \) die Länge des Codewortes für den Buchstaben \( i \) (Anzahl der Perlen)  \\
@@ -202,8 +203,7 @@ stattdessen muss der Durchmesser jeder Perle im Codewort einzeln angeschaut werd
   \label{Neue Kosten eines Buchstaben}
   c_i = p_i \cdot \sum_j cp_j
  \end{equation}
-
-
+wobei gilt: \\
  - $cp_j$ die Kosten/Durchmesser der Perle $j$\\
 \\
  Stellt man nun Bäume nicht nach ihrer Ebene, sondern nach ihren Kosten dar, erhält man einen \textit{lopsided tree}[1] (Abbildung \ref{fig:lopsided tree}).\\
@@ -374,17 +374,18 @@ und ist daher eine gute Abwägung zwischen Laufzeit und Genauigkeit.
 Somit wird nicht beantwortet, ob die Fragestellung NP-schwer ist.
 
 
-\subsection{Vergleich zur Musterlösung}
-In der Musterlösung werden drei Lösungen vorgeschlagen:\\
-1. ein Greedy-Algorithmus basierend auf Huffman\\
-2. ein ILP-Ansatz nach Richard Karp und\\
-3. die Erweiterung von Mordecai J. Golin und Günter Rote (vgl.)[6]\\
+\subsection{Vergleich mit der Musterlösung}
+In der Musterlösung werden drei Lösungen vorgeschlagen.
+Der erste Anssatz ist ein Greedy-Algorithmus basierend auf Huffman.
+Die zweite Variante ist ein ILP-Ansatz nach Richard Karp und
+die dritte ist dessen Erweiterung von Mordecai J. Golin und Günter Rote.[6]
 Alle drei Ansätze waren mir bei Abgabe meiner Arbeit bekannt. 
 Trotzdem entschied ich mich dagegen eines dieser Verfahren zu implementieren, vor allem aufgrund deren hohen Laufzeit, 
 und entwickelte stattdessen meine eigenes Verfahren.
 Mein Algorithmus hat dabei eine durchschnittliche Abweichung von 1,27\% vom Idealergebnis, besitzt jedoch im Gegensatz dazu eine sehr viel kürzere Laufzeit.[6]
 Für meine gutes ErgebniArbeit erhielt ich daher eine Pluspunkt und erreichte insgesamt 21 Punkte für diese Aufgabe.
 
+\clearpage
 \section{Aufgabe 2: Simultane Labyrinthe}
 \subsection{Einleitung}
 In dieser Aufgabe möchten drei Freunde, Anton, Bea und Chris, zwei Labyrinthe gleichzeitig durchlaufen, die
@@ -392,11 +393,11 @@ dieselben rechteckigen Maße (n, m) haben.
 Zwei Personen starten jeweils in ihrem Labyrinth bei der Position (0, 0) und müssen das Ziel (n, m) erreichen.
 Die dritte Person gibt jeweils beiden immer dieselbe nächste Schrittanweisung. 
 Wenn der nächste Schritt in einem Labyrinth durch eine Wand blockiert ist, bleibt die Person stehen.
-Gesucht ist eine möglichst kurze Abfolge von Schritten, die beide Labyrinthe mit den selben Befehlen löst.
-Die ursprüngliche Aufgabe enthält normale Labyrinth, in dem Spezialfall werden die Labyrinth um Gruben erweitert.
-Fällt ein Spieler in eine Grube, wird seine Position auf die Startposition (0, 0) zurückgesetzt.[5]
+Gesucht ist eine möglichst kurze Abfolge von Schritten, die beide Labyrinthe mit denselben Befehlen löst.
+Die ursprüngliche Aufgabe enthält normale Labyrinthe. Im Spezialfall werden die Labyrinth um Gruben erweitert.
+Wenn ein Spieler in eine Grube fällt, wird seine Position auf die Startposition (0, 0) zurückgesetzt.[5]
 
-\subsection{theorietische Erklärung des Algorithmus}
+\subsection{Theoretische Erklärung des Algorithmus}
 Zu Beginn wird für jedes Labyrinth eine Matrix erstellt (Abbildung \ref{fig:lybnmatrix}),
 in der für jede Position ein Tupel aus einem Kostenwert und einer Richtung gespeichert wird. 
 Die gespeicherte Richtung zeigt den optimalen Folgeschritt zum Ziel und ist in Tabelle \ref{tab:richtungscodierung} dargestellt.
@@ -416,8 +417,8 @@ Die gespeicherte Richtung zeigt den optimalen Folgeschritt zum Ziel und ist in T
   \label{tab:richtungscodierung}
 \end{table}
 \\
-Der Kostenwert gibt an, wie viele Schritte bis zum Ziel benötigt werden.\\
-In Abbildung \ref{fig:lybnmatrix} ist ein Labyrinth mir dazugehöriger Matrix abgebildet.
+Der Kostenwert $cp$ gibt an, wie viele Schritte bis zum Ziel benötigt werden.\\
+In Abbildung \ref{fig:lybnmatrix} ist ein Labyrinth mit dazugehöriger Matrix abgebildet.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\textwidth]{Simultane Labyrinthe/pdf_src/cost_matrix.pdf}
@@ -431,21 +432,27 @@ Ausgehend vom Zielpunkt durchläuft der Algorithmus rekursiv alle erreichbaren N
 Für jeden Nachbarn wird in der Matrix ein Kostenwert eingetragen, der um eins höher ist als der Kostenwert des aktuellen Punkts, sowie die Richtung, aus der der Nachbar erreicht wurde.
 
 \subsubsection{Lösen der Labyrinthe}
-Der Algorithmus entnimmt den momentan besten Weg aus der Liste der bisherigen Wege und erweitert diesen um einen weiteren Schritt.
-Indem er in den Matrizen prüft, welchen Schritt die beiden Labyrinthe für ihre jeweilige Position vorschlagen.
+Der Algorithmus entnimmt den momentan besten Weg aus der Liste der bisherigen Wege und erweitert diesen um einen weiteren Schritt, 
+indem er in den Matrizen prüft, welchen Schritt die beiden Labyrinthe für ihre jeweilige Position vorschlagen.
 Dieser Schritt wird an die bisherige Schrittfolge angehängt.
-Dabei entstehen in der Regel zwei unterschiedliche Wege, die zur Liste der bisherigen Wege hinzugefügt werden.
+Dabei entstehen in der Regel zwei unterschiedliche Wege, die zur Liste der bisherigen Wege hinzugefügt werden, 
+es sei denn, beide Labrinthe schlagen denselben Schritt vor.
 Zur Auswertung der bisherigen Wege wird diese Rechung angewandt:
 \\
+\begin{equation}
+  c_b = cp_{s1} + cp_{s2}
+\end{equation}
+\begin{equation}
+  c_a = cp_{a1} + cp_{a2}
+\end{equation}
 \begin{equation}
   c_w = \frac{c_b -c_a}{n}
   \label{weg_kosten}
 \end{equation}
-
 wobei gilt:\\
+-$s1$ und $s2$ sind die Kosten der Startposition\\
+-$a1$ und $a2$ sind die Kosten der aktuellen Positionen\\
 -$c_w$ sind die Kosten des bisherigen Wegs\\
--$c_b$ sind die summierten Kosten von beiden Startpositionen\\
--$c_a$ sind die summierten Kosten von beiden aktuellen Positionen\\
 -$n$ ist die Anzahl der benötigten Schritte\\
 Der Bruch beschreibt die durchschnittliche Einsparung von Kosten pro Schritt.
 Je höher der Wert ist, desto effizienter ist der bisherige Pfad. 
@@ -453,16 +460,17 @@ Dabei ist 2 der maximal erreichbare Wert. Dieser ist nur bei identischen Labyrin
 \\
 Der Weg mit der höchsten Einsparung gilt dabei als momentan bester Weg.
 Nach jeder Iteration wird das aktuelle Positionspaar $((x_1, y_1),(x_2, y_2))$ gespeichert,
-um zu verhindern, dass der Algorithmus das exakt selbe Positionspaar noch einmal besucht.
+um zu verhindern, dass der Algorithmus exakt dasselbe Positionspaar noch einmal besucht.
 Zusätzlich gibt es auch die Begrenzung $l$, die festlegt, wie viele unterschiedliche Wege, sortiert nach ihren Kosten, in der Liste gespeichert werden dürfen.
-Diese Begrenzung beeinflusst maßgeblich  die Laufzeit und Genauigkeit des Algorithmus.
-In der Liste dürfen die Wege unterschiedliche Werte für $n$ haben; wichtig ist lediglich, dass ihre Kosten (Gleichung \eqref{weg_kosten}) gering sind.
+Diese Begrenzung beeinflusst maßgeblich  die Laufzeit und die Genauigkeit des Algorithmus.
+In der Liste dürfen die Wege unterschiedliche Werte für $n$ haben.
+Denn wichtig ist vorallem, dass ihre Kosten (Gleichung \eqref{weg_kosten}) gering sind.
 Der gesamte Ablauf wird solange wiederholt, bis beide im Ziel sind.
 \\
 \\
 Bei der Erweiterung des Algorithmus werden Gruben sowohl in der Kostenmatrix als auch beim Lösen wie normale Felder gesehen. 
 Wenn einer der beiden Personen eine Grube berührt, wird seine Position auf die jeweilige Startposition zurückgesetzt.
-Daraus folgt, dass die Kosten der Grubenfelder den Startkosten entsprechen.
+Daraus folgt, dass die Kosten der Grubenfelder den Kosten der Startpositionen entsprechen.
 
 
 
@@ -473,12 +481,12 @@ Zur Erstellung der Matrix wird die Klasse $Cost$ benutzt.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/cost_diagramm.pdf}
-  \caption{Cost Klasse}
+  \caption{Klasse Cost}
   \label{fig:cost_diagramm}
 \end{figure}
 \\
-Für jedes Labyrinth wird ein Cost-Objekt erstellt und die Methode $cost\_obj.create\_cost\_matrix()$ aufgerufen. 
-Das Cost-Objekt bekommt als Übergabewerte die horizontalen und vertikalten Wände, die  Gruben sowie die Größe des Labyrinths.\\
+Für jedes Labyrinth wird ein Cost-Objekt erstellt und die Methode \\$cost\_obj.create\_cost\_matrix()$ aufgerufen. 
+Das Cost-Objekt bekommt als Übergabewerte die horizontalen bzw vertikalen Wände sowie die Gruben und die Größe des Labyrinths.\\
 \begin{lstlisting}[caption={Methode \texttt{create\_cost\_matrix}}, label={lst:create_cost_matrix}]
   def create_cost_matrix(self) -> list:
 \end{lstlisting}
@@ -492,10 +500,10 @@ Zu Beginn der Methode $write\_cost()$ wird die Liste $stack$ initalisiert. Sie s
 Jeder Eintrag in der Liste besitzt vier Werte: die x-Position, die y-Position, die aktuellen Kosten sowie die entgegengesetzte Richtung, aus welcher das Feld betreten wurde. 
 Die Endposition wird als erstes Element hinzugefügt.
 Anschließend wird das erste Element der Liste entnommen und in die Kostenmatrix übertragen.
-Falls es schon in der Kostenmatrix ist, wird es übersprungen.
 Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbours$ ermittelt und dem $stack$ hinzugefügt.
 Dabei werden die Kosten um eins erhöht und die jeweilige Richtung gespeichert.
-Das word solange wiederholt, bis der $stack$ leer ist.
+Das würd solange wiederholt, bis der $stack$ leer ist.
+Falls ein Element schon in der Kostenmatrix ist, wird es übersprungen.
 
 \subsubsection{Lösen der Labyrinthe}
 
@@ -517,9 +525,9 @@ Die Wege werden mit der Klasse $Move$ dargestellt.
 Das Attribut $cost$ beschreibt die aufsummierten Kosten der beiden aktuellen Positionen basierend auf den Werten aus den Kostmatrizen.
 Das Attribut $weight$ wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
 \\
-Zu Beginn wird ein $Solving$-Objekt initalisiert und eine leere Liste $moves_stack$ angelegt, in der alle aktuellen Wege gespeichert werden.
+Zu Beginn wird ein $Solving$-Objekt initalisiert und eine leere Liste $moves\_stack$ angelegt, in der alle aktuellen Wege gespeichert werden.
 Anschließend wird ein erstes $Move$-Objekt erzeugt, dessen Startposition ((0, 0), (0, 0)) ist und seine moves leer sind.
-In jedem Schritt wird das erste Element aus der $moves_stack$ Liste entnommen.
+In jedem Schritt wird das erste Element aus der Liste $moves\_stack$ entnommen.
 Dann wird mit folgendem Aufruf
 \begin{lstlisting}
   new_moves = solving_obj.neighbours_cost(move)
@@ -548,7 +556,7 @@ Falls einer der neuen Positionspaare bereits besucht wurde oder bereits im Ziel 
 
 \subsection{Laufzeitanalyse}
 Von jedem Positionspaar aus existieren im schlimmsten Fall zwei mögliche Schritte, entweder in Richtung des Ziels von Labyrinth 1 oder in Richtung des Ziels von Labyrinth 2.
-Das führt zu insgesammt $2^{(nm)^2}$ verschiedenen Möglichkeiten.
+Das führt zu insgesammt $2^{(nm)^2}$ verschiedenen Möglichkeiten an Schritten.
 Aufgrund dieser großen Anzahl an Möglichkeiten untersucht der Algorithmus nicht alle Pfade vollständig, sondern macht nur eine Abschätzung.
 Der hier vorgestellte Ansatz garantiert daher nicht unbedingt den optimalen Lösungsweg, liefert jedoch in akzeptabler Laufzeit eine gute Annäherung.
 Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, während andere nur kurz betrachtet werden.
@@ -566,8 +574,8 @@ Abbildung \ref{fig:schritte_1} zeigt die Anzahl der Schritte des gefundenen Lös
 \\
 \\
 Auffällig ist, dass der Graph mit zunehmendem $l$ gegen die Anzahl der Schritte des optimalen Wegs konvergiert.
-Ebenso erkennbar ist, dass er nicht streng monoton fallend ist. 
-In einem Fall, bei dem die Steigung positiv ist, wird für ein größeren Wert von $l$ ein schlechterer Pfad gefunden.
+Ebenso erkennbar ist, dass der Graph nicht streng monoton fallend ist. 
+Wenn die Steigung positiv ist, wird für ein größeren Wert von $l$ ein schlechterer Pfad gefunden.
 Dies liegt daran, dass durch den höheren Wert von $l$ neue Wege betrachtet werden.
 Diese erscheinen kurzfristig vorteilhafter als die bisherigen Wege und verdrängen dadurch die eigentlich besseren aus der Liste.
 Das führt insgesamt zu einem schlechteren Weg.
@@ -588,12 +596,12 @@ Allgemein kann die maximale Anzahl an Iterationen in Abhängigkeit von $l$ wie f
   l\cdot(2c_1+c_2)
   \label{max_iterationen}
 \end{equation}
-wobei:\\
+wobei gilt:\\
 - $c_1$ die Kosten vom Startpunkt aus der Kostenmatrix 1 sind\\
 - $c_2$ die Kosten vom Startpunkt aus der Kostenmatrix 2 sind\\
 Der Faktor $2c_1+c_2$ beschreibt die maximale Anzahl an Schritten, aus denen der schlechteste Lösungsweg besteht.
-Zunächst erreicht Agent1 das Ziel mit $c_1$ Schritten.
-Anschließend läuft Agent2 denselben Weg zurück in ebenfalls $c_1$ Schritten und geht dann selber ins Ziel mit $c_2$ Schritten.
+Zunächst erreicht Person1 das Ziel mit $c_1$ Schritten.
+Anschließend läuft Person2 denselben Weg zurück in ebenfalls $c_1$ Schritten und geht dann selber ins Ziel mit $c_2$ Schritten.
 Im schlechtesten Fall geht er für jeden Eintrag in der Liste, also $l$ mal, die maximale Anzahl an Schritten.
 Daher ergibt sich die Gleichung \eqref{max_iterationen}, dies bedeutet, es ergibt sich eine Laufzeit von $o(l)$ ergibt.
 Praktisch gesehen ist die Laufzeit aber sehr viel kleiner als die maximale Laufzeit (Abbildung \ref{fig:maximal Laufzeit}).
@@ -607,33 +615,40 @@ Praktisch gesehen ist die Laufzeit aber sehr viel kleiner als die maximale Laufz
 Der grüne Graph zeigt die maximale Anzahl an Iterationen und der blaue die tatsächliche Anzahl an Iterationen. (Todo: neuer Graph machen mit der Erklärung im graphen)
 \\
 \\
-Die Werte von $l$ stehen in einem linearen Zusammenhang mit der Anzahl der Iterationen,
+Die Anzahl der Iterationen stehen in einem liearem Zusammenhang mit den Werten von $l$,
 während die Anzahl der Schritte bei größeren $l$-Werten gegen das optimale Ergebnis konvergieren.
 Je größer der Wert von $l$, desto mehr Iteration werden durchgeführt - und desto besser wird das Ergebnis.
 Die Genauigkeit lässt sich anhand des Parameters $l$ jedoch nicht allgemein bestimmen, da sie stark von der Struktur des jeweiligen Labyrinths abhängt.
 
 
-\subsection{Vergleich zur Musterlösung}
-Die Musterlösung stellt zwei mögliche Lösungsstrategien vor:\\
-1. Breitensuche auf zwei Labyrinthe: Diese Variante wird in der Musterlösung aufgrund ihrer hohe Laufzeit als nicht praktikabel eingestuft.\\
-2. A-Star Algorithmus mit Priorty Queue: Diese Option ähnelt stark meiner eigenen Idee. 
+\subsection{Vergleich mit der Musterlösung}
+In der Musterlösung werden zwei mögliche Lösungsstrategien vorgestellt.
+Die erste Strategie besteht in der Anwendung der Breitensuche auf zwei Labyrinthe. 
+Diese Variante wird jedoch in der Musterlösung aufgrund ihrer hohe Laufzeit als nicht praktikabel eingestuft.\\
+Die zweite Stratie basiert auf dem A-Star Algorithmus mit Priorty Queue. 
+Diese Vorgehensweise ähnelt stark meiner eigenen Idee. 
 Wie in meiner Kostenmatrix wird auch hier für jede Position die Distanz zum Ziel berechnet.[6]
-Der Unterschied liegt vor allem in einem effizienteren Warteschlagenmodell der Musterlösung.\\
+Der wesentliche Unterschied liegt vor allem in dem effizienteren Warteschlagenmodell der Musterlösung.\\
 Insgesamt lagen meine Ergebnisse, aus geschlossen von Testfall 8, bei 1,1\% Abweichung vom Optimalwert.[6]
 Bei Testfall 8 fiel mein Ergebnis etwa 3-mal so groß aus, weshalb mir 2 Puntke im Kriterium "'Verfahren mit guten Ergebnissen"' abgezogen wurden.
 Außerdem war meine Überlegung zur Laufzeit des Verfahren nicht ausreichend detailliert, was zu einem weiteren Punktabzug führte.\\
 Insgesamt erhielt ich für die Aufgabe 17 von 20 Punkten.
 
 \section{Fazit}
+%In der ersten Runde gingen insgesamt 1790 Einsendungen ein, von denen 950 Teilnehmende zur zweiten Runde zugelassen wurden.[8]
+%In der zweiten Runde wurden nur noch 250 Lösungen eingereicht, aus denen die 30 besten Teilnehmer für die Endrunde ausgewählt wurden.[9]
+Aufgrund des begrenzten Umfangs der Arbeit konnte ich keinen Beweis für die NP-Schwere erbrignen und eine präzisere Laufzeitanalyse durchführen.
+Dennoch konnte ich durch Vergleiche mit der Musterlösung Erkenntnisse über die Effizienz verschiedener Algorithmusstrategien gewinnen\\
+Insgesamt konnte ich mit 38 von 40 Punkten den zweiten Platz erreichen und gehörte damit zu den 60 besten Teilnehmenden von über 250.
+Aufgrund dieser Leistung wurde ich für die Internationale Informatik-Olympiade vorgeschlagen und nehme derzeit an derren Trainingsprogramm teil.
+Durch diese Arbeit lernt ich Laufzeitanlysen selbstständig durchzuführen und mit wissenschaftlichen Texten zu arbeiten.
+Der Bwinf erweist sich insgesamt als gute Möglichkeit, Schüler an wissenschaftliches Arbeiten und algorithmisches Denken heranzuführen.
 
-Eine offene Aufgabe dieser Arbeit besteht noch im Beweis der NP-Härte für Aufgabe 2 sowie einer genaueren Laufzeitanlyse.\\
-Insgesamt konnte ich mit 38 von 40 Punkten den zweiten Platz erreichen und gehörte damit zu den 60 besten Teilnehmenden.
-Aufgrund dieser Leistung wurde ich für die Internationale Informatik-Olympiade vorgeschlagen und nehme derzeit an derren Training teil.
-Durch diese Arbeit lernt ich,Laufzeitanlysen selbstständig durchzuführen und mit wissenschaftlichen Texten zu arbeiten.
-\\
-\\
-In der ersten Runde gingen insgesamt 1790 Einsendungen ein, von denen 950 Teilnehmende zur zweiten Runde zugelassen wurden.[8]
-In der zweiten Runde wurden nur noch 250 Lösungen eingereicht, aus denen die 30 besten Teilnehmer für die Endrunde ausgewählt wurden.[9]
+
+Der Bwinf eigenet sich gut 
+udn sollte gefördert werden
+
+ \clearpage
 
 \section{Anhang}
 Im folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.       
@@ -644,32 +659,52 @@ Im folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.
   \label{fig:neighbours_cost}
 \end{figure}
 \subsection{Lösungen der Testfälle}
-Das sind meine Ergebnisse der Testfälle. 
-Die vorgegebenen Testfälle können in Quelle 7 nachgeschaut werden und die zu erwarteten Ergebnisse in Quelle 6.
+Das sind meine Ergebnisse der Testfälle im Vergleich zu der Musterlösung. 
+Die vorgegebenen Testfälle können in Quelle 7 nachgeschaut werden und die optimalen Ergebnisse können in Quelle 6 eingesehen werden.
 \subsubsection{Aufgabe 1: Schmucknachrichten}
-schmuck0.txt: Gesamtkosten 114\\
-schmuck00.txt: Gesamtkosten 382\\
-schmuck01.txt: Gesamtkosten 1165\\
-schmuck1.txt: Gesamtkosten 194\\
-schmuck2.txt: Gesamtkosten 135\\
-schmuck3.txt: Gesamtkosten 279\\
-schmuck4.txt: Gesamtkosten 137\\
-schmuck5.txt: Gesamtkosten 3189\\
-schmuck6.txt: Gesamtkosten 234\\
-schmuck7.txt: Gesamtkosten 135409\\
-schmuck8.txt: Gesamtkosten 3358\\
-schmuck9.txt: Gesamtkosten 38635\\
+Die Lösungen können in Tabelle \ref{tab:lo_aufgabe1} eingesehen werden.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+  \hline
+  \textbf{Testfall} & \textbf{meine Gesamtkosten} & \textbf{optimalen Ergebnis} \\ \hline
+  schmuck0.txt & 114 &  113\\ \hline
+  schmuck00.txt & 382 &  372\\ \hline
+  schmuck01.txt & 1165 &  1150\\ \hline
+  schmuck1.txt & 194 &  191\\ \hline
+  schmuck2.txt & 135 &  135\\ \hline
+  schmuck3.txt & 279 &  279\\ \hline
+  schmuck4.txt & 137 &  137\\ \hline
+  schmuck5.txt & 3189 &  3162\\ \hline
+  schmuck6.txt & 234 &  234\\ \hline
+  schmuck7.txt & 135409 &  134559\\ \hline
+  schmuck8.txt & 3358 &  3287\\ \hline
+  schmuck9.txt & 39635 &  36597\\ \hline
+  \end{tabular}
+  \caption{Lösungen der Aufgabe 1}
+  \label{tab:lo_aufgabe1}
+\end{table}
 \subsubsection{Aufgabe 2: Simultane Labyrinthe}
-labyrinthe0.txt: Weglänge 8\\
-labyrinthe1.txt: Weglänge 31\\
-labyrinthe2.txt: Weglänge 66\\
-labyrinthe3.txt: Weglänge 166\\
-labyrinthe4.txt: Weglänge 14497\\
-labyrinthe5.txt: Weglänge 1345\\
-labyrinthe6.txt: Weglänge 1844\\
-labyrinthe7.txt: Keine Lösung\\
-labyrinthe8.txt: Weglänge 1433\\
-labyrinthe9.txt: Weglänge 1036\\
+Die Lösungen können in Tabelle \ref{tab:lo_aufgabe1} eingesehen werden.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+  \hline
+  \textbf{Testfall} & \textbf{meine Gesamtkosten} & \textbf{optimalen Ergebnis} \\ \hline
+  labyrinthe0.txt & 8 & 8 \\ \hline
+  labyrinthe1.txt & 31 & 31 \\ \hline
+  labyrinthe2.txt & 66 & 65 \\ \hline
+  labyrinthe3.txt & 166 & 164 \\ \hline
+  labyrinthe4.txt & 14497 & 14384 \\ \hline
+  labyrinthe5.txt & 1345 & 1308 \\ \hline
+  labyrinthe6.txt & 1844 & 1844 \\ \hline
+  labyrinthe7.txt & keine Lösung & keine Lösung \\ \hline
+  labyrinthe8.txt & 1433 & 472 \\ \hline
+  labyrinthe9.txt & 1036 & 1012 \\ \hline
+  \end{tabular}
+  \caption{Lösungen der Aufgabe 2}
+  \label{tab:lo_aufgabe2}
+\end{table}
 \subsection{Quellcode}
 
 \subsubsection{Aufgabe 1: Schmucknachrichten}
@@ -688,9 +723,11 @@ labyrinthe9.txt: Weglänge 1036\\
         if obj is self:
             if self.is_leaf:  # Damit jede parent immer mehr mindestens zwei kinder hat
                 self.is_leaf = False
-                self.children.append(TreeNode(self.cost + perl_costs[0], self, self.perl_code+[len(self.children)]))
+                treenode = TreeNode(self.cost + perl_costs[0], self, self.perl_code+[len(self.children)])
+                self.children.append(treenode)
 
-            self.children.append(TreeNode(self.cost + perl_costs[len(self.children)], self, self.perl_code+[len(self.children)]))
+            treenode = TreeNode(self.cost + perl_costs[len(self.children)], self, self.perl_code+[len(self.children)])
+            self.children.append()
             return
 
         for child in self.children:

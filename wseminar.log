@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  29 OCT 2025 09:38
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  30 OCT 2025 18:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -810,22 +810,22 @@ Package scrlayer-scrpage Warning: \footheight to low.
 File: Schmucknachrichten/pdf_src/simple_tree.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/simple_tree.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--160
+Underfull \hbox (badness 10000) in paragraph at lines 111--161
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--160
+Underfull \hbox (badness 10000) in paragraph at lines 111--161
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--160
+Underfull \hbox (badness 10000) in paragraph at lines 111--161
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--160
+Underfull \hbox (badness 10000) in paragraph at lines 111--161
 
  []
 
@@ -848,7 +848,7 @@ File: Schmucknachrichten/pdf_src/trans_3.pdf Graphic file (type pdf)
 File: Schmucknachrichten/pdf_src/trans_4.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/trans_4.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--190
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
 [][][]\TU/lmr/m/n/12 Ausgearteter
  []
 
@@ -858,7 +858,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 190--190
 File: Schmucknachrichten/pdf_src/lopsided_tree.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/lopsided_tree.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 207--223
+Underfull \hbox (badness 10000) in paragraph at lines 205--223
 
  []
 
@@ -875,18 +875,18 @@ File: Schmucknachrichten/pdf_src/klassen_diagramm.pdf Graphic file (type pdf)
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--260
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 256--260
-
- []
-
-
 
 [6]
+Underfull \hbox (badness 10000) in paragraph at lines 256--260
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 256--260
+
+ []
+
+
 
 [7]
 Underfull \hbox (badness 10000) in paragraph at lines 279--285
@@ -934,33 +934,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 352--368
 
 
 [10]
+Overfull \hbox (1.62773pt too wide) in paragraph at lines 378--387
+\TU/lmr/m/n/12 In der Musterlösung werden drei Lösungen vorgeschlagen. Der erst
+e Anssatz ist ein Greedy-
+ []
+
+
+
+[11]
 File: Simultane Labyrinthe/pdf_src/cost_matrix.pdf Graphic file (type pdf)
 <use Simultane Labyrinthe/pdf_src/cost_matrix.pdf>
 
 
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 434--440
+[12
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 435--442
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 445--466
+Underfull \hbox (badness 10000) in paragraph at lines 451--474
 
  []
 
-
-
-[12]
 File: Simultane Labyrinthe/pdf_src/cost_diagramm.pdf Graphic file (type pdf)
 <use Simultane Labyrinthe/pdf_src/cost_diagramm.pdf>
 
-Overfull \hbox (45.48892pt too wide) in paragraph at lines 472--482
-\TU/lmr/m/n/12 Für jedes Labyrinth wird ein Cost-Objekt erstellt und die Method
-e $\OML/cmm/m/it/12 cost[]obj:create[]cost[]matrix\OT1/cmr/m/n/12 ()$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 472--482
+Underfull \hbox (badness 10000) in paragraph at lines 480--490
 
  []
 
@@ -970,30 +971,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 472--482
 File: Simultane Labyrinthe/pdf_src/solving_diagramm.pdf Graphic file (type pdf)
 
 <use Simultane Labyrinthe/pdf_src/solving_diagramm.pdf>
-File: Simultane Labyrinthe/pdf_src/moving_diagramm.pdf Graphic file (type pdf)
-<use Simultane Labyrinthe/pdf_src/moving_diagramm.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 509--524
-
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 528--531
+File: Simultane Labyrinthe/pdf_src/moving_diagramm.pdf Graphic file (type pdf)
+<use Simultane Labyrinthe/pdf_src/moving_diagramm.pdf>
+
+Underfull \hbox (badness 10000) in paragraph at lines 517--532
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 541--547
+Underfull \hbox (badness 10000) in paragraph at lines 536--539
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 541--547
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 549--555
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 549--555
 
  []
 
@@ -1004,24 +1005,12 @@ File: Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf Graphic file (type p
 df)
 <use Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 550--581
+Underfull \hbox (badness 10000) in paragraph at lines 558--589
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 550--581
-
- []
-
-
-
-[15]
-
-[16]
-File: Simultane Labyrinthe/pdf_src/plotting_max_1.pdf Graphic file (type pdf)
-<use Simultane Labyrinthe/pdf_src/plotting_max_1.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 590--614
+Underfull \hbox (badness 10000) in paragraph at lines 558--589
 
  []
 
@@ -1030,304 +1019,304 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 629--637
+[16]
+File: Simultane Labyrinthe/pdf_src/plotting_max_1.pdf Graphic file (type pdf)
+<use Simultane Labyrinthe/pdf_src/plotting_max_1.pdf>
+
+Underfull \hbox (badness 10000) in paragraph at lines 598--622
 
  []
 
+
+
+[17]
+
+[18]
+
+[19]
 File: Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf Graphic file (type pdf)
 <use Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf>
 
 
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 650--662
+[20
 
- []
-
-
-
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 663--673
-
- []
-
-(C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty
+] (C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
-Overfull \hbox (0.76053pt too wide) in paragraph at lines 680--681
+Overfull \hbox (0.76053pt too wide) in paragraph at lines 715--716
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (66.7612pt too wide) in paragraph at lines 685--687
+Overfull \hbox (66.7612pt too wide) in paragraph at lines 720--722
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [] 
  []
 
 
-Overfull \hbox (66.7612pt too wide) in paragraph at lines 689--690
+
+[21]
+Overfull \hbox (66.7612pt too wide) in paragraph at lines 724--725
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][] 
  []
 
 
-Overfull \hbox (240.76297pt too wide) in paragraph at lines 691--693
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (318.76376pt too wide) in paragraph at lines 693--694
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][] 
- []
-
-
-
-[20]
-Overfull \hbox (18.76071pt too wide) in paragraph at lines 716--717
+Overfull \hbox (174.7623pt too wide) in paragraph at lines 726--727
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][] 
  []
 
 
-Overfull \hbox (90.76144pt too wide) in paragraph at lines 718--719
+Overfull \hbox (252.76309pt too wide) in paragraph at lines 729--730
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (18.76071pt too wide) in paragraph at lines 753--754
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (90.76144pt too wide) in paragraph at lines 755--756
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][] 
  []
 
 
-Overfull \hbox (24.76077pt too wide) in paragraph at lines 720--722
+Overfull \hbox (24.76077pt too wide) in paragraph at lines 757--759
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][] 
  []
 
 
-Overfull \hbox (0.76053pt too wide) in paragraph at lines 729--730
+Overfull \hbox (0.76053pt too wide) in paragraph at lines 766--767
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][] 
  []
 
 
-Overfull \hbox (18.76071pt too wide) in paragraph at lines 736--738
+Overfull \hbox (18.76071pt too wide) in paragraph at lines 773--775
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (30.76083pt too wide) in paragraph at lines 744--745
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][] 
- []
-
-
-
-[21]
-Overfull \hbox (30.76083pt too wide) in paragraph at lines 753--754
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][] 
- []
-
-
-Overfull \hbox (30.76083pt too wide) in paragraph at lines 788--789
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][] 
  []
 
 
 
 [22]
-Overfull \hbox (0.76053pt too wide) in paragraph at lines 809--810
+Overfull \hbox (30.76083pt too wide) in paragraph at lines 781--782
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][] 
+ []
+
+
+Overfull \hbox (30.76083pt too wide) in paragraph at lines 790--791
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][] 
+ []
+
+
+
+[23]
+Overfull \hbox (30.76083pt too wide) in paragraph at lines 825--826
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][] 
+ []
+
+
+Overfull \hbox (0.76053pt too wide) in paragraph at lines 846--847
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (336.76395pt too wide) in paragraph at lines 813--815
+Overfull \hbox (336.76395pt too wide) in paragraph at lines 850--852
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (72.76126pt too wide) in paragraph at lines 818--819
+Overfull \hbox (72.76126pt too wide) in paragraph at lines 855--856
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (72.76126pt too wide) in paragraph at lines 819--820
+Overfull \hbox (72.76126pt too wide) in paragraph at lines 856--857
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 822--824
+Overfull \hbox (12.76065pt too wide) in paragraph at lines 859--861
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
 
-[23]
-Overfull \hbox (66.7612pt too wide) in paragraph at lines 849--850
+[24]
+Overfull \hbox (66.7612pt too wide) in paragraph at lines 886--887
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.76059pt too wide) in paragraph at lines 851--852
+Overfull \hbox (6.76059pt too wide) in paragraph at lines 888--889
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
 
-Overfull \hbox (66.7612pt too wide) in paragraph at lines 857--858
+Overfull \hbox (66.7612pt too wide) in paragraph at lines 894--895
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.76059pt too wide) in paragraph at lines 859--860
+Overfull \hbox (6.76059pt too wide) in paragraph at lines 896--897
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
 
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 867--869
+Overfull \hbox (12.76065pt too wide) in paragraph at lines 904--906
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][] 
  []
 
 
-Overfull \hbox (192.76248pt too wide) in paragraph at lines 876--878
+Overfull \hbox (192.76248pt too wide) in paragraph at lines 913--915
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ] 
  []
 
 
-Overfull \hbox (132.76187pt too wide) in paragraph at lines 897--898
+
+[25]
+Overfull \hbox (132.76187pt too wide) in paragraph at lines 934--935
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][] 
  []
 
 
-
-[24]
-Overfull \hbox (132.76187pt too wide) in paragraph at lines 898--900
+Overfull \hbox (132.76187pt too wide) in paragraph at lines 935--937
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][] 
  []
 
 
-Overfull \hbox (210.76266pt too wide) in paragraph at lines 901--902
+Overfull \hbox (210.76266pt too wide) in paragraph at lines 938--939
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (210.76266pt too wide) in paragraph at lines 902--904
+Overfull \hbox (210.76266pt too wide) in paragraph at lines 939--941
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (186.76242pt too wide) in paragraph at lines 906--907
+Overfull \hbox (186.76242pt too wide) in paragraph at lines 943--944
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ] 
  []
 
 
-Overfull \hbox (186.76242pt too wide) in paragraph at lines 909--910
+Overfull \hbox (186.76242pt too wide) in paragraph at lines 946--947
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (36.7609pt too wide) in paragraph at lines 936--937
+Overfull \hbox (36.7609pt too wide) in paragraph at lines 973--974
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][] 
  []
 
 
 
-[25]
-Overfull \hbox (48.76102pt too wide) in paragraph at lines 949--950
+[26]
+Overfull \hbox (48.76102pt too wide) in paragraph at lines 986--987
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (222.76279pt too wide) in paragraph at lines 954--955
+Overfull \hbox (222.76279pt too wide) in paragraph at lines 991--992
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (198.76254pt too wide) in paragraph at lines 958--959
+Overfull \hbox (198.76254pt too wide) in paragraph at lines 995--996
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 959--961
+Overfull \hbox (12.76065pt too wide) in paragraph at lines 996--998
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
 
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 989--990
+
+[27]
+Overfull \hbox (12.76065pt too wide) in paragraph at lines 1026--1027
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 990--992
+Overfull \hbox (12.76065pt too wide) in paragraph at lines 1027--1029
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (162.76218pt too wide) in paragraph at lines 993--994
+Overfull \hbox (162.76218pt too wide) in paragraph at lines 1030--1031
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (162.76218pt too wide) in paragraph at lines 994--996
+Overfull \hbox (162.76218pt too wide) in paragraph at lines 1031--1033
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-
-[26]
-Overfull \hbox (156.76212pt too wide) in paragraph at lines 1001--1002
+Overfull \hbox (156.76212pt too wide) in paragraph at lines 1038--1039
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (60.76114pt too wide) in paragraph at lines 1002--1003
+Overfull \hbox (60.76114pt too wide) in paragraph at lines 1039--1040
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1016--1017
+Underfull \hbox (badness 10000) in paragraph at lines 1053--1054
 
  []
 
 
-Overfull \hbox (59.99132pt too wide) in paragraph at lines 1022--1023
+Overfull \hbox (59.99132pt too wide) in paragraph at lines 1059--1060
 []\TU/lmr/m/n/12 [5] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
 ][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
 [] [] [][][][][] [] [][][][][][][][][][][] []
  []
 
 
-Overfull \hbox (109.43126pt too wide) in paragraph at lines 1024--1025
+Overfull \hbox (109.43126pt too wide) in paragraph at lines 1061--1062
 []\TU/lmr/m/n/12 [6] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
 ][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
 [] [] [][][][][] [] [][][][][][][][][][][][][][][][][][][] []
  []
 
 
-Overfull \hbox (10.55138pt too wide) in paragraph at lines 1028--1029
+Overfull \hbox (10.55138pt too wide) in paragraph at lines 1065--1066
 []\TU/lmr/m/n/12 [8] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
 ][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
 [] [] [][][][][] [] [][][] []
  []
 
 
-Overfull \hbox (10.55138pt too wide) in paragraph at lines 1030--1031
+Overfull \hbox (10.55138pt too wide) in paragraph at lines 1067--1068
 []\TU/lmr/m/n/12 [9] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
 ][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
 [] [] [][][][][] [] [][][] []
@@ -1335,7 +1324,9 @@ Overfull \hbox (10.55138pt too wide) in paragraph at lines 1030--1031
 
 
 
-[27] 
+[28]
+
+[29] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (wseminar.aux
 Package cleveref Info: loaded `ngerman' language definitions on input line 9.
@@ -1348,12 +1339,12 @@ Package rerunfilecheck Info: File `wseminar.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 22765 strings out of 408640
- 470489 string characters out of 5749145
- 1306081 words of memory out of 5000000
- 45559 multiletter control sequences out of 15000+600000
+ 22771 strings out of 408640
+ 470589 string characters out of 5749145
+ 1307031 words of memory out of 5000000
+ 45565 multiletter control sequences out of 15000+600000
  569720 words of font info for 82 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 108i,21n,107p,10944b,2086s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,21n,107p,10944b,2072s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on wseminar.pdf (27 pages).
+Output written on wseminar.pdf (29 pages).
