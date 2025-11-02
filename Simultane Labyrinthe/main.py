@@ -39,7 +39,7 @@ def moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vert
         moves.extend(a)
 
         moves = sorted(moves, key=lambda obj: (-obj.weight, len(obj.moves)))
-        moves = moves[:1000]  # Nur die Anzahl besten Züge speichern
+        moves = moves[:l]  # Nur die Anzahl besten Züge speichern
 
         if moves[0].cost == 0:
             return moves[0], n
@@ -57,10 +57,10 @@ def main():
     cost_matrix_2 = create_matrix_for_laby(horizontal_walls_2, vertical_walls_2, gruben_2, width, height)
 
     try:
-        move, n = moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1,
-                            horizontal_walls_2, vertical_walls_2, gruben_1, gruben_2, 0)
-        print(len(move.moves))
-        print(move.moves)
+        for i in range(20):
+            move, n = moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1,
+                                horizontal_walls_2, vertical_walls_2, gruben_1, gruben_2, i*5+1)
+            print(len(move.moves))
 
     except:
         print("No solution found")

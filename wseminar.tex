@@ -11,6 +11,7 @@
 % Für mathematische Befehle und Symbole
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{fontspec}
 
 \usepackage[hidelinks]{hyperref}
 
@@ -57,11 +58,8 @@
 
 \section{Einleitung}
 Die vorliegende Arbeit ist meine Einreichung für die zweiten Runde des 43. Bundeswettbewerb Informatik (BwInf).
-Der Wettbewerb wird von der BWINF gGmbH ausgerichtet und vom Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend sowie den Kultusministerien der Länder unterstützt.\cite{bwinf_about}
-Er gliedert sich in drei Runden, die aufeinander aufbauen. In der erste Runde, die in Gruppenarbeit durchgeführt wird, stehen fünf kleine Aufgaben zur Auswahl, von denen drei bearbeitet werden müssen. 
-Die zweiten Runde erfolgt in Einzelarbeit, in welcher von drei angebotenen Aufgaben zwei zu lösen sind. 
-Zur Endrunde werden die besten 30 Teilnehmer eingeladen, die an einem Wochenende ihr Wissen in einem Gespräch beweisen. \cite{bwinf_website}\\
-Jede Aufgabe beschreibt ein Problem, für welches anschließend ein Algorithmus entwickelt werden soll, mit dem sich dieses lösen lässt.
+Es sind zwei Aufgabe zu bearbeiten, die jeweils ein Problem beschreiben.
+Für jedes Problem soll Algorithmus entwickelt werden, mit dem sich dieses lösen lässt.
 Anschließend muss der Algorithmus auf verschiedene Testfälle angewandt werden, damit die Korrektoren die Richtigkeit und Genauigkeit beurteilen können.
 Die Teilnehmenden kennen dabei die erwarteten Ergebnisse der Testfälle nicht.
 Die ausgearbeitet Lösungen werden anschließend nach einem festgelegten Schema korrigiert und benotet. Pro Aufgabe können bis zu 20 Punkte erreicht werden, 
@@ -550,7 +548,7 @@ Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, wäh
 Wie schon oben erwähnt beeinflussst die Begrenzung $l$, die Laufzeit und die Genauigkeit des Algorithmus stark.
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/plotting_schritte_1.pdf}
+  \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/plotting_schritte_1.pdf}
   \caption{Anzahl der Schritte aufgetragen gegenüber der Begrenzung}
   \label{fig:schritte_1}
 \end{figure}
@@ -568,7 +566,7 @@ Bei größeren $l$-Werten tritt dieser Effekt jedoch kaum noch auf, da die Liste
 Der Einfluss dieser Monotonieveränderungen wird daher mit wachsendem $l$ vernachlässigbar.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf}
+  \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf}
   \caption{Anzahl der Iterationen gegenüber der Begrenzung}
   \label{fig:laufzeit_1}
 \end{figure}
@@ -592,12 +590,12 @@ Daher ergibt sich die Gleichung \eqref{max_iterationen}, dies bedeutet, es ergib
 Praktisch gesehen ist die Laufzeit aber sehr viel kleiner als die maximale Laufzeit (Abbildung \ref{fig:maximal Laufzeit}).
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/plotting_max_1.pdf}
+  \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/plotting_max_1.pdf}
   \caption{maximale Iterationen gegenüber tatsächliche Iterationen aufgetragen gegenüber der Begrenzung}
   \label{fig:maximal Laufzeit}
 \end{figure}
 \\
-Der grüne Graph zeigt die maximale Anzahl an Iterationen und der blaue die tatsächliche Anzahl an Iterationen. (Todo: neuer Graph machen mit der Erklärung im graphen)
+Der grüne Graph zeigt die maximale Anzahl an Iterationen und der blaue die tatsächliche Anzahl an Iterationen.
 \\
 \\
 Die Anzahl der Iterationen stehen in einem liearem Zusammenhang mit den Werten von $l$,

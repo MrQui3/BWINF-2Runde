@@ -19,20 +19,6 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global/global}
-    \entry{bwinf_website}{online}{}{}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labeltitlesource}{title}
-      \field{note}{Aufgerufen am 12.10.2025}
-      \field{title}{Bundeswettbewerb Informatik 43. Wettbewerb}
-      \field{year}{2025}
-      \verb{urlraw}
-      \verb https://bwinf.de/bundeswettbewerb/43/
-      \endverb
-      \verb{url}
-      \verb https://bwinf.de/bundeswettbewerb/43/
-      \endverb
-    \endentry
     \entry{bwinf_aufgabe}{online}{}{}
       \field{sortinit}{B}
       \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
@@ -213,20 +199,6 @@
       \field{isbn}{978-3-322-80328-3}
       \field{title}{Codierungstheorie: Eine Einführung}
       \field{year}{2018}
-    \endentry
-    \entry{bwinf_about}{online}{}{}
-      \field{sortinit}{Ü}
-      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
-      \field{labeltitlesource}{title}
-      \field{note}{Aufgerufen am 21.10.2025}
-      \field{title}{Über uns – Bundeswettbewerb Informatik}
-      \field{year}{2025}
-      \verb{urlraw}
-      \verb https://bwinf.de/ueber-uns/bwinf/
-      \endverb
-      \verb{url}
-      \verb https://bwinf.de/ueber-uns/bwinf/
-      \endverb
     \endentry
   \enddatalist
 \endrefsection
