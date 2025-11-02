@@ -1,0 +1,234 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{bwinf_website}{online}{}{}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labeltitlesource}{title}
+      \field{note}{Aufgerufen am 12.10.2025}
+      \field{title}{Bundeswettbewerb Informatik 43. Wettbewerb}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://bwinf.de/bundeswettbewerb/43/
+      \endverb
+      \verb{url}
+      \verb https://bwinf.de/bundeswettbewerb/43/
+      \endverb
+    \endentry
+    \entry{bwinf_aufgabe}{online}{}{}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labeltitlesource}{title}
+      \field{note}{Aufgerufen am 11.10.2025}
+      \field{title}{Bundeswettbewerb Informatik 43.2 Runde -- Aufgaben}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/2_runde/Aufgaben432.pdf
+      \endverb
+      \verb{url}
+      \verb https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/2_runde/Aufgaben432.pdf
+      \endverb
+    \endentry
+    \entry{bwinf_loesung}{online}{}{}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labeltitlesource}{title}
+      \field{note}{Aufgerufen am 11.10.2025}
+      \field{title}{Bundeswettbewerb Informatik 43.2 Runde -- Lösungshinweise}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/2_runde/Loesungshinweise432.pdf
+      \endverb
+      \verb{url}
+      \verb https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/2_runde/Loesungshinweise432.pdf
+      \endverb
+    \endentry
+    \entry{golin2012huffman}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=0df457367c8472a345b839ca96c119e5}{%
+           family={Golin},
+           familyi={G\bibinitperiod},
+           given={Mordecai\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=f93342a205eab3e57d8988490444de26}{%
+           family={Mathieu},
+           familyi={M\bibinitperiod},
+           given={Claire},
+           giveni={C\bibinitperiod}}}%
+        {{hash=073190efdd6df685306bdfe7189418bf}{%
+           family={Young},
+           familyi={Y\bibinitperiod},
+           given={Neal\bibnamedelima E.},
+           giveni={N\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Society for Industrial}%
+        {Applied Mathematics}%
+      }
+      \strng{namehash}{8670fba9ce1a42d664360bd2b64d8264}
+      \strng{fullhash}{8670fba9ce1a42d664360bd2b64d8264}
+      \strng{fullhashraw}{8670fba9ce1a42d664360bd2b64d8264}
+      \strng{bibnamehash}{8670fba9ce1a42d664360bd2b64d8264}
+      \strng{authorbibnamehash}{8670fba9ce1a42d664360bd2b64d8264}
+      \strng{authornamehash}{8670fba9ce1a42d664360bd2b64d8264}
+      \strng{authorfullhash}{8670fba9ce1a42d664360bd2b64d8264}
+      \strng{authorfullhashraw}{8670fba9ce1a42d664360bd2b64d8264}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Computing}
+      \field{number}{3}
+      \field{title}{Huffman Coding with Letter Costs: A Linear-Time Approximation Scheme}
+      \field{volume}{41}
+      \field{year}{2012}
+      \field{pages}{684\bibrangedash 713}
+      \range{pages}{30}
+    \endentry
+    \entry{golin1998prefixfree}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=0df457367c8472a345b839ca96c119e5}{%
+           family={Golin},
+           familyi={G\bibinitperiod},
+           given={Mordecai\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=4326e3ee20cef3f73aaca7193e4b3d79}{%
+           family={Rote},
+           familyi={R\bibinitperiod},
+           given={Günther},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{1d696c0d971b95fabc229497a44fe1ac}
+      \strng{fullhash}{1d696c0d971b95fabc229497a44fe1ac}
+      \strng{fullhashraw}{1d696c0d971b95fabc229497a44fe1ac}
+      \strng{bibnamehash}{1d696c0d971b95fabc229497a44fe1ac}
+      \strng{authorbibnamehash}{1d696c0d971b95fabc229497a44fe1ac}
+      \strng{authornamehash}{1d696c0d971b95fabc229497a44fe1ac}
+      \strng{authorfullhash}{1d696c0d971b95fabc229497a44fe1ac}
+      \strng{authorfullhashraw}{1d696c0d971b95fabc229497a44fe1ac}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Information Theory}
+      \field{month}{9}
+      \field{number}{5}
+      \field{title}{A Dynamic Programming Algorithm for Constructing Optimal Prefix-Free Codes with Unequal Letter Costs}
+      \field{volume}{44}
+      \field{year}{1998}
+    \endentry
+    \entry{karp1961minimum}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=9ee637d4bf1cfcb569e12085fd1da2c6}{%
+           family={Karp},
+           familyi={K\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{9ee637d4bf1cfcb569e12085fd1da2c6}
+      \strng{fullhash}{9ee637d4bf1cfcb569e12085fd1da2c6}
+      \strng{fullhashraw}{9ee637d4bf1cfcb569e12085fd1da2c6}
+      \strng{bibnamehash}{9ee637d4bf1cfcb569e12085fd1da2c6}
+      \strng{authorbibnamehash}{9ee637d4bf1cfcb569e12085fd1da2c6}
+      \strng{authornamehash}{9ee637d4bf1cfcb569e12085fd1da2c6}
+      \strng{authorfullhash}{9ee637d4bf1cfcb569e12085fd1da2c6}
+      \strng{authorfullhashraw}{9ee637d4bf1cfcb569e12085fd1da2c6}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IRE Transactions on Information Theory}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{Minimum-Redundancy Coding for the Discrete Noiseless Channel}
+      \field{volume}{7}
+      \field{year}{1961}
+    \endentry
+    \entry{piater2024algorithmen}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=cfc45058a4e31e11955797aeb90b9e19}{%
+           family={Piater},
+           familyi={P\bibinitperiod},
+           given={Justus},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Universität Innsbruck}%
+      }
+      \strng{namehash}{cfc45058a4e31e11955797aeb90b9e19}
+      \strng{fullhash}{cfc45058a4e31e11955797aeb90b9e19}
+      \strng{fullhashraw}{cfc45058a4e31e11955797aeb90b9e19}
+      \strng{bibnamehash}{cfc45058a4e31e11955797aeb90b9e19}
+      \strng{authorbibnamehash}{cfc45058a4e31e11955797aeb90b9e19}
+      \strng{authornamehash}{cfc45058a4e31e11955797aeb90b9e19}
+      \strng{authorfullhash}{cfc45058a4e31e11955797aeb90b9e19}
+      \strng{authorfullhashraw}{cfc45058a4e31e11955797aeb90b9e19}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Vorlesungsunterlagen, Seiten 4–13, Stand 29.05.2024}
+      \field{title}{Algorithmen und Datenstrukturen}
+      \field{year}{2024}
+    \endentry
+    \entry{schulz2018codierungstheorie}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=d571e779f0ce8f27bf52c4f76ef99d14}{%
+           family={Schulz},
+           familyi={S\bibinitperiod},
+           given={Ralph-Hardo},
+           giveni={R\bibinithyphendelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{d571e779f0ce8f27bf52c4f76ef99d14}
+      \strng{fullhash}{d571e779f0ce8f27bf52c4f76ef99d14}
+      \strng{fullhashraw}{d571e779f0ce8f27bf52c4f76ef99d14}
+      \strng{bibnamehash}{d571e779f0ce8f27bf52c4f76ef99d14}
+      \strng{authorbibnamehash}{d571e779f0ce8f27bf52c4f76ef99d14}
+      \strng{authornamehash}{d571e779f0ce8f27bf52c4f76ef99d14}
+      \strng{authorfullhash}{d571e779f0ce8f27bf52c4f76ef99d14}
+      \strng{authorfullhashraw}{d571e779f0ce8f27bf52c4f76ef99d14}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{isbn}{978-3-322-80328-3}
+      \field{title}{Codierungstheorie: Eine Einführung}
+      \field{year}{2018}
+    \endentry
+    \entry{bwinf_about}{online}{}{}
+      \field{sortinit}{Ü}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labeltitlesource}{title}
+      \field{note}{Aufgerufen am 21.10.2025}
+      \field{title}{Über uns – Bundeswettbewerb Informatik}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://bwinf.de/ueber-uns/bwinf/
+      \endverb
+      \verb{url}
+      \verb https://bwinf.de/ueber-uns/bwinf/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

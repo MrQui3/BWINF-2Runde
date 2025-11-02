@@ -8,8 +8,8 @@
 \contentsline {subsection}{\numberline {2.3}Implementierung des Algorithmus}{6}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Erstellung des Baums}{7}{subsubsection.2.3.1}%
 \contentsline {subsubsection}{\numberline {2.3.2}Permutation des Baums}{8}{subsubsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.4}Laufzeitanalyse und Einordnung des Algorithmus}{8}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{8}{subsubsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4}Laufzeitanalyse und Einordnung des Algorithmus}{9}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{9}{subsubsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.2}Stand der Forschung}{10}{subsubsection.2.4.2}%
 \contentsline {subsubsection}{\numberline {2.4.3}Fazit}{11}{subsubsection.2.4.3}%
 \contentsline {subsection}{\numberline {2.5}Vergleich mit der Musterlösung}{11}{subsection.2.5}%
@@ -20,7 +20,7 @@
 \contentsline {subsubsection}{\numberline {3.2.2}Lösen der Labyrinthe}{13}{subsubsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.3}Implementierung des Algorithmus}{14}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Erstellung der Matrix}{14}{subsubsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.2}Lösen der Labyrinthe}{14}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2}Lösen der Labyrinthe}{15}{subsubsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.4}Laufzeitanalyse}{16}{subsection.3.4}%
 \contentsline {subsection}{\numberline {3.5}Vergleich mit der Musterlösung}{18}{subsection.3.5}%
 \contentsline {section}{\numberline {4}Fazit}{19}{section.4}%

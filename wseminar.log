@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  30 OCT 2025 18:46
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  2 NOV 2025 17:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -208,39 +208,9 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@dimlist=\toks20
 
 (C:\Program Files\MiKTeX\tex/latex/geometry\geometry.cfg))
-(C:\Program Files\MiKTeX\tex/latex/koma-script\scrlayer-scrpage.sty
-Package: scrlayer-scrpage 2024/10/24 v3.43 KOMA-Script package (end user interf
-ace for scrlayer)
-
-(C:\Program Files\MiKTeX\tex/latex/koma-script\scrlayer.sty
-Package: scrlayer 2024/10/24 v3.43 KOMA-Script package (defining layers and pag
-e styles)
-Package scrlayer Info: patching LaTeX kernel macro \pagestyle on input line 218
-2.
-)
-Package scrlayer-scrpage Info: Makeing stand-alone element `pagehead' from
-(scrlayer-scrpage)             alias to `pageheadfoot' on input line 1106.
-)
-(C:\Program Files\MiKTeX\tex/latex/lastpage\lastpage.sty
-Package: lastpage 2025/01/27 v2.1e lastpage: 2.09 or 2e? (HMM)
-
-(C:\Program Files\MiKTeX\tex/latex/lastpage\lastpage2e.sty
-Package: lastpage2e 2025/01/27 v2.1e Decide which 2e lastpage version to use (H
-MM)
-
-(C:\Program Files\MiKTeX\tex/latex/lastpage\lastpagemodern.sty
-Package: lastpagemodern 2025-01-27 v2.1e Refers to last page's name (HMM; JPG)
-\c@lastpagecount=\count272
-) 
-)) (C:\Program Files\MiKTeX\tex/latex/titling\titling.sty
-Package: titling 2009/09/04 v2.1d maketitle typesetting
-\thanksmarkwidth=\skip65
-\thanksmargin=\skip66
-\droptitle=\skip67
-)
 (C:\Program Files\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count273
+\c@float@type=\count272
 \float@exts=\toks21
 \float@box=\box54
 \@float@everytoks=\toks22
@@ -251,14 +221,14 @@ Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
 
 (C:\Program Files\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count274
+\etb@tempcnta=\count273
 )
-\csq@reset=\count275
-\csq@gtype=\count276
-\csq@glevel=\count277
-\csq@qlevel=\count278
-\csq@maxlvl=\count279
-\csq@tshold=\count280
+\csq@reset=\count274
+\csq@gtype=\count275
+\csq@glevel=\count276
+\csq@qlevel=\count277
+\csq@maxlvl=\count278
+\csq@tshold=\count279
 \csq@ltx@everypar=\toks23
 
 (C:\Program Files\MiKTeX\tex/latex/csquotes\csquotes.def
@@ -272,7 +242,7 @@ File: csquotes.cfg
 ))
 (C:\Program Files\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2024/11/05 v2.17t AMS math features
-\@mathmargin=\skip68
+\@mathmargin=\skip65
 
 For additional information on amsmath, use the `?' option.
 (C:\Program Files\MiKTeX\tex/latex/amsmath\amstext.sty
@@ -290,14 +260,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (C:\Program Files\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count281
+\inf@bad=\count280
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count282
-\leftroot@=\count283
+\uproot@=\count281
+\leftroot@=\count282
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count284
-\DOTSCASE@=\count285
+\classnum@=\count283
+\DOTSCASE@=\count284
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -310,20 +280,20 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen153
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count286
+\macc@depth=\count285
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count287
+\c@MaxMatrixCols=\count286
 \dotsspace@=\muskip17
-\c@parentequation=\count288
-\dspbrk@lvl=\count289
+\c@parentequation=\count287
+\dspbrk@lvl=\count288
 \tag@help=\toks25
-\row@=\count290
-\column@=\count291
-\maxfields@=\count292
+\row@=\count289
+\column@=\count290
+\maxfields@=\count291
 \andhelp@=\toks26
 \eqnshift@=\dimen154
 \alignsep@=\dimen155
@@ -332,8 +302,8 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \totwidth@=\dimen158
 \lineht@=\dimen159
 \@envbody=\toks27
-\multlinegap=\skip69
-\multlinetaggap=\skip70
+\multlinegap=\skip66
+\multlinetaggap=\skip67
 \mathdisplay@stack=\toks28
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
@@ -349,64 +319,6 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(C:\Program Files\MiKTeX\tex/latex/graphics\graphicx.sty
-Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
-
-(C:\Program Files\MiKTeX\tex/latex/graphics\graphics.sty
-Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
-
-(C:\Program Files\MiKTeX\tex/latex/graphics\trig.sty
-Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-)
-(C:\Program Files\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: xetex.def on input line 106.
-
-(C:\Program Files\MiKTeX\tex/latex/graphics-def\xetex.def
-File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
-))
-\Gin@req@height=\dimen160
-\Gin@req@width=\dimen161
-)
-(C:\Program Files\MiKTeX\tex/latex/fontspec\fontspec.sty
-(C:\Program Files\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
-(C:\Program Files\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2025-01-18 L3 programming layer (loader) 
-
-(C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-xetex.def
-File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
-\g__graphics_track_int=\count293
-\l__pdf_internal_box=\box58
-\g__pdf_backend_annotation_int=\count294
-\g__pdf_backend_link_int=\count295
-))
-Package: xparse 2024-08-16 L3 Experimental document command parser
-)
-Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
-
-(C:\Program Files\MiKTeX\tex/latex/fontspec\fontspec-xetex.sty
-Package: fontspec-xetex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTe
-X
-\l__fontspec_script_int=\count296
-\l__fontspec_language_int=\count297
-\l__fontspec_strnum_int=\count298
-\l__fontspec_tmp_int=\count299
-\l__fontspec_tmpa_int=\count300
-\l__fontspec_tmpb_int=\count301
-\l__fontspec_tmpc_int=\count302
-\l__fontspec_em_int=\count303
-\l__fontspec_emdef_int=\count304
-\l__fontspec_strong_int=\count305
-\l__fontspec_strongdef_int=\count306
-\l__fontspec_tmpa_dim=\dimen162
-\l__fontspec_tmpb_dim=\dimen163
-\l__fontspec_tmpc_dim=\dimen164
-
-(C:\Program Files\MiKTeX\tex/latex/base\fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-)
-(C:\Program Files\MiKTeX\tex/latex/fontspec\fontspec.cfg)))
 (C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
 
@@ -448,15 +360,15 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (C:\Program Files\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count307
+\c@section@level=\count292
 )
 (C:\Program Files\MiKTeX\tex/generic/stringenc\stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen165
-\Hy@linkcounter=\count308
-\Hy@pagecounter=\count309
+\@linkdim=\dimen160
+\Hy@linkcounter=\count293
+\Hy@pagecounter=\count294
 
 (C:\Program Files\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
@@ -464,7 +376,7 @@ File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 (C:\Program Files\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count310
+\Hy@SavedSpaceFactor=\count295
 
 (C:\Program Files\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
@@ -476,14 +388,14 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count311
+\c@Hy@tempcnt=\count296
 
 (C:\Program Files\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen166
+\XeTeXLinkMargin=\dimen161
 
 (C:\Program Files\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -492,9 +404,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count312
-\Field@Width=\dimen167
-\Fld@charsize=\dimen168
+\Fld@menulength=\count297
+\Field@Width=\dimen162
+\Fld@charsize=\dimen163
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -507,19 +419,19 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count313
-\c@Item=\count314
-\c@Hfootnote=\count315
+\Hy@abspage=\count298
+\c@Item=\count299
+\c@Hfootnote=\count300
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 
 (C:\Program Files\MiKTeX\tex/latex/hyperref\hxetex.def
 File: hxetex.def 2024-11-05 v7.01l Hyperref driver for XeTeX
-\pdfm@box=\box59
-\c@Hy@AnnotLevel=\count316
-\HyField@AnnotCount=\count317
-\Fld@listcount=\count318
-\c@bookmark@seq@number=\count319
+\pdfm@box=\box58
+\c@Hy@AnnotLevel=\count301
+\HyField@AnnotCount=\count302
+\Fld@listcount=\count303
+\c@bookmark@seq@number=\count304
 
 (C:\Program Files\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
@@ -535,51 +447,301 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
-\Hy@SectionHShift=\skip71
+\Hy@SectionHShift=\skip68
 )
-(C:\Program Files\MiKTeX\tex/latex/algorithmicx\algpseudocode.sty
-Package: algpseudocode 
+(C:\Program Files\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
+(C:\Program Files\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Program Files\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(C:\Program Files\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 106.
+
+(C:\Program Files\MiKTeX\tex/latex/graphics-def\xetex.def
+File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+))
+\Gin@req@height=\dimen164
+\Gin@req@width=\dimen165
+)
+(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.sty
+Package: biblatex 2024/03/21 v3.20 programmable bibliographies (PK/MW)
+
+(C:\Program Files\MiKTeX\tex/latex/logreq\logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count305
+
+(C:\Program Files\MiKTeX\tex/latex/logreq\logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
 (C:\Program Files\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
-(C:\Program Files\MiKTeX\tex/latex/algorithmicx\algorithmicx.sty
-Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+\c@tabx@nest=\count306
+\c@listtotal=\count307
+\c@listcount=\count308
+\c@liststart=\count309
+\c@liststop=\count310
+\c@citecount=\count311
+\c@citetotal=\count312
+\c@multicitecount=\count313
+\c@multicitetotal=\count314
+\c@instcount=\count315
+\c@maxnames=\count316
+\c@minnames=\count317
+\c@maxitems=\count318
+\c@minitems=\count319
+\c@citecounter=\count320
+\c@maxcitecounter=\count321
+\c@savedcitecounter=\count322
+\c@uniquelist=\count323
+\c@uniquename=\count324
+\c@refsection=\count325
+\c@refsegment=\count326
+\c@maxextratitle=\count327
+\c@maxextratitleyear=\count328
+\c@maxextraname=\count329
+\c@maxextradate=\count330
+\c@maxextraalpha=\count331
+\c@abbrvpenalty=\count332
+\c@highnamepenalty=\count333
+\c@lownamepenalty=\count334
+\c@maxparens=\count335
+\c@parenlevel=\count336
+\blx@tempcnta=\count337
+\blx@tempcntb=\count338
+\blx@tempcntc=\count339
+\c@blx@maxsection=\count340
+\blx@maxsegment@0=\count341
+\blx@notetype=\count342
+\blx@parenlevel@text=\count343
+\blx@parenlevel@foot=\count344
+\blx@sectionciteorder@0=\count345
+\blx@sectionciteorderinternal@0=\count346
+\blx@entrysetcounter=\count347
+\blx@biblioinstance=\count348
+\labelnumberwidth=\skip69
+\labelalphawidth=\skip70
+\biblabelsep=\skip71
+\bibitemsep=\skip72
+\bibnamesep=\skip73
+\bibinitsep=\skip74
+\bibparsep=\skip75
+\bibhang=\skip76
+\blx@bcfin=\read3
+\blx@bcfout=\write3
+\blx@langwohyphens=\language80
+\c@mincomprange=\count349
+\c@maxcomprange=\count350
+\c@mincompwidth=\count351
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
 
-Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count320
-\c@ALG@rem=\count321
-\c@ALG@nested=\count322
-\ALG@tlm=\skip72
-\ALG@thistlm=\skip73
-\c@ALG@Lnr=\count323
-\c@ALG@blocknr=\count324
-\c@ALG@storecount=\count325
-\c@ALG@tmpcounter=\count326
-\ALG@tmplength=\skip74
+(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-dm.def
+File: blx-dm.def 2024/03/21 v3.20 biblatex datamodel (PK/MW)
 )
-Document Style - pseudocode environments for use with the `algorithmicx' style
-) (C:\Program Files\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count327
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'numeric.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count352
+\c@savedafterword=\count353
+\c@annotator=\count354
+\c@savedannotator=\count355
+\c@author=\count356
+\c@savedauthor=\count357
+\c@bookauthor=\count358
+\c@savedbookauthor=\count359
+\c@commentator=\count360
+\c@savedcommentator=\count361
+\c@editor=\count362
+\c@savededitor=\count363
+\c@editora=\count364
+\c@savededitora=\count365
+\c@editorb=\count366
+\c@savededitorb=\count367
+\c@editorc=\count368
+\c@savededitorc=\count369
+\c@foreword=\count370
+\c@savedforeword=\count371
+\c@holder=\count372
+\c@savedholder=\count373
+\c@introduction=\count374
+\c@savedintroduction=\count375
+\c@namea=\count376
+\c@savednamea=\count377
+\c@nameb=\count378
+\c@savednameb=\count379
+\c@namec=\count380
+\c@savednamec=\count381
+\c@translator=\count382
+\c@savedtranslator=\count383
+\c@shortauthor=\count384
+\c@savedshortauthor=\count385
+\c@shorteditor=\count386
+\c@savedshorteditor=\count387
+\c@labelname=\count388
+\c@savedlabelname=\count389
+\c@institution=\count390
+\c@savedinstitution=\count391
+\c@lista=\count392
+\c@savedlista=\count393
+\c@listb=\count394
+\c@savedlistb=\count395
+\c@listc=\count396
+\c@savedlistc=\count397
+\c@listd=\count398
+\c@savedlistd=\count399
+\c@liste=\count400
+\c@savedliste=\count401
+\c@listf=\count402
+\c@savedlistf=\count403
+\c@location=\count404
+\c@savedlocation=\count405
+\c@organization=\count406
+\c@savedorganization=\count407
+\c@origlocation=\count408
+\c@savedoriglocation=\count409
+\c@origpublisher=\count410
+\c@savedorigpublisher=\count411
+\c@publisher=\count412
+\c@savedpublisher=\count413
+\c@language=\count414
+\c@savedlanguage=\count415
+\c@origlanguage=\count416
+\c@savedoriglanguage=\count417
+\c@pageref=\count418
+\c@savedpageref=\count419
+\shorthandwidth=\skip77
+\shortjournalwidth=\skip78
+\shortserieswidth=\skip79
+\shorttitlewidth=\skip80
+\shortauthorwidth=\skip81
+\shorteditorwidth=\skip82
+\locallabelnumberwidth=\skip83
+\locallabelalphawidth=\skip84
+\localshorthandwidth=\skip85
+\localshortjournalwidth=\skip86
+\localshortserieswidth=\skip87
+\localshorttitlewidth=\skip88
+\localshortauthorwidth=\skip89
+\localshorteditorwidth=\skip90
+Package biblatex Info: Trying to load enhanced support for Unicode engines...
+Package biblatex Info: ... file 'blx-unicode.def' found.
+
+(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-unicode.def)
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-compat.def
+File: blx-compat.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.def
+File: biblatex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
+\c@textcitecount=\count420
+\c@textcitetotal=\count421
+\c@textcitemaxnames=\count422
+\c@biburlbigbreakpenalty=\count423
+\c@biburlbreakpenalty=\count424
+\c@biburlnumpenalty=\count425
+\c@biburlucpenalty=\count426
+\c@biburllcpenalty=\count427
+\biburlbigskip=\muskip19
+\biburlnumskip=\muskip20
+\biburlucskip=\muskip21
+\biburllcskip=\muskip22
+\c@smartand=\count428
+)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+
+(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\numeric.bbx
+File: numeric.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
+File: standard.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count429
+\c@bbx:relatedtotal=\count430
+))
+Package biblatex Info: Trying to load citation style 'numeric'...
+Package biblatex Info: ... file 'numeric.cbx' found.
+
+(C:\Program Files\MiKTeX\tex/latex/biblatex/cbx\numeric.cbx
+File: numeric.cbx 2024/03/21 v3.20 biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.cfg
+File: biblatex.cfg 
+)
+Package biblatex Info: XeTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
+Package biblatex Info: Document encoding is UTF8 ....
+
+(C:\Program Files\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2025-01-18 L3 programming layer (loader) 
+
+(C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-xetex.def
+File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
+\g__graphics_track_int=\count431
+\l__pdf_internal_box=\box59
+\g__pdf_backend_annotation_int=\count432
+\g__pdf_backend_link_int=\count433
+))
+Package biblatex Info: ... and expl3
+(biblatex)             2025-01-18 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+
+(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-case-expl3.sty
+(C:\Program Files\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
+Package: xparse 2024-08-16 L3 Experimental document command parser
+)
+Package: blx-case-expl3 2024/03/21 v3.20 expl3 case changing code for biblatex
+))
+(C:\Program Files\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count434
 \lst@gtempboxa=\box60
 \lst@token=\toks29
-\lst@length=\count328
-\lst@currlwidth=\dimen169
-\lst@column=\count329
-\lst@pos=\count330
-\lst@lostspace=\dimen170
-\lst@width=\dimen171
-\lst@newlines=\count331
-\lst@lineno=\count332
-\lst@maxwidth=\dimen172
+\lst@length=\count435
+\lst@currlwidth=\dimen166
+\lst@column=\count436
+\lst@pos=\count437
+\lst@lostspace=\dimen167
+\lst@width=\dimen168
+\lst@newlines=\count438
+\lst@lineno=\count439
+\lst@maxwidth=\dimen169
 
 (C:\Program Files\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 )
 (C:\Program Files\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count333
-\lst@skipnumbers=\count334
+\c@lstnumber=\count440
+\lst@skipnumbers=\count441
 \lst@framebox=\box61
 )
 (C:\Program Files\MiKTeX\tex/latex/listings\listings.cfg
@@ -609,7 +771,6 @@ LaTeX Info: Redefining \cpagerefrange on input line 2370.
 LaTeX Info: Redefining \Cpagerefrange on input line 2370.
 LaTeX Info: Redefining \labelcref on input line 2370.
 LaTeX Info: Redefining \labelcpageref on input line 2370.
-Package cleveref Info: `algorithmicx' support loaded on input line 3120.
 Package cleveref Info: `listings' support loaded on input line 3131.
 )
 (C:\Program Files\MiKTeX\tex/latex/setspace\setspace.sty
@@ -622,26 +783,26 @@ Package csquotes Info: Redefining alias 'default' -> 'ngerman'.
  (wseminar.aux)
 \openout1 = `wseminar.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -677,67 +838,10 @@ LaTeX Font Info:    ... okay on input line 61.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-Package fontspec Info: 
-(fontspec)             Adjusting the maths setup (use [no-math] to avoid
-(fontspec)             this).
-
-\symlegacymaths=\mathgroup6
-LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 61.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 61.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 61.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 61.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 61.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 61.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 61.
-LaTeX Font Info:    Redeclaring math accent \check on input line 61.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 61.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 61.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 61.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 61.
-LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 61.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 61.
-LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 61.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 61.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 61.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 61.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 61.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 61.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 61.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 61.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 61.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 61.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 61.
-Package hyperref Info: Link coloring OFF on input line 61.
+Package hyperref Info: Link coloring OFF on input line 46.
 (wseminar.out) (wseminar.out)
-\@outlinefile=\write3
-\openout3 = `wseminar.out'.
+\@outlinefile=\write4
+\openout4 = `wseminar.out'.
 
 Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           Using `bookmark' together with `hyperref' is recommended,
@@ -746,19 +850,52 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 61.
+(scrartcl)           before \begin{document} on input line 46.
 
 (C:\Program Files\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
 
 (C:\Program Files\MiKTeX\tex/latex/bookmark\bkm-dvipdfm.def
 File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
-\BKM@id=\count335
+\BKM@id=\count442
 ))
-\c@lstlisting=\count336
-Package tocbasic Info: setting babel extension for `lol' on input line 61.
-\scr@dte@lstlisting@maxnumwidth=\skip75
- (wseminar.toc
+Package biblatex Info: Trying to load language 'ngerman'...
+Package biblatex Info: ... file 'ngerman.lbx' found.
+
+(C:\Program Files\MiKTeX\tex/latex/biblatex/lbx\ngerman.lbx
+File: ngerman.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
+Package biblatex Info: Trying to load language 'german'...
+Package biblatex Info: ... file 'german.lbx' found.
+
+(C:\Program Files\MiKTeX\tex/latex/biblatex/lbx\german.lbx
+File: german.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load language 'german'...
+Package biblatex Info: ... file 'german.lbx' found.
+
+(C:\Program Files\MiKTeX\tex/latex/biblatex/lbx\german.lbx
+File: german.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
+))
+Package biblatex Info: XeTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+\openout3 = `wseminar.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'wseminar.bbl' found.
+ (wseminar.bbl)
+Package biblatex Info: Reference section=0 on input line 46.
+Package biblatex Info: Reference segment=0 on input line 46.
+\c@lstlisting=\count443
+Package tocbasic Info: setting babel extension for `lol' on input line 46.
+\scr@dte@lstlisting@maxnumwidth=\skip91
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 5
+4.
+
+(C:\Program Files\MiKTeX\tex/latex/lm\t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) (wseminar.toc
 Package cleveref Info: loaded `ngerman' language definitions on input line 1.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
 
@@ -770,37 +907,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
-\tf@toc=\write4
-\openout4 = `wseminar.toc'.
+\tf@toc=\write5
+\openout5 = `wseminar.toc'.
 
 
-
-
-Package scrlayer-scrpage Warning: \headheight to low.
-(scrlayer-scrpage)                At least 20.69987pt needed,
-(scrlayer-scrpage)                but only 18.125pt found.
-(scrlayer-scrpage)                I'll enlarge \headheight, for further
-(scrlayer-scrpage)                processing, but you should do this yourself,
-(scrlayer-scrpage)                e.g., setting geometry's option
-(scrlayer-scrpage)                `head=20.69987pt'.
-(scrlayer-scrpage)                I'll also decrease \topmargin on input line 8
-8.
-
-
-Overfull \vbox (2.57487pt too high) has occurred while \output is active []
-
-
-
-Package scrlayer-scrpage Warning: \footheight to low.
-(scrlayer-scrpage)                At least 20.69987pt needed,
-(scrlayer-scrpage)                but only 18.125pt found.
-(scrlayer-scrpage)                I'll enlarge \footheight, for further
-(scrlayer-scrpage)                processing, but you should do this yourself,
-(scrlayer-scrpage)                e.g., using
-(scrlayer-scrpage)                  \setlength{\footheight}{20.69987pt}
-(scrlayer-scrpage)                in your preamble.
-(scrlayer-scrpage)                I'll also increase \footskip on input line 88
-.
 
 [1
 
@@ -810,22 +920,22 @@ Package scrlayer-scrpage Warning: \footheight to low.
 File: Schmucknachrichten/pdf_src/simple_tree.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/simple_tree.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--161
+Underfull \hbox (badness 10000) in paragraph at lines 96--146
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--161
+Underfull \hbox (badness 10000) in paragraph at lines 96--146
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--161
+Underfull \hbox (badness 10000) in paragraph at lines 96--146
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--161
+Underfull \hbox (badness 10000) in paragraph at lines 96--146
 
  []
 
@@ -848,8 +958,8 @@ File: Schmucknachrichten/pdf_src/trans_3.pdf Graphic file (type pdf)
 File: Schmucknachrichten/pdf_src/trans_4.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/trans_4.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--191
-[][][]\TU/lmr/m/n/12 Ausgearteter
+Underfull \hbox (badness 10000) in paragraph at lines 176--176
+[][][]\T1/lmr/m/n/12 Ausgearteter
  []
 
 
@@ -858,7 +968,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 191--191
 File: Schmucknachrichten/pdf_src/lopsided_tree.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/lopsided_tree.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 205--223
+Underfull \hbox (badness 10000) in paragraph at lines 190--208
 
  []
 
@@ -868,75 +978,76 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [5]
-File: Schmucknachrichten/pdf_src/klassen_diagramm.pdf Graphic file (type pdf)
-<use Schmucknachrichten/pdf_src/klassen_diagramm.pdf>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+File: Schmucknachrichten/pdf_src/treenode_digramm.png Graphic file (type bmp)
+<Schmucknachrichten/pdf_src/treenode_digramm.png>
 
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 256--260
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
+31.
+ (C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Underfull \hbox (badness 10000) in paragraph at lines 241--245
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--260
+Underfull \hbox (badness 10000) in paragraph at lines 241--245
 
  []
 
 
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 279--285
+Missing character: There is no – in font ec-lmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--270
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--293
+Underfull \hbox (badness 10000) in paragraph at lines 273--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--293
+Underfull \hbox (badness 10000) in paragraph at lines 273--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--293
+Underfull \hbox (badness 10000) in paragraph at lines 273--278
 
  []
-
-File: Schmucknachrichten/pdf_src/trans_makiert.pdf Graphic file (type pdf)
-<use Schmucknachrichten/pdf_src/trans_makiert.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
 [8]
+File: Schmucknachrichten/pdf_src/trans_makiert.pdf Graphic file (type pdf)
+<use Schmucknachrichten/pdf_src/trans_makiert.pdf>
+
+
+[9]
 File: Schmucknachrichten/pdf_src/genauigkeit_iterationen.pdf Graphic file (type
  pdf)
 <use Schmucknachrichten/pdf_src/genauigkeit_iterationen.pdf>
 
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 352--368
+Underfull \hbox (badness 10000) in paragraph at lines 337--353
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--368
+Underfull \hbox (badness 10000) in paragraph at lines 337--353
 
  []
 
 
 
 [10]
-Overfull \hbox (1.62773pt too wide) in paragraph at lines 378--387
-\TU/lmr/m/n/12 In der Musterlösung werden drei Lösungen vorgeschlagen. Der erst
-e Anssatz ist ein Greedy-
+Overfull \hbox (1.6392pt too wide) in paragraph at lines 363--372
+\T1/lmr/m/n/12 In der Mus-ter-lö-sung wer-den drei Lö-sun-gen vor-ge-schla-gen.
+ Der ers-te Ans-satz ist ein Greedy-
  []
 
 
@@ -949,52 +1060,51 @@ File: Simultane Labyrinthe/pdf_src/cost_matrix.pdf Graphic file (type pdf)
 [12
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 435--442
+Underfull \hbox (badness 10000) in paragraph at lines 420--427
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--474
+Underfull \hbox (badness 10000) in paragraph at lines 436--459
 
  []
 
-File: Simultane Labyrinthe/pdf_src/cost_diagramm.pdf Graphic file (type pdf)
-<use Simultane Labyrinthe/pdf_src/cost_diagramm.pdf>
+File: Simultane Labyrinthe/pdf_src/cost_diagramm.png Graphic file (type bmp)
+<Simultane Labyrinthe/pdf_src/cost_diagramm.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 480--490
+Underfull \hbox (badness 10000) in paragraph at lines 465--475
 
  []
 
 
 
 [13]
-File: Simultane Labyrinthe/pdf_src/solving_diagramm.pdf Graphic file (type pdf)
-
-<use Simultane Labyrinthe/pdf_src/solving_diagramm.pdf>
-
 
 [14]
-File: Simultane Labyrinthe/pdf_src/moving_diagramm.pdf Graphic file (type pdf)
-<use Simultane Labyrinthe/pdf_src/moving_diagramm.pdf>
+File: Simultane Labyrinthe/pdf_src/solving_diagramm.png Graphic file (type bmp)
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--532
+<Simultane Labyrinthe/pdf_src/solving_diagramm.png>
+File: Simultane Labyrinthe/pdf_src/move_diagramm.png Graphic file (type bmp)
+<Simultane Labyrinthe/pdf_src/move_diagramm.png>
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 536--539
+Underfull \hbox (badness 10000) in paragraph at lines 502--517
 
  []
 
 
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 549--555
+Underfull \hbox (badness 10000) in paragraph at lines 521--524
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 549--555
+Underfull \hbox (badness 10000) in paragraph at lines 534--540
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 534--540
 
  []
 
@@ -1005,12 +1115,12 @@ File: Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf Graphic file (type p
 df)
 <use Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 558--589
+Underfull \hbox (badness 10000) in paragraph at lines 543--574
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 558--589
+Underfull \hbox (badness 10000) in paragraph at lines 543--574
 
  []
 
@@ -1023,7 +1133,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Simultane Labyrinthe/pdf_src/plotting_max_1.pdf Graphic file (type pdf)
 <use Simultane Labyrinthe/pdf_src/plotting_max_1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--622
+Underfull \hbox (badness 10000) in paragraph at lines 583--607
 
  []
 
@@ -1043,13 +1153,13 @@ File: Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf Graphic file (type pdf)
 ] (C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
-Overfull \hbox (0.76053pt too wide) in paragraph at lines 715--716
+Overfull \hbox (23.56076pt too wide) in paragraph at lines 707--708
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (66.7612pt too wide) in paragraph at lines 720--722
+Overfull \hbox (92.86147pt too wide) in paragraph at lines 712--714
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [] 
@@ -1058,63 +1168,63 @@ Overfull \hbox (66.7612pt too wide) in paragraph at lines 720--722
 
 
 [21]
-Overfull \hbox (66.7612pt too wide) in paragraph at lines 724--725
+Overfull \hbox (92.86147pt too wide) in paragraph at lines 716--717
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][] 
  []
 
 
-Overfull \hbox (174.7623pt too wide) in paragraph at lines 726--727
+Overfull \hbox (206.26262pt too wide) in paragraph at lines 718--719
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][] 
  []
 
 
-Overfull \hbox (252.76309pt too wide) in paragraph at lines 729--730
+Overfull \hbox (288.16345pt too wide) in paragraph at lines 721--722
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (18.76071pt too wide) in paragraph at lines 753--754
+Overfull \hbox (42.46095pt too wide) in paragraph at lines 745--746
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][] 
  []
 
 
-Overfull \hbox (90.76144pt too wide) in paragraph at lines 755--756
+Overfull \hbox (118.06172pt too wide) in paragraph at lines 747--748
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][] 
  []
 
 
-Overfull \hbox (24.76077pt too wide) in paragraph at lines 757--759
+Overfull \hbox (48.76102pt too wide) in paragraph at lines 749--751
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][] 
  []
 
 
-Overfull \hbox (0.76053pt too wide) in paragraph at lines 766--767
+Overfull \hbox (23.56076pt too wide) in paragraph at lines 758--759
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][] 
  []
 
 
-Overfull \hbox (18.76071pt too wide) in paragraph at lines 773--775
+Overfull \hbox (42.46095pt too wide) in paragraph at lines 765--767
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
 
 [22]
-Overfull \hbox (30.76083pt too wide) in paragraph at lines 781--782
+Overfull \hbox (55.06108pt too wide) in paragraph at lines 773--774
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
 
-Overfull \hbox (30.76083pt too wide) in paragraph at lines 790--791
+Overfull \hbox (55.06108pt too wide) in paragraph at lines 782--783
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][] 
  []
@@ -1122,70 +1232,76 @@ Overfull \hbox (30.76083pt too wide) in paragraph at lines 790--791
 
 
 [23]
-Overfull \hbox (30.76083pt too wide) in paragraph at lines 825--826
+Overfull \hbox (55.06108pt too wide) in paragraph at lines 817--818
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
 
-Overfull \hbox (0.76053pt too wide) in paragraph at lines 846--847
+Overfull \hbox (23.56076pt too wide) in paragraph at lines 838--839
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (336.76395pt too wide) in paragraph at lines 850--852
+Overfull \hbox (376.36435pt too wide) in paragraph at lines 842--844
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (72.76126pt too wide) in paragraph at lines 855--856
+Overfull \hbox (99.16153pt too wide) in paragraph at lines 847--848
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (72.76126pt too wide) in paragraph at lines 856--857
+Overfull \hbox (99.16153pt too wide) in paragraph at lines 848--849
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 859--861
+Overfull \hbox (36.16089pt too wide) in paragraph at lines 851--853
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
 
 [24]
-Overfull \hbox (66.7612pt too wide) in paragraph at lines 886--887
+Overfull \hbox (92.86147pt too wide) in paragraph at lines 878--879
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.76059pt too wide) in paragraph at lines 888--889
+Overfull \hbox (29.86082pt too wide) in paragraph at lines 880--881
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
 
-Overfull \hbox (66.7612pt too wide) in paragraph at lines 894--895
+Overfull \hbox (92.86147pt too wide) in paragraph at lines 886--887
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.76059pt too wide) in paragraph at lines 896--897
+Overfull \hbox (29.86082pt too wide) in paragraph at lines 888--889
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
 
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 904--906
+Overfull \hbox (36.16089pt too wide) in paragraph at lines 896--898
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][] 
  []
 
 
-Overfull \hbox (192.76248pt too wide) in paragraph at lines 913--915
+Overfull \hbox (17.2607pt too wide) in paragraph at lines 901--903
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][] 
+ []
+
+
+Overfull \hbox (225.16281pt too wide) in paragraph at lines 905--907
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ] 
  []
@@ -1193,42 +1309,42 @@ Overfull \hbox (192.76248pt too wide) in paragraph at lines 913--915
 
 
 [25]
-Overfull \hbox (132.76187pt too wide) in paragraph at lines 934--935
+Overfull \hbox (162.16217pt too wide) in paragraph at lines 926--927
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][] 
  []
 
 
-Overfull \hbox (132.76187pt too wide) in paragraph at lines 935--937
+Overfull \hbox (162.16217pt too wide) in paragraph at lines 927--929
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][] 
  []
 
 
-Overfull \hbox (210.76266pt too wide) in paragraph at lines 938--939
+Overfull \hbox (244.063pt too wide) in paragraph at lines 930--931
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (210.76266pt too wide) in paragraph at lines 939--941
+Overfull \hbox (244.063pt too wide) in paragraph at lines 931--933
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (186.76242pt too wide) in paragraph at lines 943--944
+Overfull \hbox (218.86275pt too wide) in paragraph at lines 935--936
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ] 
  []
 
 
-Overfull \hbox (186.76242pt too wide) in paragraph at lines 946--947
+Overfull \hbox (218.86275pt too wide) in paragraph at lines 938--939
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (36.7609pt too wide) in paragraph at lines 973--974
+Overfull \hbox (61.36115pt too wide) in paragraph at lines 965--966
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][] 
  []
@@ -1236,100 +1352,92 @@ Overfull \hbox (36.7609pt too wide) in paragraph at lines 973--974
 
 
 [26]
-Overfull \hbox (48.76102pt too wide) in paragraph at lines 986--987
+Overfull \hbox (73.96127pt too wide) in paragraph at lines 978--979
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (222.76279pt too wide) in paragraph at lines 991--992
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (198.76254pt too wide) in paragraph at lines 995--996
+Overfull \hbox (10.96063pt too wide) in paragraph at lines 979--980
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 996--998
+Overfull \hbox (256.66313pt too wide) in paragraph at lines 983--984
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (231.46288pt too wide) in paragraph at lines 987--988
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (36.16089pt too wide) in paragraph at lines 988--990
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
 
-
-[27]
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 1026--1027
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 1027--1029
-[][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (162.76218pt too wide) in paragraph at lines 1030--1031
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (162.76218pt too wide) in paragraph at lines 1031--1033
-[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (156.76212pt too wide) in paragraph at lines 1038--1039
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (60.76114pt too wide) in paragraph at lines 1039--1040
+Overfull \hbox (10.96063pt too wide) in paragraph at lines 1001--1002
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1053--1054
 
+[27]
+Overfull \hbox (36.16089pt too wide) in paragraph at lines 1018--1019
+[][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (59.99132pt too wide) in paragraph at lines 1059--1060
-[]\TU/lmr/m/n/12 [5] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
-][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
-[] [] [][][][][] [] [][][][][][][][][][][] []
+Overfull \hbox (36.16089pt too wide) in paragraph at lines 1019--1021
+[][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (109.43126pt too wide) in paragraph at lines 1061--1062
-[]\TU/lmr/m/n/12 [6] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
-][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
-[] [] [][][][][] [] [][][][][][][][][][][][][][][][][][][] []
+Overfull \hbox (193.66249pt too wide) in paragraph at lines 1022--1023
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (10.55138pt too wide) in paragraph at lines 1065--1066
-[]\TU/lmr/m/n/12 [8] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
-][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
-[] [] [][][][][] [] [][][] []
+Overfull \hbox (193.66249pt too wide) in paragraph at lines 1023--1025
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (10.55138pt too wide) in paragraph at lines 1067--1068
-[]\TU/lmr/m/n/12 [9] []$[][][][][] [] [] [] [][][][][] [] [][] [] [][][][][][][
-][][] [] [][][][][][][][][][][] [] [][][][][][][][][][][][][][][][] [] [][] [] 
-[] [] [][][][][] [] [][][] []
+Overfull \hbox (187.36243pt too wide) in paragraph at lines 1030--1031
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
+
+Overfull \hbox (86.5614pt too wide) in paragraph at lines 1031--1032
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][] 
+ []
+
+
+Overfull \hbox (14.16211pt too wide) in paragraph at lines 1044--1044
+[]\T1/lmr/m/it/12 Bundeswettbewerb In-for-ma-tik 43.2 Run-de -- Lö-sungs-hin-we
+i-se\T1/lmr/m/n/12 . Auf-ge-ru-fen am 11.10.2025.
+ []
+
+Missing character: There is no – in font ec-lmr12!
 
 
 [28]
+Missing character: There is no – in font ec-lmri12!
 
-[29] 
-enddocument/afterlastpage (AED): lastpage setting LastPage.
-(wseminar.aux
-Package cleveref Info: loaded `ngerman' language definitions on input line 9.
+Overfull \hbox (4.39139pt too wide) in paragraph at lines 1044--1044
+[]\T1/lmr/m/it/12 Über uns  Bun-des-wett-be-werb In-for-ma-tik\T1/lmr/m/n/12 . 
+Auf-ge-ru-fen am 21.10.2025. 2025. \T1/lmr/m/sc/12 url\T1/lmr/m/n/12 : []$\T1/l
+mtt/m/n/12 https :
+ []
+
+
+
+[29] (wseminar.aux
+Package cleveref Info: loaded `ngerman' language definitions on input line 16.
 )
  ***********
 LaTeX2e <2024-11-01> patch level 2
@@ -1337,14 +1445,17 @@ L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `wseminar.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package logreq Info: Writing requests to 'wseminar.run.xml'.
+\openout1 = `wseminar.run.xml'.
+
  ) 
 Here is how much of TeX's memory you used:
- 22771 strings out of 408640
- 470589 string characters out of 5749145
- 1307031 words of memory out of 5000000
- 45565 multiletter control sequences out of 15000+600000
- 569720 words of font info for 82 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 108i,21n,107p,10944b,2072s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 25889 strings out of 408640
+ 475404 string characters out of 5749145
+ 1535891 words of memory out of 5000000
+ 48672 multiletter control sequences out of 15000+600000
+ 597767 words of font info for 70 fonts, out of 8000000 for 9000
+ 1350 hyphenation exceptions out of 8191
+ 108i,9n,107p,10944b,4966s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on wseminar.pdf (29 pages).

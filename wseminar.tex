@@ -1,23 +1,9 @@
 \documentclass[a4paper,12pt,ngerman]{scrartcl}
 \usepackage{babel}
 \usepackage[T1]{fontenc}
-\usepackage[utf8x]{inputenc}
-\usepackage[a4paper,margin=2.5cm,footskip=0.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,margin=2.5cm,footskip=0.5cm]{geometry}     
 
-\newcommand{\Aufgabe}{}
-\newcommand{\TeilnahmeId}{76626}                 
-\newcommand{\Name}{Quirin Klemm}            
-
-
-% Kopf- und Fußzeilen
-\usepackage{scrlayer-scrpage, lastpage}
-\setkomafont{pageheadfoot}{\large\textrm}
-\lohead{\Aufgabe}
-\cfoot*{\thepage{}/\pageref{LastPage}}
-
-% Position des Titels
-\usepackage{titling}
-\setlength{\droptitle}{-1.0cm}
 
 \usepackage{float}
 
@@ -26,14 +12,13 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-% Für Bilder
-\usepackage{graphicx}
-\usepackage{fontspec}
-
 \usepackage[hidelinks]{hyperref}
 
-% Für Algorithmen
-\usepackage{algpseudocode}
+% Für Bilder
+\usepackage{graphicx}
+
+\usepackage[backend=biber,style=numeric,sorting=nty]{biblatex}
+\addbibresource{literatur.bib}
 
 % Für Quelltext
 \usepackage{listings}
@@ -72,15 +57,15 @@
 
 \section{Einleitung}
 Die vorliegende Arbeit ist meine Einreichung für die zweiten Runde des 43. Bundeswettbewerb Informatik (BwInf).
-Der Wettbewerb wird von der BWINF gGmbH ausgerichtet und vom Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend sowie den Kultusministerien der Länder unterstützt.[11]
+Der Wettbewerb wird von der BWINF gGmbH ausgerichtet und vom Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend sowie den Kultusministerien der Länder unterstützt.\cite{bwinf_about}
 Er gliedert sich in drei Runden, die aufeinander aufbauen. In der erste Runde, die in Gruppenarbeit durchgeführt wird, stehen fünf kleine Aufgaben zur Auswahl, von denen drei bearbeitet werden müssen. 
 Die zweiten Runde erfolgt in Einzelarbeit, in welcher von drei angebotenen Aufgaben zwei zu lösen sind. 
-Zur Endrunde werden die besten 30 Teilnehmer eingeladen, die an einem Wochenende ihr Wissen in einem Gespräch beweisen.[7]\\
+Zur Endrunde werden die besten 30 Teilnehmer eingeladen, die an einem Wochenende ihr Wissen in einem Gespräch beweisen. \cite{bwinf_website}\\
 Jede Aufgabe beschreibt ein Problem, für welches anschließend ein Algorithmus entwickelt werden soll, mit dem sich dieses lösen lässt.
 Anschließend muss der Algorithmus auf verschiedene Testfälle angewandt werden, damit die Korrektoren die Richtigkeit und Genauigkeit beurteilen können.
 Die Teilnehmenden kennen dabei die erwarteten Ergebnisse der Testfälle nicht.
 Die ausgearbeitet Lösungen werden anschließend nach einem festgelegten Schema korrigiert und benotet. Pro Aufgabe können bis zu 20 Punkte erreicht werden, 
-wobei gute Ausarbeitungen Zusatzpunkte geben können und unvollständige Bearbeitungen Punktabzüge nach sich ziehen.[5]\\
+wobei gute Ausarbeitungen Zusatzpunkte geben können und unvollständige Bearbeitungen Punktabzüge nach sich ziehen. \cite{bwinf_aufgabe}\\
 Meine Arbeit ist in zwei Teile aufgeteilt, beginnend mit Aufgabe 1, Schmucknachrichten, und dann Aufgabe 2, simultane Labyrinthe.\\
 Zuerst erkläre ich jeweils kurz die Aufgabestellung. 
 Danach beschreibe ich meine theorietische Überlegung und zeige im Anschluss, wie ich sie praktisch in Python3 umgesetzt habe.
@@ -88,16 +73,16 @@ Anschließend diskutiere ich meine Ergebnisse, ziehe ein Fazit und vergleiche sc
 \section{Aufgabe 1: Schmucknachrichten}
 \subsection{Einleitung}
 In dieser Aufgabe möchten Sybille und Pedram kurze Nachrichten, die aus verschiedenen Buchstaben bestehen, in Perlen-Codes für Ketten umwandeln.
-Für jeden Buchstaben ist ein Codewort aus Perlen zu finden, wobei insgesamt ein präfixfreier Code entstehen muss.[5]
+Für jeden Buchstaben ist ein Codewort aus Perlen zu finden, wobei insgesamt ein präfixfreier Code entstehen muss.\cite{bwinf_aufgabe}
 Dabei soll die Gesamtlänge der codierten Nachricht möglichst gering sein.
 Daher wird ein präfixfreier Code gesucht, bei dem häufig vorkommende Buchstaben kurze Codewörter erhalten, während seltenere Buchstaben längere Codewörter zugewiesen bekommen. 
-\enquote{Ein Code C heißt Prafix-Code (irreduzibler Code), wenn kein Codewort aus C Prafix eines anderen Codeworts von C ist.}[10]
-Dadurch lässt sich jede Nachricht eindeutig codieren und wieder decodieren.[10]
+\enquote{Ein Code C heißt Prafix-Code (irreduzibler Code), wenn kein Codewort aus C Prafix eines anderen Codeworts von C ist.}\cite{schulz2018codierungstheorie}
+Dadurch lässt sich jede Nachricht eindeutig codieren und wieder decodieren.\cite{schulz2018codierungstheorie}
 Ein Code mit den Codewörtern \{0, 10, 11\} ist präfixfrei, da kein Codewort der Anfang eines anderen ist.
 Im Gegensatz dazu ist der Code \{0, 01, 11\} nicht präfixfrei ist, weil "'0"' der Präfix von "'01"' ist.
 Zusätzlich wird in dieser Aufgabe zwischen zwei Varianten unterschieden:
 In der ersten Teilaufgabe haben alle Perlen denselben Durchmesser, 
-während in der zweiten Teilaufgabe die Perlen unterschiedliche Durchmesser besitzen.[5]
+während in der zweiten Teilaufgabe die Perlen unterschiedliche Durchmesser besitzen. \cite{bwinf_aufgabe}
 \subsection{Theoretische Erklärung des Algorithmus}
 \subsubsection{Betrachtung von Symbolen mit gleichen Kosten}
 In meiner Arbeit gilt die Annahme, solange alle Perlen im Durchmesser gleich sind:
@@ -123,7 +108,7 @@ Das heißt, sobald ein Blatt erreicht wird, endet das Codewort, und keine weiter
 Der Baum hat mindestens so viele Blätter wie es verschiedene Buchstaben gibt, da jeder Buchstabe sein eigenes Codewort braucht.
 Jeder innere Knoten kann dabei maximal so viele Kinder haben, wie es verschiedene Perlen gibt. 
 Die Ebene des Blatts entspricht der Länge des Codeworts, also $n$.\\
-Jeder präfixfreie Code kann in einem Baum dargestellt werden und jeder Baum kann einen präfixfreien Code darstellen.[10]
+Jeder präfixfreie Code kann in einem Baum dargestellt werden und jeder Baum kann einen präfixfreien Code darstellen.\cite{schulz2018codierungstheorie}
 Daher kann das Problem auf ein Baum reduziert werden.\\
 \begin{figure}[h]
   \centering
@@ -206,7 +191,7 @@ stattdessen muss der Durchmesser jeder Perle im Codewort einzeln angeschaut werd
 wobei gilt: \\
  - $cp_j$ die Kosten/Durchmesser der Perle $j$\\
 \\
- Stellt man nun Bäume nicht nach ihrer Ebene, sondern nach ihren Kosten dar, erhält man einen \textit{lopsided tree}[1] (Abbildung \ref{fig:lopsided tree}).\\
+ Stellt man nun Bäume nicht nach ihrer Ebene, sondern nach ihren Kosten dar, erhält man einen \textit{lopsided tree}\cite{golin1998prefixfree} (Abbildung \ref{fig:lopsided tree}).\\
  \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/lopsided_tree.pdf}
@@ -236,9 +221,9 @@ daher kann der zweite Algorithmus sowohl für gleiche als auch unterschiedliche 
 %2. ['d', 'a', 's', 'f', 'g', 'h']\\
 %Um später den Buchstaben die Häufigkeit wieder richtig zuzuordnen.
 Das Baum ist über die Klasse \textit{TreeNode} rekursiv implementieren. Jeder Knoten entspricht einem TreeNode-Objekt.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/klassen_diagramm.pdf}
+  \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/treenode_digramm.png}
   \caption{Klasse TreeNode}
   \label{fig:klassn_daigramm}
 \end{figure}
@@ -325,7 +310,7 @@ Daraus folgt, dass die maximale Anzahl an inneren Knoten erreicht wird, wenn der
 \begin{equation}
   \text{innere Knoten} = w - 1
 \end{equation}
-berechnet werden.[10]
+berechnet werden.\cite{schulz2018codierungstheorie}
 Dabei ist $w$ die Anzahl an Blättern/Codewörter.
 Auf jeder Ebene existiert ein richtiger innere Knoten, deren Anzahl minimal mit 
 \begin{equation}
@@ -350,25 +335,25 @@ Das Minimum wird bereits in der ersten Hälfte der Iterationen erreicht.
 Das zeigt gut, dass der Algorithmus kein Optimierungs-Algorithmus ist, sondern von einem Maximum zum anderen Maximum geht.
 \subsubsection{Stand der Forschung}
 Die vorliegende Fragestellung ist seit den 60iger-Jahren in der theorietischen Informatik bekannt. 
-Dabei lieferte Huffman eine Lösung für den Spezialfall, von zwei Quellsymbolen.[3]
+Dabei lieferte Huffman eine Lösung für den Spezialfall, von zwei Quellsymbolen.\cite{piater2024algorithmen}
 \\
 \\
 Für unseren Fall von mehr als zwei Quellsymbolen mit unterschiedlichen Kosten, 
-entwickelte bereits Richard Karp 1961[4] eine Lösung. Diese wurde 1998 von Mordecai J. Golin und Günter Rote verbessert und ist bis heute das schnellste Verfahren, um auf eine exakte Lösung zu kommen.\\
-"The minimum-cost prefix-free code for n words can be computed in $O(n^{C+2})$ time and $O(n^{C+1})$ space, if the costs of the letters are integers between 1 and C."[1]\\
+entwickelte bereits Richard Karp 1961\cite{karp1961minimum} eine Lösung. Diese wurde 1998 von Mordecai J. Golin und Günter Rote verbessert und ist bis heute das schnellste Verfahren, um auf eine exakte Lösung zu kommen.\\
+"The minimum-cost prefix-free code for n words can be computed in $O(n^{C+2})$ time and $O(n^{C+1})$ space, if the costs of the letters are integers between 1 and C." \cite{golin1998prefixfree}\\
 Für die Beispielaufgabe $schmuck5.txt$ hat der Algorithmus eine Laufzeit $34^8$(n=34; C=6) Iterationen. 
 Diese Art von Algorithmus kann wegen seiner langen Laufzeit nicht für die vorgegebenen Beispielaufgabe verwendet werden.
 \\
 \\
 Um eine polynominelle Laufzeit zu erreichen, entwickelten Mordecai J. Golin, Claire Mathieu und Neal E. Young im Jahre 2012 ein Approximationsverfahren.\\
 Dieser Algorithmus basiert auf dem PTAS-Verfahren, wobei zuerst ein präfixfreier Code bis zu einer bestimmten Tiefe $\tau$ erstellt wird und dann die restlichen Codewörter durch ein Rundungsverfahren ergänzt werden.
-Dabei ist es zentral, dass die Wahrscheinlichkeitsverteilung der zu kodierenden Codewörter möglichst in großen Gruppen mit gleich großer Wahrscheinlichkeit eingeordnet werden können.[2]
+Dabei ist es zentral, dass die Wahrscheinlichkeitsverteilung der zu kodierenden Codewörter möglichst in großen Gruppen mit gleich großer Wahrscheinlichkeit eingeordnet werden können. \cite{golin2012huffman}
 Zum Beispiel in Testfall 9 ist dies nicht gegeben, weshalb das Bestimmen des Vorbaums über $9^{24}$ Schritte benötigt.
 Somit ist dieses Verfahren für die gewählten Beispiele ebenfalls nicht verwendbar.
 
 \subsubsection{Fazit}
 Für die gegeben Fragestellung gibt es bislang weder ein Beweis, dass sie NP-schwer ist, als auch keinen Gegenbeweis, dass sie es nicht ist.
-Aktuell bekannte Verfahren für exakte Ergebnisse besitzen eine exponentielle Laufzeit.[1]
+Aktuell bekannte Verfahren für exakte Ergebnisse besitzen eine exponentielle Laufzeit. \cite{golin1998prefixfree}
 Mein gefundener Algorithmus findet nicht die beste Lösung für das gegebene Problem. Er liefert jedoch in polynomieller Laufzeit eine gute Approximation
 und ist daher eine gute Abwägung zwischen Laufzeit und Genauigkeit.
 Somit wird nicht beantwortet, ob die Fragestellung NP-schwer ist.
@@ -378,11 +363,11 @@ Somit wird nicht beantwortet, ob die Fragestellung NP-schwer ist.
 In der Musterlösung werden drei Lösungen vorgeschlagen.
 Der erste Anssatz ist ein Greedy-Algorithmus basierend auf Huffman.
 Die zweite Variante ist ein ILP-Ansatz nach Richard Karp und
-die dritte ist dessen Erweiterung von Mordecai J. Golin und Günter Rote.[6]
+die dritte ist dessen Erweiterung von Mordecai J. Golin und Günter Rote. \cite{bwinf_loesung}
 Alle drei Ansätze waren mir bei Abgabe meiner Arbeit bekannt. 
 Trotzdem entschied ich mich dagegen eines dieser Verfahren zu implementieren, vor allem aufgrund deren hohen Laufzeit, 
 und entwickelte stattdessen meine eigenes Verfahren.
-Mein Algorithmus hat dabei eine durchschnittliche Abweichung von 1,27\% vom Idealergebnis, besitzt jedoch im Gegensatz dazu eine sehr viel kürzere Laufzeit.[6]
+Mein Algorithmus hat dabei eine durchschnittliche Abweichung von 1,27\% vom Idealergebnis, besitzt jedoch im Gegensatz dazu eine sehr viel kürzere Laufzeit. \cite{bwinf_loesung}
 Für meine gutes ErgebniArbeit erhielt ich daher eine Pluspunkt und erreichte insgesamt 21 Punkte für diese Aufgabe.
 
 \clearpage
@@ -395,7 +380,7 @@ Die dritte Person gibt jeweils beiden immer dieselbe nächste Schrittanweisung.
 Wenn der nächste Schritt in einem Labyrinth durch eine Wand blockiert ist, bleibt die Person stehen.
 Gesucht ist eine möglichst kurze Abfolge von Schritten, die beide Labyrinthe mit denselben Befehlen löst.
 Die ursprüngliche Aufgabe enthält normale Labyrinthe. Im Spezialfall werden die Labyrinth um Gruben erweitert.
-Wenn ein Spieler in eine Grube fällt, wird seine Position auf die Startposition (0, 0) zurückgesetzt.[5]
+Wenn ein Spieler in eine Grube fällt, wird seine Position auf die Startposition (0, 0) zurückgesetzt. \cite{bwinf_aufgabe}
 
 \subsection{Theoretische Erklärung des Algorithmus}
 Zu Beginn wird für jedes Labyrinth eine Matrix erstellt (Abbildung \ref{fig:lybnmatrix}),
@@ -480,7 +465,7 @@ Daraus folgt, dass die Kosten der Grubenfelder den Kosten der Startpositionen en
 Zur Erstellung der Matrix wird die Klasse $Cost$ benutzt.
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/cost_diagramm.pdf}
+  \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/cost_diagramm.png}
   \caption{Klasse Cost}
   \label{fig:cost_diagramm}
 \end{figure}
@@ -510,14 +495,14 @@ Falls ein Element schon in der Kostenmatrix ist, wird es übersprungen.
 Zum Lösen der Labyrinthe wird die Klasse $Solving$ benutzt.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/solving_diagramm.pdf}
+  \includegraphics[width=0.7\textwidth]{Simultane Labyrinthe/pdf_src/solving_diagramm.png}
   \caption{Solving Klasse}
   \label{fig:solving_diagramm}
 \end{figure}
 Die Wege werden mit der Klasse $Move$ dargestellt.
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/moving_diagramm.pdf}
+  \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/move_diagramm.png}
   \caption{Move Klasse}
   \label{fig:moving_diagramm}
 \end{figure}
@@ -627,14 +612,21 @@ Die erste Strategie besteht in der Anwendung der Breitensuche auf zwei Labyrinth
 Diese Variante wird jedoch in der Musterlösung aufgrund ihrer hohe Laufzeit als nicht praktikabel eingestuft.\\
 Die zweite Stratie basiert auf dem A-Star Algorithmus mit Priorty Queue. 
 Diese Vorgehensweise ähnelt stark meiner eigenen Idee. 
-Wie in meiner Kostenmatrix wird auch hier für jede Position die Distanz zum Ziel berechnet.[6]
+Wie in meiner Kostenmatrix wird auch hier für jede Position die Distanz zum Ziel berechnet.\cite{bwinf_loesung}
 Der wesentliche Unterschied liegt vor allem in dem effizienteren Warteschlagenmodell der Musterlösung.\\
-Insgesamt lagen meine Ergebnisse, aus geschlossen von Testfall 8, bei 1,1\% Abweichung vom Optimalwert.[6]
+Insgesamt lagen meine Ergebnisse, aus geschlossen von Testfall 8, bei 1,1\% Abweichung vom Optimalwert.\cite{bwinf_loesung}
 Bei Testfall 8 fiel mein Ergebnis etwa 3-mal so groß aus, weshalb mir 2 Puntke im Kriterium "'Verfahren mit guten Ergebnissen"' abgezogen wurden.
 Außerdem war meine Überlegung zur Laufzeit des Verfahren nicht ausreichend detailliert, was zu einem weiteren Punktabzug führte.\\
 Insgesamt erhielt ich für die Aufgabe 17 von 20 Punkten.
 
 \section{Fazit}
+1. kurz zusammenfassen was ich gemacht haben in aufgabe1
+2. was für ergebnisse ich erzielt habe damit; wie viel punkte
+3. kurz zusammenfassen was ich gemacht haben in aufgabe2
+4. was für ergebnisse ich erzielt habe damit; wie viel punkte
+welcher paltz ich wurde
+was mit das gebracht habe
+warum ich dem wettbewerb gut finde
 %In der ersten Runde gingen insgesamt 1790 Einsendungen ein, von denen 950 Teilnehmende zur zweiten Runde zugelassen wurden.[8]
 %In der zweiten Runde wurden nur noch 250 Lösungen eingereicht, aus denen die 30 besten Teilnehmer für die Endrunde ausgewählt wurden.[9]
 Aufgrund des begrenzten Umfangs der Arbeit konnte ich keinen Beweis für die NP-Schwere erbrignen und eine präzisere Laufzeitanalyse durchführen.
@@ -1048,26 +1040,7 @@ if __name__ == "__main__":
 \end{lstlisting}
 
 \subsection{Quellen}
-[1] Mordecai J. Golin and Günther Rote,  \textit{A Dynamic Programming Algorithm for Constructing Optimal Prefix-Free Codes with Unequal Letter Costs}, IEEE Transactions on Information Theory 44, no. 5, September 1998
 
-[2] Mordecai J. Golin, Claire Mathieu und Neal E. Young, \textit{HUFFMAN CODING WITH LETTER COSTS: A LINEAR-TIME APPROXIMATION SCHEME}, 2012 Society for Industrial and Applied Mathematics Vol. 41, No. 3, pp. 684–713 \\
-
-[3] Prof. Justus Piater, \textit{Algorithmen und Datenstrukturen}, 29.05.2024 Universität Innsbruck, Seite 4-13
-
-[4] R. Karp, \textit{Minimum-redundancy coding for the discrete noiseless channel}, IRE Transactions on Information Theory, vol. 7, no. 1, January 1961
-
-[5] \url{https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/2_runde/Aufgaben432.pdf}, aufgerufen am 11.10.2025
-
-[6] \url{https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/2_runde/Loesungshinweise432.pdf}, aufgerufen am 11.10.2025
-
-[7] \url{https://bwinf.de/bundeswettbewerb/43/}, aufgerufen am 12.10.2025
-
-[8] \url{https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/1_runde/431_Statistik.pdf}, aufgerufen am 12.10.2025
-
-[9] \url{https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/1_runde/431_Statistik.pdf}, aufgerufen am 12.10.2025
-
-[10] Ralph-Hardo Schulz: \textit{ Codierungstheorie. Eine Einführung. 2. Auflage}, ISBN: 978-3-322-80328-3
-
-[11] \url{https://bwinf.de/ueber-uns/bwinf/}, aufgrufen am 21.10.2025
+\printbibliography[heading=none]
 
 \end{document}
