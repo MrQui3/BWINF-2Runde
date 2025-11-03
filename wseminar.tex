@@ -41,49 +41,51 @@
 %\usepackage{hyperref} % Anklickbare Links im Dokument
 \usepackage{cleveref}
 
+\usepackage{pdfpages}        
 
 \usepackage{setspace}
 
 \begin{document}
+      
+\includepdf[pages={1,2,3}]{deckblatt.pdf}
 
+\setcounter{page}{2}
+\tableofcontents
+\newpage
 \setkomafont{section}{\fontsize{14pt}{16pt}\selectfont\bfseries}
 \setkomafont{subsection}{\fontsize{13pt}{15pt}\selectfont\bfseries}
 \setkomafont{subsubsection}{\fontsize{12pt}{14pt}\selectfont\bfseries}
 
 \setstretch{1.15}
-
-\tableofcontents
-
 \vspace{0.5cm}
 
 \section{Einleitung}
-Die vorliegende Arbeit ist meine Einreichung für die zweiten Runde des 43. Bundeswettbewerb Informatik (BwInf).
-Es sind zwei Aufgabe zu bearbeiten, die jeweils ein Problem beschreiben.
-Für jedes Problem soll Algorithmus entwickelt werden, mit dem sich dieses lösen lässt.
-Anschließend muss der Algorithmus auf verschiedene Testfälle angewandt werden, damit die Korrektoren die Richtigkeit und Genauigkeit beurteilen können.
+Die vorliegende Arbeit ist meine Einreichung für die zweite Runde des 43. Bundeswettbewerb Informatik (BwInf).
+Es sind zwei Aufgaben zu bearbeiten, die jeweils ein Problem beschreiben.
+Für jedes Problem soll ein Algorithmus entwickelt werden, mit dem sich dieses lösen lässt.
+Anschließend muss der Algorithmus auf verschiedene Testfälle angewandt werden, damit die Korrektoren die Richtigkeit und die Genauigkeit beurteilen können.
 Die Teilnehmenden kennen dabei die erwarteten Ergebnisse der Testfälle nicht.
-Die ausgearbeitet Lösungen werden anschließend nach einem festgelegten Schema korrigiert und benotet. Pro Aufgabe können bis zu 20 Punkte erreicht werden, 
-wobei gute Ausarbeitungen Zusatzpunkte geben können und unvollständige Bearbeitungen Punktabzüge nach sich ziehen. \cite{bwinf_aufgabe}\\
-Meine Arbeit ist in zwei Teile aufgeteilt, beginnend mit Aufgabe 1, Schmucknachrichten, und dann Aufgabe 2, simultane Labyrinthe.\\
-Zuerst erkläre ich jeweils kurz die Aufgabestellung. 
-Danach beschreibe ich meine theorietische Überlegung und zeige im Anschluss, wie ich sie praktisch in Python3 umgesetzt habe.
-Anschließend diskutiere ich meine Ergebnisse, ziehe ein Fazit und vergleiche schließlich meine Lösung mit der offiziellen Musterlösung.
+Die ausgearbeiteten Lösungen werden anschließend nach einem festgelegten Schema korrigiert und benotet. Pro Aufgabe können bis zu 20 Punkte erreicht werden, 
+wobei gute Ausarbeitungen Zusatzpunkte erzielen und unvollständige Bearbeitungen Punktabzüge nach sich ziehen. \cite{bwinf_aufgabe}\\
+Die Seminararbeit ist in zwei Teile aufgeteilt, beginnend mit Aufgabe 1, Schmucknachrichten, und daraufhin Aufgabe 2, simultane Labyrinthe.\\
+Zuerst erkläre ich jeweils kurz die Aufgabenstellung und beschreibe meine theoretische Überlegung. Im Anschluss zeige ich, wie sie praktisch in Python3 umgesetzt werden.
+Zulezt diskutiere ich meine Ergebnisse und vergleiche meine Lösung mit der offiziellen Musterlösung.
 \section{Aufgabe 1: Schmucknachrichten}
 \subsection{Einleitung}
 In dieser Aufgabe möchten Sybille und Pedram kurze Nachrichten, die aus verschiedenen Buchstaben bestehen, in Perlen-Codes für Ketten umwandeln.
 Für jeden Buchstaben ist ein Codewort aus Perlen zu finden, wobei insgesamt ein präfixfreier Code entstehen muss.\cite{bwinf_aufgabe}
 Dabei soll die Gesamtlänge der codierten Nachricht möglichst gering sein.
 Daher wird ein präfixfreier Code gesucht, bei dem häufig vorkommende Buchstaben kurze Codewörter erhalten, während seltenere Buchstaben längere Codewörter zugewiesen bekommen. 
-\enquote{Ein Code C heißt Prafix-Code (irreduzibler Code), wenn kein Codewort aus C Prafix eines anderen Codeworts von C ist.}\cite{schulz2018codierungstheorie}
+\enquote{Ein Code C heißt Präfix-Code (irreduzibler Code), wenn kein Codewort aus C Präfix eines anderen Codeworts von C ist.}\cite{schulz2018codierungstheorie}
 Dadurch lässt sich jede Nachricht eindeutig codieren und wieder decodieren.\cite{schulz2018codierungstheorie}
 Ein Code mit den Codewörtern \{0, 10, 11\} ist präfixfrei, da kein Codewort der Anfang eines anderen ist.
-Im Gegensatz dazu ist der Code \{0, 01, 11\} nicht präfixfrei ist, weil "'0"' der Präfix von "'01"' ist.
+Im Gegensatz dazu ist der Code \{0, 01, 11\} nicht präfixfrei, weil "'0"' das Präfix von "'01"' ist.
 Zusätzlich wird in dieser Aufgabe zwischen zwei Varianten unterschieden:
 In der ersten Teilaufgabe haben alle Perlen denselben Durchmesser, 
 während in der zweiten Teilaufgabe die Perlen unterschiedliche Durchmesser besitzen. \cite{bwinf_aufgabe}
 \subsection{Theoretische Erklärung des Algorithmus}
 \subsubsection{Betrachtung von Symbolen mit gleichen Kosten}
-In meiner Arbeit gilt die Annahme, solange alle Perlen im Durchmesser gleich sind:
+In meiner Arbeit gilt die folgende Formel zur Berechnung der codierten Nachricht, solange alle Symbole die gleiche Kosten haben:
 \begin{equation}
   \label{Kosten eines Buchstaben}
   c_i = p_i \cdot n_i
@@ -93,21 +95,21 @@ In meiner Arbeit gilt die Annahme, solange alle Perlen im Durchmesser gleich sin
   l = \sum_i c_i
 \end{equation}
 wobei gilt: \\
-- $c_i$ die Kosten des Buchstaben $i$ \\
+- $c_i$ die Kosten des Buchstabens $i$ \\
 - \( p_i \) die Häufigkeit des Buchstabens \( i \) in der Nachricht   \\
-- \( n_i \) die Länge des Codewortes für den Buchstaben \( i \) (Anzahl der Perlen)  \\
+- \( n_i \) die Länge des Codewortes für den Buchstaben \( i \) (Anzahl der Symbole)  \\
 - \( l \) die Länge der codierten Nachricht \\ 
 \\
-Um einen präfixfreien Code zu erzeugen, wird überlicherweise ein Baum verwendet.
+Um einen präfixfreien Code zu erzeugen, wird ein Baum verwendet.
 In diesem entspricht jedes Blatt einem Codewort. 
 Die Kanten auf dem Weg von der Wurzel zu einem Blatt repräsentieren dabei die Symbole des jeweiligen Codewortes.
 Diese präfixfreie Eigenschaft ergibt sich automatisch aus der Baumstruktur.
 Das heißt, sobald ein Blatt erreicht wird, endet das Codewort, und keine weiteren Knoten bzw. Symbole können daran angeschlossen werden.
 Der Baum hat mindestens so viele Blätter wie es verschiedene Buchstaben gibt, da jeder Buchstabe sein eigenes Codewort braucht.
-Jeder innere Knoten kann dabei maximal so viele Kinder haben, wie es verschiedene Perlen gibt. 
-Die Ebene des Blatts entspricht der Länge des Codeworts, also $n$.\\
+Jeder innere Knoten kann dabei maximal so viele Kinder haben, wie es verschiedene Symbole gibt. 
+Die Ebene des Blatts entspricht der Länge des Codeworts.\\
 Jeder präfixfreie Code kann in einem Baum dargestellt werden und jeder Baum kann einen präfixfreien Code darstellen.\cite{schulz2018codierungstheorie}
-Daher kann das Problem auf ein Baum reduziert werden.\\
+Daher kann das Problem auf einen Baum reduziert werden.\\
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\textwidth]{Schmucknachrichten/pdf_src/simple_tree.pdf}
@@ -116,28 +118,27 @@ Daher kann das Problem auf ein Baum reduziert werden.\\
 \end{figure}
 \\
 Um einen möglichst kleinen präfixfreien Code zu erstellen, muss der Buchstabe, der am häufigsten vorkommt, ganz oben eingeordnet werden und die nächsten Buchstaben dann in absteigender Reihenfolge. 
-In Abbildung \ref{fig:simple tree} hätte c die höchste Häufigkeit und danach kommt a und b. 
-Ob der Buchstabe a oder b die höhere Häufigkeit besitzt, ist nicht relevant, da beide auf der untersten Ebene sind.\\
+In Abbildung \ref{fig:simple tree} hätte c die höchste Häufigkeit und danach kommen a und b.\\
 \\
 Daher ergibt sich $p_1 \geq p_2 \geq p_3 ... \geq p_i$ und $n_1 \leq n_2 \leq n_3 ... \leq n_i$\\
 \\
-Zu finden ist also ein Baum, der basierend auf den Häufigkeiten der Buchstaben, seine Blätter so auf seine Ebenen verteilt, dass die Länge der codierten Nachricht (Gleichung \eqref{equation:simple_kostenberechnung}) möglichst gering ist. 
-Jeder innere Knoten muss dabei mindestens zwei Kinder haben, da ein innerer Knoten mit nur einem Kind die Zweige des Baums verlängert (höheres $n$) ohne einen Vorteile zu bringen.\\
+Zu finden ist also ein Baum, der basierend auf den Häufigkeiten der Buchstaben seine Blätter so auf seine Ebenen verteilt, dass die Länge der codierten Nachricht (Gleichung \eqref{equation:simple_kostenberechnung}) möglichst gering ist. 
+Dabei muss jeder innere Knoten mindestens zwei Kinder haben, da ein innerer Knoten mit nur einem Kind die Zweige des Baums verlängert, ohne einen Vorteile zu bringen.\\
 \\
 Zu Beginn des Algorithmus wird ein balancierter Baum erstellt, der so viele Blätter wie Buchstaben hat (Abbildung \ref{fig:balancierter_Baum}). 
-Jedes Blatt wird von links nach rechts in aufsteigender Reihenfolge der Häufigkeit, mit einem Buchstaben belegt, und die Gesamtkosten des Baums werden gemäß der Formel \eqref{equation:simple_kostenberechnung} berechnet. 
+Jedes Blatt wird von links nach rechts in aufsteigender Reihenfolge der Häufigkeit mit einem Buchstaben belegt, und die Gesamtkosten des Baums werden gemäß der Formel \eqref{equation:simple_kostenberechnung} berechnet. 
 Dabei ergeben sich deutlich höhere Kosten für die rechten Buchstaben im Baum im Vergleich zu den linken, da alle Blätter auf derselben Ebene sind, jedoch die Häufigkeit der Buchstaben auf der rechten Seite größer ist.
 Um dies auszugleichen, wird der Buchstabe mit den höchsten Kosten eine Ebene nach oben verschoben,
 indem der Elternknoten des Blattes selber zum Blatt wird und alle Kinder verliert.
 Dadurch verliert der Baum aber zu viele Kinder, weshalb er erweitert werden muss.
 Für die Erweiterung untersucht der Algorithmus, an welche Knoten neue Blätter angehängt werden können. Er überprüft die Blätter nach ihrer Ebene, d.h. nach ihrem Wert für $n$,
 und fügt das mit dem kleinsten Wert hinzu.
-Das nach oben verschobenene Blatt erhält den Zusatz $protected$. 
+Das nach oben verschobene Blatt erhält den Zusatz $protected$. 
 Das verhindert, dass es selbst weitere Kinder bekommen kann.
-Dadurch wird ein Zyklus vermieden, bei dem ein Blatt zunächst nach oben verschoben und anschließend wieder nach unten erweitert würde.
+Dadurch wird ein Zyklus vermieden, bei dem ein Blatt zunächst nach oben verschoben und anschließend wieder nach unten erweitert werden würde.
 Nach jeder Iteration werden wie schon zu Beginn den Blättern Buchstaben aufsteigend zugewiesen.
-Durch die Neuzuweisung ist sicher gestellt, dass immer die äußerst linken Blätter, die Buchstaben mit den geringsten Häufigkeiten kriegen und rechts die höchsten.\\
-Der Vorgang, ein Blatt nach oben zu schieben und unten neue Blätter hinzufügen, wird so lange fortgesetzt, bis keine neuen Blätter mehr eingefügt werden können, da alle Blätter als $protected$ gelten.
+Durch die Neuzuweisung ist sicher gestellt, dass immer die äußeren linken Blätter die Buchstaben mit den geringsten Häufigkeiten bekommen und die Blätter rechts die mit den höchsten.\\
+Der Vorgang, in dem ein Blatt nach oben geschoben wird und unten neue Blätter hinzuzugefügt werden, wird so lange fortgesetzt, bis keine neuen Blätter mehr eingefügt werden können, da alle Blätter als $protected$ gelten.
 Das ist der Fall kurz vor einem maximal ausgearteten Baum (Abbildung \ref{fig:baum_fertig}).
 Der Algorithmus geht also von einem Maximum (maximal ausbalanciert) zum anderen Maximum (maximal ausgeartet).
 Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
@@ -176,49 +177,42 @@ Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
   \end{minipage}
 \end{figure}
 
-\subsubsection{Erweiterung auf Symbolen mit unterschiedlichen Kosten}
+\subsubsection{Erweiterung auf Symbole mit unterschiedlichen Kosten}
 Das Problem bei unterschiedlichen Perlendurchmessern besteht darin, dass Blätter auf derselben Ebene unterschiedliche Kosten für die Gesamtlänge der Nachricht haben können.
-Daher entsprechen die Kosten nicht mehr der Wert der Ebene.
+Daher entsprechen die Kosten nicht mehr dem Wert der Ebene.
 Das hat zur Folge, dass die Gleichung \eqref{Kosten eines Buchstaben} nicht mehr stimmt,
-stattdessen muss der Durchmesser jeder Perle im Codewort einzeln angeschaut werden. Daher ergibt sich
+stattdessen müssen die Kosten jedes Symbols im Codewort einzeln betrachtet werden. Daher ergibt sich
 
  \begin{equation}
   \label{Neue Kosten eines Buchstaben}
   c_i = p_i \cdot \sum_j cp_j
  \end{equation}
 wobei gilt: \\
- - $cp_j$ die Kosten/Durchmesser der Perle $j$\\
+ - $cp_j$ die Kosten des Symbols $j$\\
+ - $j$ iteriert dabei durch die Liste der Symbole des Codewortes\\
 \\
- Stellt man nun Bäume nicht nach ihrer Ebene, sondern nach ihren Kosten dar, erhält man einen \textit{lopsided tree}\cite{golin1998prefixfree} (Abbildung \ref{fig:lopsided tree}).\\
+Aus diesem Grund stellt man nun Bäume nicht nach ihrer Ebene, sondern nach ihren Kosten dar.
+Dieser wird auch als \textit{lopsided tree}\cite{golin1998prefixfree} bezeichnet. (Abbildung \ref{fig:lopsided tree})\\
  \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/lopsided_tree.pdf}
   \caption{lopsided tree: Perlendurchmesser: (1; 1; 2) }
   \label{fig:lopsided tree}
 \end{figure}\\
-In diesem Fall gilt ebenfalls, jeder innere Knoten muss mindestens zwei Kinder haben. 
-Bei dieser Art von Bäumen hat jedoch nicht der äußerst rechte Knoten die geringsten Kosten, sondern der oberste.
+In diesem Fall gilt weiterhin, jeder innere Knoten muss mindestens zwei Kinder haben. 
+Bei dieser Art von Bäumen hat jedoch nicht der äußerste rechte Knoten die geringsten Kosten, sondern der oberste.
 Der Algorithmus bleibt unverändert, d.h. zunächst wird ein Baum erstellt, in dem alle Blätter ungefähr die gleichen Kosten haben. 
 Anschließend wird der Buchstabe mit den höchsten Kosten nach oben verschoben, während der Baum unten erweitert wird.
-Dies geschieht solange, bis kein Blatt mehr eingefügt werden kann und der beste Baum wird ausgegeben.
-\\
-Wenn die Durchmesser alle gleich groß sind, gilt: 
+Dies geschieht solange, bis kein Blatt mehr eingefügt werden kann und der beste Baum ausgegeben wird.\\
+Wenn die Kosten aller Symbole gleich groß sind, gilt: 
 \begin{equation}
- p_i \cdot n_i = p_i \cdot \sum_n cp_n
+ p_i \cdot n_i = p_i \cdot \sum_j cp_j
 \end{equation} 
-daher kann der zweite Algorithmus sowohl für gleiche als auch unterschiedliche Durchmesser benutzt werden.
+Daher kann der zweite Algorithmus sowohl für gleiche als auch unterschiedliche Durchmesser benutzt werden.
 
 
 \subsection{Implementierung des Algorithmus}
-%(Die Lösung wurde in Python3 geschrieben. Die Eingabetexte werden eingelesen, anhang) Die Durchmesser der Perlen werden in einer Liste gespeichert und der Text in einem string.
-%Aus dem Text werden anschließend zwei Listen erstellt:
-%Die erste enthält die Häufigkeiten der Buchstaben in absteigender Reihenfolge.
-%Die zweite enthält die Buchstaben entsprechend dieser Reihenfolge. (todo: rewrite)
-%Sie sehen für Beispielaufgabe $schmuck0$ so aus:\\
-%1. [6, 3, 3, 2, 2, 1]\\
-%2. ['d', 'a', 's', 'f', 'g', 'h']\\
-%Um später den Buchstaben die Häufigkeit wieder richtig zuzuordnen.
-Das Baum ist über die Klasse \textit{TreeNode} rekursiv implementieren. Jeder Knoten entspricht einem TreeNode-Objekt.
+Der Baum ist über die Klasse \textit{TreeNode} rekursiv implementiert. Jeder Knoten entspricht einem TreeNode-Objekt.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/treenode_digramm.png}
@@ -230,28 +224,29 @@ Das Baum ist über die Klasse \textit{TreeNode} rekursiv implementieren. Jeder K
   def get_all_possible_costs(self) -> dict:
 \end{lstlisting}
 Die Methode $get\_all\_possible\_costs$ prüft, ob das TreeNode-Objekt noch weitere Kinder aufnehmen kann und nicht protected ist.
-Falls ja, fügt es sich selbst sowie die Kosten des potenziellen neuen Kindes einem Dictionary hinzu.
+Falls dies der Fall ist, fügt es sich selbst sowie die Kosten des potenziellen neuen Kindes einem Dictionary hinzu.
 Anschließend wird die Methode rekursiv für alle bestehenden Kinder aufgerufen, so dass auch deren mögliche Erweiterungen im Dictionary erfasst werden.\\
 \vspace{1em} 
 \begin{lstlisting}[caption={Methode \texttt{insert\_new\_node}}, label={lst:insert_new_node}]
   def insert_new_node(self, obj: TreeNode):
 \end{lstlisting}
-Die Methode $insert\_new\_node$ prüft, ob das aktuelle Objekt selbst das gesuchte TreeNode Objekt ist. Falls ja, fügt es ein neues Kind hinzu. 
+Die Methode $insert\_new\_node$ prüft, ob das aktuelle Objekt selbst das gesuchte TreeNode-Objekt ist. 
+In diesem Fall fügt es ein neues Kind hinzu. 
 Wenn vorher noch keine Kinder vorhanden sind, werden zwei Kinder hinzugefügt.
 Ansonsten wird die Methode rekursiv auf alle bestehenden Kinder angewandt.\\
 \\
 
 \subsubsection{Erstellung des Baums}
-Zu Beginn wird ein blancierter Baum über die Methode $create\_tree()$ erstellt.
+Zu Beginn wird ein balancierter Baum über die Methode $create\_tree()$ erstellt.
 \vspace{2em}
 
 \begin{lstlisting}[caption={Methode \texttt{create\_tree}}, label={lst:create_tree}]
   def create_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
-Die Methode $create\_tree$ bekommt über den Aufruf $get\_all\_possible\_costs()$ eine Liste an allen möglichen neuen Blätter, die der Baum als nächstes hinzufügen kann.
+Die Methode $create\_tree$ bekommt über den Aufruf $get\_all\_possible\_costs()$ eine Liste von allen möglichen neuen Blättern, die der Baum als nächstes hinzufügen kann.
 Das Blatt mit den geringsten Kosten wird dem Baum über den Aufruf $insert\_new\_node(obj)$ hinzugefügt.
-Falls der Elternknoten des neuen Blatts selbest noch ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
-Das liegt daran, dass jeder innere Knoten mindesten zwei Kinder haben muss – daher stellen diese Kosten die effektiv neu entstehenden Kosten für den Baum dar.
+Falls der Elternknoten des neuen Blatts selbst noch ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
+Das liegt daran, dass jeder innere Knoten mindestens zwei Kinder haben muss – daher stellen diese Kosten die effektiv neu entstehenden Kosten für den Baum dar.
 Das geschieht solange, bis der Baum genau so viele Blätter hat, wie es Buchstaben gibt. Seine Anzahl an Blättern erhält er über die Methode $get\_size()$.
 \subsubsection{Permutation des Baums}
 Sobald ein balancierter Baum erstellt wurde, muss dieser optimiert werden. Dies geschieht über die Methode $find\_best\_tree$.
@@ -259,13 +254,12 @@ Sobald ein balancierter Baum erstellt wurde, muss dieser optimiert werden. Dies 
 \begin{lstlisting}[caption={Methode \texttt{find\_best\_tree}}, label={lst:find_best_tree}]
   def find_best_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
-Die Methode $find\_best\_tree$ versucht, den übergebenen Baum so lang zu optimieren, bis alle Blätter als $protected$ markiert sind und keine Blätter mehr hinzugefügt werden können.
-Dazu wird der Iterationsschritt über den Aufruf $improve\_tree(root)$ wiederholt und jeweils mit der Methode $calculate\_tree(root)$ die neuen Kosten des Baums berechnet.
-Sind die neuen Kosten ein neues Minimum wird der aktuelle Baum als bester Zwischenstand gespeichert.
-Können keine neuen Blätter dem Baum hinzugefügt werden und es tritt ein Fehler auf, wird der bis dahin beste gefundene Baum zurückgegeben.\\
-\\
+Die Methode $find\_best\_tree$ versucht, den übergebenen Baum so lange zu optimieren, bis alle Blätter als $protected$ markiert sind und keine Blätter mehr hinzugefügt werden können.
+Dazu wird der Iterationsschritt über den Aufruf $improve\_tree(root)$ wiederholt und mit der Methode $calculate\_tree(root)$  werden jeweils die neuen Kosten des Baums berechnet.
+Wenn die Kosten ein neues Minimum sind, wird der aktuelle Baum als bester Zwischenstand gespeichert.
+Wenn dem Baum keine neuen Blätter hinzugefügt werden können und es tritt ein Fehler auf, wird der bis dahin beste gefundene Baum zurückgegeben.
 \vspace{2em}
-\begin{lstlisting}[caption={Methode \texttt{imporve\_tree}}, label={lst:imporve_tree}]
+\begin{lstlisting}[caption={Methode \texttt{improve\_tree}}, label={lst:improve_tree}]
   def improve_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
 Zu Beginn holt sich die Methode $improve\_tree$ alle Blätter im Baum über den Aufruf $get\_leaves()$.
@@ -276,8 +270,8 @@ Um die fehlenden Blätter wieder hinzuzufügen, wird noch die Methde \ref{lst:cr
 \begin{lstlisting}[caption={Methode \texttt{calculate\_tree}}, label={lst:calculate_tree}]
   def calculate_tree(root: TreeNode) -> int:
 \end{lstlisting}
-Die Methode $calculate\_tree$ berechnet die gesamt Kosten des Baums. Dafür holt sie sich auch über den Aufruf $get\_leaves()$ alle Blätter im Baum.
-Die Liste an Blättern wird dann nach den Kosten aufsteigend sortiert und jedes Element wird wie in der Gleichung \eqref{Neue Kosten eines Buchstaben} berechnet und zusammenaddiert.
+Die Methode $calculate\_tree$ berechnet die Gesamtkosten des Baums. Dafür holt sie sich auch über den Aufruf $get\_leaves()$ alle Blätter im Baum.
+Die Liste der Blätter wird dann nach den Kosten aufsteigend sortiert und jedes Element wird wie in der Gleichung \eqref{Neue Kosten eines Buchstaben} berechnet und zusammen addiert.
 
 
 \subsection{Laufzeitanalyse und Einordnung des Algorithmus}
@@ -293,33 +287,33 @@ Die Liste an Blättern wird dann nach den Kosten aufsteigend sortiert und jedes 
 \subsubsection{Analyse des Algorithmus}
 Der Algorithmus endet, wenn keine Knoten mehr eingefügt werden können.
 Dies ist spätestens gegeben, wenn der Baum maximal ausgeartet ist (Abbildung \ref{fig:baum_fertig}).
-Allgemein kann jeder Knoten maximal $r-1$ mal verschoben werden, bis er komplett auf der linken Seite ist. Dabei ist $r$ die Anzahl an verschiedenen Perlen.
-Die Durchmesser sind hierbei unerheblich.
-Daraus folgt, dass die maximale Anzahl an Iterationen  
+Allgemein kann jeder Knoten maximal $r-1$ mal verschoben werden, bis er komplett auf der linken Seite ist. Dabei ist $r$ die Anzahl an verschiedenen Symbolen,
+deren Kosten sind hierbei unerheblich.
+Daraus folgt, dass die maximale Anzahl an Iterationen bis zum maximal ausgearteten Baum  
 \begin{equation}
   I \leq (r-1)\cdot\text{Anzahl falscher Knoten}
 \end{equation}
-ist, bis zum maximal ausgearteten Baum.
-Falsche Knoten sind dabei innere Knoten, die beim ausbalancierten Baum noch nicht auf der Stelle des ausgearteten Baums sind, also alle bis auf die äußerst linken Knoten. (Abbildung \ref{fig:makiert_baum})
+ist.
+Falsche Knoten sind dabei innere Knoten, die beim ausbalancierten Baum noch nicht auf der Stelle des ausgearteten Baums sind, also alle bis auf die äußersten linken Knoten. (Abbildung \ref{fig:makiert_baum})
 
-Generell gilt, um die maximale Anzahl an inneren Knoten zu erhalten, sollte jeder Knoten möglichst wenig Kinder besitzen.
+Generell gilt, um die maximale Anzahl an inneren Knoten zu erhalten, sollte jeder Knoten möglichst wenige Kinder besitzen.
 Wie zuvor festgelegt, hat jeder innere Knoten mindestens zwei Kinder. 
 Daraus folgt, dass die maximale Anzahl an inneren Knoten erreicht wird, wenn der Baum ein Binärbaum ist und kann durch
 \begin{equation}
   \text{innere Knoten} = w - 1
 \end{equation}
-berechnet werden.\cite{schulz2018codierungstheorie}
+berechnet werden kann.\cite{schulz2018codierungstheorie}
 Dabei ist $w$ die Anzahl an Blättern/Codewörter.
 Auf jeder Ebene existiert ein richtiger innere Knoten, deren Anzahl minimal mit 
 \begin{equation}
   \text{richtige innere Knoten} = \log_{r}{w}
 \end{equation}
-abgeschäzt werden kann.\\
+abgeschätzt werden kann.\\
 Daher ergibt sich
 \begin{equation}
   I < (r-1)\cdot(w-1-\log_{r}{w})
 \end{equation}
-Dies bedeuted eine Laufzeit von $O(r\cdot w)$.
+Dies bedeutet eine Laufzeit von $O(r\cdot w)$.
 
 
 \begin{figure}[H]
@@ -328,45 +322,45 @@ Dies bedeuted eine Laufzeit von $O(r\cdot w)$.
   \caption{Länge der codierten Nachricht aufgetragen über mehrere Iterationen}
   \label{fig:iteration_tree}
 \end{figure}
-Abbildung \ref{fig:iteration_tree} zeigt wie die Länge der codierten Nachricht der Testfall $schmuck9$ sich über die Iterationen hinweg verändert.
+Abbildung \ref{fig:iteration_tree} zeigt wie die Länge der codierten Nachricht des Testfall $schmuck9$ sich über die Iterationen hinweg verändert.
 Das Minimum wird bereits in der ersten Hälfte der Iterationen erreicht.
 Das zeigt gut, dass der Algorithmus kein Optimierungs-Algorithmus ist, sondern von einem Maximum zum anderen Maximum geht.
 \subsubsection{Stand der Forschung}
-Die vorliegende Fragestellung ist seit den 60iger-Jahren in der theorietischen Informatik bekannt. 
-Dabei lieferte Huffman eine Lösung für den Spezialfall, von zwei Quellsymbolen.\cite{piater2024algorithmen}
+Die vorliegende Fragestellung ist seit den 60er-Jahren in der theoretischen Informatik bekannt. 
+Dabei lieferte Huffman eine Lösung für den Spezialfall von zwei Quellsymbolen.\cite{piater2024algorithmen}
 \\
 \\
-Für unseren Fall von mehr als zwei Quellsymbolen mit unterschiedlichen Kosten, 
-entwickelte bereits Richard Karp 1961\cite{karp1961minimum} eine Lösung. Diese wurde 1998 von Mordecai J. Golin und Günter Rote verbessert und ist bis heute das schnellste Verfahren, um auf eine exakte Lösung zu kommen.\\
+Für unseren Fall von mehr als zwei Quellsymbolen mit unterschiedlichen Kosten entwickelte bereits Richard Karp 1961\cite{karp1961minimum} eine Lösung. 
+Diese wurde 1998 von Mordecai J. Golin und Günter Rote verbessert und ist bis heute das schnellste Verfahren, um auf eine exakte Lösung zu kommen.\\
 "The minimum-cost prefix-free code for n words can be computed in $O(n^{C+2})$ time and $O(n^{C+1})$ space, if the costs of the letters are integers between 1 and C." \cite{golin1998prefixfree}\\
 Für die Beispielaufgabe $schmuck5.txt$ hat der Algorithmus eine Laufzeit $34^8$(n=34; C=6) Iterationen. 
-Diese Art von Algorithmus kann wegen seiner langen Laufzeit nicht für die vorgegebenen Beispielaufgabe verwendet werden.
+Diese Art von Algorithmus kann wegen seiner langen Laufzeit nicht für die vorgegebenen Beispielaufgaben verwendet werden.
 \\
 \\
 Um eine polynominelle Laufzeit zu erreichen, entwickelten Mordecai J. Golin, Claire Mathieu und Neal E. Young im Jahre 2012 ein Approximationsverfahren.\\
 Dieser Algorithmus basiert auf dem PTAS-Verfahren, wobei zuerst ein präfixfreier Code bis zu einer bestimmten Tiefe $\tau$ erstellt wird und dann die restlichen Codewörter durch ein Rundungsverfahren ergänzt werden.
-Dabei ist es zentral, dass die Wahrscheinlichkeitsverteilung der zu kodierenden Codewörter möglichst in großen Gruppen mit gleich großer Wahrscheinlichkeit eingeordnet werden können. \cite{golin2012huffman}
-Zum Beispiel in Testfall 9 ist dies nicht gegeben, weshalb das Bestimmen des Vorbaums über $9^{24}$ Schritte benötigt.
+Dabei ist es zentral, dass die Wahrscheinlichkeitsverteilung der zu kodierenden Codewörter möglichst in großen Gruppen mit gleich großer Wahrscheinlichkeit eingeordnet werden kann. \cite{golin2012huffman}
+Im Testfall 9 ist dies zum Beispiel nicht gegeben, weshalb das Bestimmen des Vorbaums über $9^{24}$ Schritte benötigt.
 Somit ist dieses Verfahren für die gewählten Beispiele ebenfalls nicht verwendbar.
 
 \subsubsection{Fazit}
-Für die gegeben Fragestellung gibt es bislang weder ein Beweis, dass sie NP-schwer ist, als auch keinen Gegenbeweis, dass sie es nicht ist.
+Für die gegeben Fragestellung gibt es bislang weder einen Beweis, dass sie NP-schwer ist, noch einen Gegenbeweis, dass sie es nicht ist.
 Aktuell bekannte Verfahren für exakte Ergebnisse besitzen eine exponentielle Laufzeit. \cite{golin1998prefixfree}
-Mein gefundener Algorithmus findet nicht die beste Lösung für das gegebene Problem. Er liefert jedoch in polynomieller Laufzeit eine gute Approximation
+Mein gefundener Algorithmus findet nicht die beste Lösung für das gegebene Problem. Er liefert jedoch in polynomnieller Laufzeit eine gute Approximation
 und ist daher eine gute Abwägung zwischen Laufzeit und Genauigkeit.
 Somit wird nicht beantwortet, ob die Fragestellung NP-schwer ist.
 
 
 \subsection{Vergleich mit der Musterlösung}
 In der Musterlösung werden drei Lösungen vorgeschlagen.
-Der erste Anssatz ist ein Greedy-Algorithmus basierend auf Huffman.
+Der erste Ansatz ist ein Greedy-Algorithmus basierend auf Huffman.
 Die zweite Variante ist ein ILP-Ansatz nach Richard Karp und
-die dritte ist dessen Erweiterung von Mordecai J. Golin und Günter Rote. \cite{bwinf_loesung}
+die dritte ist dessen Erweiterung von Mordecai J. Golin und Günter Rote. \cite{bwinf_loesung}\\
 Alle drei Ansätze waren mir bei Abgabe meiner Arbeit bekannt. 
-Trotzdem entschied ich mich dagegen eines dieser Verfahren zu implementieren, vor allem aufgrund deren hohen Laufzeit, 
-und entwickelte stattdessen meine eigenes Verfahren.
+Trotzdem entschied ich mich dagegen, eines dieser Verfahren zu implementieren, vor allem aufgrund deren hoher Laufzeit, 
+und entwickelte stattdessen mein eigenes Verfahren.
 Mein Algorithmus hat dabei eine durchschnittliche Abweichung von 1,27\% vom Idealergebnis, besitzt jedoch im Gegensatz dazu eine sehr viel kürzere Laufzeit. \cite{bwinf_loesung}
-Für meine gutes ErgebniArbeit erhielt ich daher eine Pluspunkt und erreichte insgesamt 21 Punkte für diese Aufgabe.
+Für meine gutes Ergebnis erhielt ich daher einen Pluspunkt und erreichte insgesamt 21 Punkte für diese Aufgabe.
 
 \clearpage
 \section{Aufgabe 2: Simultane Labyrinthe}
@@ -374,10 +368,10 @@ Für meine gutes ErgebniArbeit erhielt ich daher eine Pluspunkt und erreichte in
 In dieser Aufgabe möchten drei Freunde, Anton, Bea und Chris, zwei Labyrinthe gleichzeitig durchlaufen, die
 dieselben rechteckigen Maße (n, m) haben.
 Zwei Personen starten jeweils in ihrem Labyrinth bei der Position (0, 0) und müssen das Ziel (n, m) erreichen.
-Die dritte Person gibt jeweils beiden immer dieselbe nächste Schrittanweisung. 
+Die dritte Person gibt beiden jeweils immer dieselbe nächste Schrittanweisung. 
 Wenn der nächste Schritt in einem Labyrinth durch eine Wand blockiert ist, bleibt die Person stehen.
 Gesucht ist eine möglichst kurze Abfolge von Schritten, die beide Labyrinthe mit denselben Befehlen löst.
-Die ursprüngliche Aufgabe enthält normale Labyrinthe. Im Spezialfall werden die Labyrinth um Gruben erweitert.
+Die ursprüngliche Aufgabe enthält normale Labyrinthe. Im Spezialfall werden die Labyrinthe um Gruben erweitert.
 Wenn ein Spieler in eine Grube fällt, wird seine Position auf die Startposition (0, 0) zurückgesetzt. \cite{bwinf_aufgabe}
 
 \subsection{Theoretische Erklärung des Algorithmus}
@@ -419,8 +413,8 @@ Der Algorithmus entnimmt den momentan besten Weg aus der Liste der bisherigen We
 indem er in den Matrizen prüft, welchen Schritt die beiden Labyrinthe für ihre jeweilige Position vorschlagen.
 Dieser Schritt wird an die bisherige Schrittfolge angehängt.
 Dabei entstehen in der Regel zwei unterschiedliche Wege, die zur Liste der bisherigen Wege hinzugefügt werden, 
-es sei denn, beide Labrinthe schlagen denselben Schritt vor.
-Zur Auswertung der bisherigen Wege wird diese Rechung angewandt:
+es sei denn, beide Labyrinthe schlagen denselben Schritt vor.
+Zur Auswertung der bisherigen Wege wird diese Rechnung angewandt:
 \\
 \begin{equation}
   c_b = cp_{s1} + cp_{s2}
@@ -447,12 +441,12 @@ um zu verhindern, dass der Algorithmus exakt dasselbe Positionspaar noch einmal 
 Zusätzlich gibt es auch die Begrenzung $l$, die festlegt, wie viele unterschiedliche Wege, sortiert nach ihren Kosten, in der Liste gespeichert werden dürfen.
 Diese Begrenzung beeinflusst maßgeblich  die Laufzeit und die Genauigkeit des Algorithmus.
 In der Liste dürfen die Wege unterschiedliche Werte für $n$ haben.
-Denn wichtig ist vorallem, dass ihre Kosten (Gleichung \eqref{weg_kosten}) gering sind.
+Denn wichtig ist vor allem, dass ihre Kosten (Gleichung \eqref{weg_kosten}) gering sind.
 Der gesamte Ablauf wird solange wiederholt, bis beide im Ziel sind.
 \\
 \\
 Bei der Erweiterung des Algorithmus werden Gruben sowohl in der Kostenmatrix als auch beim Lösen wie normale Felder gesehen. 
-Wenn einer der beiden Personen eine Grube berührt, wird seine Position auf die jeweilige Startposition zurückgesetzt.
+Wenn eine der beiden Personen eine Grube berührt, wird ihre Position auf die jeweilige Startposition zurückgesetzt.
 Daraus folgt, dass die Kosten der Grubenfelder den Kosten der Startpositionen entsprechen.
 
 
@@ -479,13 +473,13 @@ Dann ruft sie die Methode $write\_cost$ auf, um die Kostenmatrix zu füllen.
 \begin{lstlisting}[caption={Methode \texttt{write\_cost}}, label={lst:write_cost}]
   def write_cost(self, start_x: int, start_y: int):
 \end{lstlisting}
-Zu Beginn der Methode $write\_cost()$ wird die Liste $stack$ initalisiert. Sie speichert alle Felder, die noch besucht werden müssen.
+Zu Beginn der Methode $write\_cost()$ wird die Liste $stack$ initialisiert. Sie speichert alle Felder, die noch besucht werden müssen.
 Jeder Eintrag in der Liste besitzt vier Werte: die x-Position, die y-Position, die aktuellen Kosten sowie die entgegengesetzte Richtung, aus welcher das Feld betreten wurde. 
 Die Endposition wird als erstes Element hinzugefügt.
 Anschließend wird das erste Element der Liste entnommen und in die Kostenmatrix übertragen.
 Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbours$ ermittelt und dem $stack$ hinzugefügt.
 Dabei werden die Kosten um eins erhöht und die jeweilige Richtung gespeichert.
-Das würd solange wiederholt, bis der $stack$ leer ist.
+Das wird solange wiederholt, bis der $stack$ leer ist.
 Falls ein Element schon in der Kostenmatrix ist, wird es übersprungen.
 
 \subsubsection{Lösen der Labyrinthe}
@@ -508,21 +502,21 @@ Die Wege werden mit der Klasse $Move$ dargestellt.
 Das Attribut $cost$ beschreibt die aufsummierten Kosten der beiden aktuellen Positionen basierend auf den Werten aus den Kostmatrizen.
 Das Attribut $weight$ wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
 \\
-Zu Beginn wird ein $Solving$-Objekt initalisiert und eine leere Liste $moves\_stack$ angelegt, in der alle aktuellen Wege gespeichert werden.
-Anschließend wird ein erstes $Move$-Objekt erzeugt, dessen Startposition ((0, 0), (0, 0)) ist und seine moves leer sind.
+Zu Beginn wird ein $Solving$-Objekt initialisiert und eine leere Liste $moves\_stack$ angelegt, in der alle aktuellen Wege gespeichert werden.
+Anschließend wird ein erstes $Move$-Objekt erzeugt, dessen Startposition ((0, 0), (0, 0)) ist und dessen moves leer sind.
 In jedem Schritt wird das erste Element aus der Liste $moves\_stack$ entnommen.
 Dann wird mit folgendem Aufruf
 \begin{lstlisting}
   new_moves = solving_obj.neighbours_cost(move)
 \end{lstlisting}
 \vspace{-2em}
-eine Liste von möglichen Folgewege erzeugt.
+eine Liste von möglichen Folgewegen erzeugt.
 Die Liste wird mit den neuen Wegen erweitert, sortiert und auf die $l$ besten Wege beschränkt.
 \\
 \begin{lstlisting}[caption={Methode \texttt{neighbours\_cost}}, label={lst:neighbours_cout}]
   def neighbours_cost(self, move: Move) -> list:
 \end{lstlisting}
-Zu Beginn der Methode $neighbours\_cost()$ werden die beiden Positionen aus dem Attribut $positions$ des übergebenen $move$-Objekt genommen.
+Zu Beginn der Methode $neighbours\_cost()$ werden die beiden Positionen aus dem Attribut $positions$ des übergebenen $move$-Objekts genommen.
 Anschließend werden mit den folgenden Aufrufen
 \begin{lstlisting}
   move_1 = self.next_move(pos1, self.cost_matrix_1)
@@ -530,22 +524,22 @@ Anschließend werden mit den folgenden Aufrufen
 \end{lstlisting}
 \vspace{-2em}
 die jeweils nächsten möglichen Richtungen aus der Kostenmatrix bestimmt.
-Daraufhin werden die neuen zwei Positionspaare berechnet und überprüft, ob die beiden Positionspaare bereits besucht wurden.\\
-Zum Schluss wird für jeden möglichen Zug ein $Move$-Objekt erstellt und zusammen in einer Liste übergeben.
-Falls einer der neuen Positionspaare bereits besucht wurde oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben (siehe Abbildung \ref{fig:neighbours_cost}).
+Daraufhin werden die neuen zwei Positionspaare berechnet und es wird überprüft, ob die beiden Positionspaare bereits besucht wurden.\\
+Zum Schluss wird für jeden möglichen Zug ein $Move$-Objekt erstellt und sie werden zusammen in einer Liste übergeben.
+Falls eines der neuen Positionspaare bereits besucht wurde oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben (siehe Abbildung \ref{fig:neighbours_cost}).
 \\
 \\
 
 
 \subsection{Laufzeitanalyse}
-Von jedem Positionspaar aus existieren im schlimmsten Fall zwei mögliche Schritte, entweder in Richtung des Ziels von Labyrinth 1 oder in Richtung des Ziels von Labyrinth 2.
-Das führt zu insgesammt $2^{(nm)^2}$ verschiedenen Möglichkeiten an Schritten.
+Von jedem Positionspaar aus existieren im schlechtesten Fall zwei mögliche Schritte, entweder in Richtung des Ziels von Labyrinth 1 oder in Richtung des Ziels von Labyrinth 2.
+Das führt zu insgesamt $2^{(nm)^2}$ verschiedenen Möglichkeiten an Schritten.
 Aufgrund dieser großen Anzahl an Möglichkeiten untersucht der Algorithmus nicht alle Pfade vollständig, sondern macht nur eine Abschätzung.
 Der hier vorgestellte Ansatz garantiert daher nicht unbedingt den optimalen Lösungsweg, liefert jedoch in akzeptabler Laufzeit eine gute Annäherung.
 Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, während andere nur kurz betrachtet werden.
 \\
 \\
-Wie schon oben erwähnt beeinflussst die Begrenzung $l$, die Laufzeit und die Genauigkeit des Algorithmus stark.
+Wie schon oben erwähnt beeinflussst die Begrenzung $l$ die Laufzeit und die Genauigkeit des Algorithmus stark.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/plotting_schritte_1.pdf}
@@ -558,7 +552,7 @@ Abbildung \ref{fig:schritte_1} zeigt die Anzahl der Schritte des gefundenen Lös
 \\
 Auffällig ist, dass der Graph mit zunehmendem $l$ gegen die Anzahl der Schritte des optimalen Wegs konvergiert.
 Ebenso erkennbar ist, dass der Graph nicht streng monoton fallend ist. 
-Wenn die Steigung positiv ist, wird für ein größeren Wert von $l$ ein schlechterer Pfad gefunden.
+Wenn die Steigung positiv ist, wird für einen größeren Wert von $l$ ein schlechterer Pfad gefunden.
 Dies liegt daran, dass durch den höheren Wert von $l$ neue Wege betrachtet werden.
 Diese erscheinen kurzfristig vorteilhafter als die bisherigen Wege und verdrängen dadurch die eigentlich besseren aus der Liste.
 Das führt insgesamt zu einem schlechteren Weg.
@@ -570,78 +564,62 @@ Der Einfluss dieser Monotonieveränderungen wird daher mit wachsendem $l$ vernac
   \caption{Anzahl der Iterationen gegenüber der Begrenzung}
   \label{fig:laufzeit_1}
 \end{figure}
-Abbildung \ref{fig:laufzeit_1} stellt die Anzahl an Iterationen dar, die zur Bestimmung des Lösungswegs benötigt werden in Abhängigkeit vom Parameter $l$.
+Abbildung \ref{fig:laufzeit_1} stellt die Anzahl an Iterationen dar, die zur Bestimmung des Lösungswegs benötigt werden in Abhängigkeit von Parameter $l$.
 \\
 Der Graph steigt mit wachsendem $l$ stark an.
 \\
-Allgemein kann die maximale Anzahl an Iterationen in Abhängigkeit von $l$ wie folgt berechnet werden.
+Allgemein kann die maximale Anzahl an Iterationen in Abhängigkeit von $l$ wie folgt berechnet werden:
 \begin{equation}
   l\cdot(2c_1+c_2)
   \label{max_iterationen}
 \end{equation}
 wobei gilt:\\
-- $c_1$ die Kosten vom Startpunkt aus der Kostenmatrix 1 sind\\
-- $c_2$ die Kosten vom Startpunkt aus der Kostenmatrix 2 sind\\
+- $c_1$ sind die Kosten vom Startpunkt aus der Kostenmatrix 1\\
+- $c_2$ sind die Kosten vom Startpunkt aus der Kostenmatrix 2\\
 Der Faktor $2c_1+c_2$ beschreibt die maximale Anzahl an Schritten, aus denen der schlechteste Lösungsweg besteht.
 Zunächst erreicht Person1 das Ziel mit $c_1$ Schritten.
 Anschließend läuft Person2 denselben Weg zurück in ebenfalls $c_1$ Schritten und geht dann selber ins Ziel mit $c_2$ Schritten.
 Im schlechtesten Fall geht er für jeden Eintrag in der Liste, also $l$ mal, die maximale Anzahl an Schritten.
-Daher ergibt sich die Gleichung \eqref{max_iterationen}, dies bedeutet, es ergibt sich eine Laufzeit von $o(l)$ ergibt.
+Daher ergibt sich die Gleichung \eqref{max_iterationen}, dies bedeutet, dass sich eine Laufzeit von $o(l)$ ergibt.
 Praktisch gesehen ist die Laufzeit aber sehr viel kleiner als die maximale Laufzeit (Abbildung \ref{fig:maximal Laufzeit}).
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/plotting_max_1.pdf}
-  \caption{maximale Iterationen gegenüber tatsächliche Iterationen aufgetragen gegenüber der Begrenzung}
+  \caption{maximale Iterationen gegenüber tatsächlichen Iterationen aufgetragen gegenüber der Begrenzung}
   \label{fig:maximal Laufzeit}
 \end{figure}
 \\
 Der grüne Graph zeigt die maximale Anzahl an Iterationen und der blaue die tatsächliche Anzahl an Iterationen.
 \\
 \\
-Die Anzahl der Iterationen stehen in einem liearem Zusammenhang mit den Werten von $l$,
-während die Anzahl der Schritte bei größeren $l$-Werten gegen das optimale Ergebnis konvergieren.
-Je größer der Wert von $l$, desto mehr Iteration werden durchgeführt - und desto besser wird das Ergebnis.
+Die Anzahl der Iterationen steht in einem linearen Zusammenhang mit den Werten von $l$,
+während die Anzahl der Schritte bei größeren $l$-Werten gegen das optimalen Ergebnis konvergiert.
+Je größer der Wert von $l$, desto mehr Iterationen werden durchgeführt - und desto besser wird das Ergebnis.
 Die Genauigkeit lässt sich anhand des Parameters $l$ jedoch nicht allgemein bestimmen, da sie stark von der Struktur des jeweiligen Labyrinths abhängt.
 
 
 \subsection{Vergleich mit der Musterlösung}
 In der Musterlösung werden zwei mögliche Lösungsstrategien vorgestellt.
 Die erste Strategie besteht in der Anwendung der Breitensuche auf zwei Labyrinthe. 
-Diese Variante wird jedoch in der Musterlösung aufgrund ihrer hohe Laufzeit als nicht praktikabel eingestuft.\\
-Die zweite Stratie basiert auf dem A-Star Algorithmus mit Priorty Queue. 
+Diese Variante wird jedoch in der Musterlösung aufgrund ihrer hohen Laufzeit als nicht praktikabel eingestuft.\\
+Die zweite Strategie basiert auf dem A-Star Algorithmus mit Priorty Queue. 
 Diese Vorgehensweise ähnelt stark meiner eigenen Idee. 
 Wie in meiner Kostenmatrix wird auch hier für jede Position die Distanz zum Ziel berechnet.\cite{bwinf_loesung}
 Der wesentliche Unterschied liegt vor allem in dem effizienteren Warteschlagenmodell der Musterlösung.\\
-Insgesamt lagen meine Ergebnisse, aus geschlossen von Testfall 8, bei 1,1\% Abweichung vom Optimalwert.\cite{bwinf_loesung}
-Bei Testfall 8 fiel mein Ergebnis etwa 3-mal so groß aus, weshalb mir 2 Puntke im Kriterium "'Verfahren mit guten Ergebnissen"' abgezogen wurden.
-Außerdem war meine Überlegung zur Laufzeit des Verfahren nicht ausreichend detailliert, was zu einem weiteren Punktabzug führte.\\
+Insgesamt lagen meine Ergebnisse, abgesehen von Testfall 8, bei 1,1\% Abweichung vom Optimalwert.\cite{bwinf_loesung}
+Bei Testfall 8 fiel mein Ergebnis etwa 3-mal so groß aus, weshalb mir 2 Punkte im Kriterium "'Verfahren mit guten Ergebnissen"' abgezogen wurden.
+Außerdem war meine Überlegung zur Laufzeit des Verfahrens nicht ausreichend detailliert, was zu einem weiteren Punktabzug führte.\\
 Insgesamt erhielt ich für die Aufgabe 17 von 20 Punkten.
 
 \section{Fazit}
-1. kurz zusammenfassen was ich gemacht haben in aufgabe1
-2. was für ergebnisse ich erzielt habe damit; wie viel punkte
-3. kurz zusammenfassen was ich gemacht haben in aufgabe2
-4. was für ergebnisse ich erzielt habe damit; wie viel punkte
-welcher paltz ich wurde
-was mit das gebracht habe
-warum ich dem wettbewerb gut finde
-%In der ersten Runde gingen insgesamt 1790 Einsendungen ein, von denen 950 Teilnehmende zur zweiten Runde zugelassen wurden.[8]
-%In der zweiten Runde wurden nur noch 250 Lösungen eingereicht, aus denen die 30 besten Teilnehmer für die Endrunde ausgewählt wurden.[9]
-Aufgrund des begrenzten Umfangs der Arbeit konnte ich keinen Beweis für die NP-Schwere erbrignen und eine präzisere Laufzeitanalyse durchführen.
-Dennoch konnte ich durch Vergleiche mit der Musterlösung Erkenntnisse über die Effizienz verschiedener Algorithmusstrategien gewinnen\\
-Insgesamt konnte ich mit 38 von 40 Punkten den zweiten Platz erreichen und gehörte damit zu den 60 besten Teilnehmenden von über 250.
-Aufgrund dieser Leistung wurde ich für die Internationale Informatik-Olympiade vorgeschlagen und nehme derzeit an derren Trainingsprogramm teil.
-Durch diese Arbeit lernt ich Laufzeitanlysen selbstständig durchzuführen und mit wissenschaftlichen Texten zu arbeiten.
-Der Bwinf erweist sich insgesamt als gute Möglichkeit, Schüler an wissenschaftliches Arbeiten und algorithmisches Denken heranzuführen.
-
-
-Der Bwinf eigenet sich gut 
-udn sollte gefördert werden
+Insgesamt konnte ich mit 38 von 40 Punkten den zweiten Platz erreichen und gehörte damit zu den 60 besten Teilnehmenden von über 950 zugelassen Teilnehmer.
+Durch diese Arbeit lernte ich, Laufzeitanalyse von eigenen Algorithmen selbstständig durchzuführen und mit wissenschaftlichen Texten zu arbeiten.
+Aus meiner Erfahrung erweist sich der Bwinf insgesamt als gute Möglichkeit, Schüler an wissenschaftliches Arbeiten und algorithmisches Denken heranzuführen.
 
  \clearpage
 
 \section{Anhang}
-Im folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.       
+Im Folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.       
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf}
@@ -650,14 +628,14 @@ Im folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.
 \end{figure}
 \subsection{Lösungen der Testfälle}
 Das sind meine Ergebnisse der Testfälle im Vergleich zu der Musterlösung. 
-Die vorgegebenen Testfälle können in Quelle 7 nachgeschaut werden und die optimalen Ergebnisse können in Quelle 6 eingesehen werden.
+Die vorgegebenen Testfälle können in Quelle 7 nachgelesen und die optimalen Ergebnisse in Quelle 6 eingesehen werden.
 \subsubsection{Aufgabe 1: Schmucknachrichten}
 Die Lösungen können in Tabelle \ref{tab:lo_aufgabe1} eingesehen werden.
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|}
   \hline
-  \textbf{Testfall} & \textbf{meine Gesamtkosten} & \textbf{optimalen Ergebnis} \\ \hline
+  \textbf{Testfall} & \textbf{meine Gesamtkosten} & \textbf{optimales Ergebnis} \\ \hline
   schmuck0.txt & 114 &  113\\ \hline
   schmuck00.txt & 382 &  372\\ \hline
   schmuck01.txt & 1165 &  1150\\ \hline
@@ -680,7 +658,7 @@ Die Lösungen können in Tabelle \ref{tab:lo_aufgabe1} eingesehen werden.
   \centering
   \begin{tabular}{|c|c|c|}
   \hline
-  \textbf{Testfall} & \textbf{meine Gesamtkosten} & \textbf{optimalen Ergebnis} \\ \hline
+  \textbf{Testfall} & \textbf{meine Gesamtkosten} & \textbf{optimales Ergebnis} \\ \hline
   labyrinthe0.txt & 8 & 8 \\ \hline
   labyrinthe1.txt & 31 & 31 \\ \hline
   labyrinthe2.txt & 66 & 65 \\ \hline
@@ -698,71 +676,71 @@ Die Lösungen können in Tabelle \ref{tab:lo_aufgabe1} eingesehen werden.
 \subsection{Quellcode}
 
 \subsubsection{Aufgabe 1: Schmucknachrichten}
-\begin{lstlisting}[language=Python]
-  class TreeNode:
+\begin{lstlisting}[language=Python, breaklines=true]
+class TreeNode:
 
-    def __init__(self, cost, parent, perl_code):
-        self.perl_code = perl_code  # Speichert die Codierung für den Knoten
-        self.cost = cost
-        self.children = []
-        self.parent = parent
-        self.is_leaf = True
-        self.is_protected = False  # Wenn True, dann kann er keine kinder mehr bekommen
+  def __init__(self, cost, parent, perl_code):
+      self.perl_code = perl_code  # Speichert die Codierung für den Knoten
+      self.cost = cost
+      self.children = []
+      self.parent = parent
+      self.is_leaf = True
+      self.is_protected = False  # Wenn True, dann kann er keine kinder mehr bekommen
 
-    def insert_new_node(self, obj):
-        if obj is self:
-            if self.is_leaf:  # Damit jede parent immer mehr mindestens zwei kinder hat
-                self.is_leaf = False
-                treenode = TreeNode(self.cost + perl_costs[0], self, self.perl_code+[len(self.children)])
-                self.children.append(treenode)
+  def insert_new_node(self, obj):
+      if obj is self:
+          if self.is_leaf:  # Damit jede parent immer mehr mindestens zwei kinder hat
+              self.is_leaf = False
+              treenode = TreeNode(self.cost + perl_costs[0], self, self.perl_code+[len(self.children)])
+              self.children.append(treenode)
 
-            treenode = TreeNode(self.cost + perl_costs[len(self.children)], self, self.perl_code+[len(self.children)])
-            self.children.append()
-            return
+          treenode = TreeNode(self.cost + perl_costs[len(self.children)], self, self.perl_code+[len(self.children)])
+          self.children.append()
+          return
 
-        for child in self.children:
-            child.insert_new_node(obj)
+      for child in self.children:
+          child.insert_new_node(obj)
 
-    def get_size(self) -> int:
-        if self.is_leaf:
-            return 1
-        return sum(child.get_size() for child in self.children)
+  def get_size(self) -> int:
+      if self.is_leaf:
+          return 1
+      return sum(child.get_size() for child in self.children)
 
-    def get_leaves(self) -> list:
-        if self.is_leaf:
-            return [self]
+  def get_leaves(self) -> list:
+      if self.is_leaf:
+          return [self]
 
-        children_leaves = []
-        for child in self.children:
-            for i in child.get_leaves():
-                children_leaves.append(i)
-        return children_leaves
+      children_leaves = []
+      for child in self.children:
+          for i in child.get_leaves():
+              children_leaves.append(i)
+      return children_leaves
 
-    def get_all_possible_costs(self) -> dict:
-        children_cost = {}
-        if len(self.children) < len(perl_costs) and self.is_protected is False:
-            if self.is_leaf:
-                children_cost[self] = self.cost + perl_costs[0] + self.cost + perl_costs[1]
-            else:
-                children_cost[self] = self.cost + perl_costs[len(self.children)]
+  def get_all_possible_costs(self) -> dict:
+      children_cost = {}
+      if len(self.children) < len(perl_costs) and !self.is_protected:
+          if self.is_leaf:
+              children_cost[self] = self.cost + perl_costs[0] + self.cost + perl_costs[1]
+          else:
+              children_cost[self] = self.cost + perl_costs[len(self.children)]
 
-        for child in self.children:
-           children_cost.update(child.get_all_possible_costs())
-        return children_cost
+      for child in self.children:
+          children_cost.update(child.get_all_possible_costs())
+      return children_cost
 
-    def get_internal_nodes(self):
-        if self.is_leaf:
-            return 0
-        return sum(child.get_interal_nodes() for child in self.children) + 1
+  def get_internal_nodes(self):
+      if self.is_leaf:
+          return 0
+      return sum(child.get_interal_nodes() for child in self.children) + 1
 \end{lstlisting}
 
-\begin{lstlisting}[language=Python]
-  def create_tree(root: TreeNode) -> TreeNode:
+\begin{lstlisting}[language=Python, breaklines=true]
+def create_tree(root: TreeNode) -> TreeNode:
   while root.get_size() < len(distribution):
-      possible_children = root.get_all_possible_costs()
-      smallest_value = min(possible_children.items(), key=lambda item: item[1])
+    possible_children = root.get_all_possible_costs()
+    smallest_value = min(possible_children.items(), key=lambda item: item[1])
 
-      root.insert_new_node(smallest_value[0])
+    root.insert_new_node(smallest_value[0])
   return root
 
 
@@ -797,16 +775,16 @@ def find_best_tree(root):
   best_value = calculate_tree(root)
   best_root = copy.deepcopy(root)
   while True:
-      try:
-          root = improve_tree(root)
-          new_calc = calculate_tree(root)
+    try:
+      root = improve_tree(root)
+      new_calc = calculate_tree(root)
 
-          if new_calc < best_value:
-              best_value = new_calc
-              best_root = copy.deepcopy(root)
-      except Exception as e:
-          # Gibt keine Verbesserung mehr
-          return best_root
+      if new_calc < best_value:
+        best_value = new_calc
+        best_root = copy.deepcopy(root)
+    except Exception as e:
+      # Gibt keine Verbesserung mehr
+      return best_root
 
 
 def output(root):
@@ -814,7 +792,7 @@ def output(root):
   all_leaves = root.get_leaves()
   all_leaves = sorted(all_leaves, key=lambda x: (x.cost, len(x.parent.children)))
   for i in range(len(all_leaves)):
-      print(f"{characters[i]}: {all_leaves[i].perl_code}")
+    print(f"{characters[i]}: {all_leaves[i].perl_code}")
 
 
 def main():
@@ -830,141 +808,138 @@ def main():
 
 \end{lstlisting}
 \subsubsection{Aufgabe 2: Simultane Labyrinthe}
-\begin{lstlisting}[language=Python]
-  class Move:
-
-      def __init__(self, moves, positions, cost, heights_cost, weight=None):
-          self.moves = moves
-          self.positions = positions
-          self.cost = cost
-          self.weight = weight if weight is not None else (heights_cost - cost) / len(moves)  # moves are sorted based on this value
-          
+\begin{lstlisting}[language=Python, breaklines=true]
+class Move:
+  def __init__(self, moves, positions, cost, heights_cost, weight=None):
+    self.moves = moves
+    self.positions = positions
+    self.cost = cost
+    self.weight = weight if weight is not None else (heights_cost - cost) / len(moves)  # moves are sorted based on this value
+    
 \end{lstlisting}
-\begin{lstlisting}[language=Python]
-  class Solving:
-  def __init__(self, cost_matrix_1, cost_matrix_2, vertical_walls_1, horizontal_walls_1,
-               vertical_walls_2, horizontal_walls_2, gruben_1, gruben_2, width, height):
-      self.width = width
-      self.height = height
-      self.cost_at_beginning = cost_matrix_1[0][0][0] + cost_matrix_2[0][0][0]
+\begin{lstlisting}[language=Python, breaklines=true]
+class Solving:
+def __init__(self, cost_matrix_1, cost_matrix_2, vertical_walls_1, horizontal_walls_1,
+              vertical_walls_2, horizontal_walls_2, gruben_1, gruben_2, width, height):
+    self.width = width
+    self.height = height
+    self.cost_at_beginning = cost_matrix_1[0][0][0] + cost_matrix_2[0][0][0]
 
-      self.gruben_1 = gruben_1
-      self.gruben_2 = gruben_2
+    self.gruben_1 = gruben_1
+    self.gruben_2 = gruben_2
 
-      self.vertical_walls_1 = vertical_walls_1
-      self.horizontal_walls_1 = horizontal_walls_1
+    self.vertical_walls_1 = vertical_walls_1
+    self.horizontal_walls_1 = horizontal_walls_1
 
-      self.vertical_walls_2 = vertical_walls_2
-      self.horizontal_walls_2 = horizontal_walls_2
+    self.vertical_walls_2 = vertical_walls_2
+    self.horizontal_walls_2 = horizontal_walls_2
 
-      self.cost_matrix_1 = cost_matrix_1
-      self.cost_matrix_2 = cost_matrix_2
+    self.cost_matrix_1 = cost_matrix_1
+    self.cost_matrix_2 = cost_matrix_2
 
-      self.visited = {}
-      # Funktionen und Bewegungsdeltas nur einmal definieren
-      self.move_funcs = [test_right, test_left, test_up, test_down]
-      self.move_deltas = [(1, 0), (-1, 0), (0, -1), (0, 1)]
+    self.visited = {}
+    # Funktionen und Bewegungsdeltas nur einmal definieren
+    self.move_funcs = [test_right, test_left, test_up, test_down]
+    self.move_deltas = [(1, 0), (-1, 0), (0, -1), (0, 1)]
 
-  def next_position(self, position, next_move):
-      mf = self.move_funcs
-      md = self.move_deltas
-      pos1 = position[0]
-      pos2 = position[1]
+def next_position(self, position, next_move):
+    mf = self.move_funcs
+    md = self.move_deltas
+    pos1 = position[0]
+    pos2 = position[1]
 
-      # Für die erste Position
-      if pos1 != (self.width - 1, self.height - 1):
-          matrix1 = self.vertical_walls_1 if next_move < 2 else self.horizontal_walls_1
-          if mf[next_move](pos1[0], pos1[1], matrix1):
-              pos1 = (pos1[0] + md[next_move][0], pos1[1] + md[next_move][1])
-              if pos1 in self.gruben_1:
-                  pos1 = (0, 0)
+    # Für die erste Position
+    if pos1 != (self.width - 1, self.height - 1):
+        matrix1 = self.vertical_walls_1 if next_move < 2 else self.horizontal_walls_1
+        if mf[next_move](pos1[0], pos1[1], matrix1):
+            pos1 = (pos1[0] + md[next_move][0], pos1[1] + md[next_move][1])
+            if pos1 in self.gruben_1:
+                pos1 = (0, 0)
 
-      # Für die zweite Position
-      if pos2 != (self.width - 1, self.height - 1):
-          matrix2 = self.vertical_walls_2 if next_move < 2 else self.horizontal_walls_2
-          if mf[next_move](pos2[0], pos2[1], matrix2):
-              pos2 = (pos2[0] + md[next_move][0], pos2[1] + md[next_move][1])
-              if pos2 in self.gruben_2:
-                  pos2 = (0, 0)
-      return pos1, pos2
+    # Für die zweite Position
+    if pos2 != (self.width - 1, self.height - 1):
+        matrix2 = self.vertical_walls_2 if next_move < 2 else self.horizontal_walls_2
+        if mf[next_move](pos2[0], pos2[1], matrix2):
+            pos2 = (pos2[0] + md[next_move][0], pos2[1] + md[next_move][1])
+            if pos2 in self.gruben_2:
+                pos2 = (0, 0)
+    return pos1, pos2
 
-  def next_move(self, pos, cost_matrix):
-      w = self.width
-      h = self.height
-      return None if pos == (w - 1, h - 1) else cost_matrix[pos[1]][pos[0]][1]
+def next_move(self, pos, cost_matrix):
+    w = self.width
+    h = self.height
+    return None if pos == (w - 1, h - 1) else cost_matrix[pos[1]][pos[0]][1]
 
-  def get_moving_cost(self, pos, cost_matrix):
-      w = self.width
-      h = self.height
-      return 0 if pos == (w - 1, h - 1) else cost_matrix[pos[1]][pos[0]][0]
+def get_moving_cost(self, pos, cost_matrix):
+    w = self.width
+    h = self.height
+    return 0 if pos == (w - 1, h - 1) else cost_matrix[pos[1]][pos[0]][0]
 
-  def get_total_cost(self, positions):
-      pos1, pos2 = positions
-      return self.get_moving_cost(pos1, self.cost_matrix_1) + self.get_moving_cost(pos2, self.cost_matrix_2)
+def get_total_cost(self, positions):
+    pos1, pos2 = positions
+    return self.get_moving_cost(pos1, self.cost_matrix_1) + self.get_moving_cost(pos2, self.cost_matrix_2)
 
-  def check_visited(self, next_position, length, move):
-      # Erstelle einen Schlüssel als Tupel, das beide Positionen enthält
-      key = (next_position[0][0], next_position[0][1],
-             next_position[1][0], next_position[1][1])
-      if key in self.visited and self.visited[key] <= length:
-          return None
-      self.visited[key] = length
-      return move
+def check_visited(self, next_position, length, move):
+    # Erstelle einen Schlüssel als Tupel, das beide Positionen enthält
+    key = (next_position[0][0], next_position[0][1],
+            next_position[1][0], next_position[1][1])
+    if key in self.visited and self.visited[key] <= length:
+        return None
+    self.visited[key] = length
+    return move
 
-  def neighbours_cost(self, move: Move):
-      # Berechne beide Positionen anhand der Bewegungsfolge
-      pos1 = move.positions[0]
-      pos2 = move.positions[1]
+def neighbours_cost(self, move: Move):
+    # Berechne beide Positionen anhand der Bewegungsfolge
+    pos1 = move.positions[0]
+    pos2 = move.positions[1]
 
-      # Ermittle den nächsten Zug für beide Positionen
-      move_1 = self.next_move(pos1, self.cost_matrix_1)
-      move_2 = self.next_move(pos2, self.cost_matrix_2)
+    # Ermittle den nächsten Zug für beide Positionen
+    move_1 = self.next_move(pos1, self.cost_matrix_1)
+    move_2 = self.next_move(pos2, self.cost_matrix_2)
 
-      # Nächsten Positionspaare berechnen
-      next_position_1 = self.next_position(move.positions, move_1) if move_1 is not None else None
-      next_position_2 = self.next_position(move.positions, move_2) if move_2 is not None else None
+    # Nächsten Positionspaare berechnen
+    next_position_1 = self.next_position(move.positions, move_1) if move_1 is not None else None
+    next_position_2 = self.next_position(move.positions, move_2) if move_2 is not None else None
 
-      # Testen ob die Positionspaare schon einmal da waren
-      move_1 = self.check_visited(next_position_1, len(move.moves) + 1, move_1) if move_1 is not None else None
-      move_2 = self.check_visited(next_position_2, len(move.moves) + 1, move_2) if move_2 is not None else None
+    # Testen ob die Positionspaare schon einmal da waren
+    move_1 = self.check_visited(next_position_1, len(move.moves) + 1, move_1) if move_1 is not None else None
+    move_2 = self.check_visited(next_position_2, len(move.moves) + 1, move_2) if move_2 is not None else None
 
-      results = []
-      if move_1 is not None:
-          results.append(Move(move.moves + [move_1], next_position_1, self.get_total_cost(next_position_1),
-                              self.cost_at_beginning))
-      if move_2 is not None:
-          results.append(Move(move.moves + [move_2], next_position_2, self.get_total_cost(next_position_2),
-                              self.cost_at_beginning))
-      return results
+    results = []
+    if move_1 is not None:
+        results.append(Move(move.moves + [move_1], next_position_1, self.get_total_cost(next_position_1), self.cost_at_beginning))
+    if move_2 is not None:
+        results.append(Move(move.moves + [move_2], next_position_2, self.get_total_cost(next_position_2), self.cost_at_beginning))
+    return results
       \end{lstlisting}
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python, breaklines=true]
 class Cost:
 
    def write_cost(self, start_x, start_y):
-        stack = [(start_x, start_y, 0, None)]
+      stack = [(start_x, start_y, 0, None)]
 
-        while stack:
-            x, y, cost, direction = stack.pop()
-            if self.matrix[y][x] != 0:
-                continue
+      while stack:
+          x, y, cost, direction = stack.pop()
+          if self.matrix[y][x] != 0:
+              continue
 
-            self.matrix[y][x] = (cost, direction)
+          self.matrix[y][x] = (cost, direction)
 
 
-            a = self.get_neighbors(x, y)
-            for neighbor in a:
-                nx, ny, ndirection = neighbor
-                if self.matrix[ny][nx] == 0:
-                    stack.append((nx, ny, cost + 1, ndirection))
+          a = self.get_neighbors(x, y)
+          for neighbor in a:
+              nx, ny, ndirection = neighbor
+              if self.matrix[ny][nx] == 0:
+                  stack.append((nx, ny, cost + 1, ndirection))
 
 
     def create_cost_matrix(self):
-        self.matrix = [[0 for _ in range(self.width)] for _ in range(self.height)]
-        self.write_cost(self.width - 1, self.height - 1)
-        return self.matrix
+      self.matrix = [[0 for _ in range(self.width)] for _ in range(self.height)]
+      self.write_cost(self.width - 1, self.height - 1)
+      return self.matrix
       \end{lstlisting}
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python, breaklines=true]
 def create_matrix(data, height):
   vertical_walls = [data.pop(0) for _ in range(height)]
   horizontal_walls = [data.pop(0) for _ in range(height - 1)]
@@ -978,12 +953,10 @@ def create_matrix_for_laby(horizontal_walls, vertical_walls, gruben, width, heig
   return cost_obj.create_cost_matrix()
 
 
-def moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1, horizontal_walls_2,
-         vertical_walls_2, gruben_1, gruben_2, l):
+def moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1, horizontal_walls_2, vertical_walls_2, gruben_1, gruben_2, l):
   
   
-  solving_obj = Solving(cost_matrix_1, cost_matrix_2, vertical_walls_1, horizontal_walls_1, vertical_walls_2,
-                        horizontal_walls_2, gruben_1, gruben_2, width, height)
+  solving_obj = Solving(cost_matrix_1, cost_matrix_2, vertical_walls_1, horizontal_walls_1, vertical_walls_2, horizontal_walls_2, gruben_1, gruben_2, width, height)
 
   moves = [Move([], ((0, 0), (0, 0)), 0, heights_cost=0, weight=0)]
   while True:
@@ -1025,8 +998,7 @@ def main():
   # TODO: Wert für l anpassen
   l = 100
   try:
-      move = moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1,
-                          horizontal_walls_2, vertical_walls_2, gruben_1, gruben_2, l)
+      move = moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1, horizontal_walls_2, vertical_walls_2, gruben_1, gruben_2, l)
       output(move)
 
   except:

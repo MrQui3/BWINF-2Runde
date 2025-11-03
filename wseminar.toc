@@ -1,35 +1,35 @@
 \babel@toc {ngerman}{}\relax 
-\contentsline {section}{\numberline {1}Einleitung}{2}{section.1}%
-\contentsline {section}{\numberline {2}Aufgabe 1: Schmucknachrichten}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Einleitung}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Theoretische Erklärung des Algorithmus}{3}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Betrachtung von Symbolen mit gleichen Kosten}{3}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Erweiterung auf Symbolen mit unterschiedlichen Kosten}{5}{subsubsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.3}Implementierung des Algorithmus}{6}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}Erstellung des Baums}{7}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Permutation des Baums}{8}{subsubsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.4}Laufzeitanalyse und Einordnung des Algorithmus}{9}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{9}{subsubsection.2.4.1}%
-\contentsline {subsubsection}{\numberline {2.4.2}Stand der Forschung}{10}{subsubsection.2.4.2}%
-\contentsline {subsubsection}{\numberline {2.4.3}Fazit}{11}{subsubsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.5}Vergleich mit der Musterlösung}{11}{subsection.2.5}%
-\contentsline {section}{\numberline {3}Aufgabe 2: Simultane Labyrinthe}{12}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Einleitung}{12}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Theoretische Erklärung des Algorithmus}{12}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Erstellung der Matrix}{13}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Lösen der Labyrinthe}{13}{subsubsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.3}Implementierung des Algorithmus}{14}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Erstellung der Matrix}{14}{subsubsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.2}Lösen der Labyrinthe}{15}{subsubsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.4}Laufzeitanalyse}{16}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Vergleich mit der Musterlösung}{18}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Fazit}{19}{section.4}%
-\contentsline {section}{\numberline {5}Anhang}{20}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Lösungen der Testfälle}{20}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Aufgabe 1: Schmucknachrichten}{20}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}Aufgabe 2: Simultane Labyrinthe}{21}{subsubsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.2}Quellcode}{21}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}Aufgabe 1: Schmucknachrichten}{21}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Aufgabe 2: Simultane Labyrinthe}{24}{subsubsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.3}Quellen}{28}{subsection.5.3}%
+\contentsline {section}{\numberline {1}Einleitung}{3}{section.1}%
+\contentsline {section}{\numberline {2}Aufgabe 1: Schmucknachrichten}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Einleitung}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Theoretische Erklärung des Algorithmus}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Betrachtung von Symbolen mit gleichen Kosten}{4}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Erweiterung auf Symbole mit unterschiedlichen Kosten}{6}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Implementierung des Algorithmus}{7}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Erstellung des Baums}{8}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Permutation des Baums}{9}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Laufzeitanalyse und Einordnung des Algorithmus}{10}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{10}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Stand der Forschung}{11}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Fazit}{12}{subsubsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.5}Vergleich mit der Musterlösung}{12}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Aufgabe 2: Simultane Labyrinthe}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Einleitung}{13}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Theoretische Erklärung des Algorithmus}{13}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Erstellung der Matrix}{14}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Lösen der Labyrinthe}{14}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}Implementierung des Algorithmus}{15}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Erstellung der Matrix}{15}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Lösen der Labyrinthe}{16}{subsubsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.4}Laufzeitanalyse}{17}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Vergleich mit der Musterlösung}{19}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Fazit}{20}{section.4}%
+\contentsline {section}{\numberline {5}Anhang}{21}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Lösungen der Testfälle}{21}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Aufgabe 1: Schmucknachrichten}{21}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Aufgabe 2: Simultane Labyrinthe}{22}{subsubsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.2}Quellcode}{22}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Aufgabe 1: Schmucknachrichten}{22}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Aufgabe 2: Simultane Labyrinthe}{25}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Quellen}{30}{subsection.5.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
