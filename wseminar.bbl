@@ -148,6 +148,20 @@
       \field{volume}{7}
       \field{year}{1961}
     \endentry
+    \entry{bwinf_website}{online}{}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{note}{Aufgerufen am 12.10.2025}
+      \field{title}{Materialen des 43. Bundeswettbewerbs Informatik}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://bwinf.de/bundeswettbewerb/43/#c4522
+      \endverb
+      \verb{url}
+      \verb https://bwinf.de/bundeswettbewerb/43/#c4522
+      \endverb
+    \endentry
     \entry{piater2024algorithmen}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=cfc45058a4e31e11955797aeb90b9e19}{%

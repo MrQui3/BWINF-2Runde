@@ -3,30 +3,52 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
 werte_l = [1, 6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56, 61, 66, 71, 76, 81, 86, 91]
+theoretichses_iterations = [30600,
+183600,
+336600,
+489600,
+642600,
+795600,
+948600,
+1101600,
+1254600,
+1407600,
+1560600,
+1713600,
+1866600,
+2019600,
+2172600,
+2325600,
+2478600,
+2631600,
+2784600]
 iterations_array = [19912,
-15677,
-15224,
-15090,
-15020,
-14929,
-14975,
-14791,
-14792,
-14733,
-14851,
-14761,
-14792,
-14808,
-14725,
-14779,
-14805,
-14680,
-14656,]
+39767,
+56713,
+70876,
+83444,
+91470,
+108082,
+109927,
+124064,
+129124,
+149405,
+155943,
+174149,
+179896,
+189500,
+194468,
+190191,
+199651,
+198909]
+plt.rcParams['text.usetex'] = True
 
 
 plt.plot(werte_l, iterations_array, marker='', linestyle='-', color='b', label='tatsächliche Iterationen')
+plt.plot(werte_l, theoretichses_iterations, marker='', linestyle='-', color='g', label='maximale Iterationen')
 plt.plot()
 plt.grid(True)
-plt.xlabel('Begrenzung l' , fontsize=14)
-plt.ylabel('Anzahl der Schritte' , fontsize=14)
+plt.legend(fontsize=12)
+plt.xlabel(r'Begrenzung $l$', fontsize=15)
+plt.ylabel('Anzahl der Schritte' , fontsize=15)
 plt.show()

@@ -60,7 +60,7 @@ def main():
         for i in range(20):
             move, n = moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1,
                                 horizontal_walls_2, vertical_walls_2, gruben_1, gruben_2, i*5+1)
-            print(len(move.moves))
+            print(n)
 
     except:
         print("No solution found")
