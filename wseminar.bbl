@@ -20,12 +20,9 @@
 \refsection{0}
   \datalist[entry]{nty/global//global/global/global}
     \entry{bwinf_aufgabe}{online}{}{}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labeltitlesource}{title}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
       \field{note}{Aufgerufen am 11.10.2025}
-      \field{title}{Bundeswettbewerb Informatik 43.2 Runde -- Aufgaben}
-      \field{year}{2025}
       \verb{urlraw}
       \verb https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/2_runde/Aufgaben432.pdf
       \endverb
@@ -33,13 +30,21 @@
       \verb https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/2_runde/Aufgaben432.pdf
       \endverb
     \endentry
+    \entry{bwinf_website}{online}{}{}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
+      \field{note}{Aufgerufen am 12.10.2025}
+      \verb{urlraw}
+      \verb https://bwinf.de/bundeswettbewerb/43/#c4522
+      \endverb
+      \verb{url}
+      \verb https://bwinf.de/bundeswettbewerb/43/#c4522
+      \endverb
+    \endentry
     \entry{bwinf_loesung}{online}{}{}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labeltitlesource}{title}
+      \field{sortinit}{}
+      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
       \field{note}{Aufgerufen am 11.10.2025}
-      \field{title}{Bundeswettbewerb Informatik 43.2 Runde -- Lösungshinweise}
-      \field{year}{2025}
       \verb{urlraw}
       \verb https://bwinf.de/fileadmin/wettbewerbe/bundeswettbewerb/43/2_runde/Loesungshinweise432.pdf
       \endverb
@@ -148,7 +153,7 @@
       \field{volume}{7}
       \field{year}{1961}
     \endentry
-    \entry{binarbaum_innere_Knoten}{book}{}{}
+    \entry{binarbaum_innere_Knoten}{online}{}{}
       \name{author}{1}{}{%
         {{hash=f85d68e0e92c94ccb32afb196ff0ac02}{%
            family={Lercher},
@@ -172,52 +177,11 @@
       \field{title}{Algorithm und Datenstrukturen}
       \field{year}{2016}
       \verb{urlraw}
-      \verb https://www.cs.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Informatik/Computational_Cell_Biology/AlDat/Alg2016_06.pdf?utm_source=chatgpt.com
+      \verb https://www.cs.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Informatik/Computational_Cell_Biology/AlDat/Alg2016_06.pdf
       \endverb
       \verb{url}
-      \verb https://www.cs.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Informatik/Computational_Cell_Biology/AlDat/Alg2016_06.pdf?utm_source=chatgpt.com
+      \verb https://www.cs.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Informatik/Computational_Cell_Biology/AlDat/Alg2016_06.pdf
       \endverb
-    \endentry
-    \entry{bwinf_website}{online}{}{}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{labeltitlesource}{title}
-      \field{note}{Aufgerufen am 12.10.2025}
-      \field{title}{Materialen des 43. Bundeswettbewerbs Informatik}
-      \field{year}{2025}
-      \verb{urlraw}
-      \verb https://bwinf.de/bundeswettbewerb/43/#c4522
-      \endverb
-      \verb{url}
-      \verb https://bwinf.de/bundeswettbewerb/43/#c4522
-      \endverb
-    \endentry
-    \entry{piater2024algorithmen}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=cfc45058a4e31e11955797aeb90b9e19}{%
-           family={Piater},
-           familyi={P\bibinitperiod},
-           given={Justus},
-           giveni={J\bibinitperiod}}}%
-      }
-      \list{institution}{1}{%
-        {Universität Innsbruck}%
-      }
-      \strng{namehash}{cfc45058a4e31e11955797aeb90b9e19}
-      \strng{fullhash}{cfc45058a4e31e11955797aeb90b9e19}
-      \strng{fullhashraw}{cfc45058a4e31e11955797aeb90b9e19}
-      \strng{bibnamehash}{cfc45058a4e31e11955797aeb90b9e19}
-      \strng{authorbibnamehash}{cfc45058a4e31e11955797aeb90b9e19}
-      \strng{authornamehash}{cfc45058a4e31e11955797aeb90b9e19}
-      \strng{authorfullhash}{cfc45058a4e31e11955797aeb90b9e19}
-      \strng{authorfullhashraw}{cfc45058a4e31e11955797aeb90b9e19}
-      \field{sortinit}{P}
-      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Vorlesungsunterlagen, Seiten 4–13, Stand 29.05.2024}
-      \field{title}{Algorithmen und Datenstrukturen}
-      \field{year}{2024}
     \endentry
     \entry{schulz2018codierungstheorie}{book}{}{}
       \name{author}{1}{}{%
