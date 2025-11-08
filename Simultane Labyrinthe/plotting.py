@@ -50,5 +50,22 @@ plt.plot()
 plt.grid(True)
 plt.legend(fontsize=12)
 plt.xlabel(r'Begrenzung $l$', fontsize=15)
-plt.ylabel('Anzahl der Schritte' , fontsize=15)
+plt.ylabel('Anzahl der Schritte', fontsize=15)
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+v = ("Wir waren einfach 13 Jahre lang in der selben Klasse und seit Anfang an befreundet. Früher noch Hortzeit mit Benji, dann Mittagsbetreuung im Gymnasium und jetzt mit Krypto und all den anderen."
+    "Früher noch im Hort mit Benji und jetzt mit Krypto und all den anderen. Ich hoffe, dass wir auch noch in 13 Jahren befreundet sind. ")
+
+e = ("Unsere Robotik-Freitagsnachmittage war zu krass. dann immer Unterricht geschwänzt bei IT-Notfall und Technik Team. Hast entweder im Unterricht geschlafen oder warst nur am IPad. "
+     "Und dann die Nachricht eine Abend vor dem Vokabeltest, der über 20 Seiten ging. Und trotzdem warst du immer besser als ich im Vokabeltest."
+     " Wir haben keine einziges Projekt vor einem tag davor angefangen und noch nie im Oberstufenraum gearbeitet. ")

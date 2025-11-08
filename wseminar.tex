@@ -68,23 +68,23 @@ Für jedes Problem soll ein Algorithmus entwickelt werden, mit dem sich dieses l
 Anschließend muss der Algorithmus auf verschiedene Testfälle angewandt werden, damit die Korrektoren die Richtigkeit und die Genauigkeit beurteilen können.
 Die Teilnehmenden kennen dabei die erwarteten Ergebnisse der Testfälle nicht.
 Die ausgearbeiteten Lösungen werden anschließend nach einem festgelegten Schema korrigiert und benotet. Pro Aufgabe können bis zu 20 Punkte erreicht werden, 
-wobei gute Ausarbeitungen Zusatzpunkte erzielen und unvDie Kanten auf dem Weg von der Wurzel zu einem Blatt repräsentieren dabei die Symbole des jeweiligen Codewortes.ollständige Bearbeitungen Punktabzüge nach sich ziehen. \cite{bwinf_aufgabe}\\
+wobei gute Ausarbeitungen Zusatzpunkte erzielen und unvollständige Bearbeitungen Punktabzüge nach sich ziehen.\parencite[vgl.][]{bwinf_aufgabe}
 Die Seminararbeit ist in zwei Teile gegliedert, beginnend mit Aufgabe 1, Schmucknachrichten, und daraufhin Aufgabe 2, simultane Labyrinthe.\\
-Zuerst erkläre ich jeweils kurz die Aufgabenstellung und beschreibe meine theoretische Überlegung. Im Anschluss zeige ich, wie sie praktisch in Python3 umgesetzt werden.
+Zuerst erkläre ich jeweils kurz die Aufgabenstellung und beschreibe meine theoretischen Überlegungen. Im Anschluss zeige ich, wie sie praktisch in Python3 umgesetzt werden.
 Zuletzt diskutiere ich meine Ergebnisse und vergleiche meine Lösung mit der offiziellen Musterlösung.
 \section{Aufgabe 1: Schmucknachrichten}
 \subsection{Problemstellung}
 In dieser Aufgabe möchten Sybille und Pedram kurze Nachrichten, die aus verschiedenen Buchstaben bestehen, in Perlen-Codes für Ketten umwandeln.
-Für jeden Buchstaben ist ein Codewort aus Perlen zu finden, wobei insgesamt ein präfixfreier Code entstehen muss.\cite{bwinf_aufgabe}
-Dabei soll die Gesamtlänge der codierten Nachricht möglichst gering sein.
+Für jeden Buchstaben ist ein Codewort aus Perlen zu finden, wobei insgesamt ein präfixfreier Code entstehen muss.
+Dabei soll die Gesamtlänge der codierten Nachricht möglichst gering sein.\parencite[vgl.][]{bwinf_aufgabe}
 Daher wird ein präfixfreier Code gesucht, bei dem häufig vorkommende Buchstaben kurze Codewörter erhalten, während seltenere Buchstaben längere Codewörter zugewiesen bekommen. 
-\enquote{Ein Code C heißt Präfix-Code (irreduzibler Code), wenn kein Codewort aus C Präfix eines anderen Codeworts von C ist.}\cite{schulz2018codierungstheorie}
-Dadurch lässt sich jede Nachricht eindeutig codieren und wieder decodieren.\cite{schulz2018codierungstheorie}
+\enquote{Ein Code C heißt Präfix-Code (irreduzibler Code), wenn kein Codewort aus C Präfix eines anderen Codeworts von C ist.}\cite[S. 37]{schulz2018codierungstheorie}
+Dadurch lässt sich jede Nachricht eindeutig codieren und wieder decodieren.\parencite[vgl.][S. 37]{schulz2018codierungstheorie}
 Ein Code mit den Codewörtern \{0, 10, 11\} ist präfixfrei, da kein Codewort der Anfang eines anderen ist.
 Im Gegensatz dazu ist der Code \{0, 01, 11\} nicht präfixfrei, weil \enquote{0} das Präfix von \enquote{01} ist.
 Zusätzlich wird in dieser Aufgabe zwischen zwei Varianten unterschieden:
 In der ersten Teilaufgabe haben alle Perlen denselben Durchmesser, 
-während in der zweiten Teilaufgabe die Perlen unterschiedliche Durchmesser besitzen. \cite{bwinf_aufgabe}
+während in der zweiten Teilaufgabe die Perlen unterschiedliche Durchmesser besitzen.\parencite[vgl.][]{bwinf_aufgabe}
 \subsection{Theoretische Erklärung des Algorithmus}
 \subsubsection{Betrachtung von Symbolen mit gleichen Kosten}
 In meiner Arbeit gilt für die Kosten der codierten Nachricht, solange alle Symbole die gleichen Kosten haben:
@@ -110,7 +110,7 @@ Das heißt, sobald ein Blatt erreicht wird, endet das Codewort, und keine weiter
 Der Baum hat mindestens so viele Blätter, wie es verschiedene Buchstaben gibt, da jeder Buchstabe sein eigenes Codewort braucht.
 Jeder innere Knoten kann dabei maximal so viele Kinder haben, wie es verschiedene Symbole gibt. 
 Die Ebene des Blatts entspricht der Länge des Codeworts.\\
-Jeder präfixfreie Code kann in einem Baum dargestellt werden und jeder Baum kann einen präfixfreien Code darstellen.\cite{schulz2018codierungstheorie}
+Jeder präfixfreie Code kann in einem Baum dargestellt werden und jeder Baum kann einen präfixfreien Code darstellen.\cite[S. 37]{schulz2018codierungstheorie}
 Daher kann das Problem auf das Finden eines optimalen Baumes reduziert werden.\\
 \begin{figure}[h]
   \centering
@@ -194,7 +194,7 @@ wobei gilt: \\
  - $j$ iteriert dabei durch die Liste der Symbole des Codewortes\\
 \\
 Aus diesem Grund stellt man nun Bäume nicht nach ihrer Ebene, sondern nach ihren Kosten dar.
-Dieser wird auch als \textit{lopsided tree}\cite{golin1998prefixfree} bezeichnet. (Abbildung \ref{fig:lopsided tree})\\
+Diese werden auch in der Literatur als \textit{lopsided tree}\cite[S. 4]{golin1998prefixfree} bezeichnet (Abbildung \ref{fig:lopsided tree}).\\
  \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/lopsided_tree.pdf}
@@ -217,7 +217,7 @@ Daher kann der zweite Algorithmus sowohl für gleiche als auch für unterschiedl
 Der Baum ist über die Klasse \textit{TreeNode} rekursiv implementiert. Jeder Knoten entspricht einem TreeNode-Objekt.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/treenode_digramm.png}
+  \includegraphics[width=0.5\textwidth]{Schmucknachrichten/pdf_src/treenode_digramm.png}
   \caption{Klasse TreeNode}
   \label{fig:klassn_daigramm}
 \end{figure}
@@ -249,7 +249,7 @@ Die Methode $create\_tree$ bekommt über den Aufruf $get\_all\_possible\_costs()
 Das Blatt mit den geringsten Kosten wird dem Baum über den Aufruf $insert\_new\_node(obj)$ hinzugefügt.
 Falls der Elternknoten des neuen Blatts selbst noch ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
 Das liegt daran, dass jeder innere Knoten mindestens zwei Kinder haben muss – daher stellen diese Kosten die effektiv neu entstehenden Kosten für den Baum dar.
-Das geschieht solange, bis der Baum genauso viele Blätter hat, wie es Buchstaben gibt. Die Anzahl an Blättern kann mit der Methode $get\_size()$ ermittelt werden.
+Das geschieht solange, bis der Baum genauso viele Blätter hat, wie es Buchstaben gibt. Die Anzahl der Blättern kann mit der Methode $get\_size()$ ermittelt werden.
 \subsubsection{Permutation des Baums}
 Sobald ein balancierter Baum erstellt wurde, muss dieser optimiert werden. Dies geschieht über die Methode $find\_best\_tree$.
 \vspace{2em}
@@ -267,7 +267,7 @@ Wenn dem Baum keine neuen Blätter hinzugefügt werden können und ein Fehler au
 Zu Beginn holt sich die Methode $improve\_tree$ alle Blätter im Baum über den Aufruf $get\_leaves()$.
 Diese Liste wird dann aufsteigend nach den Kosten jedes Blatts sortiert. 
 Der Elternknoten des Blatts mit den höchsten Kosten wird daraufhin selbst zu einem Blatt und verliert alle Kinder. 
-Um die fehlenden Blätter wieder hinzuzufügen, wird noch die Methode \ref{lst:create_tree}  ($create\_tree$) aufgerufen.\\
+Um die fehlenden Blätter wieder hinzuzufügen, wird dannach die Methode \ref{lst:create_tree}  ($create\_tree$) aufgerufen.\\
 \\\\
 \begin{lstlisting}[caption={\texttt{get\_tree\_cost}}, label={lst:calculate_tree}]
   def get_tree_cost(root: TreeNode) -> int:
@@ -289,14 +289,14 @@ Die Liste der Blätter wird dann nach den Kosten aufsteigend sortiert und jedes 
 \subsubsection{Analyse des Algorithmus}
 Der Algorithmus endet, wenn keine Knoten mehr eingefügt werden können.
 Dies ist spätestens gegeben, wenn der Baum maximal ausgeartet ist (Abbildung \ref{fig:baum_fertig}).
-Allgemein kann jeder Knoten maximal $r-1$ mal verschoben werden, bis er komplett auf der linken Seite ist. Dabei ist $r$ die Anzahl an verschiedenen Symbolen,
-deren Kosten sind hierbei unerheblich.
+Allgemein kann jeder Knoten maximal $r-1$ mal verschoben werden, bis er komplett auf der linken Seite ist. 
+Dabei ist $r$ die Anzahl der verschiedenen Symbolen, deren Kosten hierbei unerheblich sind.
 Daraus folgt, dass die maximale Anzahl an Iterationen bis zum maximal ausgearteten Baum  
 \begin{equation}
   I \leq (r-1)\cdot\text{Anzahl falscher Knoten}
 \end{equation}
 ist.
-Falsche Knoten sind dabei innere Knoten, die beim ausbalancierten Baum noch nicht auf der Stelle des ausgearteten Baums sind, also alle bis auf die äußersten linken Knoten. (Abbildung \ref{fig:makiert_baum})
+Falsche Knoten sind dabei innere Knoten, die beim ausbalancierten Baum noch nicht auf der Stelle des ausgearteten Baums sind, also alle bis auf die äußersten linken Knoten (Abbildung \ref{fig:makiert_baum}).
 
 Generell gilt, um die maximale Anzahl an inneren Knoten zu erhalten, sollte jeder Knoten möglichst wenige Kinder besitzen.
 Wie zuvor festgelegt, hat jeder innere Knoten mindestens zwei Kinder. 
@@ -304,50 +304,49 @@ Daraus folgt, dass die maximale Anzahl an inneren Knoten erreicht wird, wenn der
 \begin{equation}
   \text{innere Knoten} = w - 1
 \end{equation}
-berechnet werden kann.\cite{schulz2018codierungstheorie}
-Dabei ist $w$ die Anzahl an Blättern/Codewörtern.
-Auf jeder Ebene existiert ein richtiger innerer Knoten, deren Anzahl minimal mit 
+berechnet werden kann.\cite[Folie 5]{binarbaum_innere_Knoten}
+Dabei ist $w$ die Anzahl der Blättern.
+Auf jeder Ebene existiert ein richtiger innerer Knoten.
+Die Anzahl der Ebenen und somit der richtigen Knoten kann minimal mit 
 \begin{equation}
   \text{richtige innere Knoten} = \log_{r}{w}
 \end{equation}
-abgeschätzt werden kann.\\
+abgeschätzt werden.\\
 Daher ergibt sich
 \begin{equation}
   I < (r-1)\cdot(w-1-\log_{r}{w})
 \end{equation}
 Dies bedeutet eine Laufzeit von $O(r\cdot w)$.
-
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/genauigkeit_iterationen.pdf}
   \caption{Länge der codierten Nachricht aufgetragen über mehrere Iterationen}
   \label{fig:iteration_tree}
 \end{figure}
-In Abbildung \ref{fig:iteration_tree} ist dargestellt, wie die Länge der codierten Nachricht des Testfalls $schmuck9$ sich über die Iterationen hinweg verändert.
+In Abbildung \ref{fig:iteration_tree} ist dargestellt, wie die Länge der codierten Nachricht des Testfalls $schmuck9.txt$\parencite[vgl.][]{bwinf_website} sich über die Iterationen hinweg verändert.
 Das Minimum wird bereits in der ersten Hälfte der Iterationen erreicht.
 Das zeigt gut, dass der Algorithmus kein Optimierungs-Algorithmus ist, sondern von einem Maximum zum anderen Maximum geht.
 \subsubsection{Stand der Forschung}
-Die vorliegende Fragestellung ist seit den 60er-Jahren in der theoretischen Informatik bekannt. 
+Die vorliegende Fragestellung ist seit den 60er-Jahren des letzten Jahrhundert in der theoretischen Informatik bekannt. 
 Dabei lieferte Huffman eine Lösung für den Spezialfall von zwei Quellsymbolen.\cite{piater2024algorithmen}
 \\
 \\
-Für unseren Fall von mehr als zwei Quellsymbolen mit unterschiedlichen Kosten entwickelte bereits Richard Karp 1961\cite{karp1961minimum} eine Lösung. 
-Diese wurde 1998 von Mordecai J. Golin und Günter Rote verbessert und ist bis heute das schnellste Verfahren, um auf eine exakte Lösung zu kommen.\\
-"The minimum-cost prefix-free code for n words can be computed in $O(n^{C+2})$ time and $O(n^{C+1})$ space, if the costs of the letters are integers between 1 and C." \cite{golin1998prefixfree}\\
-Für die Beispielaufgabe $schmuck5.txt$ hat der Algorithmus eine Laufzeit von $34^8$(n=34; C=6) Iterationen. 
+Für unseren Fall von mehr als zwei Quellsymbolen mit unterschiedlichen Kosten entwickelte bereits Richard Karp 1961 eine Lösung.\parencite[vgl.][]{karp1961minimum}
+Diese wurde 1998 von Mordecai J. Golin und Günter Rote verbessert und ist bis heute das schnellste Verfahren, um auf eine exakte Lösung zu kommen.\parencite[vgl.][]{golin1998prefixfree}\\
+"The minimum-cost prefix-free code for n words can be computed in $O(n^{C+2})$ time and $O(n^{C+1})$ space, if the costs of the letters are integers between 1 and C."\cite[S. 20]{golin1998prefixfree}\\
+Für die Beispielaufgabe $schmuck5.txt$\parencite[vgl.][]{bwinf_website} hat der Algorithmus eine Laufzeit von $34^8$(n=34; C=6) Iterationen. 
 Diese Art von Algorithmus kann wegen seiner langen Laufzeit nicht für die vorgegebenen Beispielaufgaben verwendet werden.
 \\
 \\
 Um eine polynomielle Laufzeit zu erreichen, entwickelten Mordecai J. Golin, Claire Mathieu und Neal E. Young im Jahre 2012 ein Approximationsverfahren.\\
 Dieser Algorithmus basiert auf dem PTAS-Verfahren (Polynomial-time Approximation Scheme), wobei zuerst ein präfixfreier Code bis zu einer bestimmten Tiefe $\tau$ erstellt wird und dann die restlichen Codewörter durch ein Rundungsverfahren ergänzt werden.
-Dabei ist es zentral, dass die Wahrscheinlichkeitsverteilung der zu kodierenden Codewörter möglichst in großen Gruppen mit gleich großer Wahrscheinlichkeit eingeordnet werden kann. \cite{golin2012huffman}
-Im Testfall 9 ist dies zum Beispiel nicht gegeben, weshalb das Bestimmen des Vorbaums über $9^{24}$ Schritte benötigt.
+Dabei ist es zentral, dass die Wahrscheinlichkeitsverteilung der zu kodierenden Codewörter möglichst in großen Gruppen mit gleich großer Wahrscheinlichkeit eingeordnet werden kann.\parencite[vgl.][]{golin2012huffman}
+Im Testfall $schmuck9.txt$\parencite[vgl.][]{bwinf_website}ist dies zum Beispiel nicht gegeben, weshalb das Bestimmen des Vorbaums mehr als $9^{24}$ Schritte benötigt.
 Somit ist dieses Verfahren für die gewählten Beispiele ebenfalls nicht verwendbar.
 
 \subsubsection{Fazit}
 Für die gegebene Fragestellung gibt es bislang weder einen Beweis, dass sie NP-schwer ist, noch einen Gegenbeweis, dass sie es nicht ist.
-Aktuell bekannte Verfahren für exakte Ergebnisse besitzen eine exponentielle Laufzeit. \cite{golin1998prefixfree}
+Aktuell bekannte Verfahren für exakte Ergebnisse besitzen eine exponentielle Laufzeit.\parencite[vgl.][]{golin1998prefixfree}
 Mein gefundener Algorithmus findet nicht die beste Lösung für das gegebene Problem. Er liefert jedoch in polynomieller Laufzeit eine gute Approximation
 und ist daher eine gute Abwägung zwischen Laufzeit und Genauigkeit.
 Somit wird nicht beantwortet, ob die Fragestellung NP-schwer ist.
@@ -357,11 +356,11 @@ Somit wird nicht beantwortet, ob die Fragestellung NP-schwer ist.
 In der Musterlösung werden drei Lösungen vorgeschlagen.
 Der erste Ansatz ist ein Greedy-Algorithmus basierend auf Huffman.
 Die zweite Variante ist ein ILP-Ansatz nach Richard Karp und
-die dritte ist dessen Erweiterung von Mordecai J. Golin und Günter Rote. \cite{bwinf_loesung}\\
+die dritte ist dessen Erweiterung von Mordecai J. Golin und Günter Rote.\parencite[vgl.][]{bwinf_loesung}\\
 Alle drei Ansätze waren mir bei Abgabe meiner Arbeit bekannt. 
 Trotzdem entschied ich mich dagegen, eines dieser Verfahren zu implementieren, vor allem aufgrund deren hoher Laufzeit, 
 und entwickelte stattdessen mein eigenes Verfahren.
-Mein Algorithmus hat dabei eine durchschnittliche Abweichung von 1,27\% vom Idealergebnis, besitzt jedoch im Gegensatz dazu eine sehr viel kürzere Laufzeit.\cite{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe1})
+Mein Algorithmus hat dabei für die Testfälle eine durchschnittliche Abweichung von 1,27\% vom Idealergebnis, besitzt jedoch im Gegensatz zu den Algorithmen in der Musterlösung eine sehr viel kürzere Laufzeit \cite{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe1}).
 Für mein gutes Ergebnis erhielt ich daher einen Pluspunkt und erreichte insgesamt 21 Punkte für diese Aufgabe.
 
 \clearpage
@@ -373,8 +372,8 @@ Zwei Personen starten jeweils in ihrem Labyrinth bei der Position (0, 0) und mü
 Die dritte Person gibt beiden jeweils immer dieselbe nächste Schrittanweisung. 
 Wenn der nächste Schritt in einem Labyrinth durch eine Wand blockiert ist, bleibt die Person stehen.
 Gesucht ist eine möglichst kurze Abfolge von Schritten, die beide Labyrinthe mit denselben Befehlen löst.
-Die ursprüngliche Aufgabe enthält normale Labyrinthe. Im Spezialfall werden die Labyrinthe um Gruben erweitert.
-Wenn ein Spieler in eine Grube fällt, wird seine Position auf die Startposition (0, 0) zurückgesetzt. \cite{bwinf_aufgabe}
+Die ursprüngliche Aufgabe enthält Labyrinthe ohne Gruben. In der zweite Teilaufgabe werden die Labyrinthe um diese erweitert.
+Wenn ein Spieler in eine Grube fällt, wird seine Position auf die Startposition (0, 0) zurückgesetzt. \parencite[vgl.][]{bwinf_aufgabe}
 
 \subsection{Theoretische Erklärung des Algorithmus}
 \subsubsection{Erstellung der Matrix}
@@ -402,7 +401,7 @@ In Abbildung \ref{fig:lybnmatrix} ist ein Labyrinth mit dazugehöriger Matrix ab
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\textwidth]{Simultane Labyrinthe/pdf_src/cost_matrix.pdf}
-  \caption{ein Labyrinth mit dazugehöriger Matrix}
+  \caption{Labyrinth mit dazugehöriger Matrix}
   \label{fig:lybnmatrix}
 \end{figure}
 
@@ -475,7 +474,7 @@ Dann ruft sie die Methode $write\_cost$ auf, um die Kostenmatrix zu füllen.
   def write_cost(self, start_x: int, start_y: int):
 \end{lstlisting}
 Zu Beginn der Methode $write\_cost()$ wird die Liste $stack$ initialisiert. Sie speichert alle Felder, die noch besucht werden müssen.
-Jeder Eintrag in der Liste besitzt vier Werte: die x-Position, die y-Position, die aktuellen Kosten sowie die entgegengesetzte Richtung, aus welcher das Feld betreten wurde. 
+Jeder Eintrag in der Liste besitzt vier Werte, dass heißt die x-Position, die y-Position, die aktuellen Kosten sowie die entgegengesetzte Richtung, aus welcher das Feld betreten wurde. 
 Die Endposition wird als erstes Element hinzugefügt.
 Anschließend wird das erste Element der Liste entnommen und in die Kostenmatrix übertragen.
 Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbours$ ermittelt und dem $stack$ hinzugefügt.
@@ -528,7 +527,7 @@ die jeweils nächsten möglichen Richtungen aus der Kostenmatrix bestimmt.
 Daraufhin werden die neuen zwei Positionspaare berechnet und es wird überprüft, ob die beiden Positionspaare bereits besucht wurden.\\
 Zum Schluss wird für jeden möglichen Zug ein $Move$-Objekt erstellt und sie werden zusammen in einer Liste übergeben.
 Falls eines der neuen Positionspaare bereits besucht wurde oder bereits im Ziel ist, wird der entsprechende Zug nicht übergeben. 
-Der gesamte Ablauf von $neighbours_cost$ ist in Abbildung \ref{fig:neighbours_cost} dargestellt.
+Der gesamte Ablauf von $neighbours\_cost$ ist in Abbildung \ref{fig:neighbours_cost} dargestellt.
 \\
 \\
 
@@ -541,7 +540,7 @@ Der hier vorgestellte Ansatz garantiert daher nicht unbedingt den optimalen Lös
 Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, während andere nur kurz betrachtet werden.
 \\
 \\
-Wie schon oben erwähnt beeinflusst die Begrenzung $l$ die Laufzeit und die Genauigkeit des Algorithmus stark.
+Wie oben erwähnt beeinflusst die Begrenzung $l$ die Laufzeit und die Genauigkeit des Algorithmus stark.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/plotting_schritte_1.pdf}
@@ -549,7 +548,7 @@ Wie schon oben erwähnt beeinflusst die Begrenzung $l$ die Laufzeit und die Gena
   \label{fig:schritte_1}
 \end{figure}
 \\
-Abbildung \ref{fig:schritte_1} zeigt die Anzahl der Schritte des gefundenen Lösungswegs in Abhängigkeit vom Parameter $l$ für Testfall 4.
+Abbildung \ref{fig:schritte_1} zeigt die Anzahl der Schritte des gefundenen Lösungswegs in Abhängigkeit vom Parameter $l$ für Testfall $labyrinthe4.txt$\parencite[vgl.][]{bwinf_website}.
 \\
 \\
 Auffällig ist, dass der Graph mit zunehmendem $l$ gegen die Anzahl der Schritte des optimalen Wegs konvergiert.
@@ -567,7 +566,6 @@ Der Einfluss dieser Monotonieveränderungen wird daher mit wachsendem $l$ vernac
   \label{fig:laufzeit_1}
 \end{figure}
 Abbildung \ref{fig:laufzeit_1} stellt die Anzahl an Iterationen dar, die zur Bestimmung des Lösungswegs benötigt werden in Abhängigkeit von Parameter $l$.
-\\
 Der Graph steigt mit wachsendem $l$ stark an.
 \\
 Allgemein kann die maximale Anzahl an Iterationen in Abhängigkeit von $l$ wie folgt berechnet werden:
@@ -581,20 +579,20 @@ wobei gilt:\\
 Der Faktor $2c_1+c_2$ beschreibt die maximale Anzahl an Schritten, aus denen der schlechteste Lösungsweg besteht.
 Zunächst erreicht Person 1 das Ziel mit $c_1$ Schritten.
 Anschließend läuft Person 2 denselben Weg zurück in ebenfalls $c_1$ Schritten und geht dann selber ins Ziel mit $c_2$ Schritten.
-Im schlechtesten Fall geht er für jeden Eintrag in der Liste, also $l$ mal, die maximale Anzahl an Schritten.
-Daher ergibt sich die Gleichung \eqref{max_iterationen}. Dies bedeutet, dass sich eine Laufzeit von der Ordnung $o(l)$ ergibt.
+Im schlechtesten Fall geht sie für jeden Eintrag in der Liste, also $l$ mal, die maximale Anzahl an Schritten.
+Daraus resultiert die Gleichung \eqref{max_iterationen}. Dies bedeutet, dass sich eine Laufzeit von der Ordnung $o(l)$ ergibt.
 Praktisch gesehen ist die Laufzeit aber sehr viel kleiner als die maximale Laufzeit (Abbildung \ref{fig:maximal Laufzeit}).
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/plotting_max_1.pdf}
-  \caption{maximale Iterationen gegenüber tatsächlichen Iterationen aufgetragen gegenüber der Begrenzung}
+  \caption{Maximale Iterationen gegenüber tatsächlichen Iterationen aufgetragen gegenüber der Begrenzung}
   \label{fig:maximal Laufzeit}
 \end{figure}
 \\
 \\
 Die Anzahl der Iterationen steht in einem linearen Zusammenhang mit den Werten von $l$,
 während die Anzahl der Schritte bei größeren $l$-Werten gegen das optimale Ergebnis konvergiert.
-Je größer der Wert von $l$, desto mehr Iterationen werden durchgeführt - und desto besser wird das Ergebnis.
+Je größer der Wert von $l$, desto mehr Iterationen werden durchgeführt und desto besser wird das Ergebnis.
 Die Genauigkeit lässt sich anhand des Parameters $l$ jedoch nicht allgemein bestimmen, da sie stark von der Struktur des jeweiligen Labyrinths abhängt.
 
 
@@ -602,18 +600,18 @@ Die Genauigkeit lässt sich anhand des Parameters $l$ jedoch nicht allgemein bes
 In der Musterlösung werden zwei mögliche Lösungsstrategien vorgestellt.
 Die erste Strategie besteht in der Anwendung der Breitensuche auf zwei Labyrinthe. 
 Diese Variante wird jedoch in der Musterlösung aufgrund ihrer hohen Laufzeit als nicht praktikabel eingestuft.\\
-Die zweite Strategie basiert auf dem A-Star Algorithmus mit Priorty Queue. 
+Die zweite Strategie basiert auf dem A-Star Algorithmus mit Priorty Queue.\parencite[vgl.][]{bwinf_loesung}
 Diese Vorgehensweise ähnelt stark meiner eigenen Idee. 
-Wie in meiner Kostenmatrix wird auch hier für jede Position die Distanz zum Ziel berechnet.\cite{bwinf_loesung}
-Der wesentliche Unterschied liegt vor allem in dem effizienteren Warteschlagenmodell der Musterlösung.\\
-Insgesamt lagen meine Ergebnisse, abgesehen von Testfall 8, bei 1,1\% Abweichung vom Optimalwert.\cite{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe2})
-Bei Testfall 8 fiel mein Ergebnis etwa 3-mal so groß aus, weshalb mir 2 Punkte im Kriterium \enquote{Verfahren mit guten Ergebnisse} abgezogen wurden.
+Wie in meiner Kostenmatrix wird auch hier für jede Position die Distanz zum Ziel berechnet.
+Der wesentliche Unterschied liegt vor allem in dem effizienteren Warteschlagenmodell der Musterlösung.\parencite[vgl.][]{bwinf_loesung}\\
+Insgesamt lagen meine Ergebnisse, abgesehen von Testfall $labyrinthe8.txt$\parencite[vgl.][]{bwinf_website}, bei 1,1\% Abweichung vom Optimalwert.\parencite[vgl.][]{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe2})
+Bei Testfall $labyrinthe8.txt$ fiel mein Ergebnis etwa 3-mal so groß aus, weshalb mir 2 Punkte im Kriterium \enquote{Verfahren mit guten Ergebnisse} abgezogen wurden.
 Außerdem war meine Überlegung zur Laufzeit des Verfahrens nicht ausreichend detailliert, was zu einem weiteren Punktabzug führte.\\
 Insgesamt erhielt ich für die Aufgabe 17 von 20 Punkten.
 
 \section{Fazit}
 Insgesamt konnte ich mit 38 von 40 Punkten den zweiten Platz erreichen und gehörte damit zu den 60 besten Teilnehmenden von über 950 zugelassenen Teilnehmern.
-Durch diese Arbeit lernte ich, Laufzeitanalysen von eigenen Algorithmen selbstständig durchzuführen und mit wissenschaftlichen Texten zu arbeiten.
+Durch diese Arbeit lernte ich, die problemmatik der die Anfänge der Laufzeitanalysen von eigenen Algorithmen selbstständig durchzuführen und mit wissenschaftlichen Texten zu arbeiten.
 Aus meiner Erfahrung erweist sich der Wettbewerb insgesamt als gute Möglichkeit, Schüler an wissenschaftliches Arbeiten und algorithmisches Denken heranzuführen.
 
  \clearpage
@@ -627,8 +625,8 @@ Im Folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.
   \label{fig:neighbours_cost}
 \end{figure}
 \subsection{Lösungen der Testfälle}
-Die folgenden Ergebnisse zeigen die meine Resultate der durchgeführten Testfälle im Vergleich zur Musterlösung.
-Die Testfälle stammen aus Quelle \cite{bwinf_website}, die optimalen Ergebnisse aus Quelle \cite{bwinf_loesung}.
+Die folgenden Ergebnisse zeigen meine Resultate der durchgeführten Testfälle im Vergleich zur Musterlösung.
+Die Testfälle stammen aus Quelle der \cite{bwinf_website}, die optimalen Ergebnisse aus Quelle der \cite{bwinf_loesung}.
 \subsubsection{Aufgabe 1: Schmucknachrichten}
 \label{subsubsec:lösungen_aufgabe1}
 Die Lösungen können in Tabelle \ref{tab:lo_aufgabe1} eingesehen werden.

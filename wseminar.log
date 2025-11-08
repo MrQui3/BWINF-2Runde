@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  4 NOV 2025 21:26
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  8 NOV 2025 12:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1109,10 +1109,6 @@ File: Schmucknachrichten/pdf_src/trans_1.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/trans_1.pdf>
 File: Schmucknachrichten/pdf_src/trans_2.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/trans_2.pdf>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: Schmucknachrichten/pdf_src/trans_3.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/trans_3.pdf>
 File: Schmucknachrichten/pdf_src/trans_4.pdf Graphic file (type pdf)
@@ -1175,24 +1171,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 267--272
 
  []
 
-
-
-[9]
 File: Schmucknachrichten/pdf_src/trans_makiert.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/trans_makiert.pdf>
 
 
-[10]
+[9]
 File: Schmucknachrichten/pdf_src/genauigkeit_iterationen.pdf Graphic file (type
  pdf)
 <use Schmucknachrichten/pdf_src/genauigkeit_iterationen.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--347
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 330--346
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--347
+Overfull \hbox (16.3355pt too wide) in paragraph at lines 330--346
+\TU/lmr/m/n/12 Für die Beispielaufgabe $\OML/cmm/m/it/12 schmuck\OT1/cmr/m/n/12
+ 5\OML/cmm/m/it/12 :txt$\TU/lmr/m/n/12 [vgl. []7[]] hat der Algorithmus eine La
+ufzeit von $\OT1/cmr/m/n/12 34[]$\TU/lmr/m/n/12 (n=34;
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--346
 
  []
 
@@ -1208,25 +1210,25 @@ File: Simultane Labyrinthe/pdf_src/cost_matrix.pdf Graphic file (type pdf)
 [13
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 413--420
+Underfull \hbox (badness 10000) in paragraph at lines 412--419
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 429--452
+Underfull \hbox (badness 10000) in paragraph at lines 428--451
 
  []
 
 File: Simultane Labyrinthe/pdf_src/cost_diagramm.png Graphic file (type bmp)
 <Simultane Labyrinthe/pdf_src/cost_diagramm.png>
 
-Overfull \hbox (11.0327pt too wide) in paragraph at lines 458--468
+Overfull \hbox (11.0327pt too wide) in paragraph at lines 457--467
 \OML/cmm/m/it/12 cost[]obj:create[]cost[]matrix\OT1/cmr/m/n/12 ()$ \TU/lmr/m/n/
 12 aufgerufen. Das Cost_Matrix_Generator-Objekt bekommt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 458--468
+Underfull \hbox (badness 10000) in paragraph at lines 457--467
 
  []
 
@@ -1242,24 +1244,24 @@ File: Simultane Labyrinthe/pdf_src/solving_diagramm.png Graphic file (type bmp)
 File: Simultane Labyrinthe/pdf_src/move_diagramm.png Graphic file (type bmp)
 <Simultane Labyrinthe/pdf_src/move_diagramm.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 495--510
+Underfull \hbox (badness 10000) in paragraph at lines 494--509
 
  []
 
 
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 514--517
+Underfull \hbox (badness 10000) in paragraph at lines 513--516
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 527--534
+Underfull \hbox (badness 10000) in paragraph at lines 526--533
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 527--534
+Underfull \hbox (badness 10000) in paragraph at lines 526--533
 
  []
 
@@ -1270,12 +1272,12 @@ File: Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf Graphic file (type p
 df)
 <use Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 537--568
+Underfull \hbox (badness 10000) in paragraph at lines 536--567
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 537--568
+Underfull \hbox (badness 10000) in paragraph at lines 536--567
 
  []
 
@@ -1288,7 +1290,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Simultane Labyrinthe/pdf_src/plotting_max_1.pdf Graphic file (type pdf)
 <use Simultane Labyrinthe/pdf_src/plotting_max_1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 577--599
+Underfull \hbox (badness 10000) in paragraph at lines 575--597
 
  []
 
@@ -1324,9 +1326,15 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 [28]
 
 [29]
-Overfull \hbox (13.20372pt too wide) in paragraph at lines 1015--1015
+Overfull \hbox (13.20372pt too wide) in paragraph at lines 1013--1013
 []\TU/lmr/m/it/12 Bundeswettbewerb Informatik 43.2 Runde – Lösungshinweise\TU/l
 mr/m/n/12 . Aufgerufen am 11.10.2025.
+ []
+
+
+Overfull \hbox (8.44337pt too wide) in paragraph at lines 1013--1013
+[][][][][][][][][][][][] [][] [][][][][][][][][][][][][][][][][][][][][][] [] [
+][][][][][][][][] [] [][][][][][][][][][] [] [][][][][][][][][][][][][] []
  []
 
 
@@ -1345,12 +1353,12 @@ Package logreq Info: Writing requests to 'wseminar.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28769 strings out of 408640
- 571505 string characters out of 5749145
- 1939557 words of memory out of 5000000
- 51513 multiletter control sequences out of 15000+600000
+ 28772 strings out of 408640
+ 571678 string characters out of 5749145
+ 1939632 words of memory out of 5000000
+ 51516 multiletter control sequences out of 15000+600000
  567121 words of font info for 71 fonts, out of 8000000 for 9000
  1350 hyphenation exceptions out of 8191
- 108i,17n,107p,10944b,4917s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,17n,107p,10944b,5082s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on wseminar.pdf (32 pages).

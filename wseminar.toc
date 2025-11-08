@@ -2,16 +2,16 @@
 \contentsline {section}{\numberline {1}Einleitung}{3}{section.1}%
 \contentsline {section}{\numberline {2}Aufgabe 1: Schmucknachrichten}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Problemstellung}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Theoretische Erklärung des Algorithmus}{4}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Betrachtung von Symbolen mit gleichen Kosten}{4}{subsubsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2}Theoretische Erklärung des Algorithmus}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Betrachtung von Symbolen mit gleichen Kosten}{3}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}Erweiterung auf Symbole mit unterschiedlichen Kosten}{6}{subsubsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.3}Implementierung des Algorithmus}{7}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Erstellung des Baums}{8}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Permutation des Baums}{9}{subsubsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.4}Laufzeitanalyse und Einordnung des Algorithmus}{10}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{10}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Permutation des Baums}{8}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Laufzeitanalyse und Einordnung des Algorithmus}{9}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Analyse des Algorithmus}{9}{subsubsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.2}Stand der Forschung}{11}{subsubsection.2.4.2}%
-\contentsline {subsubsection}{\numberline {2.4.3}Fazit}{12}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.3}Fazit}{11}{subsubsection.2.4.3}%
 \contentsline {subsection}{\numberline {2.5}Vergleich mit der Musterlösung}{12}{subsection.2.5}%
 \contentsline {section}{\numberline {3}Aufgabe 2: Simultane Labyrinthe}{13}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Problemstellung}{13}{subsection.3.1}%
