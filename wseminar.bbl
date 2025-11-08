@@ -148,6 +148,36 @@
       \field{volume}{7}
       \field{year}{1961}
     \endentry
+    \entry{binarbaum_innere_Knoten}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=f85d68e0e92c94ccb32afb196ff0ac02}{%
+           family={Lercher},
+           familyi={L\bibinitperiod},
+           given={Prof.\bibnamedelimi Martin},
+           giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{f85d68e0e92c94ccb32afb196ff0ac02}
+      \strng{fullhash}{f85d68e0e92c94ccb32afb196ff0ac02}
+      \strng{fullhashraw}{f85d68e0e92c94ccb32afb196ff0ac02}
+      \strng{bibnamehash}{f85d68e0e92c94ccb32afb196ff0ac02}
+      \strng{authorbibnamehash}{f85d68e0e92c94ccb32afb196ff0ac02}
+      \strng{authornamehash}{f85d68e0e92c94ccb32afb196ff0ac02}
+      \strng{authorfullhash}{f85d68e0e92c94ccb32afb196ff0ac02}
+      \strng{authorfullhashraw}{f85d68e0e92c94ccb32afb196ff0ac02}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Aufgerufen am 25.10.2025}
+      \field{title}{Algorithm und Datenstrukturen}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://www.cs.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Informatik/Computational_Cell_Biology/AlDat/Alg2016_06.pdf?utm_source=chatgpt.com
+      \endverb
+      \verb{url}
+      \verb https://www.cs.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Informatik/Computational_Cell_Biology/AlDat/Alg2016_06.pdf?utm_source=chatgpt.com
+      \endverb
+    \endentry
     \entry{bwinf_website}{online}{}{}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
