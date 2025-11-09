@@ -28,8 +28,8 @@
 \contentsline {subsection}{\numberline {5.1}Lösungen der Testfälle}{21}{subsection.5.1}%
 \contentsline {subsubsection}{\numberline {5.1.1}Aufgabe 1: Schmucknachrichten}{21}{subsubsection.5.1.1}%
 \contentsline {subsubsection}{\numberline {5.1.2}Aufgabe 2: Simultane Labyrinthe}{22}{subsubsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.2}Quellcode}{22}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}Aufgabe 1: Schmucknachrichten (gekürzt)}{22}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Aufgabe 2: Simultane Labyrinthe (gekürzt)}{25}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2}gekürzter Quellcode}{22}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Aufgabe 1: Schmucknachrichten}{22}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Aufgabe 2: Simultane Labyrinthe}{25}{subsubsection.5.2.2}%
 \contentsline {subsection}{\numberline {5.3}Quellen}{30}{subsection.5.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

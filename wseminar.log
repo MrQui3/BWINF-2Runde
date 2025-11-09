@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  9 NOV 2025 13:55
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  9 NOV 2025 18:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1078,6 +1078,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 [2]
+Overfull \hbox (14.26373pt too wide) in paragraph at lines 65--75
+\TU/lmr/m/n/12 Die vorliegende Arbeit ist meine Einreichung für die zweite Rund
+e des 43. Bundeswettbewerb-
+ []
+
+
 
 [3]
 File: Schmucknachrichten/pdf_src/simple_tree.pdf Graphic file (type pdf)
@@ -1211,12 +1217,12 @@ File: Simultane Labyrinthe/pdf_src/cost_matrix.pdf Graphic file (type pdf)
 [13
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 409--417
+Underfull \hbox (badness 10000) in paragraph at lines 410--418
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 426--449
+Underfull \hbox (badness 10000) in paragraph at lines 427--450
 
  []
 
@@ -1225,13 +1231,13 @@ File: Simultane Labyrinthe/pdf_src/cost_diagramm.png Graphic file (type bmp)
 
 
 [14]
-Overfull \hbox (11.0327pt too wide) in paragraph at lines 462--464
+Overfull \hbox (11.0327pt too wide) in paragraph at lines 463--465
 \OML/cmm/m/it/12 cost[]obj:create[]cost[]matrix\OT1/cmr/m/n/12 ()$ \TU/lmr/m/n/
 12 aufgerufen. Das Cost_Matrix_Generator-Objekt bekommt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 462--464
+Underfull \hbox (badness 10000) in paragraph at lines 463--465
 
  []
 
@@ -1244,24 +1250,24 @@ File: Simultane Labyrinthe/pdf_src/solving_diagramm.png Graphic file (type bmp)
 File: Simultane Labyrinthe/pdf_src/move_diagramm.png Graphic file (type bmp)
 <Simultane Labyrinthe/pdf_src/move_diagramm.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 498--505
+Underfull \hbox (badness 10000) in paragraph at lines 499--506
 
  []
 
 
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 509--512
+Underfull \hbox (badness 10000) in paragraph at lines 510--513
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--529
+Underfull \hbox (badness 10000) in paragraph at lines 523--530
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--529
+Underfull \hbox (badness 10000) in paragraph at lines 523--530
 
  []
 
@@ -1269,7 +1275,7 @@ File: Simultane Labyrinthe/pdf_src/plotting_schritte_1.pdf Graphic file (type p
 df)
 <use Simultane Labyrinthe/pdf_src/plotting_schritte_1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 532--545
+Underfull \hbox (badness 10000) in paragraph at lines 533--546
 
  []
 
@@ -1280,7 +1286,7 @@ File: Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf Graphic file (type p
 df)
 <use Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--562
+Underfull \hbox (badness 10000) in paragraph at lines 547--563
 
  []
 
@@ -1319,7 +1325,7 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 [28]
 
 [29]
-Overfull \hbox (8.44337pt too wide) in paragraph at lines 1007--1007
+Overfull \hbox (8.44337pt too wide) in paragraph at lines 1008--1008
 [][][][][][][][][][][][] [][] [][][][][][][][][][][][][][][][][][][][][][] [] [
 ][][][][][][][][] [] [][][][][][][][][][] [] [][][][][][][][][][][][][] []
  []
@@ -1342,7 +1348,7 @@ Package logreq Info: Writing requests to 'wseminar.run.xml'.
 Here is how much of TeX's memory you used:
  28767 strings out of 408640
  571476 string characters out of 5749145
- 1939568 words of memory out of 5000000
+ 1939569 words of memory out of 5000000
  51511 multiletter control sequences out of 15000+600000
  567121 words of font info for 71 fonts, out of 8000000 for 9000
  1350 hyphenation exceptions out of 8191

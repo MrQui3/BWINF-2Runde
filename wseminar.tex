@@ -62,7 +62,7 @@
 \vspace{0.5cm}
 
 \section{Einleitung}
-Die vorliegende Arbeit ist meine Einreichung für die zweite Runde des 43. Bundeswettbewerb Informatik.
+Die vorliegende Arbeit ist meine Einreichung für die zweite Runde des 43. Bundeswettbewerb-Informatik.
 Es sind zwei Aufgaben zu bearbeiten, die jeweils ein Problem beschreiben.
 Für jedes Problem soll ein Algorithmus entwickelt werden, mit dem sich dieses lösen lässt.
 Anschließend muss der Algorithmus auf verschiedene Testfälle angewandt werden, damit die Korrektoren die Richtigkeit und die Genauigkeit beurteilen können.
@@ -85,7 +85,7 @@ Im Gegensatz dazu ist der Code \{0, 01, 11\} nicht präfixfrei, weil \enquote{0}
 Zusätzlich wird in dieser Aufgabe zwischen zwei Varianten unterschieden.
 In der ersten Teilaufgabe haben alle Perlen denselben Durchmesser, 
 während in der zweiten Teilaufgabe die Perlen unterschiedliche Durchmesser besitzen.\cite{bwinf_aufgabe}\\
-Im Folgenden wird der Begriff Perlen durch den allgemeineren Begriff Symbole ersetzt.
+Im Folgenden wird der Begriff Perlen durch den allgemeineren Begriff Symbole ersetzt und die Durchmesser der Perlen durch den Begriff der Kosten der Symbole.
 \subsection{Theoretische Erklärung des Algorithmus}
 \subsubsection{Betrachtung von Symbolen mit gleichen Kosten}
 In meiner Arbeit gilt für die Kosten der codierten Nachricht, solange alle Symbole die gleichen Kosten haben:
@@ -127,7 +127,7 @@ Daher ergibt sich $p_1 \geq p_2 \geq p_3 ... \geq p_i$ und $n_1 \leq n_2 \leq n_
 Zu finden ist also ein Baum, der basierend auf den Häufigkeiten der Buchstaben seine Blätter so auf seine Ebenen verteilt, dass die Länge der codierten Nachricht nach Gleichung \eqref{equation:simple_kostenberechnung} möglichst gering ist. 
 Dabei muss jeder innere Knoten mindestens zwei Kinder haben, da ein innerer Knoten mit nur einem Kind die Zweige des Baums verlängert, ohne einen Vorteil zu bringen.\\
 \\
-Zu Beginn des Algorithmus wird ein balancierter Baum erstellt, der so viele Blätter wie Buchstaben hat. (vgl. Abbildung \ref{fig:balancierter_Baum}) 
+Zu Beginn des Algorithmus wird ein balancierter Baum erstellt, der so viele Blätter wie Buchstaben hat (vgl. Abbildung \ref{fig:balancierter_Baum}).
 Jedes Blatt wird von links nach rechts in aufsteigender Reihenfolge der Häufigkeit mit einem Buchstaben belegt, und die Gesamtkosten des Baums werden nach Formel \eqref{equation:simple_kostenberechnung} berechnet. 
 Dabei ergeben sich deutlich höhere Kosten für die rechten Buchstaben im Baum im Vergleich zu den linken, da alle Blätter auf derselben Ebene sind, jedoch die Häufigkeit der Buchstaben auf der rechten Seite größer ist.\\
 Um dies auszugleichen, wird der Buchstabe mit den höchsten Kosten eine Ebene nach oben verschoben,
@@ -198,12 +198,12 @@ Diese werden auch in der Literatur als \textit{lopsided tree}\cite[S. 4]{golin19
  \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/lopsided_tree.pdf}
-  \caption{lopsided tree: Perlendurchmesser: (1; 1; 2) }
+  \caption{lopsided tree: Kosten der Symbole: (1; 1; 2) }
   \label{fig:lopsided tree}
 \end{figure}
 In diesem Fall gilt weiterhin, jeder innere Knoten muss mindestens zwei Kinder haben. 
 Bei dieser Art von Bäumen hat jedoch nicht der äußerste rechte Knoten die geringsten Kosten, sondern der oberste.
-Der Algorithmus bleibt unverändert, d.h. zunächst wird ein Baum erstellt, in dem alle Blätter ungefähr die gleichen Kosten haben. 
+Der Algorithmus bleibt unverändert, dass heißt zunächst wird ein Baum erstellt, in dem alle Blätter ungefähr die gleichen Kosten haben. 
 Anschließend wird der Buchstabe mit den höchsten Kosten nach oben verschoben, während der Baum unten erweitert wird.
 Dies geschieht solange, bis kein Blatt mehr eingefügt werden kann und der beste Baum ausgegeben wird.\\
 Wenn die Kosten aller Symbole gleich groß sind, gilt: 
@@ -232,7 +232,7 @@ Die Methode $create\_tree$ bekommt über den Aufruf $get\_all\_possible\_costs()
 Das Blatt mit den geringsten Kosten wird dem Baum über den Aufruf $insert\_new\_node(obj)$ hinzugefügt.
 Falls der Elternknoten des neuen Blatts selbst noch ein Blatt ist, entsprechen die Kosten des neuen Blatts den kombinierten Kosten für die ersten beiden Blätter.
 Das liegt daran, dass jeder innere Knoten mindestens zwei Kinder haben muss – daher stellen diese Kosten die effektiv neu entstehenden Kosten für den Baum dar.
-Das geschieht solange, bis der Baum genauso viele Blätter hat, wie es Buchstaben gibt. Die Anzahl der Blättern kann mit der Methode $get\_size()$ ermittelt werden.\\
+Das geschieht solange, bis der Baum genauso viele Blätter hat, wie es Buchstaben gibt. Die Anzahl der Blätter kann mit der Methode $get\_size()$ ermittelt werden.\\
 \begin{lstlisting}[caption={\texttt{get\_all\_possible\_costs}}, label={lst:get_all_pssible_costs}]
   def get_all_possible_costs(self) -> dict:
 \end{lstlisting}
@@ -254,7 +254,7 @@ Sobald ein balancierter Baum erstellt wurde, muss dieser zum ausgearteten Baum u
 \begin{lstlisting}[caption={\texttt{find\_best\_tree}}, label={lst:find_best_tree}]
   def find_best_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
-Die Methode $find\_best\_tree$ versucht, den übergebenen Baum so lange zu permutiert, bis alle Blätter als $protected$ markiert sind und keine Blätter mehr hinzugefügt werden können.
+Die Methode $find\_best\_tree$ versucht, den übergebenen Baum so lange zu permutieren, bis alle Blätter als $protected$ markiert sind und keine Blätter mehr hinzugefügt werden können.
 Dazu wird der Iterationsschritt über den Aufruf $improve\_tree(root)$ wiederholt und mit der Methode $get\_tree\_cost(root)$ werden jeweils die neuen Kosten des Baums berechnet.
 Wenn die Kosten ein neues Minimum sind, wird der aktuelle Baum als bester Zwischenstand gespeichert.
 Wenn dem Baum keine neuen Blätter hinzugefügt werden können, wird der bis dahin beste gefundene Baum zurückgegeben.
@@ -303,7 +303,7 @@ Daraus folgt, dass die maximale Anzahl an inneren Knoten erreicht wird, wenn der
   \text{innere Knoten} = w - 1
 \end{equation}
 berechnet werden kann.\cite[Folie 5]{binarbaum_innere_Knoten}
-Dabei ist $w$ die Anzahl der Blättern.
+Dabei ist $w$ die Anzahl der Blätter.
 Auf jeder Ebene existiert ein richtiger innerer Knoten.
 Die Anzahl der Ebenen und somit der richtigen Knoten kann minimal mit 
 \begin{equation}
@@ -358,7 +358,8 @@ die dritte ist dessen Erweiterung von Mordecai J. Golin und Günter Rote.\cite{b
 Alle drei Ansätze waren mir bei Abgabe meiner Arbeit bekannt. 
 Trotzdem entschied ich mich dagegen, eines dieser Verfahren zu implementieren, vor allem aufgrund deren hoher Laufzeit, 
 und entwickelte stattdessen mein eigenes Verfahren.
-Mein Algorithmus hat dabei für die Testfälle eine durchschnittliche Abweichung von 1,27\% vom Idealergebnis, besitzt jedoch im Gegensatz zu den Algorithmen in der Musterlösung eine sehr viel kürzere Laufzeit \cite{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe1}).
+Mein Algorithmus hat dabei für die Testfälle eine durchschnittliche Abweichung von 1,27\% vom Idealergebnis.
+Jedoch im Gegensatz zu den Algorithmen in der Musterlösung besitzt meine Lösung eine sehr viel kürzere Laufzeit \cite{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe1}).
 Für mein gutes Ergebnis erhielt ich daher einen Pluspunkt und erreichte insgesamt 21 Punkte für diese Aufgabe.
 
 \clearpage
@@ -371,7 +372,7 @@ Die dritte Person gibt beiden jeweils immer dieselbe nächste Schrittanweisung.
 Wenn der nächste Schritt in einem Labyrinth durch eine Wand blockiert ist, bleibt die Person stehen.
 Gesucht ist eine möglichst kurze Abfolge von Schritten, die beide Labyrinthe mit denselben Befehlen löst.
 Die ursprüngliche Aufgabe enthält Labyrinthe ohne Gruben. In der zweiten Teilaufgabe werden die Labyrinthe um diese erweitert.
-Wenn ein Spieler in eine Grube fällt, wird seine Position auf die Startposition (0, 0) zurückgesetzt. \cite{bwinf_aufgabe}
+Wenn ein Spieler in eine Grube fällt, wird seine Position auf die Startposition (0, 0) zurückgesetzt.\cite{bwinf_aufgabe}
 
 \subsection{Theoretische Erklärung des Algorithmus}
 \subsubsection{Erstellung der Matrix}
@@ -394,7 +395,7 @@ Die gespeicherte Richtung zeigt den optimalen Folgeschritt zum Ziel und ist in T
   \label{tab:richtungscodierung}
 \end{table}
 Der Kostenwert $cp$ gibt an, wie viele Schritte bis zum Ziel benötigt werden.\\
-In Abbildung \ref{fig:lybnmatrix} ist ein Beispiel Labyrinth mit dazugehöriger Matrix abgebildet.
+In Abbildung \ref{fig:lybnmatrix} ist ein Beispiel eines Labyrinths mit dazugehöriger Matrix abgebildet.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\textwidth]{Simultane Labyrinthe/pdf_src/cost_matrix.pdf}
@@ -402,7 +403,7 @@ In Abbildung \ref{fig:lybnmatrix} ist ein Beispiel Labyrinth mit dazugehöriger 
   \label{fig:lybnmatrix}
 \end{figure}
 
-Zum Erstellen durchläuft der Algorithmus rückwärts ausgehend vom Endpunkt alle erreichbaren Nachbarpositionen.
+Zum Erstellen der Matrix durchläuft der Algorithmus rückwärts ausgehend vom Endpunkt alle erreichbaren Nachbarpositionen.
 Für jeden Nachbarn wird in der Matrix ein Kostenwert eingetragen, der um eins höher ist als der Kostenwert des aktuellen Punkts, sowie die Richtung, aus der der Nachbar erreicht wurde.
 
 \subsubsection{Lösen der Labyrinthe}
@@ -536,7 +537,7 @@ Der hier vorgestellte Ansatz garantiert daher nicht unbedingt den optimalen Lös
 Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, während andere nur kurz betrachtet werden.
 \\
 \\
-Wie oben erwähnt beeinflusst die Begrenzung $l$ die Laufzeit und die Genauigkeit des Algorithmus stark.
+Wie oben erwähnt, beeinflusst die Begrenzung $l$ die Laufzeit und die Genauigkeit des Algorithmus stark.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/plotting_schritte_1.pdf}
@@ -597,7 +598,7 @@ Die zweite Strategie basiert auf dem A-Star Algorithmus mit Priorty Queue.\cite{
 Diese Vorgehensweise ähnelt stark meiner eigenen Idee. 
 Wie in meiner Kostenmatrix wird auch hier für jede Position die Distanz zum Ziel berechnet.
 Der wesentliche Unterschied liegt vor allem in dem effizienteren Warteschlagenmodell der Musterlösung.\cite{bwinf_loesung}\\
-Insgesamt lagen meine Ergebnisse, abgesehen von Testfall $labyrinthe8.txt$ \cite{bwinf_website}, bei 1,1\% Abweichung vom Optimalwert.\cite{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe2})
+Insgesamt lagen meine Ergebnisse, abgesehen von Testfall $labyrinthe8.txt$ \cite{bwinf_website}, bei 1,1\% Abweichung vom Optimalwert\cite{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe2}).
 Bei Testfall $labyrinthe8.txt$ fiel mein Ergebnis etwa 3-mal so groß aus, weshalb mir 2 Punkte im Kriterium \enquote{Verfahren mit guten Ergebnissen} abgezogen wurden.
 Außerdem war meine Überlegung zur Laufzeit des Verfahrens bei Abgabe des Wettbewerbs nicht ausreichend detailliert, was zu einem weiteren Punktabzug führte.\\
 Für die Aufgabe erhielt ich 17 von 20 Punnkten.
@@ -606,7 +607,7 @@ Für die Aufgabe erhielt ich 17 von 20 Punnkten.
 Insgesamt konnte ich mit 38 von 40 Punkten den zweiten Platz erreichen und gehörte damit zu den 60 besten Teilnehmenden von über 950 zugelassenen Teilnehmern.
 Aufgrund dieser Leistung wurde ich für die Internationale Informatik-Olympiade vorgeschlagen und nehme derzeit an deren Trainingsprogramm teil.
 Durch diese Arbeit sammelte ich erste Erfahrungen in der Laufzeitanalyse eigener Algorithmen und im Umgang mit aktuellen wissenschaftlichen Texten.
-Aus meiner Erfahrung erweist sich der Wettbewerb insgesamt als gute Möglichkeit, Schüler an wissenschaftliches Arbeiten und algorithmisches Denken heranzuführen.
+Aus meiner Erfahrung erweist sich der Wettbewerb insgesamt als gute Möglichkeit, Schüler an wissenschaftliches Arbeiten und algorithmisches Denken heranzuführen, beispielsweise anhand des Beweises eines NP-harten Problems.
 
  \clearpage
 
@@ -667,9 +668,9 @@ Die Lösungen können in Tabelle \ref{tab:lo_aufgabe2} eingesehen werden.
   \caption{Lösungen der Aufgabe 2}
   \label{tab:lo_aufgabe2}
 \end{table}
-\subsection{Quellcode}
+\subsection{gekürzter Quellcode}
 
-\subsubsection{Aufgabe 1: Schmucknachrichten (gekürzt)}
+\subsubsection{Aufgabe 1: Schmucknachrichten}
 \begin{lstlisting}[language=Python, breaklines=true]
 class TreeNode:
 
@@ -801,7 +802,7 @@ def main():
   output(root)
 
 \end{lstlisting}
-\subsubsection{Aufgabe 2: Simultane Labyrinthe (gekürzt)}
+\subsubsection{Aufgabe 2: Simultane Labyrinthe}
 \begin{lstlisting}[language=Python, breaklines=true]
 class Cost_Matrix_Generator:
    def write_cost(self, start_x, start_y):

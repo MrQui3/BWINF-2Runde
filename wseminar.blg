@@ -1,18 +1,18 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is 'wseminar.blg'
-[89] biber-MSWIN64:340> INFO - === 
-[124] Biber.pm:420> INFO - Reading 'wseminar.bcf'
-[208] Biber.pm:994> INFO - Found 8 citekeys in bib section 0
-[217] Biber.pm:4463> INFO - Processing section 0
-[227] Biber.pm:4654> INFO - Looking for bibtex file 'literatur.bib' for section 0
-[287] bibtex.pm:1713> INFO - LaTeX decoding ...
-[297] bibtex.pm:1519> INFO - Found BibTeX data source 'literatur.bib'
-[360] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[360] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[360] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'de-DE'
-[361] Biber.pm:4289> INFO - No sort tailoring available for locale 'de-DE'
-[368] bbl.pm:676> INFO - Writing 'wseminar.bbl' with encoding 'UTF-8'
-[372] bbl.pm:779> INFO - Output to wseminar.bbl
-[373] Biber.pm:131> WARN - legacy month field 'September' in entry 'golin1998prefixfree' is not an integer - this will probably not sort properly.
-[373] Biber.pm:131> WARN - legacy month field 'January' in entry 'karp1961minimum' is not an integer - this will probably not sort properly.
-[374] Biber.pm:133> INFO - WARNINGS: 2
+[85] biber-MSWIN64:340> INFO - === 
+[128] Biber.pm:420> INFO - Reading 'wseminar.bcf'
+[219] Biber.pm:994> INFO - Found 8 citekeys in bib section 0
+[229] Biber.pm:4463> INFO - Processing section 0
+[239] Biber.pm:4654> INFO - Looking for bibtex file 'literatur.bib' for section 0
+[295] bibtex.pm:1713> INFO - LaTeX decoding ...
+[307] bibtex.pm:1519> INFO - Found BibTeX data source 'literatur.bib'
+[370] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[370] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[370] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'de-DE'
+[370] Biber.pm:4289> INFO - No sort tailoring available for locale 'de-DE'
+[381] bbl.pm:676> INFO - Writing 'wseminar.bbl' with encoding 'UTF-8'
+[383] bbl.pm:779> INFO - Output to wseminar.bbl
+[384] Biber.pm:131> WARN - legacy month field 'September' in entry 'golin1998prefixfree' is not an integer - this will probably not sort properly.
+[384] Biber.pm:131> WARN - legacy month field 'January' in entry 'karp1961minimum' is not an integer - this will probably not sort properly.
+[384] Biber.pm:133> INFO - WARNINGS: 2
