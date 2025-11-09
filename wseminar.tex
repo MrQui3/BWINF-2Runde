@@ -14,6 +14,7 @@
 \usepackage{fontspec}
 
 \usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}          % Keine Einrückung
 
 % Für Bilder
 \usepackage{graphicx}
@@ -85,7 +86,7 @@ Im Gegensatz dazu ist der Code \{0, 01, 11\} nicht präfixfrei, weil \enquote{0}
 Zusätzlich wird in dieser Aufgabe zwischen zwei Varianten unterschieden.
 In der ersten Teilaufgabe haben alle Perlen denselben Durchmesser, 
 während in der zweiten Teilaufgabe die Perlen unterschiedliche Durchmesser besitzen.\cite{bwinf_aufgabe}\\
-Im Folgenden wird der Begriff Perlen durch den allgemineren Begriff Symbole ersetzt.
+Im Folgenden wird der Begriff Perlen durch den allgemeineren Begriff Symbole ersetzt.
 \subsection{Theoretische Erklärung des Algorithmus}
 \subsubsection{Betrachtung von Symbolen mit gleichen Kosten}
 In meiner Arbeit gilt für die Kosten der codierten Nachricht, solange alle Symbole die gleichen Kosten haben:
@@ -121,7 +122,7 @@ Daher kann das Problem auf das Finden eines optimalen Baumes reduziert werden.\\
 \end{figure}
 \\
 Um einen möglichst kleinen präfixfreien Code zu erstellen, muss der Buchstabe, der am häufigsten vorkommt, ganz oben eingeordnet werden und die nächsten Buchstaben dann in absteigender Reihenfolge. 
-In dem in Abbildung \ref{fig:simple tree} dargestellten Baum hat c den kürzesten code und sollte damit optimalerweise der häufigste Buchstabe sein.\\
+In dem in Abbildung \ref{fig:simple tree} dargestellten Baum hat c den kürzesten Code und sollte damit optimalerweise der häufigste Buchstabe sein.\\
 \\
 Daher ergibt sich $p_1 \geq p_2 \geq p_3 ... \geq p_i$ und $n_1 \leq n_2 \leq n_3 ... \leq n_i$\\
 \\
@@ -256,7 +257,7 @@ Sobald ein balancierter Baum erstellt wurde, muss dieser zum ausgearteten Baum u
   def find_best_tree(root: TreeNode) -> TreeNode:
 \end{lstlisting}
 Die Methode $find\_best\_tree$ versucht, den übergebenen Baum so lange zu permutiert, bis alle Blätter als $protected$ markiert sind und keine Blätter mehr hinzugefügt werden können.
-Dazu wird der Iterationsschritt über den Aufruf $improve\_tree(root)$ wiederholt und mit der Methode $get\_tree\_cost(root)$  werden jeweils die neuen Kosten des Baums berechnet.
+Dazu wird der Iterationsschritt über den Aufruf $improve\_tree(root)$ wiederholt und mit der Methode $get\_tree\_cost(root)$ werden jeweils die neuen Kosten des Baums berechnet.
 Wenn die Kosten ein neues Minimum sind, wird der aktuelle Baum als bester Zwischenstand gespeichert.
 Wenn dem Baum keine neuen Blätter hinzugefügt werden können, wird der bis dahin beste gefundene Baum zurückgegeben.
 \vspace{2em}
@@ -266,7 +267,7 @@ Wenn dem Baum keine neuen Blätter hinzugefügt werden können, wird der bis dah
 Zu Beginn holt sich die Methode $improve\_tree$ alle Blätter im Baum über den Aufruf $get\_leaves()$.
 Diese Liste wird dann aufsteigend nach den Kosten jedes Blatts sortiert. 
 Der Elternknoten des Blatts mit den höchsten Kosten wird daraufhin selbst zu einem Blatt und verliert alle Kinder. 
-Um die fehlenden Blätter wieder hinzuzufügen, wird dannach die Methode \ref{lst:create_tree}  ($create\_tree$) aufgerufen.\\
+Um die fehlenden Blätter wieder hinzuzufügen, wird danach die Methode \ref{lst:create_tree}  ($create\_tree$) aufgerufen.\\
 \\\\
 \begin{lstlisting}[caption={\texttt{get\_tree\_cost}}, label={lst:calculate_tree}]
   def get_tree_cost(root: TreeNode) -> int:
@@ -289,7 +290,7 @@ Die Liste der Blätter wird dann nach den Kosten aufsteigend sortiert und jedes 
 Der Algorithmus endet, wenn keine Knoten mehr eingefügt werden können.
 Dies ist spätestens gegeben, wenn der Baum maximal ausgeartet ist (Abbildung \ref{fig:baum_fertig}).
 Allgemein kann jeder Knoten maximal $r-1$ mal verschoben werden, bis er komplett auf der linken Seite ist. 
-Dabei ist $r$ die Anzahl der verschiedenen Symbolen, deren Kosten hierbei unerheblich sind.
+Dabei ist $r$ die Anzahl der verschiedenen Symbole, deren Kosten hierbei unerheblich sind.
 Daraus folgt, dass die maximale Anzahl an Iterationen bis zum maximal ausgearteten Baum  
 \begin{equation}
   I \leq (r-1)\cdot\text{Anzahl falscher Knoten}
@@ -326,7 +327,7 @@ In Abbildung \ref{fig:iteration_tree} ist dargestellt, wie die Länge der codier
 Das Minimum wird bereits in der ersten Hälfte der Iterationen erreicht.
 Das zeigt gut, dass der Algorithmus kein Optimierungs-Algorithmus ist, sondern von einem Maximum zum anderen Maximum geht.
 \subsubsection{Stand der Forschung}
-Die vorliegende Fragestellung ist seit den 60er-Jahren des letzten Jahrhundert in der theoretischen Informatik bekannt. 
+Die vorliegende Fragestellung ist seit den 60er-Jahren des letzten Jahrhunderts in der theoretischen Informatik bekannt. 
 Dabei lieferte Huffman eine Lösung für den Spezialfall von zwei Quellsymbolen.\cite[S. 39]{schulz2018codierungstheorie}
 \\
 \\
@@ -371,7 +372,7 @@ Zwei Personen starten jeweils in ihrem Labyrinth bei der Position (0, 0) und mü
 Die dritte Person gibt beiden jeweils immer dieselbe nächste Schrittanweisung. 
 Wenn der nächste Schritt in einem Labyrinth durch eine Wand blockiert ist, bleibt die Person stehen.
 Gesucht ist eine möglichst kurze Abfolge von Schritten, die beide Labyrinthe mit denselben Befehlen löst.
-Die ursprüngliche Aufgabe enthält Labyrinthe ohne Gruben. In der zweite Teilaufgabe werden die Labyrinthe um diese erweitert.
+Die ursprüngliche Aufgabe enthält Labyrinthe ohne Gruben. In der zweiten Teilaufgabe werden die Labyrinthe um diese erweitert.
 Wenn ein Spieler in eine Grube fällt, wird seine Position auf die Startposition (0, 0) zurückgesetzt. \cite{bwinf_aufgabe}
 
 \subsection{Theoretische Erklärung des Algorithmus}
@@ -396,7 +397,7 @@ Die gespeicherte Richtung zeigt den optimalen Folgeschritt zum Ziel und ist in T
 \end{table}
 \\
 Der Kostenwert $cp$ gibt an, wie viele Schritte bis zum Ziel benötigt werden.\\
-In Abbildung \ref{fig:lybnmatrix} ist ein beispiel Labyrinth mit dazugehöriger Matrix abgebildet.
+In Abbildung \ref{fig:lybnmatrix} ist ein Beispiel Labyrinth mit dazugehöriger Matrix abgebildet.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\textwidth]{Simultane Labyrinthe/pdf_src/cost_matrix.pdf}
@@ -404,12 +405,12 @@ In Abbildung \ref{fig:lybnmatrix} ist ein beispiel Labyrinth mit dazugehöriger 
   \label{fig:lybnmatrix}
 \end{figure}
 
-Zum Erstellen durchläuft der Algorithmus zurückwärts ausgehend vom Endpunkt alle erreichbaren Nachbarpositionen.
+Zum Erstellen durchläuft der Algorithmus rückwärts ausgehend vom Endpunkt alle erreichbaren Nachbarpositionen.
 Für jeden Nachbarn wird in der Matrix ein Kostenwert eingetragen, der um eins höher ist als der Kostenwert des aktuellen Punkts, sowie die Richtung, aus der der Nachbar erreicht wurde.
 
 \subsubsection{Lösen der Labyrinthe}
-Der Algorithmus basiert auf einer Liste an den aktuelle besten Wegen.
-In jedem Iterationsschritt wird der momentan besten Weg um einen Schritt erweitert, 
+Der Algorithmus basiert auf einer Liste der aktuellen besten Wege.
+In jedem Iterationsschritt wird der momentan beste Weg um einen Schritt erweitert, 
 indem in den Matrizen geprüft wird, welchen Schritt die beiden Labyrinthe für ihre jeweilige Position vorschlagen.
 Dieser Schritt wird an die bisherige Schrittfolge angehängt.
 Dabei entstehen in der Regel zwei unterschiedliche Wege, die zur Liste der bisherigen Wege hinzugefügt werden, 
@@ -500,7 +501,7 @@ Die Wege werden mit der Klasse $Move$ dargestellt.
 \end{figure}
 \\
 Das Attribut $cost$ beschreibt die aufsummierten Kosten der beiden aktuellen Positionen basierend auf den Werten aus den Kostmatrizen.
-Das Attribut $weight$(entspciht $c_\text{w}$) wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
+Das Attribut $weight$(entspricht $c_\text{w}$) wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
 \\
 Zu Beginn wird ein $Solving$-Objekt initialisiert und eine leere Liste $moves\_stack$ angelegt, in der alle aktuellen Wege gespeichert werden.
 Anschließend wird ein erstes $Move$-Objekt erzeugt, dessen Startposition ((0, 0), (0, 0)) ist und dessen moves leer sind.
@@ -605,13 +606,13 @@ Diese Vorgehensweise ähnelt stark meiner eigenen Idee.
 Wie in meiner Kostenmatrix wird auch hier für jede Position die Distanz zum Ziel berechnet.
 Der wesentliche Unterschied liegt vor allem in dem effizienteren Warteschlagenmodell der Musterlösung.\cite{bwinf_loesung}\\
 Insgesamt lagen meine Ergebnisse, abgesehen von Testfall $labyrinthe8.txt$ \cite{bwinf_website}, bei 1,1\% Abweichung vom Optimalwert.\cite{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe2})
-Bei Testfall $labyrinthe8.txt$ fiel mein Ergebnis etwa 3-mal so groß aus, weshalb mir 2 Punkte im Kriterium \enquote{Verfahren mit guten Ergebnisse} abgezogen wurden.
+Bei Testfall $labyrinthe8.txt$ fiel mein Ergebnis etwa 3-mal so groß aus, weshalb mir 2 Punkte im Kriterium \enquote{Verfahren mit guten Ergebnissen} abgezogen wurden.
 Außerdem war meine Überlegung zur Laufzeit des Verfahrens bei Abgabe des Wettbewerbs nicht ausreichend detailliert, was zu einem weiteren Punktabzug führte.\\
 Für die Aufgabe erhielt ich 17 von 20 Punnkten.
 
 \section{Fazit}
 Insgesamt konnte ich mit 38 von 40 Punkten den zweiten Platz erreichen und gehörte damit zu den 60 besten Teilnehmenden von über 950 zugelassenen Teilnehmern.
-Aufgrund dieser Leistung wurde ich für die Internationale Informatik-Olympiade vorgeschlagen und nehme derzeit an derren Trainingsprogramm teil.
+Aufgrund dieser Leistung wurde ich für die Internationale Informatik-Olympiade vorgeschlagen und nehme derzeit an deren Trainingsprogramm teil.
 Durch diese Arbeit sammelte ich erste Erfahrungen in der Laufzeitanalyse eigener Algorithmen und im Umgang mit aktuellen wissenschaftlichen Texten.
 Aus meiner Erfahrung erweist sich der Wettbewerb insgesamt als gute Möglichkeit, Schüler an wissenschaftliches Arbeiten und algorithmisches Denken heranzuführen.
 
@@ -627,7 +628,7 @@ Im Folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.
 \end{figure}
 \subsection{Lösungen der Testfälle}
 Die folgenden Ergebnisse zeigen meine Resultate der durchgeführten Testfälle im Vergleich zur Musterlösung.
-Die Testfälle stammen aus Quelle der \cite{bwinf_website}, die optimalen Ergebnisse aus Quelle der \cite{bwinf_loesung}.
+Die Testfälle stammen aus der Quelle der \cite{bwinf_website}, die optimalen Ergebnisse aus der Quelle der \cite{bwinf_loesung}.
 \subsubsection{Aufgabe 1: Schmucknachrichten}
 \label{subsubsec:lösungen_aufgabe1}
 Die Lösungen können in Tabelle \ref{tab:lo_aufgabe1} eingesehen werden.

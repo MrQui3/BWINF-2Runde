@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  8 NOV 2025 17:43
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  9 NOV 2025 13:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -844,26 +844,26 @@ Package csquotes Info: Redefining alias 'default' -> 'ngerman'.
  (wseminar.aux)
 \openout1 = `wseminar.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -906,57 +906,57 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 50.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 50.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 50.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 50.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 50.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 50.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 50.
-LaTeX Font Info:    Redeclaring math accent \check on input line 50.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 50.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 50.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 50.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 50.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 51.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 51.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 51.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 51.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 51.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 51.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 51.
+LaTeX Font Info:    Redeclaring math accent \check on input line 51.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 51.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 51.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 51.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 51.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 51.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 50.
+(Font)              `operators' in the math version `normal' on input line 51.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 50.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 51.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 50.
+(Font)              `operators' in the math version `bold' on input line 51.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 50.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 51.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 50.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 50.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 50.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 50.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 50.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 51.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 50.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 50.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 50.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 50.
-Package hyperref Info: Link coloring OFF on input line 50.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 51.
+Package hyperref Info: Link coloring OFF on input line 51.
 (wseminar.out) (wseminar.out)
 \@outlinefile=\write4
 \openout4 = `wseminar.out'.
@@ -968,7 +968,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 50.
+(scrartcl)           before \begin{document} on input line 51.
 
 (C:\Program Files\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
@@ -1003,10 +1003,10 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'wseminar.bbl' found.
  (wseminar.bbl)
-Package biblatex Info: Reference section=0 on input line 50.
-Package biblatex Info: Reference segment=0 on input line 50.
+Package biblatex Info: Reference section=0 on input line 51.
+Package biblatex Info: Reference segment=0 on input line 51.
 \c@lstlisting=\count460
-Package tocbasic Info: setting babel extension for `lol' on input line 50.
+Package tocbasic Info: setting babel extension for `lol' on input line 51.
 \scr@dte@lstlisting@maxnumwidth=\skip94
 
 (C:\Program Files\MiKTeX\tex/latex/pdflscape\pdflscape.sty
@@ -1083,22 +1083,22 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: Schmucknachrichten/pdf_src/simple_tree.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/simple_tree.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--148
+Underfull \hbox (badness 10000) in paragraph at lines 100--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--148
+Underfull \hbox (badness 10000) in paragraph at lines 100--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--148
+Underfull \hbox (badness 10000) in paragraph at lines 100--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--148
+Underfull \hbox (badness 10000) in paragraph at lines 100--149
 
  []
 
@@ -1118,7 +1118,7 @@ File: Schmucknachrichten/pdf_src/trans_3.pdf Graphic file (type pdf)
 File: Schmucknachrichten/pdf_src/trans_4.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/trans_4.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--178
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
 [][][]\TU/lmr/m/n/12 Ausgearteter
  []
 
@@ -1128,7 +1128,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 178--178
 File: Schmucknachrichten/pdf_src/lopsided_tree.pdf Graphic file (type pdf)
 <use Schmucknachrichten/pdf_src/lopsided_tree.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--211
+Underfull \hbox (badness 10000) in paragraph at lines 193--212
 
  []
 
@@ -1143,29 +1143,29 @@ File: Schmucknachrichten/pdf_src/treenode_digramm.png Graphic file (type bmp)
 
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 232--237
+Underfull \hbox (badness 10000) in paragraph at lines 233--238
 
  []
 
 
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 247--251
+Underfull \hbox (badness 10000) in paragraph at lines 248--252
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--271
+Underfull \hbox (badness 10000) in paragraph at lines 267--272
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--271
+Underfull \hbox (badness 10000) in paragraph at lines 267--272
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--271
+Underfull \hbox (badness 10000) in paragraph at lines 267--272
 
  []
 
@@ -1180,12 +1180,19 @@ File: Schmucknachrichten/pdf_src/genauigkeit_iterationen.pdf Graphic file (type
 
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 329--345
+Overfull \hbox (23.72227pt too wide) in paragraph at lines 326--329
+[]\TU/lmr/m/n/12 In Abbildung []9[] ist dargestellt, wie die Länge der codierte
+n Nachricht des Testfalls $\OML/cmm/m/it/12 schmuck\OT1/cmr/m/n/12 9\OML/cmm/m/
+it/12 :txt$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--346
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--345
+Underfull \hbox (badness 10000) in paragraph at lines 330--346
 
  []
 
@@ -1201,25 +1208,25 @@ File: Simultane Labyrinthe/pdf_src/cost_matrix.pdf Graphic file (type pdf)
 [13
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 411--419
+Underfull \hbox (badness 10000) in paragraph at lines 412--420
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 428--451
+Underfull \hbox (badness 10000) in paragraph at lines 429--452
 
  []
 
 File: Simultane Labyrinthe/pdf_src/cost_diagramm.png Graphic file (type bmp)
 <Simultane Labyrinthe/pdf_src/cost_diagramm.png>
 
-Overfull \hbox (11.0327pt too wide) in paragraph at lines 457--467
+Overfull \hbox (11.0327pt too wide) in paragraph at lines 458--468
 \OML/cmm/m/it/12 cost[]obj:create[]cost[]matrix\OT1/cmr/m/n/12 ()$ \TU/lmr/m/n/
 12 aufgerufen. Das Cost_Matrix_Generator-Objekt bekommt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 457--467
+Underfull \hbox (badness 10000) in paragraph at lines 458--468
 
  []
 
@@ -1235,24 +1242,24 @@ File: Simultane Labyrinthe/pdf_src/solving_diagramm.png Graphic file (type bmp)
 File: Simultane Labyrinthe/pdf_src/move_diagramm.png Graphic file (type bmp)
 <Simultane Labyrinthe/pdf_src/move_diagramm.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 494--509
+Underfull \hbox (badness 10000) in paragraph at lines 495--510
 
  []
 
 
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 513--516
+Underfull \hbox (badness 10000) in paragraph at lines 514--517
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--533
+Underfull \hbox (badness 10000) in paragraph at lines 527--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--533
+Underfull \hbox (badness 10000) in paragraph at lines 527--534
 
  []
 
@@ -1263,12 +1270,12 @@ File: Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf Graphic file (type p
 df)
 <use Simultane Labyrinthe/pdf_src/plotting_laufzeit_1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 536--567
+Underfull \hbox (badness 10000) in paragraph at lines 537--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 536--567
+Underfull \hbox (badness 10000) in paragraph at lines 537--568
 
  []
 
@@ -1281,7 +1288,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Simultane Labyrinthe/pdf_src/plotting_max_1.pdf Graphic file (type pdf)
 <use Simultane Labyrinthe/pdf_src/plotting_max_1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 575--597
+Underfull \hbox (badness 10000) in paragraph at lines 576--598
 
  []
 
@@ -1317,7 +1324,7 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 [28]
 
 [29]
-Overfull \hbox (8.44337pt too wide) in paragraph at lines 1014--1014
+Overfull \hbox (8.44337pt too wide) in paragraph at lines 1015--1015
 [][][][][][][][][][][][] [][] [][][][][][][][][][][][][][][][][][][][][][] [] [
 ][][][][][][][][] [] [][][][][][][][][][] [] [][][][][][][][][][][][][] []
  []
