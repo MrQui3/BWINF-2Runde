@@ -15,7 +15,6 @@
 
 \usepackage[hidelinks]{hyperref}
 \setlength{\parindent}{0pt}          % Keine Einrückung
-
 % Für Bilder
 \usepackage{graphicx}
 
@@ -114,13 +113,12 @@ Jeder innere Knoten kann dabei maximal so viele Kinder haben, wie es verschieden
 Die Ebene des Blatts entspricht der Länge des Codeworts.\\
 Jeder präfixfreie Code kann in einem Baum dargestellt werden und jeder Baum kann einen präfixfreien Code darstellen.\cite[S. 37]{schulz2018codierungstheorie}
 Daher kann das Problem auf das Finden eines optimalen Baumes reduziert werden.\\
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{Schmucknachrichten/pdf_src/simple_tree.pdf}
   \caption{einfacher Baum}
   \label{fig:simple tree}
 \end{figure}
-\\
 Um einen möglichst kleinen präfixfreien Code zu erstellen, muss der Buchstabe, der am häufigsten vorkommt, ganz oben eingeordnet werden und die nächsten Buchstaben dann in absteigender Reihenfolge. 
 In dem in Abbildung \ref{fig:simple tree} dargestellten Baum hat c den kürzesten Code und sollte damit optimalerweise der häufigste Buchstabe sein.\\
 \\
@@ -147,7 +145,7 @@ Das ist der Fall kurz vor einem maximal ausgearteten Baum (Abbildung \ref{fig:ba
 Der Algorithmus geht also von einem Maximum (maximal ausbalanciert) zum anderen Maximum (maximal ausgeartet).
 Am Ende wird der Baum mit den geringsten Gesamtkosten ausgegeben.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \begin{minipage}{0.49\textwidth}
     \centering
@@ -197,12 +195,12 @@ wobei gilt: \\
 \\
 Aus diesem Grund stellt man nun Bäume nicht nach ihrer Ebene, sondern nach ihren Kosten dar.
 Diese werden auch in der Literatur als \textit{lopsided tree}\cite[S. 4]{golin1998prefixfree} bezeichnet (Abbildung \ref{fig:lopsided tree}).\\
- \begin{figure}[h]
+ \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/lopsided_tree.pdf}
   \caption{lopsided tree: Perlendurchmesser: (1; 1; 2) }
   \label{fig:lopsided tree}
-\end{figure}\\
+\end{figure}
 In diesem Fall gilt weiterhin, jeder innere Knoten muss mindestens zwei Kinder haben. 
 Bei dieser Art von Bäumen hat jedoch nicht der äußerste rechte Knoten die geringsten Kosten, sondern der oberste.
 Der Algorithmus bleibt unverändert, d.h. zunächst wird ein Baum erstellt, in dem alle Blätter ungefähr die gleichen Kosten haben. 
@@ -277,7 +275,7 @@ Die Liste der Blätter wird dann nach den Kosten aufsteigend sortiert und jedes 
 
 
 \subsection{Laufzeitanalyse und Einordnung des Algorithmus}
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{Schmucknachrichten/pdf_src/trans_makiert.pdf}
   \caption{Balancierter Baum, Markierung der richtigen Knoten}
@@ -341,7 +339,7 @@ Diese Art von Algorithmus kann wegen seiner langen Laufzeit nicht für die vorge
 Um eine polynomielle Laufzeit zu erreichen, entwickelten Mordecai J. Golin, Claire Mathieu und Neal E. Young im Jahre 2012 ein Approximationsverfahren.\\
 Dieser Algorithmus basiert auf dem PTAS-Verfahren (Polynomial-time Approximation Scheme), wobei zuerst ein präfixfreier Code bis zu einer bestimmten Tiefe $\tau$ erstellt wird und dann die restlichen Codewörter durch ein Rundungsverfahren ergänzt werden.
 Dabei ist es zentral, dass die Wahrscheinlichkeitsverteilung der zu kodierenden Codewörter möglichst in großen Gruppen mit gleich großer Wahrscheinlichkeit eingeordnet werden kann.\cite{golin2012huffman}
-Im Testfall $schmuck9.txt$ \cite{bwinf_website}ist dies zum Beispiel nicht gegeben, weshalb das Bestimmen des Vorbaums mehr als $9^{24}$ Schritte benötigt.
+Im Testfall $schmuck9.txt$ \cite{bwinf_website} ist dies zum Beispiel nicht gegeben, weshalb das Bestimmen des Vorbaums mehr als $9^{24}$ ($\varepsilon$=0,45; $\tau$=9) Schritte benötigt.
 Somit ist dieses Verfahren für die gewählten Beispiele ebenfalls nicht verwendbar.
 
 \subsubsection{Fazit}
@@ -380,7 +378,7 @@ Wenn ein Spieler in eine Grube fällt, wird seine Position auf die Startposition
 Zu Beginn wird für jedes Labyrinth eine Matrix erstellt (Abbildung \ref{fig:lybnmatrix}),
 in der für jede Position ein Tupel aus einem Kostenwert und einer Richtung gespeichert wird. 
 Die gespeicherte Richtung zeigt den optimalen Folgeschritt zum Ziel und ist in Tabelle \ref{tab:richtungscodierung} dargestellt.
-\begin{table}[h]
+\begin{table}[H]
   \centering
   \begin{tabular}{|c|l|}
       \hline
@@ -395,7 +393,6 @@ Die gespeicherte Richtung zeigt den optimalen Folgeschritt zum Ziel und ist in T
   \caption{Codierung der Richtungen im Labyrinth}
   \label{tab:richtungscodierung}
 \end{table}
-\\
 Der Kostenwert $cp$ gibt an, wie viele Schritte bis zum Ziel benötigt werden.\\
 In Abbildung \ref{fig:lybnmatrix} ist ein Beispiel Labyrinth mit dazugehöriger Matrix abgebildet.
 \begin{figure}[H]
@@ -456,13 +453,12 @@ Daraus folgt, dass die Kosten der Grubenfelder den Kosten der Startpositionen en
 \subsection{Implementierung des Algorithmus}
 \subsubsection{Erstellung der Matrix}
 Zur Erstellung der Matrix wird die Klasse $Cost\_Matrix\_Generator$ benutzt.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/cost_diagramm.png}
   \caption{Klasse Cost\_Matrix\_Generator}
   \label{fig:cost_diagramm}
 \end{figure}
-\\
 Für jedes Labyrinth wird ein Cost\_Matrix\_Generator-Objekt erstellt und die Methode \\$cost\_obj.create\_cost\_matrix()$ aufgerufen. 
 Das Cost\_Matrix\_Generator-Objekt bekommt als Übergabewerte die horizontalen bzw. vertikalen Wände sowie die Gruben und die Größe des Labyrinths.\\
 \begin{lstlisting}[caption={\texttt{create\_cost\_matrix}}, label={lst:create_cost_matrix}]
@@ -493,13 +489,12 @@ Zum Lösen der Labyrinthe wird die Klasse $Solving$ benutzt.
   \label{fig:solving_diagramm}
 \end{figure}
 Die Wege werden mit der Klasse $Move$ dargestellt.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{Simultane Labyrinthe/pdf_src/move_diagramm.png}
   \caption{Move Klasse}
   \label{fig:moving_diagramm}
 \end{figure}
-\\
 Das Attribut $cost$ beschreibt die aufsummierten Kosten der beiden aktuellen Positionen basierend auf den Werten aus den Kostmatrizen.
 Das Attribut $weight$(entspricht $c_\text{w}$) wird gemäß der Gleichung \eqref{weg_kosten} berechnet.\\
 \\
@@ -542,13 +537,12 @@ Der Algorithmus ähnelt einer Tiefensuche, da er einige Wege tief verfolgt, wäh
 \\
 \\
 Wie oben erwähnt beeinflusst die Begrenzung $l$ die Laufzeit und die Genauigkeit des Algorithmus stark.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/plotting_schritte_1.pdf}
   \caption{Anzahl der Schritte in Abhängigkeit von der Begrenzung $l$}
   \label{fig:schritte_1}
 \end{figure}
-\\
 Abbildung \ref{fig:schritte_1} zeigt die Anzahl der Schritte des gefundenen Lösungswegs in Abhängigkeit vom Parameter $l$ für Testfall $labyrinthe4.txt$ \cite{bwinf_website}.
 \\
 \\
@@ -583,14 +577,12 @@ Anschließend läuft Person 2 denselben Weg zurück in ebenfalls $c_1$ Schritten
 Im schlechtesten Fall geht sie für jeden Eintrag in der Liste, also $l$ mal, die maximale Anzahl an Schritten.
 Daraus resultiert die Gleichung \eqref{max_iterationen}. Dies bedeutet, dass sich eine Laufzeit von der Ordnung $o(l)$ ergibt.
 Praktisch gesehen ist die Laufzeit aber sehr viel kleiner als die maximale Laufzeit (Abbildung \ref{fig:maximal Laufzeit}).
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{Simultane Labyrinthe/pdf_src/plotting_max_1.pdf}
   \caption{Maximale Iterationen gegenüber tatsächlichen Iterationen aufgetragen gegenüber der Begrenzung $l$}
   \label{fig:maximal Laufzeit}
 \end{figure}
-\\
-\\
 Die Anzahl der Iterationen steht in einem linearen Zusammenhang mit den Werten von $l$,
 während die Anzahl der Schritte bei größeren $l$-Werten gegen das optimale Ergebnis konvergiert.
 Je größer der Wert von $l$, desto mehr Iterationen werden durchgeführt und desto besser wird das Ergebnis.

@@ -22,7 +22,7 @@
 \contentsline {subsubsection}{\numberline {3.3.1}Erstellung der Matrix}{15}{subsubsection.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Lösen der Labyrinthe}{16}{subsubsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.4}Laufzeitanalyse}{17}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Vergleich mit der Musterlösung}{19}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.5}Vergleich mit der Musterlösung}{20}{subsection.3.5}%
 \contentsline {section}{\numberline {4}Fazit}{20}{section.4}%
 \contentsline {section}{\numberline {5}Anhang}{21}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Lösungen der Testfälle}{21}{subsection.5.1}%

@@ -50,7 +50,7 @@ plt.plot()
 plt.grid(True)
 plt.legend(fontsize=12)
 plt.xlabel(r'Begrenzung $l$', fontsize=15)
-plt.ylabel('Anzahl der Schritte', fontsize=15)
+plt.ylabel('Anzahl der Iterationen', fontsize=15)
 plt.show()
 
 
