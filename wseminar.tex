@@ -203,7 +203,7 @@ Diese werden auch in der Literatur als \textit{lopsided tree}\cite[S. 4]{golin19
 \end{figure}
 In diesem Fall gilt weiterhin, jeder innere Knoten muss mindestens zwei Kinder haben. 
 Bei dieser Art von Bäumen hat jedoch nicht der äußerste rechte Knoten die geringsten Kosten, sondern der oberste.
-Der Algorithmus bleibt unverändert, dass heißt zunächst wird ein Baum erstellt, in dem alle Blätter ungefähr die gleichen Kosten haben. 
+Der Algorithmus bleibt unverändert, das heißt, zunächst wird ein Baum erstellt, in dem alle Blätter ungefähr die gleichen Kosten haben. 
 Anschließend wird der Buchstabe mit den höchsten Kosten nach oben verschoben, während der Baum unten erweitert wird.
 Dies geschieht solange, bis kein Blatt mehr eingefügt werden kann und der beste Baum ausgegeben wird.\\
 Wenn die Kosten aller Symbole gleich groß sind, gilt: 
@@ -238,7 +238,7 @@ Das geschieht solange, bis der Baum genauso viele Blätter hat, wie es Buchstabe
 \end{lstlisting}
 Die Methode $get\_all\_possible\_costs$ prüft, ob das TreeNode-Objekt noch weitere Kinder aufnehmen kann und nicht protected ist.
 Falls dies der Fall ist, fügt es sich selbst sowie die Kosten des potenziellen neuen Kindes einem Dictionary hinzu.
-Anschließend wird die Methode rekursiv für alle bestehenden Kinder aufgerufen, so dass auch deren mögliche Erweiterungen im Dictionary erfasst werden.\\
+Anschließend wird die Methode rekursiv für alle bestehenden Kinder aufgerufen, sodass auch deren mögliche Erweiterungen im Dictionary erfasst werden.\\
 \vspace{1em} 
 \begin{lstlisting}[caption={\texttt{insert\_new\_node}}, label={lst:insert_new_node}]
   def insert_new_node(self, obj: TreeNode):
@@ -359,7 +359,7 @@ Alle drei Ansätze waren mir bei Abgabe meiner Arbeit bekannt.
 Trotzdem entschied ich mich dagegen, eines dieser Verfahren zu implementieren, vor allem aufgrund deren hoher Laufzeit, 
 und entwickelte stattdessen mein eigenes Verfahren.
 Mein Algorithmus hat dabei für die Testfälle eine durchschnittliche Abweichung von 1,27\% vom Idealergebnis.
-Jedoch im Gegensatz zu den Algorithmen in der Musterlösung besitzt meine Lösung eine sehr viel kürzere Laufzeit \cite{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe1}).
+Im Gegensatz zu den Algorithmen in der Musterlösung besitzt meine Lösung jedoch eine sehr viel kürzere Laufzeit \cite{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe1}).
 Für mein gutes Ergebnis erhielt ich daher einen Pluspunkt und erreichte insgesamt 21 Punkte für diese Aufgabe.
 
 \clearpage
@@ -403,7 +403,7 @@ In Abbildung \ref{fig:lybnmatrix} ist ein Beispiel eines Labyrinths mit dazugeh�
   \label{fig:lybnmatrix}
 \end{figure}
 
-Zum Erstellen der Matrix durchläuft der Algorithmus rückwärts ausgehend vom Endpunkt alle erreichbaren Nachbarpositionen.
+Zum Erstellen der Matrix durchläuft der Algorithmus alle erreichbaren Nachbarpositionen rückwärts, ausgehend vom Endpunkt.
 Für jeden Nachbarn wird in der Matrix ein Kostenwert eingetragen, der um eins höher ist als der Kostenwert des aktuellen Punkts, sowie die Richtung, aus der der Nachbar erreicht wurde.
 
 \subsubsection{Lösen der Labyrinthe}
@@ -472,7 +472,7 @@ Dann ruft sie die Methode $write\_cost$ auf, um die Kostenmatrix zu füllen.
   def write_cost(self, start_x: int, start_y: int):
 \end{lstlisting}
 Zu Beginn der Methode $write\_cost()$ wird die Liste $stack$ initialisiert. Sie speichert alle Felder, die noch besucht werden müssen.
-Jeder Eintrag in der Liste besitzt vier Werte, dass heißt die x-Position, die y-Position, die aktuellen Kosten sowie die entgegengesetzte Richtung, aus welcher das Feld betreten wurde. 
+Jeder Eintrag in der Liste besitzt vier Werte, das heißt die x-Position, die y-Position, die aktuellen Kosten sowie die entgegengesetzte Richtung, aus welcher das Feld betreten wurde. 
 Die Endposition wird als erstes Element hinzugefügt.
 Anschließend wird das erste Element der Liste entnommen und in die Kostenmatrix übertragen.
 Daraufhin werden alle benachbarten Felder mit der Methode $get\_neighbours$ ermittelt und dem $stack$ hinzugefügt.
@@ -601,7 +601,7 @@ Der wesentliche Unterschied liegt vor allem in dem effizienteren Warteschlagenmo
 Insgesamt lagen meine Ergebnisse, abgesehen von Testfall $labyrinthe8.txt$ \cite{bwinf_website}, bei 1,1\% Abweichung vom Optimalwert\cite{bwinf_loesung} (siehe auch \ref{subsubsec:lösungen_aufgabe2}).
 Bei Testfall $labyrinthe8.txt$ fiel mein Ergebnis etwa 3-mal so groß aus, weshalb mir 2 Punkte im Kriterium \enquote{Verfahren mit guten Ergebnissen} abgezogen wurden.
 Außerdem war meine Überlegung zur Laufzeit des Verfahrens bei Abgabe des Wettbewerbs nicht ausreichend detailliert, was zu einem weiteren Punktabzug führte.\\
-Für die Aufgabe erhielt ich 17 von 20 Punnkten.
+Für die Aufgabe erhielt ich 17 von 20 Punkten.
 
 \section{Fazit}
 Insgesamt konnte ich mit 38 von 40 Punkten den zweiten Platz erreichen und gehörte damit zu den 60 besten Teilnehmenden von über 950 zugelassenen Teilnehmern.
@@ -612,6 +612,12 @@ Aus meiner Erfahrung erweist sich der Wettbewerb insgesamt als gute Möglichkeit
  \clearpage
 
 \section{Anhang}
+
+\subsection{Quellen}
+
+\printbibliography[heading=none]
+
+\subsection{neighbours\_cost als Flussdiagramm}
 Im Folgenden ist die Methode $neighbours\_cost$ als Flussdiagramm dargestellt.       
 \begin{figure}[H]
   \centering
@@ -1002,9 +1008,4 @@ def main():
 if __name__ == "__main__":
     main()
 \end{lstlisting}
-
-\subsection{Quellen}
-
-\printbibliography[heading=none]
-
 \end{document}

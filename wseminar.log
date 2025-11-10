@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  9 NOV 2025 18:11
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.4.14)  10 NOV 2025 15:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1300,17 +1300,22 @@ File: Simultane Labyrinthe/pdf_src/plotting_max_1.pdf Graphic file (type pdf)
 [19]
 
 [20]
+Overfull \hbox (8.44337pt too wide) in paragraph at lines 618--618
+[][][][][][][][][][][][] [][] [][][][][][][][][][][][][][][][][][][][][][] [] [
+][][][][][][][][] [] [][][][][][][][][][] [] [][][][][][][][][][][][][] []
+ []
+
 File: Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf Graphic file (type pdf)
 <use Simultane Labyrinthe/pdf_src/fluss_diagramm.pdf>
 
 
 [21
 
-] (C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty
+]
+
+[22] (C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
-
-[22]
 
 [23]
 
@@ -1325,14 +1330,10 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 [28]
 
 [29]
-Overfull \hbox (8.44337pt too wide) in paragraph at lines 1008--1008
-[][][][][][][][][][][][] [][] [][][][][][][][][][][][][][][][][][][][][][] [] [
-][][][][][][][][] [] [][][][][][][][][][] [] [][][][][][][][][][][][][] []
- []
 
+[30]
 
-
-[30] (wseminar.aux
+[31] (wseminar.aux
 Package cleveref Info: loaded `ngerman' language definitions on input line 10.
 )
  ***********
@@ -1346,12 +1347,12 @@ Package logreq Info: Writing requests to 'wseminar.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28767 strings out of 408640
- 571476 string characters out of 5749145
+ 28768 strings out of 408640
+ 571482 string characters out of 5749145
  1939569 words of memory out of 5000000
- 51511 multiletter control sequences out of 15000+600000
+ 51512 multiletter control sequences out of 15000+600000
  567121 words of font info for 71 fonts, out of 8000000 for 9000
  1350 hyphenation exceptions out of 8191
  108i,17n,107p,10944b,5086s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on wseminar.pdf (32 pages).
+Output written on wseminar.pdf (33 pages).

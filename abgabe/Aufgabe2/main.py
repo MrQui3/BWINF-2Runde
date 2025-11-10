@@ -54,7 +54,7 @@ def output(move):
 
 def main():
     # Datei Einlesen
-    width, height, data = read_data_from_file('labyrinthe8.txt')
+    width, height, data = read_data_from_file('labyrinthe7.txt')
 
     # Listen erstellen
     horizontal_walls_1, vertical_walls_1, gruben_1 = create_matrix(data, height)
@@ -66,8 +66,7 @@ def main():
 
     # Weg finden
     start = time.time()
-    # TODO: Wert für l anpassen
-    l = 10000
+    l = 50
     try:
         move = moving(cost_matrix_1, cost_matrix_2, width, height, horizontal_walls_1, vertical_walls_1,
                             horizontal_walls_2, vertical_walls_2, gruben_1, gruben_2, l)
@@ -75,7 +74,6 @@ def main():
 
     except:
         print("No solution found")
-    print(f"Time taken: {time.time() - start:.2f} seconds")
 
 
 

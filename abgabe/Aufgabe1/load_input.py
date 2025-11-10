@@ -19,5 +19,5 @@ def create_distribution(message: str):
     return [key for key in characters.keys()], list(characters.values())
 
 
-perl_number, perl_costs, message = read_data_from_file(f'schmucktest.txt')
+perl_number, perl_costs, message = read_data_from_file(f'schmuck00.txt')
 characters, distribution = create_distribution(message)
