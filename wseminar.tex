@@ -131,7 +131,7 @@ Zu Beginn des Algorithmus wird ein balancierter Baum erstellt, der so viele Blä
 Jedes Blatt wird von links nach rechts in aufsteigender Reihenfolge der Häufigkeit mit einem Buchstaben belegt, und die Gesamtkosten des Baums werden nach Formel \eqref{equation:simple_kostenberechnung} berechnet. 
 Dabei ergeben sich deutlich höhere Kosten für die rechten Buchstaben im Baum im Vergleich zu den linken, da alle Blätter auf derselben Ebene sind, jedoch die Häufigkeit der Buchstaben auf der rechten Seite größer ist.\\
 Um dies auszugleichen, wird der Buchstabe mit den höchsten Kosten eine Ebene nach oben verschoben,
-indem der Elternknoten des Blattes selber zum Blatt wird und alle Kinder verliert.
+indem der Elternknoten des Blattes selbst zum Blatt wird und alle Kinder verliert.
 Dadurch verliert der Baum aber zu viele Kinder, weshalb er erweitert werden muss.
 Für die Erweiterung untersucht der Algorithmus, an welche Knoten neue Blätter angehängt werden können. Er überprüft die Blätter nach ihrer Ebene, d.h. nach ihrem Wert für $n$,
 und fügt das mit dem kleinsten Wert hinzu.

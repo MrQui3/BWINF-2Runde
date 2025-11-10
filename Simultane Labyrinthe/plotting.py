@@ -45,7 +45,7 @@ plt.rcParams['text.usetex'] = True
 
 
 plt.plot(werte_l, iterations_array, marker='', linestyle='-', color='b', label='tatsächliche Iterationen')
-plt.plot(werte_l, theoretichses_iterations, marker='', linestyle='-', color='g', label='maximale Iterationen')
+plt.plot(werte_l, theoretichses_iterations, marker='', linestyle='-', color='r', label='maximale Iterationen')
 plt.plot()
 plt.grid(True)
 plt.legend(fontsize=12)
